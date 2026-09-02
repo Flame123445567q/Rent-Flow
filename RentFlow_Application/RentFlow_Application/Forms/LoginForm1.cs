@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
-using System.Windows.Forms;
-
-namespace RentFlow_Application.Forms
+﻿namespace RentFlow_Application.Forms
 {
     public partial class LoginForm1 : Form
     {
@@ -69,6 +61,16 @@ namespace RentFlow_Application.Forms
             MessageBox.Show("You are logging in as: " + selectedRole);
         }
 
-        
+        private void btnCreateAnAccount_Click(object sender, EventArgs e)
+        {
+            // Create a new instance of the Registration form
+            RegisterForm2 registerForm = new RegisterForm2();
+
+            // Show the Registration form
+            registerForm.Show();
+
+            // Optional: Hide the Login form so the user doesn't see it behind
+            this.Hide();
+        }
     }
 }
