@@ -218,6 +218,7 @@
             txtPassword.Location = new Point(34, 9);
             txtPassword.Margin = new Padding(2);
             txtPassword.Name = "txtPassword";
+            txtPassword.PasswordChar = '*';
             txtPassword.PlaceholderText = "*********";
             txtPassword.Size = new Size(252, 20);
             txtPassword.TabIndex = 1;
@@ -291,6 +292,7 @@
             txtUsername.Location = new Point(34, 8);
             txtUsername.Margin = new Padding(2);
             txtUsername.Name = "txtUsername";
+            txtUsername.PlaceholderText = "your@example.co.za";
             txtUsername.Size = new Size(256, 20);
             txtUsername.TabIndex = 0;
             // 
@@ -377,18 +379,18 @@
             // 
             lblManageproperties.AutoSize = true;
             lblManageproperties.ForeColor = Color.Gray;
-            lblManageproperties.Location = new Point(10, 67);
+            lblManageproperties.Location = new Point(7, 52);
             lblManageproperties.Margin = new Padding(2, 0, 2, 0);
             lblManageproperties.Name = "lblManageproperties";
-            lblManageproperties.Size = new Size(227, 20);
+            lblManageproperties.Size = new Size(182, 40);
             lblManageproperties.TabIndex = 1;
-            lblManageproperties.Text = "Sign in to mange your properties";
+            lblManageproperties.Text = "Already have an account? \r\nSign in ";
             // 
             // lblWelcomeBack
             // 
             lblWelcomeBack.AutoSize = true;
             lblWelcomeBack.Font = new Font("Segoe UI", 14F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblWelcomeBack.Location = new Point(10, 28);
+            lblWelcomeBack.Location = new Point(10, 11);
             lblWelcomeBack.Margin = new Padding(2, 0, 2, 0);
             lblWelcomeBack.Name = "lblWelcomeBack";
             lblWelcomeBack.Size = new Size(179, 32);

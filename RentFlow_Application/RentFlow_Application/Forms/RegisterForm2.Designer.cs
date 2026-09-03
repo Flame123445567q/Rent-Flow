@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             label1 = new Label();
             lblTitle = new Label();
             lblSlogan = new Label();
@@ -42,12 +43,14 @@
             btnRegisterAccount = new Button();
             lblIDNumber = new Label();
             txtFull_Name = new TextBox();
-            textBox1 = new TextBox();
-            textBox2 = new TextBox();
-            textBox3 = new TextBox();
-            textBox4 = new TextBox();
-            textBox5 = new TextBox();
-            textBox6 = new TextBox();
+            txtSurname = new TextBox();
+            txtIDNumber = new TextBox();
+            txtEmail = new TextBox();
+            txtPhoneNumber = new TextBox();
+            txtPassword = new TextBox();
+            txtConfirmPassword = new TextBox();
+            errorProvider1 = new ErrorProvider(components);
+            ((System.ComponentModel.ISupportInitialize)errorProvider1).BeginInit();
             SuspendLayout();
             // 
             // label1
@@ -170,6 +173,7 @@
             btnRegisterAccount.TabIndex = 12;
             btnRegisterAccount.Text = "Register Account";
             btnRegisterAccount.UseVisualStyleBackColor = false;
+            btnRegisterAccount.Click += btnRegisterAccount_Click;
             // 
             // lblIDNumber
             // 
@@ -185,63 +189,76 @@
             // 
             txtFull_Name.Location = new Point(468, 235);
             txtFull_Name.Name = "txtFull_Name";
+            txtFull_Name.PlaceholderText = "First Name";
             txtFull_Name.Size = new Size(326, 27);
             txtFull_Name.TabIndex = 14;
             // 
-            // textBox1
+            // txtSurname
             // 
-            textBox1.Location = new Point(468, 287);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(326, 27);
-            textBox1.TabIndex = 15;
+            txtSurname.Location = new Point(468, 287);
+            txtSurname.Name = "txtSurname";
+            txtSurname.PlaceholderText = "Last Name";
+            txtSurname.Size = new Size(326, 27);
+            txtSurname.TabIndex = 15;
             // 
-            // textBox2
+            // txtIDNumber
             // 
-            textBox2.Location = new Point(468, 340);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(326, 27);
-            textBox2.TabIndex = 16;
+            txtIDNumber.Location = new Point(468, 340);
+            txtIDNumber.Name = "txtIDNumber";
+            txtIDNumber.PlaceholderText = "South African ID";
+            txtIDNumber.Size = new Size(326, 27);
+            txtIDNumber.TabIndex = 16;
             // 
-            // textBox3
+            // txtEmail
             // 
-            textBox3.Location = new Point(468, 392);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(326, 27);
-            textBox3.TabIndex = 17;
+            txtEmail.Location = new Point(468, 392);
+            txtEmail.Name = "txtEmail";
+            txtEmail.PlaceholderText = "you@example.com";
+            txtEmail.Size = new Size(326, 27);
+            txtEmail.TabIndex = 17;
             // 
-            // textBox4
+            // txtPhoneNumber
             // 
-            textBox4.Location = new Point(468, 448);
-            textBox4.Name = "textBox4";
-            textBox4.Size = new Size(326, 27);
-            textBox4.TabIndex = 18;
+            txtPhoneNumber.Location = new Point(468, 448);
+            txtPhoneNumber.Name = "txtPhoneNumber";
+            txtPhoneNumber.PlaceholderText = "eg.+27 82 123 4567";
+            txtPhoneNumber.Size = new Size(326, 27);
+            txtPhoneNumber.TabIndex = 18;
             // 
-            // textBox5
+            // txtPassword
             // 
-            textBox5.Location = new Point(468, 503);
-            textBox5.Name = "textBox5";
-            textBox5.Size = new Size(326, 27);
-            textBox5.TabIndex = 19;
+            txtPassword.Location = new Point(468, 503);
+            txtPassword.Name = "txtPassword";
+            txtPassword.PasswordChar = '*';
+            txtPassword.PlaceholderText = "Password(6 or more characters)";
+            txtPassword.Size = new Size(326, 27);
+            txtPassword.TabIndex = 19;
             // 
-            // textBox6
+            // txtConfirmPassword
             // 
-            textBox6.Location = new Point(468, 558);
-            textBox6.Name = "textBox6";
-            textBox6.Size = new Size(326, 27);
-            textBox6.TabIndex = 20;
+            txtConfirmPassword.Location = new Point(468, 558);
+            txtConfirmPassword.Name = "txtConfirmPassword";
+            txtConfirmPassword.PasswordChar = '*';
+            txtConfirmPassword.PlaceholderText = "Confirm Password";
+            txtConfirmPassword.Size = new Size(326, 27);
+            txtConfirmPassword.TabIndex = 20;
+            // 
+            // errorProvider1
+            // 
+            errorProvider1.ContainerControl = this;
             // 
             // RegisterForm2
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(49, 87, 212);
-            ClientSize = new Size(1177, 689);
-            Controls.Add(textBox6);
-            Controls.Add(textBox5);
-            Controls.Add(textBox4);
-            Controls.Add(textBox3);
-            Controls.Add(textBox2);
-            Controls.Add(textBox1);
+            ClientSize = new Size(1000, 711);
+            Controls.Add(txtConfirmPassword);
+            Controls.Add(txtPassword);
+            Controls.Add(txtPhoneNumber);
+            Controls.Add(txtEmail);
+            Controls.Add(txtIDNumber);
+            Controls.Add(txtSurname);
             Controls.Add(txtFull_Name);
             Controls.Add(lblIDNumber);
             Controls.Add(btnRegisterAccount);
@@ -259,7 +276,8 @@
             ForeColor = SystemColors.ButtonHighlight;
             Name = "RegisterForm2";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "RegisterForm2";
+            Text = " ";
+            ((System.ComponentModel.ISupportInitialize)errorProvider1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -280,11 +298,12 @@
         private Button btnRegisterAccount;
         private Label lblIDNumber;
         private TextBox txtFull_Name;
-        private TextBox textBox1;
-        private TextBox textBox2;
-        private TextBox textBox3;
-        private TextBox textBox4;
-        private TextBox textBox5;
-        private TextBox textBox6;
+        private TextBox txtSurname;
+        private TextBox txtIDNumber;
+        private TextBox txtEmail;
+        private TextBox txtPhoneNumber;
+        private TextBox txtPassword;
+        private TextBox txtConfirmPassword;
+        private ErrorProvider errorProvider1;
     }
 }
