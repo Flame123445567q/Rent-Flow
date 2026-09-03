@@ -19,7 +19,7 @@ namespace RentFlow_Application
 
         private void btnRegisterAccount_Click(object sender, EventArgs e)
         {
-            string userRole = cmbRoles.SelectedItem.ToString();
+            //string userRole = cmbRoles.SelectedItem.ToString();
             string fullName = txtFull_Name.Text.Trim();
             string surname = txtSurname.Text.Trim();
             string idNumber = txtIDNumber.Text.Trim();
@@ -55,10 +55,29 @@ namespace RentFlow_Application
                 errorProvider1.SetError(txtEmail, "Email is required");
                 isValid = false;
             }
+            else if (!email.Contains("@"))
+            {
+                errorProvider1.SetError(txtEmail, "Invalid Email.");
+                isValid = false;
+            }
             if (string.IsNullOrWhiteSpace(phoneNumber))
             {
                 errorProvider1.SetError(txtPhoneNumber, "Phone Number is required");
                 isValid = false;
+
+            }
+            else if (phoneNumber.Length != 10)
+            {
+                errorProvider1.SetError(txtPhoneNumber, "Phone Number must be 10 digits");
+                isValid = false;
+                foreach (char phoneNum in phoneNumber)
+                {
+                    if (!char.IsDigit(phoneNum))
+                    {
+                        errorProvider1.SetError(txtPhoneNumber, "Phone Number must be digits only");
+                        isValid = false;
+                    }
+                }
             }
             if (string.IsNullOrWhiteSpace(password))
             {
@@ -76,7 +95,7 @@ namespace RentFlow_Application
                 isValid = false;
             }
 
-            if (isValid= false)
+            if (!isValid)
             {
                 MessageBox.Show("Please fill in all fields.", "Validation error",
                  MessageBoxButtons.OK, MessageBoxIcon.Warning);
