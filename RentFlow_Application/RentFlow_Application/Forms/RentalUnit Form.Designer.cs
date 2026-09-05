@@ -29,23 +29,28 @@
         private void InitializeComponent()
         {
             pnlSidebar = new Panel();
-            lblLogoIcon = new Label();
-            lblLogo = new Label();
-            btnDashboard = new Button();
-            btnProperties = new Button();
-            btnRentalUnits = new Button();
-            btnTenants = new Button();
-            btnLeases = new Button();
-            btnRentPayments = new Button();
-            btnExpenses = new Button();
             btnMaintenance = new Button();
+            btnExpenses = new Button();
+            btnRentPayments = new Button();
+            btnLeases = new Button();
+            btnTenants = new Button();
+            btnRentalUnits = new Button();
+            btnProperties = new Button();
+            btnDashboard = new Button();
+            lblLogo = new Label();
+            lblLogoIcon = new Label();
             pnlMain = new Panel();
-            lblRentalUnits = new Label();
-            btnAddUnit = new Button();
-            pnlSearch = new Panel();
-            lblSearch = new Label();
-            txtSearch = new TextBox();
-            cmbFilter = new ComboBox();
+            pnlAvailable = new Panel();
+            lblOccupiedNum = new Label();
+            lblOccupied = new Label();
+            pnlOccupied = new Panel();
+            lblAvailableNum = new Label();
+            lblAvailable = new Label();
+            pnlTotalUnits = new Panel();
+            lblTotalUnitsNum = new Label();
+            lblTotalUnits = new Label();
+            btnEditUnit = new Button();
+            btnClear = new Button();
             dvgRentalUnits = new DataGridView();
             UnitID = new DataGridViewTextBoxColumn();
             UnitNumber = new DataGridViewTextBoxColumn();
@@ -54,24 +59,19 @@
             Status = new DataGridViewTextBoxColumn();
             CurrentTenant = new DataGridViewTextBoxColumn();
             Actions = new DataGridViewTextBoxColumn();
-            btnClear = new Button();
-            btnEditUnit = new Button();
-            pnlTotalUnits = new Panel();
-            pnlOccupied = new Panel();
-            pnlAvailable = new Panel();
-            lblTotalUnits = new Label();
-            lblTotalUnitsNum = new Label();
-            lblAvailable = new Label();
-            lblAvailableNum = new Label();
-            lblOccupied = new Label();
-            lblOccupiedNum = new Label();
+            pnlSearch = new Panel();
+            cmbFilter = new ComboBox();
+            txtSearch = new TextBox();
+            lblSearch = new Label();
+            btnAddUnit = new Button();
+            lblRentalUnits = new Label();
             pnlSidebar.SuspendLayout();
             pnlMain.SuspendLayout();
-            pnlSearch.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dvgRentalUnits).BeginInit();
-            pnlTotalUnits.SuspendLayout();
-            pnlOccupied.SuspendLayout();
             pnlAvailable.SuspendLayout();
+            pnlOccupied.SuspendLayout();
+            pnlTotalUnits.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dvgRentalUnits).BeginInit();
+            pnlSearch.SuspendLayout();
             SuspendLayout();
             // 
             // pnlSidebar
@@ -93,92 +93,16 @@
             pnlSidebar.Size = new Size(231, 735);
             pnlSidebar.TabIndex = 0;
             // 
-            // lblLogoIcon
+            // btnMaintenance
             // 
-            lblLogoIcon.AutoSize = true;
-            lblLogoIcon.Font = new Font("Segoe UI Semibold", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblLogoIcon.ForeColor = Color.White;
-            lblLogoIcon.Location = new Point(15, 27);
-            lblLogoIcon.Name = "lblLogoIcon";
-            lblLogoIcon.Size = new Size(48, 38);
-            lblLogoIcon.TabIndex = 1;
-            lblLogoIcon.Text = "RF";
-            // 
-            // lblLogo
-            // 
-            lblLogo.AutoSize = true;
-            lblLogo.Font = new Font("Segoe UI Semibold", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblLogo.ForeColor = Color.White;
-            lblLogo.Location = new Point(59, 24);
-            lblLogo.Name = "lblLogo";
-            lblLogo.Size = new Size(169, 41);
-            lblLogo.TabIndex = 1;
-            lblLogo.Text = "RentalFlow";
-            // 
-            // btnDashboard
-            // 
-            btnDashboard.FlatStyle = FlatStyle.Flat;
-            btnDashboard.ForeColor = Color.White;
-            btnDashboard.Location = new Point(10, 100);
-            btnDashboard.Name = "btnDashboard";
-            btnDashboard.Size = new Size(210, 40);
-            btnDashboard.TabIndex = 1;
-            btnDashboard.Text = "Dashboard";
-            btnDashboard.UseVisualStyleBackColor = true;
-            // 
-            // btnProperties
-            // 
-            btnProperties.FlatStyle = FlatStyle.Flat;
-            btnProperties.ForeColor = Color.White;
-            btnProperties.Location = new Point(10, 140);
-            btnProperties.Name = "btnProperties";
-            btnProperties.Size = new Size(210, 40);
-            btnProperties.TabIndex = 1;
-            btnProperties.Text = "Properties";
-            btnProperties.UseVisualStyleBackColor = true;
-            // 
-            // btnRentalUnits
-            // 
-            btnRentalUnits.BackColor = Color.LightSteelBlue;
-            btnRentalUnits.Location = new Point(10, 180);
-            btnRentalUnits.Name = "btnRentalUnits";
-            btnRentalUnits.Size = new Size(210, 40);
-            btnRentalUnits.TabIndex = 1;
-            btnRentalUnits.Text = "Rental Units";
-            btnRentalUnits.UseVisualStyleBackColor = false;
-            // 
-            // btnTenants
-            // 
-            btnTenants.FlatStyle = FlatStyle.Flat;
-            btnTenants.ForeColor = Color.White;
-            btnTenants.Location = new Point(10, 226);
-            btnTenants.Name = "btnTenants";
-            btnTenants.Size = new Size(210, 40);
-            btnTenants.TabIndex = 1;
-            btnTenants.Text = "Tenants";
-            btnTenants.UseVisualStyleBackColor = true;
-            // 
-            // btnLeases
-            // 
-            btnLeases.FlatStyle = FlatStyle.Flat;
-            btnLeases.ForeColor = Color.White;
-            btnLeases.Location = new Point(10, 272);
-            btnLeases.Name = "btnLeases";
-            btnLeases.Size = new Size(210, 40);
-            btnLeases.TabIndex = 1;
-            btnLeases.Text = "Leases";
-            btnLeases.UseVisualStyleBackColor = true;
-            // 
-            // btnRentPayments
-            // 
-            btnRentPayments.FlatStyle = FlatStyle.Flat;
-            btnRentPayments.ForeColor = Color.White;
-            btnRentPayments.Location = new Point(10, 318);
-            btnRentPayments.Name = "btnRentPayments";
-            btnRentPayments.Size = new Size(210, 40);
-            btnRentPayments.TabIndex = 1;
-            btnRentPayments.Text = "Rent Payments";
-            btnRentPayments.UseVisualStyleBackColor = true;
+            btnMaintenance.FlatStyle = FlatStyle.Flat;
+            btnMaintenance.ForeColor = Color.White;
+            btnMaintenance.Location = new Point(10, 399);
+            btnMaintenance.Name = "btnMaintenance";
+            btnMaintenance.Size = new Size(210, 40);
+            btnMaintenance.TabIndex = 2;
+            btnMaintenance.Text = "Maintenace";
+            btnMaintenance.UseVisualStyleBackColor = true;
             // 
             // btnExpenses
             // 
@@ -191,16 +115,92 @@
             btnExpenses.Text = "Expenses";
             btnExpenses.UseVisualStyleBackColor = true;
             // 
-            // btnMaintenance
+            // btnRentPayments
             // 
-            btnMaintenance.FlatStyle = FlatStyle.Flat;
-            btnMaintenance.ForeColor = Color.White;
-            btnMaintenance.Location = new Point(10, 399);
-            btnMaintenance.Name = "btnMaintenance";
-            btnMaintenance.Size = new Size(210, 40);
-            btnMaintenance.TabIndex = 2;
-            btnMaintenance.Text = "Maintenace";
-            btnMaintenance.UseVisualStyleBackColor = true;
+            btnRentPayments.FlatStyle = FlatStyle.Flat;
+            btnRentPayments.ForeColor = Color.White;
+            btnRentPayments.Location = new Point(10, 318);
+            btnRentPayments.Name = "btnRentPayments";
+            btnRentPayments.Size = new Size(210, 40);
+            btnRentPayments.TabIndex = 1;
+            btnRentPayments.Text = "Rent Payments";
+            btnRentPayments.UseVisualStyleBackColor = true;
+            // 
+            // btnLeases
+            // 
+            btnLeases.FlatStyle = FlatStyle.Flat;
+            btnLeases.ForeColor = Color.White;
+            btnLeases.Location = new Point(10, 272);
+            btnLeases.Name = "btnLeases";
+            btnLeases.Size = new Size(210, 40);
+            btnLeases.TabIndex = 1;
+            btnLeases.Text = "Leases";
+            btnLeases.UseVisualStyleBackColor = true;
+            // 
+            // btnTenants
+            // 
+            btnTenants.FlatStyle = FlatStyle.Flat;
+            btnTenants.ForeColor = Color.White;
+            btnTenants.Location = new Point(10, 226);
+            btnTenants.Name = "btnTenants";
+            btnTenants.Size = new Size(210, 40);
+            btnTenants.TabIndex = 1;
+            btnTenants.Text = "Tenants";
+            btnTenants.UseVisualStyleBackColor = true;
+            // 
+            // btnRentalUnits
+            // 
+            btnRentalUnits.BackColor = Color.LightSteelBlue;
+            btnRentalUnits.Location = new Point(10, 180);
+            btnRentalUnits.Name = "btnRentalUnits";
+            btnRentalUnits.Size = new Size(210, 40);
+            btnRentalUnits.TabIndex = 1;
+            btnRentalUnits.Text = "Rental Units";
+            btnRentalUnits.UseVisualStyleBackColor = false;
+            // 
+            // btnProperties
+            // 
+            btnProperties.FlatStyle = FlatStyle.Flat;
+            btnProperties.ForeColor = Color.White;
+            btnProperties.Location = new Point(10, 140);
+            btnProperties.Name = "btnProperties";
+            btnProperties.Size = new Size(210, 40);
+            btnProperties.TabIndex = 1;
+            btnProperties.Text = "Properties";
+            btnProperties.UseVisualStyleBackColor = true;
+            // 
+            // btnDashboard
+            // 
+            btnDashboard.FlatStyle = FlatStyle.Flat;
+            btnDashboard.ForeColor = Color.White;
+            btnDashboard.Location = new Point(10, 100);
+            btnDashboard.Name = "btnDashboard";
+            btnDashboard.Size = new Size(210, 40);
+            btnDashboard.TabIndex = 1;
+            btnDashboard.Text = "Dashboard";
+            btnDashboard.UseVisualStyleBackColor = true;
+            // 
+            // lblLogo
+            // 
+            lblLogo.AutoSize = true;
+            lblLogo.Font = new Font("Segoe UI Semibold", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblLogo.ForeColor = Color.White;
+            lblLogo.Location = new Point(59, 24);
+            lblLogo.Name = "lblLogo";
+            lblLogo.Size = new Size(145, 41);
+            lblLogo.TabIndex = 1;
+            lblLogo.Text = "RentFlow";
+            // 
+            // lblLogoIcon
+            // 
+            lblLogoIcon.AutoSize = true;
+            lblLogoIcon.Font = new Font("Segoe UI Semibold", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblLogoIcon.ForeColor = Color.White;
+            lblLogoIcon.Location = new Point(15, 27);
+            lblLogoIcon.Name = "lblLogoIcon";
+            lblLogoIcon.Size = new Size(48, 38);
+            lblLogoIcon.TabIndex = 1;
+            lblLogoIcon.Text = "RF";
             // 
             // pnlMain
             // 
@@ -218,65 +218,111 @@
             pnlMain.Size = new Size(970, 700);
             pnlMain.TabIndex = 1;
             // 
-            // lblRentalUnits
+            // pnlAvailable
             // 
-            lblRentalUnits.AutoSize = true;
-            lblRentalUnits.Font = new Font("Segoe UI Semibold", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblRentalUnits.ForeColor = Color.RoyalBlue;
-            lblRentalUnits.Location = new Point(18, 36);
-            lblRentalUnits.Name = "lblRentalUnits";
-            lblRentalUnits.Size = new Size(206, 46);
-            lblRentalUnits.TabIndex = 0;
-            lblRentalUnits.Text = "Rental Units";
+            pnlAvailable.Controls.Add(lblOccupiedNum);
+            pnlAvailable.Controls.Add(lblOccupied);
+            pnlAvailable.Location = new Point(584, 100);
+            pnlAvailable.Name = "pnlAvailable";
+            pnlAvailable.Size = new Size(250, 125);
+            pnlAvailable.TabIndex = 11;
             // 
-            // btnAddUnit
+            // lblOccupiedNum
             // 
-            btnAddUnit.BackColor = Color.Blue;
-            btnAddUnit.FlatStyle = FlatStyle.Flat;
-            btnAddUnit.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnAddUnit.ForeColor = Color.White;
-            btnAddUnit.Location = new Point(541, 53);
-            btnAddUnit.Name = "btnAddUnit";
-            btnAddUnit.Size = new Size(110, 40);
-            btnAddUnit.TabIndex = 1;
-            btnAddUnit.Text = "+ Add Unit";
-            btnAddUnit.UseVisualStyleBackColor = false;
+            lblOccupiedNum.AutoSize = true;
+            lblOccupiedNum.Location = new Point(32, 50);
+            lblOccupiedNum.Name = "lblOccupiedNum";
+            lblOccupiedNum.Size = new Size(0, 20);
+            lblOccupiedNum.TabIndex = 2;
             // 
-            // pnlSearch
+            // lblOccupied
             // 
-            pnlSearch.BackColor = Color.LightBlue;
-            pnlSearch.Controls.Add(cmbFilter);
-            pnlSearch.Controls.Add(txtSearch);
-            pnlSearch.Controls.Add(lblSearch);
-            pnlSearch.Location = new Point(30, 255);
-            pnlSearch.Name = "pnlSearch";
-            pnlSearch.Size = new Size(930, 70);
-            pnlSearch.TabIndex = 4;
+            lblOccupied.AutoSize = true;
+            lblOccupied.Location = new Point(17, 10);
+            lblOccupied.Name = "lblOccupied";
+            lblOccupied.Size = new Size(72, 20);
+            lblOccupied.TabIndex = 1;
+            lblOccupied.Text = "Occupied";
             // 
-            // lblSearch
+            // pnlOccupied
             // 
-            lblSearch.AutoSize = true;
-            lblSearch.Location = new Point(3, 0);
-            lblSearch.Name = "lblSearch";
-            lblSearch.Size = new Size(107, 20);
-            lblSearch.TabIndex = 0;
-            lblSearch.Text = "Enter to search";
+            pnlOccupied.Controls.Add(lblAvailableNum);
+            pnlOccupied.Controls.Add(lblAvailable);
+            pnlOccupied.Location = new Point(305, 100);
+            pnlOccupied.Name = "pnlOccupied";
+            pnlOccupied.Size = new Size(250, 125);
+            pnlOccupied.TabIndex = 10;
             // 
-            // txtSearch
+            // lblAvailableNum
             // 
-            txtSearch.Location = new Point(3, 24);
-            txtSearch.Name = "txtSearch";
-            txtSearch.Size = new Size(300, 27);
-            txtSearch.TabIndex = 1;
+            lblAvailableNum.AutoSize = true;
+            lblAvailableNum.Location = new Point(35, 50);
+            lblAvailableNum.Name = "lblAvailableNum";
+            lblAvailableNum.Size = new Size(0, 20);
+            lblAvailableNum.TabIndex = 2;
             // 
-            // cmbFilter
+            // lblAvailable
             // 
-            cmbFilter.FormattingEnabled = true;
-            cmbFilter.Items.AddRange(new object[] { "All", "Available", "Occupied" });
-            cmbFilter.Location = new Point(330, 15);
-            cmbFilter.Name = "cmbFilter";
-            cmbFilter.Size = new Size(100, 28);
-            cmbFilter.TabIndex = 2;
+            lblAvailable.AutoSize = true;
+            lblAvailable.Location = new Point(12, 10);
+            lblAvailable.Name = "lblAvailable";
+            lblAvailable.Size = new Size(71, 20);
+            lblAvailable.TabIndex = 1;
+            lblAvailable.Text = "Available";
+            // 
+            // pnlTotalUnits
+            // 
+            pnlTotalUnits.Controls.Add(lblTotalUnitsNum);
+            pnlTotalUnits.Controls.Add(lblTotalUnits);
+            pnlTotalUnits.Location = new Point(33, 100);
+            pnlTotalUnits.Name = "pnlTotalUnits";
+            pnlTotalUnits.Size = new Size(250, 125);
+            pnlTotalUnits.TabIndex = 9;
+            // 
+            // lblTotalUnitsNum
+            // 
+            lblTotalUnitsNum.AutoSize = true;
+            lblTotalUnitsNum.Location = new Point(34, 50);
+            lblTotalUnitsNum.Name = "lblTotalUnitsNum";
+            lblTotalUnitsNum.Size = new Size(0, 20);
+            lblTotalUnitsNum.TabIndex = 1;
+            // 
+            // lblTotalUnits
+            // 
+            lblTotalUnits.AutoSize = true;
+            lblTotalUnits.Location = new Point(3, 10);
+            lblTotalUnits.Name = "lblTotalUnits";
+            lblTotalUnits.Size = new Size(79, 20);
+            lblTotalUnits.TabIndex = 0;
+            lblTotalUnits.Text = "Total Units";
+            // 
+            // btnEditUnit
+            // 
+            btnEditUnit.BackColor = Color.Blue;
+            btnEditUnit.FlatStyle = FlatStyle.Flat;
+            btnEditUnit.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnEditUnit.ForeColor = Color.White;
+            btnEditUnit.Location = new Point(292, 646);
+            btnEditUnit.Name = "btnEditUnit";
+            btnEditUnit.Size = new Size(110, 40);
+            btnEditUnit.TabIndex = 8;
+            btnEditUnit.Text = "Edit Unit";
+            btnEditUnit.UseVisualStyleBackColor = false;
+            btnEditUnit.Click += btnEditUnit_Click;
+            // 
+            // btnClear
+            // 
+            btnClear.BackColor = Color.Blue;
+            btnClear.FlatStyle = FlatStyle.Flat;
+            btnClear.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnClear.ForeColor = Color.White;
+            btnClear.Location = new Point(556, 646);
+            btnClear.Name = "btnClear";
+            btnClear.Size = new Size(110, 40);
+            btnClear.TabIndex = 7;
+            btnClear.Text = "Clear";
+            btnClear.UseVisualStyleBackColor = false;
+            btnClear.Click += btnClear_Click;
             // 
             // dvgRentalUnits
             // 
@@ -344,109 +390,68 @@
             Actions.Name = "Actions";
             Actions.ReadOnly = true;
             // 
-            // btnClear
+            // pnlSearch
             // 
-            btnClear.BackColor = Color.Blue;
-            btnClear.FlatStyle = FlatStyle.Flat;
-            btnClear.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnClear.ForeColor = Color.White;
-            btnClear.Location = new Point(556, 646);
-            btnClear.Name = "btnClear";
-            btnClear.Size = new Size(110, 40);
-            btnClear.TabIndex = 7;
-            btnClear.Text = "Clear";
-            btnClear.UseVisualStyleBackColor = false;
+            pnlSearch.BackColor = Color.LightBlue;
+            pnlSearch.Controls.Add(cmbFilter);
+            pnlSearch.Controls.Add(txtSearch);
+            pnlSearch.Controls.Add(lblSearch);
+            pnlSearch.Location = new Point(30, 255);
+            pnlSearch.Name = "pnlSearch";
+            pnlSearch.Size = new Size(930, 70);
+            pnlSearch.TabIndex = 4;
             // 
-            // btnEditUnit
+            // cmbFilter
             // 
-            btnEditUnit.BackColor = Color.Blue;
-            btnEditUnit.FlatStyle = FlatStyle.Flat;
-            btnEditUnit.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnEditUnit.ForeColor = Color.White;
-            btnEditUnit.Location = new Point(292, 646);
-            btnEditUnit.Name = "btnEditUnit";
-            btnEditUnit.Size = new Size(110, 40);
-            btnEditUnit.TabIndex = 8;
-            btnEditUnit.Text = "Edit Unit";
-            btnEditUnit.UseVisualStyleBackColor = false;
+            cmbFilter.FormattingEnabled = true;
+            cmbFilter.Items.AddRange(new object[] { "All", "Available", "Occupied" });
+            cmbFilter.Location = new Point(330, 15);
+            cmbFilter.Name = "cmbFilter";
+            cmbFilter.Size = new Size(100, 28);
+            cmbFilter.TabIndex = 2;
+            cmbFilter.SelectedIndexChanged += cmbFilter_SelectedIndexChanged;
             // 
-            // pnlTotalUnits
+            // txtSearch
             // 
-            pnlTotalUnits.Controls.Add(lblTotalUnitsNum);
-            pnlTotalUnits.Controls.Add(lblTotalUnits);
-            pnlTotalUnits.Location = new Point(33, 100);
-            pnlTotalUnits.Name = "pnlTotalUnits";
-            pnlTotalUnits.Size = new Size(250, 125);
-            pnlTotalUnits.TabIndex = 9;
+            txtSearch.Location = new Point(3, 24);
+            txtSearch.Name = "txtSearch";
+            txtSearch.Size = new Size(300, 27);
+            txtSearch.TabIndex = 1;
+            txtSearch.TextChanged += txtSearch_TextChanged;
             // 
-            // pnlOccupied
+            // lblSearch
             // 
-            pnlOccupied.Controls.Add(lblAvailableNum);
-            pnlOccupied.Controls.Add(lblAvailable);
-            pnlOccupied.Location = new Point(305, 100);
-            pnlOccupied.Name = "pnlOccupied";
-            pnlOccupied.Size = new Size(250, 125);
-            pnlOccupied.TabIndex = 10;
+            lblSearch.AutoSize = true;
+            lblSearch.Location = new Point(3, 0);
+            lblSearch.Name = "lblSearch";
+            lblSearch.Size = new Size(107, 20);
+            lblSearch.TabIndex = 0;
+            lblSearch.Text = "Enter to search";
             // 
-            // pnlAvailable
+            // btnAddUnit
             // 
-            pnlAvailable.Controls.Add(lblOccupiedNum);
-            pnlAvailable.Controls.Add(lblOccupied);
-            pnlAvailable.Location = new Point(584, 100);
-            pnlAvailable.Name = "pnlAvailable";
-            pnlAvailable.Size = new Size(250, 125);
-            pnlAvailable.TabIndex = 11;
+            btnAddUnit.BackColor = Color.Blue;
+            btnAddUnit.FlatStyle = FlatStyle.Flat;
+            btnAddUnit.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnAddUnit.ForeColor = Color.White;
+            btnAddUnit.Location = new Point(541, 53);
+            btnAddUnit.Name = "btnAddUnit";
+            btnAddUnit.Size = new Size(110, 40);
+            btnAddUnit.TabIndex = 1;
+            btnAddUnit.Text = "+ Add Unit";
+            btnAddUnit.UseVisualStyleBackColor = false;
+            btnAddUnit.Click += btnAddUnit_Click;
             // 
-            // lblTotalUnits
+            // lblRentalUnits
             // 
-            lblTotalUnits.AutoSize = true;
-            lblTotalUnits.Location = new Point(3, 10);
-            lblTotalUnits.Name = "lblTotalUnits";
-            lblTotalUnits.Size = new Size(79, 20);
-            lblTotalUnits.TabIndex = 0;
-            lblTotalUnits.Text = "Total Units";
-            // 
-            // lblTotalUnitsNum
-            // 
-            lblTotalUnitsNum.AutoSize = true;
-            lblTotalUnitsNum.Location = new Point(34, 50);
-            lblTotalUnitsNum.Name = "lblTotalUnitsNum";
-            lblTotalUnitsNum.Size = new Size(0, 20);
-            lblTotalUnitsNum.TabIndex = 1;
-            // 
-            // lblAvailable
-            // 
-            lblAvailable.AutoSize = true;
-            lblAvailable.Location = new Point(12, 10);
-            lblAvailable.Name = "lblAvailable";
-            lblAvailable.Size = new Size(71, 20);
-            lblAvailable.TabIndex = 1;
-            lblAvailable.Text = "Available";
-            // 
-            // lblAvailableNum
-            // 
-            lblAvailableNum.AutoSize = true;
-            lblAvailableNum.Location = new Point(35, 50);
-            lblAvailableNum.Name = "lblAvailableNum";
-            lblAvailableNum.Size = new Size(0, 20);
-            lblAvailableNum.TabIndex = 2;
-            // 
-            // lblOccupied
-            // 
-            lblOccupied.AutoSize = true;
-            lblOccupied.Location = new Point(17, 10);
-            lblOccupied.Name = "lblOccupied";
-            lblOccupied.Size = new Size(72, 20);
-            lblOccupied.TabIndex = 1;
-            lblOccupied.Text = "Occupied";
-            // 
-            // lblOccupiedNum
-            // 
-            lblOccupiedNum.AutoSize = true;
-            lblOccupiedNum.Location = new Point(32, 50);
-            lblOccupiedNum.Name = "lblOccupiedNum";
-            lblOccupiedNum.Size = new Size(0, 20);
-            lblOccupiedNum.TabIndex = 2;
+            lblRentalUnits.AutoSize = true;
+            lblRentalUnits.Font = new Font("Segoe UI Semibold", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblRentalUnits.ForeColor = Color.RoyalBlue;
+            lblRentalUnits.Location = new Point(18, 36);
+            lblRentalUnits.Name = "lblRentalUnits";
+            lblRentalUnits.Size = new Size(206, 46);
+            lblRentalUnits.TabIndex = 0;
+            lblRentalUnits.Text = "Rental Units";
             // 
             // RentalUnit_Form
             // 
@@ -457,19 +462,20 @@
             Controls.Add(pnlSidebar);
             Name = "RentalUnit_Form";
             Text = "RentalUnit_Form";
+            Load += RentalUnit_Form_Load;
             pnlSidebar.ResumeLayout(false);
             pnlSidebar.PerformLayout();
             pnlMain.ResumeLayout(false);
             pnlMain.PerformLayout();
-            pnlSearch.ResumeLayout(false);
-            pnlSearch.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dvgRentalUnits).EndInit();
-            pnlTotalUnits.ResumeLayout(false);
-            pnlTotalUnits.PerformLayout();
-            pnlOccupied.ResumeLayout(false);
-            pnlOccupied.PerformLayout();
             pnlAvailable.ResumeLayout(false);
             pnlAvailable.PerformLayout();
+            pnlOccupied.ResumeLayout(false);
+            pnlOccupied.PerformLayout();
+            pnlTotalUnits.ResumeLayout(false);
+            pnlTotalUnits.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dvgRentalUnits).EndInit();
+            pnlSearch.ResumeLayout(false);
+            pnlSearch.PerformLayout();
             ResumeLayout(false);
         }
 
