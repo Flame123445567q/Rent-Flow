@@ -6,11 +6,11 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 
-namespace RentFlow_Application
+namespace RentFlow_Application.Forms
 {
-    public partial class RegisterForm2 : Form
+    public partial class Dashboard : Form
     {
-        public RegisterForm2()
+        public Dashboard()
         {
             InitializeComponent();
         }
