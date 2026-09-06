@@ -24,7 +24,7 @@ namespace RentFlow_Application
             string surname = txtSurname.Text.Trim();
             string idNumber = txtIDNumber.Text.Trim();
             string email = txtEmail.Text.Trim();
-            string phoneNumber= txtPhoneNumber.Text.Trim();
+            string phoneNumber = txtPhoneNumber.Text.Trim();
             string password = txtPassword.Text;
             string confirmPassword = txtConfirmPassword.Text;
 
@@ -49,6 +49,19 @@ namespace RentFlow_Application
             {
                 errorProvider1.SetError(txtIDNumber, "ID Number is required");
                 isValid = false;
+            }
+            else if (idNumber.Length != 13)
+            {
+                errorProvider1.SetError(txtIDNumber, "ID Number must be 13 Digits");
+                isValid = false;
+                foreach (char ID in idNumber)
+                {
+                    if (!char.IsDigit(ID))
+                    {
+                        errorProvider1.SetError(txtIDNumber, "ID Number must be Numbers");
+                        isValid = false;
+                    }
+                }
             }
             if (string.IsNullOrWhiteSpace(email))
             {
@@ -84,9 +97,19 @@ namespace RentFlow_Application
                 errorProvider1.SetError(txtPassword, "Password is required");
                 isValid = false;
             }
+            else if (password.Length < 6)
+            {
+                errorProvider1.SetError(txtPassword, "Password must be more than 6 characters");
+                isValid = false;
+            }
             if (string.IsNullOrWhiteSpace(confirmPassword))
             {
                 errorProvider1.SetError(txtConfirmPassword, "Confirm Password");
+                isValid = false;
+            }
+            else if (password != confirmPassword)
+            {
+                errorProvider1.SetError(txtConfirmPassword, "Password do not match");
                 isValid = false;
             }
             if (cmbRoles.SelectedIndex == -1)
@@ -100,6 +123,21 @@ namespace RentFlow_Application
                 MessageBox.Show("Please fill in all fields.", "Validation error",
                  MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
+            }
+
+            if (isValid)
+            {
+                txtFull_Name.Clear();
+                txtSurname.Clear();
+                txtIDNumber.Clear();
+                txtEmail.Clear();
+                txtPhoneNumber.Clear();
+                txtPassword.Clear();
+                txtConfirmPassword.Clear();
+                cmbRoles.SelectedIndex = -1;
+                cmbRoles.Focus();
+                MessageBox.Show("Account Successfully Registered", "Registration Complete",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
     }

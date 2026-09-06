@@ -501,7 +501,7 @@
             lblAnotherBuilding.BackColor = Color.Transparent;
             lblAnotherBuilding.Font = new Font("Segoe UI", 100F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblAnotherBuilding.ForeColor = Color.White;
-            lblAnotherBuilding.Location = new Point(78, 52);
+            lblAnotherBuilding.Location = new Point(66, 56);
             lblAnotherBuilding.Margin = new Padding(2, 0, 2, 0);
             lblAnotherBuilding.Name = "lblAnotherBuilding";
             lblAnotherBuilding.Size = new Size(315, 221);

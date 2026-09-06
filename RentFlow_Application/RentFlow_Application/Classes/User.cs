@@ -6,7 +6,7 @@ namespace RentFlow_Application.Classes
 {
     public class User
     {
-        public int Id { get; set; }
+       
         public string Role { get; set; }
         public string FullName { get; set; }
         public string Surname { get; set; }
@@ -15,6 +15,8 @@ namespace RentFlow_Application.Classes
         public string PhoneNumber { get; set; }
         public string Password { get; set; }
 
+
+        //Is this a method?
         public User(string role, string fullName, string surname, string idNumber,
                    string email, string phoneNumber, string password)
         {
