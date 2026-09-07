@@ -1,3 +1,5 @@
+using RentFlow_Application.Forms;
+
 namespace RentFlow_Application
 {
     internal static class Program
@@ -11,7 +13,7 @@ namespace RentFlow_Application
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new Forms.LoginForm1());
+            Application.Run(new Properties_Form());
         }
     }
 }
