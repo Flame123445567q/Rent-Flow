@@ -19,7 +19,7 @@ namespace RentFlow_Application
         {
             InitializeComponent();
 
-            // 🔥 LOAD existing users from the file when the form opens
+            //  LOAD existing users from the file when the form opens
             RegisteredUser = FileManager.LoadUsers();
         }
 
@@ -36,10 +36,7 @@ namespace RentFlow_Application
 
             bool isValid = true;
 
-            // ============================================================
-            // VALIDATION
-            // ============================================================
-
+            
             // Full Name validation
             if (string.IsNullOrWhiteSpace(fullName))
             {
@@ -150,9 +147,7 @@ namespace RentFlow_Application
                 isValid = false;
             }
 
-            // ============================================================
-            // IF VALIDATION FAILS, SHOW ERROR AND EXIT
-            // ============================================================
+            
             if (!isValid)
             {
                 MessageBox.Show("Please fill in all fields correctly.", "Validation Error",
@@ -160,9 +155,7 @@ namespace RentFlow_Application
                 return;
             }
 
-            // ============================================================
-            // 🔥🔥🔥 VALIDATION PASSED – SAVE THE USER 🔥🔥🔥
-            // ============================================================
+          
 
             // STEP 1: Check for duplicate email
             foreach (User existingUser in RegisteredUser)
@@ -219,6 +212,8 @@ namespace RentFlow_Application
                             "Registration Complete",
                             MessageBoxButtons.OK,
                             MessageBoxIcon.Information);
+
+            this.Close();
         }
     }
 }
