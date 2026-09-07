@@ -1,6 +1,6 @@
 ﻿namespace RentFlow_Application.Forms
 {
-    partial class LoginForm1
+    partial class LoginForm
     {
         /// <summary>
         /// Required designer variable.
@@ -522,7 +522,7 @@
             lblBigBuilding.TabIndex = 0;
             lblBigBuilding.Text = "🏢🏢";
             // 
-            // LoginForm1
+            // LoginForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -531,9 +531,10 @@
             Controls.Add(panelLeft);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             Margin = new Padding(2);
-            Name = "LoginForm1";
+            Name = "LoginForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Rent Flow -Login";
+            WindowState = FormWindowState.Maximized;
             panelLeft.ResumeLayout(false);
             panelLeft.PerformLayout();
             panelPassword.ResumeLayout(false);
