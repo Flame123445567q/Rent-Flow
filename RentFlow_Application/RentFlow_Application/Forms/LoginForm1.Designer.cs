@@ -200,6 +200,7 @@
             btnSigningIn.TabIndex = 7;
             btnSigningIn.Text = "Sign in to RentFlow ➡";
             btnSigningIn.UseVisualStyleBackColor = false;
+            btnSigningIn.Click += btnSigningIn_Click;
             // 
             // panelPassword
             // 

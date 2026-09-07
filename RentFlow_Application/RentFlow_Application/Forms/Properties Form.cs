@@ -190,16 +190,34 @@ namespace RentFlow_Application.Forms
                 properties.Count + " properties";
         }
 
-        private void btnRentalUnits_Click(object sender, EventArgs e)
-        {
-            pnlRentalUnits.BringToFront();
-        }
+        
 
         private void btnProperties_Click(object sender, EventArgs e)
         {
             pnlContent.BringToFront();
+
+            btnProperties.BackColor = Color.White;
+            btnProperties.BackColor = Color.Black;
+
+
         }
 
-        
+        private void btnTenants_Click(object sender, EventArgs e)
+        {
+            pnlTenants.BringToFront();
+
+            btnTenants.BackColor = Color.White;
+            btnTenants.BackColor = Color.Black;
+        }
+
+        private void btnAddUnit_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnDashboard_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

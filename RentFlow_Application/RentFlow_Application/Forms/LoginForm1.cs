@@ -72,5 +72,11 @@
             // Optional: Hide the Login form so the user doesn't see it behind
             this.Hide();
         }
+
+        private void btnSigningIn_Click(object sender, EventArgs e)
+        {
+            AddRentalUnit addRentalUnitForm = new AddRentalUnit();
+            addRentalUnitForm.ShowDialog();
+        }
     }
 }

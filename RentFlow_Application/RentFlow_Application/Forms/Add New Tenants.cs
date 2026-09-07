@@ -8,13 +8,13 @@ using System.Windows.Forms;
 
 namespace RentFlow_Application.Forms
 {
-    public partial class AddPropertyForm : Form
+    public partial class Add_New_Tenants : Form
     {
-        public AddPropertyForm()
+        public Add_New_Tenants()
         {
             InitializeComponent();
         }
 
-       
+        
     }
 }
