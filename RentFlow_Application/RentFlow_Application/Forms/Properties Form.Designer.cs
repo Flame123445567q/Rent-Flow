@@ -148,7 +148,7 @@
             btnRentalUnits.TabIndex = 4;
             btnRentalUnits.Text = "Rental Units";
             btnRentalUnits.UseVisualStyleBackColor = true;
-            btnRentalUnits.Click += btnRentalUnits_Click;
+           
             // 
             // btnProperties
             // 
@@ -161,7 +161,7 @@
             btnProperties.TabIndex = 3;
             btnProperties.Text = "Properties";
             btnProperties.UseVisualStyleBackColor = false;
-            btnProperties.Click += btnProperties_Click;
+            
             // 
             // btnDashboard
             // 
