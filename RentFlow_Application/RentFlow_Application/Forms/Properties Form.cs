@@ -16,7 +16,7 @@ namespace RentFlow_Application.Forms
         public Properties_Form()
         {
             InitializeComponent();
-            Property property1 = new Property();    
+            Property property1 = new Property();
             property1.SetAddress("Durban");
             property1.SetPropertyType("Apartment");
             property1.SetRentalAmount(8500);
@@ -185,9 +185,11 @@ namespace RentFlow_Application.Forms
             int inactiveProperties = properties.Count(p =>
                 p.GetStatus() == "Inactive");
 
-            
+
             lblPropertyCount.Text =
                 properties.Count + " properties";
         }
+
+       
     }
 }

@@ -146,6 +146,7 @@
             btnRentalUnits.TabIndex = 4;
             btnRentalUnits.Text = "Rental Units";
             btnRentalUnits.UseVisualStyleBackColor = true;
+             
             // 
             // btnProperties
             // 
@@ -388,7 +389,7 @@
             ResumeLayout(false);
         }
 
-        #endregion
+        #endregion 
 
         private Panel pnlSideBar;
         private Button btnDashboard;
