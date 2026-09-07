@@ -1,0 +1,144 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Text;
+using System.Windows.Forms;
+using RentFlow_Application.Classes;
+
+namespace RentFlow_Application
+{
+    public partial class RegisterForm2 : Form
+    {
+       public static List<User> RegisteredUser = new List<User>();
+        public RegisterForm2()
+        {
+            InitializeComponent();
+        }
+
+        private void btnRegisterAccount_Click(object sender, EventArgs e)
+        {
+            //string userRole = cmbRoles.SelectedItem.ToString();
+            string fullName = txtFull_Name.Text.Trim();
+            string surname = txtSurname.Text.Trim();
+            string idNumber = txtIDNumber.Text.Trim();
+            string email = txtEmail.Text.Trim();
+            string phoneNumber = txtPhoneNumber.Text.Trim();
+            string password = txtPassword.Text;
+            string confirmPassword = txtConfirmPassword.Text;
+
+            bool isValid = true;
+
+            if (string.IsNullOrWhiteSpace(fullName))
+            {
+                errorProvider1.SetError(txtFull_Name,"Full Name is required");
+                isValid = false;
+            }
+            else if (fullName.Length < 2)
+            {
+                errorProvider1.SetError(txtFull_Name, "Name must be more than two characters");
+                isValid = false;
+            }
+            if (string.IsNullOrWhiteSpace(surname))
+            {
+                errorProvider1.SetError(txtSurname, "Surname is required");
+                isValid = false;
+            }
+            if (string.IsNullOrWhiteSpace(idNumber))
+            {
+                errorProvider1.SetError(txtIDNumber, "ID Number is required");
+                isValid = false;
+            }
+            else if (idNumber.Length != 13)
+            {
+                errorProvider1.SetError(txtIDNumber, "ID Number must be 13 Digits");
+                isValid = false;
+                foreach (char ID in idNumber)
+                {
+                    if (!char.IsDigit(ID))
+                    {
+                        errorProvider1.SetError(txtIDNumber, "ID Number must be Numbers");
+                        isValid = false;
+                    }
+                }
+            }
+            if (string.IsNullOrWhiteSpace(email))
+            {
+                errorProvider1.SetError(txtEmail, "Email is required");
+                isValid = false;
+            }
+            else if (!email.Contains("@"))
+            {
+                errorProvider1.SetError(txtEmail, "Invalid Email.");
+                isValid = false;
+            }
+            if (string.IsNullOrWhiteSpace(phoneNumber))
+            {
+                errorProvider1.SetError(txtPhoneNumber, "Phone Number is required");
+                isValid = false;
+
+            }
+            else if (phoneNumber.Length != 10)
+            {
+                errorProvider1.SetError(txtPhoneNumber, "Phone Number must be 10 digits");
+                isValid = false;
+                foreach (char phoneNum in phoneNumber)
+                {
+                    if (!char.IsDigit(phoneNum))
+                    {
+                        errorProvider1.SetError(txtPhoneNumber, "Phone Number must be digits only");
+                        isValid = false;
+                    }
+                }
+            }
+            if (string.IsNullOrWhiteSpace(password))
+            {
+                errorProvider1.SetError(txtPassword, "Password is required");
+                isValid = false;
+            }
+            else if (password.Length < 6)
+            {
+                errorProvider1.SetError(txtPassword, "Password must be more than 6 characters");
+                isValid = false;
+            }
+            if (string.IsNullOrWhiteSpace(confirmPassword))
+            {
+                errorProvider1.SetError(txtConfirmPassword, "Confirm Password");
+                isValid = false;
+            }
+            else if (password != confirmPassword)
+            {
+                errorProvider1.SetError(txtConfirmPassword, "Password do not match");
+                isValid = false;
+            }
+            if (cmbRoles.SelectedIndex == -1)
+            {
+                errorProvider1.SetError(cmbRoles, "Select a role");
+                isValid = false;
+            }
+
+            if (!isValid)
+            {
+                MessageBox.Show("Please fill in all fields.", "Validation error",
+                 MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (isValid)
+            {
+                txtFull_Name.Clear();
+                txtSurname.Clear();
+                txtIDNumber.Clear();
+                txtEmail.Clear();
+                txtPhoneNumber.Clear();
+                txtPassword.Clear();
+                txtConfirmPassword.Clear();
+                cmbRoles.SelectedIndex = -1;
+                cmbRoles.Focus();
+                MessageBox.Show("Account Successfully Registered", "Registration Complete",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+    }
+}
