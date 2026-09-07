@@ -2,11 +2,14 @@
 using System.Collections.Generic;
 using System.Text;
 
+
+
+
 namespace RentFlow_Application.Classes
 {
     public class User
     {
-       
+        // Properties
         public string Role { get; set; }
         public string FullName { get; set; }
         public string Surname { get; set; }
@@ -15,10 +18,12 @@ namespace RentFlow_Application.Classes
         public string PhoneNumber { get; set; }
         public string Password { get; set; }
 
+        // Parameterless constructor (required for object initializer)
+        public User() { }
 
-        //Is this a method?
+        // Full constructor (optional)
         public User(string role, string fullName, string surname, string idNumber,
-                   string email, string phoneNumber, string password)
+                    string email, string phoneNumber, string password)
         {
             Role = role;
             FullName = fullName;
@@ -28,8 +33,5 @@ namespace RentFlow_Application.Classes
             PhoneNumber = phoneNumber;
             Password = password;
         }
-
-
-
     }
 }

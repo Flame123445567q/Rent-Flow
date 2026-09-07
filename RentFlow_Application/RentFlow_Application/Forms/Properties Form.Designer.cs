@@ -146,7 +146,7 @@
             btnRentalUnits.TabIndex = 4;
             btnRentalUnits.Text = "Rental Units";
             btnRentalUnits.UseVisualStyleBackColor = true;
-             
+            btnRentalUnits.Click += btnRentalUnits_Click;
             // 
             // btnProperties
             // 

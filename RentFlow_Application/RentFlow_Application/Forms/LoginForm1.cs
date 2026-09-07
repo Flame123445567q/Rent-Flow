@@ -41,7 +41,7 @@
             txtUsername.PlaceholderText = "tenant@rentFlow.co.za";
         }
 
-        private void btnAdmin_Click(object sender, EventArgs e)
+        private void btnAdmin_Click(object sender, EventArgs  e)
         {
             selectedRole = "Admin";
             btnAdmin.BackColor = Color.Blue;

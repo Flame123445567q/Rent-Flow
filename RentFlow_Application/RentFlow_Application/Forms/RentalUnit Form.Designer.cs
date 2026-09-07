@@ -434,7 +434,7 @@
             btnAddUnit.FlatStyle = FlatStyle.Flat;
             btnAddUnit.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnAddUnit.ForeColor = Color.White;
-            btnAddUnit.Location = new Point(541, 53);
+            btnAddUnit.Location = new Point(724, 54);
             btnAddUnit.Name = "btnAddUnit";
             btnAddUnit.Size = new Size(110, 40);
             btnAddUnit.TabIndex = 1;
