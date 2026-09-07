@@ -83,7 +83,7 @@ namespace RentFlow_Application.Forms
         // SIGN-IN BUTTON (Full functionality!)
         // ============================================================
 
-        private void btnSignIn_Click(object sender, EventArgs e)
+        private void btnSigningIn_Click(object sender, EventArgs e)
         {
             // 1. Get the values from the form
             string email = txtUsername.Text.Trim();
