@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            pnlSideBar = new Panel();
+            pnlMainForm = new Panel();
             btnMaintenance = new Button();
             btnExpenses = new Button();
             btnRentPayments = new Button();
@@ -39,7 +39,7 @@
             btnDashboard = new Button();
             lblLogo = new Label();
             lblLogoIcon = new Label();
-            pnlMain = new Panel();
+            pnlContent = new Panel();
             dgvProperties = new DataGridView();
             PropertyID = new DataGridViewTextBoxColumn();
             PropertyName = new DataGridViewTextBoxColumn();
@@ -57,29 +57,30 @@
             btnAddProperty = new Button();
             lblPropertyCount = new Label();
             lblProperties = new Label();
-            pnlSideBar.SuspendLayout();
-            pnlMain.SuspendLayout();
+            pnlRentalUnits = new Panel();
+            pnlMainForm.SuspendLayout();
+            pnlContent.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvProperties).BeginInit();
             pnlSearch.SuspendLayout();
             SuspendLayout();
             // 
-            // pnlSideBar
+            // pnlMainForm
             // 
-            pnlSideBar.BackColor = Color.DarkBlue;
-            pnlSideBar.Controls.Add(btnMaintenance);
-            pnlSideBar.Controls.Add(btnExpenses);
-            pnlSideBar.Controls.Add(btnRentPayments);
-            pnlSideBar.Controls.Add(btnLeases);
-            pnlSideBar.Controls.Add(btnTenants);
-            pnlSideBar.Controls.Add(btnRentalUnits);
-            pnlSideBar.Controls.Add(btnProperties);
-            pnlSideBar.Controls.Add(btnDashboard);
-            pnlSideBar.Controls.Add(lblLogo);
-            pnlSideBar.Controls.Add(lblLogoIcon);
-            pnlSideBar.Location = new Point(12, 12);
-            pnlSideBar.Name = "pnlSideBar";
-            pnlSideBar.Size = new Size(231, 735);
-            pnlSideBar.TabIndex = 0;
+            pnlMainForm.BackColor = Color.DarkBlue;
+            pnlMainForm.Controls.Add(btnMaintenance);
+            pnlMainForm.Controls.Add(btnExpenses);
+            pnlMainForm.Controls.Add(btnRentPayments);
+            pnlMainForm.Controls.Add(btnLeases);
+            pnlMainForm.Controls.Add(btnTenants);
+            pnlMainForm.Controls.Add(btnRentalUnits);
+            pnlMainForm.Controls.Add(btnProperties);
+            pnlMainForm.Controls.Add(btnDashboard);
+            pnlMainForm.Controls.Add(lblLogo);
+            pnlMainForm.Controls.Add(lblLogoIcon);
+            pnlMainForm.Location = new Point(12, 12);
+            pnlMainForm.Name = "pnlMainForm";
+            pnlMainForm.Size = new Size(231, 735);
+            pnlMainForm.TabIndex = 0;
             // 
             // btnMaintenance
             // 
@@ -135,6 +136,7 @@
             btnTenants.TabIndex = 5;
             btnTenants.Text = " Tenants";
             btnTenants.UseVisualStyleBackColor = true;
+           
             // 
             // btnRentalUnits
             // 
@@ -159,6 +161,7 @@
             btnProperties.TabIndex = 3;
             btnProperties.Text = "Properties";
             btnProperties.UseVisualStyleBackColor = false;
+            btnProperties.Click += btnProperties_Click;
             // 
             // btnDashboard
             // 
@@ -193,20 +196,21 @@
             lblLogoIcon.TabIndex = 0;
             lblLogoIcon.Text = "RF";
             // 
-            // pnlMain
+            // pnlContent
             // 
-            pnlMain.BackColor = Color.White;
-            pnlMain.BorderStyle = BorderStyle.Fixed3D;
-            pnlMain.Controls.Add(dgvProperties);
-            pnlMain.Controls.Add(pnlSearch);
-            pnlMain.Controls.Add(btnAddProperty);
-            pnlMain.Controls.Add(lblPropertyCount);
-            pnlMain.Controls.Add(lblProperties);
-            pnlMain.Location = new Point(250, 8);
-            pnlMain.Name = "pnlMain";
-            pnlMain.Size = new Size(1119, 729);
-            pnlMain.TabIndex = 1;
-            pnlMain.Paint += pnlMain_Paint;
+            pnlContent.BackColor = Color.White;
+            pnlContent.BorderStyle = BorderStyle.Fixed3D;
+            pnlContent.Controls.Add(dgvProperties);
+            pnlContent.Controls.Add(pnlSearch);
+            pnlContent.Controls.Add(btnAddProperty);
+            pnlContent.Controls.Add(lblPropertyCount);
+            pnlContent.Controls.Add(lblProperties);
+            pnlContent.Dock = DockStyle.Right;
+            pnlContent.Location = new Point(260, 0);
+            pnlContent.Name = "pnlContent";
+            pnlContent.Size = new Size(1119, 732);
+            pnlContent.TabIndex = 1;
+            pnlContent.Paint += pnlMain_Paint;
             // 
             // dgvProperties
             // 
@@ -369,20 +373,28 @@
             lblProperties.TabIndex = 0;
             lblProperties.Text = "Properties";
             // 
+            // pnlRentalUnits
+            // 
+            pnlRentalUnits.Location = new Point(260, 0);
+            pnlRentalUnits.Name = "pnlRentalUnits";
+            pnlRentalUnits.Size = new Size(1119, 732);
+            pnlRentalUnits.TabIndex = 5;
+            // 
             // Properties_Form
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1379, 732);
-            Controls.Add(pnlMain);
-            Controls.Add(pnlSideBar);
+            Controls.Add(pnlRentalUnits);
+            Controls.Add(pnlContent);
+            Controls.Add(pnlMainForm);
             Name = "Properties_Form";
             Text = "Properties_Form";
             Load += Properties_Form_Load;
-            pnlSideBar.ResumeLayout(false);
-            pnlSideBar.PerformLayout();
-            pnlMain.ResumeLayout(false);
-            pnlMain.PerformLayout();
+            pnlMainForm.ResumeLayout(false);
+            pnlMainForm.PerformLayout();
+            pnlContent.ResumeLayout(false);
+            pnlContent.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dgvProperties).EndInit();
             pnlSearch.ResumeLayout(false);
             pnlSearch.PerformLayout();
@@ -391,7 +403,7 @@
 
         #endregion 
 
-        private Panel pnlSideBar;
+        private Panel pnlMainForm;
         private Button btnDashboard;
         private Label lblLogo;
         private Label lblLogoIcon;
@@ -402,7 +414,7 @@
         private Button btnTenants;
         private Button btnRentalUnits;
         private Button btnProperties;
-        private Panel pnlMain;
+        private Panel pnlContent;
         private Label lblProperties;
         private Label lblPropertyCount;
         private Button btnAddProperty;
@@ -420,5 +432,6 @@
         private DataGridViewTextBoxColumn Available;
         private DataGridViewTextBoxColumn Status;
         private DataGridViewTextBoxColumn Actions;
+        private Panel pnlRentalUnits;
     }
 }

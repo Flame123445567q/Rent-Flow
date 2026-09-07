@@ -190,9 +190,6 @@ namespace RentFlow_Application.Forms
                 properties.Count + " properties";
         }
 
-        private void btnRentalUnits_Click(object sender, EventArgs e)
-        {
-
-        }
+       
     }
 }
