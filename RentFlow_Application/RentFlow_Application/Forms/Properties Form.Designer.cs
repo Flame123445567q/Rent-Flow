@@ -73,7 +73,7 @@
             txtSearchTenants = new TextBox();
             lblRegisteredTenants = new Label();
             lblTenants = new Label();
-            panel1 = new Panel();
+            pnlRentalUnit = new Panel();
             pnlMainForm.SuspendLayout();
             pnlContent.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvProperties).BeginInit();
@@ -167,6 +167,7 @@
             btnRentalUnits.TabIndex = 4;
             btnRentalUnits.Text = "Rental Units";
             btnRentalUnits.UseVisualStyleBackColor = true;
+            btnRentalUnits.Click += btnRentalUnits_Click;
             // 
             // btnProperties
             // 
@@ -393,7 +394,6 @@
             // 
             // pnlTenants
             // 
-            pnlTenants.Controls.Add(panel1);
             pnlTenants.Controls.Add(btnAddTenants);
             pnlTenants.Controls.Add(dataGridView1);
             pnlTenants.Controls.Add(pnlFilterBar);
@@ -532,18 +532,19 @@
             lblTenants.TabIndex = 0;
             lblTenants.Text = "Tenants";
             // 
-            // panel1
+            // pnlRentalUnit
             // 
-            panel1.Location = new Point(0, 0);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(1119, 732);
-            panel1.TabIndex = 5;
+            pnlRentalUnit.Location = new Point(260, 0);
+            pnlRentalUnit.Name = "pnlRentalUnit";
+            pnlRentalUnit.Size = new Size(184, 107);
+            pnlRentalUnit.TabIndex = 5;
             // 
             // Properties_Form
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1379, 732);
+            Controls.Add(pnlRentalUnit);
             Controls.Add(pnlTenants);
             Controls.Add(pnlContent);
             Controls.Add(pnlMainForm);
@@ -612,6 +613,6 @@
         private DataGridViewTextBoxColumn Outstanding;
         private DataGridViewTextBoxColumn Action;
         private Button btnAddTenants;
-        private Panel panel1;
+        private Panel pnlRentalUnit;
     }
 }

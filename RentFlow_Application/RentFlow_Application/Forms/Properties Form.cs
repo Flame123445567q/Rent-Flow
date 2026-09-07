@@ -190,7 +190,7 @@ namespace RentFlow_Application.Forms
                 properties.Count + " properties";
         }
 
-        
+
 
         private void btnProperties_Click(object sender, EventArgs e)
         {
@@ -218,6 +218,11 @@ namespace RentFlow_Application.Forms
         private void btnDashboard_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnRentalUnits_Click(object sender, EventArgs e)
+        {
+            pnlRentalUnit.BringToFront();
         }
     }
 }
