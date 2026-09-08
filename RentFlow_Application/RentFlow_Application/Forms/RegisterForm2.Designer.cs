@@ -167,7 +167,7 @@
             btnRegisterAccount.BackColor = Color.Navy;
             btnRegisterAccount.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnRegisterAccount.ForeColor = SystemColors.ButtonFace;
-            btnRegisterAccount.Location = new Point(258, 617);
+            btnRegisterAccount.Location = new Point(258, 618);
             btnRegisterAccount.Name = "btnRegisterAccount";
             btnRegisterAccount.Size = new Size(536, 60);
             btnRegisterAccount.TabIndex = 12;
