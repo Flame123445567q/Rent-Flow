@@ -136,21 +136,31 @@ namespace RentFlow_Application.Forms
 
                 string[] data = line.Split();
 
-                if (data.Length == 5)
+                if (data.Length == 6)
                 {
-                    dgvProperties.Rows.Add(
-                        data[0],
-                        data[1],
-                        data[2],
-                        data[3],
-                        data[4]
-                     );
+                    Property property = new Property();
+
+                    property.SetPropertyID(Convert.ToInt32(data[0]));
+                    property.SetPropertyName(data[1]);
+                    property.SetAddress(data[2]);
+                    property.SetPropertyType(data[3]);
+                    property.SetRentalAmount(Convert.ToDecimal(data[4]));
+                    property.SetStatus(data[5]);
+
+                    properties.Add(property);
+                   
+
+                    if(property.GetPropertyID() >= nextPropertyID)
+                    {
+                        nextPropertyID = property.GetPropertyID() + 1;
+                    }
+
+                    
 
 
                 }
             }
-                
-                
+                 
         }
 
        
