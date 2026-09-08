@@ -6,7 +6,7 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
-
+using System.IO;
 namespace RentFlow_Application.Forms
 {
     public partial class AddRentalUnit : Form
@@ -61,7 +61,20 @@ namespace RentFlow_Application.Forms
             NewUnit = unit;
 
             DialogResult = DialogResult.OK;
+
             Close();
+
+
+            string rentalUnit = $"Prperty Id: {propertyID}" + Environment.NewLine +
+                                $"Rental Amount: {rentalAmount}" + Environment.NewLine;
+
+            File.AppendAllText(rentalUnit, "rental.txt");
+
+            MessageBox.Show("Rental Unit Added Successfully", "Saving Untis", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+
+
+
         }
 
         private void btnClearUnit_Click(object sender, EventArgs e)
@@ -69,5 +82,8 @@ namespace RentFlow_Application.Forms
             DialogResult = DialogResult.Cancel;
             Close();
         }
-    }
+
+
+    }    
+
 }

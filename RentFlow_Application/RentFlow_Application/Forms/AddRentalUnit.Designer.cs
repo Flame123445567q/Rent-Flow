@@ -166,6 +166,7 @@
             Controls.Add(btnSaveUnit);
             Controls.Add(grpAddRentalUnitInformation);
             Name = "AddRentalUnit";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "AddRentalUnit";
             Load += AddRentalUnit_Load;
             grpAddRentalUnitInformation.ResumeLayout(false);
