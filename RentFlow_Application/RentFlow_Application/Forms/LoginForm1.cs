@@ -167,11 +167,5 @@ namespace RentFlow_Application.Forms
             // This is just a placeholder. You can implement cookie-based
             // remember-me functionality later.
         }
-
-        private void btnSigningIn_Click(object sender, EventArgs e)
-        {
-            AddRentalUnit addRentalUnitForm = new AddRentalUnit();
-            addRentalUnitForm.ShowDialog();
-        }
     }
 }

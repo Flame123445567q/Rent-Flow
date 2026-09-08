@@ -143,7 +143,7 @@
             btnSaveUnit.TabIndex = 1;
             btnSaveUnit.Text = "Save Unit";
             btnSaveUnit.UseVisualStyleBackColor = false;
-            btnSaveUnit.Click += btnSaveUnit_Click;
+            
             // 
             // btnClearUnit
             // 

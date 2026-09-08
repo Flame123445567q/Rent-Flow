@@ -41,7 +41,6 @@
             lblPostalcode = new Label();
             txtPostalCode = new TextBox();
             btnSaveProperty = new Button();
-
             SuspendLayout();
             // 
             // lblProvince
@@ -168,17 +167,13 @@
             btnSaveProperty.TabIndex = 34;
             btnSaveProperty.Text = "Save Property";
             btnSaveProperty.UseVisualStyleBackColor = false;
-            // 
-            // btnCancel
-            // 
-
+            btnSaveProperty.Click += btnSaveProperty_Click;
             // 
             // AddPropertyForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 654);
-
             Controls.Add(btnSaveProperty);
             Controls.Add(txtPostalCode);
             Controls.Add(lblPostalcode);
@@ -193,6 +188,7 @@
             Controls.Add(lblEnterPropertyBelow);
             Controls.Add(lblAddNewProperty);
             Name = "AddPropertyForm";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "AddPropertyForm";
             ResumeLayout(false);
             PerformLayout();

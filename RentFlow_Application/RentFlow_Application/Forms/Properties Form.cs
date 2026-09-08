@@ -13,7 +13,9 @@ namespace RentFlow_Application.Forms
     public partial class Properties_Form : Form
     {
         private List<Property> properties = new List<Property>();
+        private List<Tenant> tenants = new List<Tenant>();
         private int nextPropertyID = 1;
+        private int nextTenantID = 1;
         public Properties_Form()
         {
             InitializeComponent();
@@ -52,11 +54,19 @@ namespace RentFlow_Application.Forms
         private void btnAddProperty_Click(object sender, EventArgs e)
         {
 
-            UpdateGrid();
-            UpdateStatistics();
-
             AddPropertyForm frm = new AddPropertyForm();
-            frm.ShowDialog();
+            // provide unique ID to the add form
+            frm.NextPropertyID = nextPropertyID;
+
+            if (frm.ShowDialog() == DialogResult.OK)
+            {
+                // reload properties from file and refresh views
+                properties.Clear();
+                LoadProperties();
+                UpdateGrid();
+                UpdateStatistics();
+                return;
+            }
 
 
         }
@@ -113,8 +123,82 @@ namespace RentFlow_Application.Forms
             UpdateGrid();
             UpdateStatistics();
             LoadProperties();
+            // load tenants into tenant grid
+            LoadTenants();
+            UpdateTenantsGrid();
 
 
+        }
+
+        private void btnAddTenants_Click(object sender, EventArgs e)
+        {
+            // show add-tenant dialog and reload tenants if saved
+            Add_New_Tenants frm = new Add_New_Tenants();
+            frm.NextTenantID = nextTenantID;
+
+            if (frm.ShowDialog() == DialogResult.OK)
+            {
+                tenants.Clear();
+                LoadTenants();
+                UpdateTenantsGrid();
+                return;
+            }
+        }
+
+        private void LoadTenants()
+        {
+            string filePath = "Tenants.txt";
+
+            if (!File.Exists(filePath))
+                return;
+
+            string[] lines = File.ReadAllLines(filePath);
+
+            foreach (string line in lines)
+            {
+                if (string.IsNullOrWhiteSpace(line))
+                    continue;
+
+                string[] data = line.Split();
+                // expected: id first last phone email idnumber property unit
+                if (data.Length >= 8)
+                {
+                    Tenant t = new Tenant();
+                    t.SetTenantID(Convert.ToInt32(data[0]));
+                    t.SetFirstName(data[1]);
+                    t.SetLastName(data[2]);
+                    t.SetPhoneNumber(data[3]);
+                    t.SetEmailAddress(data[4]);
+                    t.SetIDNumber(data[5]);
+                    t.SetAssignedProperty(data[6]);
+                    t.SetAssignedUnit(data[7]);
+
+                    tenants.Add(t);
+
+                    if (t.GetTenantID() >= nextTenantID)
+                        nextTenantID = t.GetTenantID() + 1;
+                }
+            }
+        }
+
+        private void UpdateTenantsGrid()
+        {
+            if (dataGridView1 == null)
+                return;
+
+            dataGridView1.Rows.Clear();
+
+            foreach (Tenant t in tenants)
+            {
+                dataGridView1.Rows.Add(
+                    t.GetFirstName() + " " + t.GetLastName(),
+                    t.GetPhoneNumber(),
+                    t.GetAssignedProperty(),
+                    t.GetAssignedUnit(),
+                    "", // Lease status placeholder
+                    ""  // Outstanding placeholder
+                );
+            }
         }
 
         private void LoadProperties()
@@ -141,6 +225,7 @@ namespace RentFlow_Application.Forms
                     Property property = new Property();
 
                     property.SetPropertyID(Convert.ToInt32(data[0]));
+                    // ensure nextPropertyID tracks the max seen id
                     property.SetPropertyName(data[1]);
                     property.SetAddress(data[2]);
                     property.SetPropertyType(data[3]);
@@ -150,7 +235,7 @@ namespace RentFlow_Application.Forms
                     properties.Add(property);
                    
 
-                    if(property.GetPropertyID() >= nextPropertyID)
+                    if (property.GetPropertyID() >= nextPropertyID)
                     {
                         nextPropertyID = property.GetPropertyID() + 1;
                     }
@@ -198,6 +283,8 @@ namespace RentFlow_Application.Forms
 
         private void btnProperties_Click(object sender, EventArgs e)
         {
+            // Ensure the content panel is visible and brought to front explicitly
+            pnlContent.Visible = true;
             pnlContent.BringToFront();
         }
 
@@ -208,7 +295,7 @@ namespace RentFlow_Application.Forms
 
         private void btnRentalUnits_Click(object sender, EventArgs e)
         {
-            pnlRentalUnits.BringToFront();
+            pnlRentalUnit.BringToFront();
         }
 
         private void btnAddUnit_Click(object sender, EventArgs e)
@@ -224,7 +311,16 @@ namespace RentFlow_Application.Forms
 
         private void btnDashboard_Click(object sender, EventArgs e)
         {
-            pnlDashBoard.BringToFront();
+            // Show the dashboard panel
+            if (pnlDashBoard != null)
+            {
+                pnlDashBoard.BringToFront();
+            }
+            else
+            {
+                // Fallback to main content
+                pnlContent.BringToFront();
+            }
         }
 
       

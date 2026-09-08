@@ -534,7 +534,6 @@
             Name = "LoginForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Rent Flow -Login";
-            WindowState = FormWindowState.Maximized;
             panelLeft.ResumeLayout(false);
             panelLeft.PerformLayout();
             panelPassword.ResumeLayout(false);

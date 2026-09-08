@@ -277,7 +277,7 @@
             Name = "RegisterForm2";
             StartPosition = FormStartPosition.CenterScreen;
             Text = " ";
-            WindowState = FormWindowState.Maximized;
+            Load += RegisterForm2_Load;
             ((System.ComponentModel.ISupportInitialize)errorProvider1).EndInit();
             ResumeLayout(false);
             PerformLayout();

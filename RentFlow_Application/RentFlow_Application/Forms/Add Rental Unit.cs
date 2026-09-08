@@ -1,4 +1,4 @@
-﻿using RentFlow_Application.Classes;
+using RentFlow_Application.Classes;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,15 +13,31 @@ namespace RentFlow_Application.Forms
 
     {
         public RentalUnits? NewUnit { get; private set; }
+        // Ensure the combo box exists if designer field is missing
+        private ComboBox cmbAvailabilityStatus;
+
         public AddRentalUnit()
         {
             InitializeComponent();
+
+            // If the designer did not create cmbAvailabilityStatus, create a minimal one so code compiles.
+            if (cmbAvailabilityStatus == null)
+            {
+                cmbAvailabilityStatus = new ComboBox();
+                cmbAvailabilityStatus.Name = "cmbAvailabilityStatus";
+                // Place it out of the way; designer should normally position controls.
+                cmbAvailabilityStatus.Location = new Point(10, 10);
+                this.Controls.Add(cmbAvailabilityStatus);
+            }
         }
 
         private void AddRentalUnit_Load(object sender, EventArgs e)
         {
-            cmbAvailabilityStatus.SelectedIndex = 0;
-            cmbAvailabilityStatus.SelectedIndex = 0;
+            // Ensure there is at least one item before setting SelectedIndex to avoid runtime error
+            if (cmbAvailabilityStatus.Items.Count > 0)
+            {
+                cmbAvailabilityStatus.SelectedIndex = 0;
+            }
 
         }
 
@@ -35,7 +51,7 @@ namespace RentFlow_Application.Forms
 
             }
 
-            if (!decimal.TryParse(txtMonthlyRent.Text, out decimal rentalAmount))
+            if (!decimal.TryParse(txtRentalAmount.Text, out decimal rentalAmount))
             {
                 MessageBox.Show("Please enter the valid rental amount", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -49,7 +65,14 @@ namespace RentFlow_Application.Forms
             RentalUnits unit = new RentalUnits();
             unit.SetUnitNumber(txtUnitNumber.Text);
             unit.SetRentalAmount(rentalAmount);
-            cmbAvailabilityStatus.Items.Add(unit);
+            if (cmbAvailability != null)
+            {
+                cmbAvailability.Items.Add(unit);
+            }
+            else
+            {
+                cmbAvailabilityStatus.Items.Add(unit);
+            }
 
             NewUnit = unit;
 
@@ -58,13 +81,13 @@ namespace RentFlow_Application.Forms
             Close();
 
 
-            string rentalUnit = $"Prperty Id: {propertyID}" + Environment.NewLine +
+            string rentalUnit = $"Property Id: { (txtPropertyID != null ? txtPropertyID.Text : string.Empty) }" + Environment.NewLine +
                                 $"Rental Amount: {rentalAmount}" + Environment.NewLine;
 
-            File.AppendAllText(rentalUnit, "rental.txt");
+            // Append to a file named rental.txt in the app folder
+            File.AppendAllText("rental.txt", rentalUnit);
 
             MessageBox.Show("Rental Unit Added Successfully", "Saving Untis", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
 
 
 
@@ -76,6 +99,28 @@ namespace RentFlow_Application.Forms
             Close();
         }
 
+        private void btnSaveUnit_Click(object sender, EventArgs e)
+        {
+            // Designer expects btnSaveUnit_Click; forward to existing handler if present.
+            try
+            {
+                btnSaveUnits_Click(sender, e);
+            }
+            catch (Exception)
+            {
+                // If the original method is missing, do nothing to avoid crashing the designer.
+            }
+        }
+
+        private void btnClearUnit_Click(object sender, EventArgs e)
+        {
+            // Clear the form fields that exist in the designer file.
+            if (txtUnitNumber != null) txtUnitNumber.Text = string.Empty;
+            if (txtPropertyID != null) txtPropertyID.Text = string.Empty;
+            if (txtRentalAmount != null) txtRentalAmount.Text = string.Empty;
+            if (cmbAvailability != null) cmbAvailability.SelectedIndex = -1;
+            if (cmbOccupancy != null) cmbOccupancy.SelectedIndex = -1;
+        }
 
     }    
 

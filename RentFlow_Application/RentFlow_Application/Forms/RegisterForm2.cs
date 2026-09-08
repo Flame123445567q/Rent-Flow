@@ -36,7 +36,7 @@ namespace RentFlow_Application
 
             bool isValid = true;
 
-            
+
             // Full Name validation
             if (string.IsNullOrWhiteSpace(fullName))
             {
@@ -147,7 +147,7 @@ namespace RentFlow_Application
                 isValid = false;
             }
 
-            
+
             if (!isValid)
             {
                 MessageBox.Show("Please fill in all fields correctly.", "Validation Error",
@@ -155,7 +155,7 @@ namespace RentFlow_Application
                 return;
             }
 
-          
+
 
             // STEP 1: Check for duplicate email
             foreach (User existingUser in RegisteredUser)
@@ -214,6 +214,11 @@ namespace RentFlow_Application
                             MessageBoxIcon.Information);
 
             this.Close();
+        }
+
+        private void RegisterForm2_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
