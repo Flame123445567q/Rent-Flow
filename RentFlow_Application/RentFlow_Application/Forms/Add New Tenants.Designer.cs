@@ -178,7 +178,7 @@
             // 
             // btnSaveTenant
             // 
-            btnSaveTenant.BackColor = Color.Blue;
+            btnSaveTenant.BackColor = Color.Navy;
             btnSaveTenant.FlatStyle = FlatStyle.Popup;
             btnSaveTenant.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnSaveTenant.ForeColor = Color.White;

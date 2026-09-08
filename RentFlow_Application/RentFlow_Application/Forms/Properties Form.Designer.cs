@@ -38,7 +38,6 @@
             btnProperties = new Button();
             btnDashboard = new Button();
             lblLogo = new Label();
-            lblLogoIcon = new Label();
             pnlContent = new Panel();
             dgvProperties = new DataGridView();
             PropertyID = new DataGridViewTextBoxColumn();
@@ -87,6 +86,10 @@
             lblTotalUnits = new Label();
             btnAddUnit = new Button();
             lblRentalUnit = new Label();
+            pnlUserLoginInfo = new Panel();
+            lblRole = new Label();
+            btnLogOut = new Button();
+            lblUserName = new Label();
             pnlMainForm.SuspendLayout();
             pnlContent.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvProperties).BeginInit();
@@ -99,11 +102,13 @@
             pnlAvailability.SuspendLayout();
             pnlOccupancy.SuspendLayout();
             pnlTotalUnits.SuspendLayout();
+            pnlUserLoginInfo.SuspendLayout();
             SuspendLayout();
             // 
             // pnlMainForm
             // 
-            pnlMainForm.BackColor = Color.DarkBlue;
+            pnlMainForm.BackColor = Color.FromArgb(10, 22, 40);
+            pnlMainForm.Controls.Add(pnlUserLoginInfo);
             pnlMainForm.Controls.Add(btnMaintenance);
             pnlMainForm.Controls.Add(btnExpenses);
             pnlMainForm.Controls.Add(btnRentPayments);
@@ -113,65 +118,72 @@
             pnlMainForm.Controls.Add(btnProperties);
             pnlMainForm.Controls.Add(btnDashboard);
             pnlMainForm.Controls.Add(lblLogo);
-            pnlMainForm.Controls.Add(lblLogoIcon);
-            pnlMainForm.Location = new Point(12, 12);
+            pnlMainForm.Dock = DockStyle.Left;
+            pnlMainForm.Location = new Point(0, 0);
+            pnlMainForm.MaximumSize = new Size(240, 0);
             pnlMainForm.Name = "pnlMainForm";
-            pnlMainForm.Size = new Size(231, 735);
+            pnlMainForm.Size = new Size(220, 660);
             pnlMainForm.TabIndex = 0;
+            pnlMainForm.Paint += pnlMainForm_Paint;
             // 
             // btnMaintenance
             // 
             btnMaintenance.FlatStyle = FlatStyle.Flat;
             btnMaintenance.ForeColor = Color.White;
-            btnMaintenance.Location = new Point(10, 422);
+            btnMaintenance.Location = new Point(10, 478);
             btnMaintenance.Name = "btnMaintenance";
             btnMaintenance.Size = new Size(210, 40);
             btnMaintenance.TabIndex = 9;
-            btnMaintenance.Text = "Maintenance";
+            btnMaintenance.Text = "🔧 Maintenance";
+            btnMaintenance.TextAlign = ContentAlignment.MiddleLeft;
             btnMaintenance.UseVisualStyleBackColor = true;
             // 
             // btnExpenses
             // 
             btnExpenses.FlatStyle = FlatStyle.Flat;
             btnExpenses.ForeColor = Color.White;
-            btnExpenses.Location = new Point(10, 376);
+            btnExpenses.Location = new Point(10, 424);
             btnExpenses.Name = "btnExpenses";
             btnExpenses.Size = new Size(210, 40);
             btnExpenses.TabIndex = 8;
-            btnExpenses.Text = "Expenses";
+            btnExpenses.Text = "📊 Expenses";
+            btnExpenses.TextAlign = ContentAlignment.MiddleLeft;
             btnExpenses.UseVisualStyleBackColor = true;
             // 
             // btnRentPayments
             // 
             btnRentPayments.FlatStyle = FlatStyle.Flat;
             btnRentPayments.ForeColor = Color.White;
-            btnRentPayments.Location = new Point(10, 330);
+            btnRentPayments.Location = new Point(10, 370);
             btnRentPayments.Name = "btnRentPayments";
             btnRentPayments.Size = new Size(210, 40);
             btnRentPayments.TabIndex = 7;
-            btnRentPayments.Text = "Rent Payments";
+            btnRentPayments.Text = "💰 Rent Payments";
+            btnRentPayments.TextAlign = ContentAlignment.MiddleLeft;
             btnRentPayments.UseVisualStyleBackColor = true;
             // 
             // btnLeases
             // 
             btnLeases.FlatStyle = FlatStyle.Flat;
             btnLeases.ForeColor = Color.White;
-            btnLeases.Location = new Point(10, 284);
+            btnLeases.Location = new Point(10, 316);
             btnLeases.Name = "btnLeases";
             btnLeases.Size = new Size(210, 40);
             btnLeases.TabIndex = 6;
-            btnLeases.Text = "Leases";
+            btnLeases.Text = "📄 Leases";
+            btnLeases.TextAlign = ContentAlignment.MiddleLeft;
             btnLeases.UseVisualStyleBackColor = true;
             // 
             // btnTenants
             // 
             btnTenants.FlatStyle = FlatStyle.Flat;
             btnTenants.ForeColor = Color.White;
-            btnTenants.Location = new Point(10, 238);
+            btnTenants.Location = new Point(10, 262);
             btnTenants.Name = "btnTenants";
             btnTenants.Size = new Size(210, 40);
             btnTenants.TabIndex = 5;
-            btnTenants.Text = " Tenants";
+            btnTenants.Text = " \t👤 Tenants";
+            btnTenants.TextAlign = ContentAlignment.MiddleLeft;
             btnTenants.UseVisualStyleBackColor = true;
             btnTenants.Click += btnTenants_Click;
             // 
@@ -179,24 +191,26 @@
             // 
             btnRentalUnits.FlatStyle = FlatStyle.Flat;
             btnRentalUnits.ForeColor = Color.White;
-            btnRentalUnits.Location = new Point(10, 192);
+            btnRentalUnits.Location = new Point(10, 208);
             btnRentalUnits.Name = "btnRentalUnits";
             btnRentalUnits.Size = new Size(210, 40);
             btnRentalUnits.TabIndex = 4;
-            btnRentalUnits.Text = "Rental Units";
+            btnRentalUnits.Text = "📋 Rental Units";
+            btnRentalUnits.TextAlign = ContentAlignment.MiddleLeft;
             btnRentalUnits.UseVisualStyleBackColor = true;
             btnRentalUnits.Click += btnRentalUnits_Click;
             // 
             // btnProperties
             // 
-            btnProperties.BackColor = Color.DarkBlue;
+            btnProperties.BackColor = Color.FromArgb(10, 22, 40);
             btnProperties.FlatStyle = FlatStyle.Flat;
             btnProperties.ForeColor = Color.White;
-            btnProperties.Location = new Point(10, 146);
+            btnProperties.Location = new Point(10, 154);
             btnProperties.Name = "btnProperties";
             btnProperties.Size = new Size(210, 40);
             btnProperties.TabIndex = 3;
-            btnProperties.Text = "Properties";
+            btnProperties.Text = "🏢 Properties";
+            btnProperties.TextAlign = ContentAlignment.MiddleLeft;
             btnProperties.UseVisualStyleBackColor = false;
             btnProperties.Click += btnProperties_Click;
             // 
@@ -208,7 +222,8 @@
             btnDashboard.Name = "btnDashboard";
             btnDashboard.Size = new Size(210, 40);
             btnDashboard.TabIndex = 2;
-            btnDashboard.Text = "Dashboard";
+            btnDashboard.Text = "🏠 Dashboard";
+            btnDashboard.TextAlign = ContentAlignment.MiddleLeft;
             btnDashboard.UseVisualStyleBackColor = true;
             btnDashboard.Click += btnDashboard_Click;
             // 
@@ -217,22 +232,11 @@
             lblLogo.AutoSize = true;
             lblLogo.Font = new Font("Segoe UI Semibold", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblLogo.ForeColor = Color.White;
-            lblLogo.Location = new Point(59, 24);
+            lblLogo.Location = new Point(22, 26);
             lblLogo.Name = "lblLogo";
-            lblLogo.Size = new Size(145, 41);
+            lblLogo.Size = new Size(187, 41);
             lblLogo.TabIndex = 1;
-            lblLogo.Text = "RentFlow";
-            // 
-            // lblLogoIcon
-            // 
-            lblLogoIcon.AutoSize = true;
-            lblLogoIcon.Font = new Font("Segoe UI Semibold", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblLogoIcon.ForeColor = Color.White;
-            lblLogoIcon.Location = new Point(15, 27);
-            lblLogoIcon.Name = "lblLogoIcon";
-            lblLogoIcon.Size = new Size(48, 38);
-            lblLogoIcon.TabIndex = 0;
-            lblLogoIcon.Text = "RF";
+            lblLogo.Text = "🏨RentFlow";
             // 
             // pnlContent
             // 
@@ -244,9 +248,9 @@
             pnlContent.Controls.Add(lblPropertyCount);
             pnlContent.Controls.Add(lblProperties);
             pnlContent.Dock = DockStyle.Right;
-            pnlContent.Location = new Point(260, 0);
+            pnlContent.Location = new Point(231, 0);
             pnlContent.Name = "pnlContent";
-            pnlContent.Size = new Size(1119, 732);
+            pnlContent.Size = new Size(1148, 660);
             pnlContent.TabIndex = 1;
             pnlContent.Paint += pnlMain_Paint;
             // 
@@ -416,9 +420,9 @@
             pnlDashBoard.BackColor = Color.WhiteSmoke;
             pnlDashBoard.BorderStyle = BorderStyle.Fixed3D;
             pnlDashBoard.Controls.Add(lblDashboardHeader);
-            pnlDashBoard.Location = new Point(260, 0);
+            pnlDashBoard.Location = new Point(226, 0);
             pnlDashBoard.Name = "pnlDashBoard";
-            pnlDashBoard.Size = new Size(1119, 732);
+            pnlDashBoard.Size = new Size(1153, 770);
             pnlDashBoard.TabIndex = 2;
             // 
             // lblDashboardHeader
@@ -438,9 +442,9 @@
             pnlTenants.Controls.Add(pnlFilterBar);
             pnlTenants.Controls.Add(lblRegisteredTenants);
             pnlTenants.Controls.Add(lblTenants);
-            pnlTenants.Location = new Point(260, 0);
+            pnlTenants.Location = new Point(231, 0);
             pnlTenants.Name = "pnlTenants";
-            pnlTenants.Size = new Size(1119, 732);
+            pnlTenants.Size = new Size(1148, 732);
             pnlTenants.TabIndex = 17;
             // 
             // btnAddTenants
@@ -573,14 +577,15 @@
             // 
             // pnlRentalUnit
             // 
+            pnlRentalUnit.BackColor = Color.FromArgb(245, 246, 250);
             pnlRentalUnit.Controls.Add(pnlAvailability);
             pnlRentalUnit.Controls.Add(pnlOccupancy);
             pnlRentalUnit.Controls.Add(pnlTotalUnits);
             pnlRentalUnit.Controls.Add(btnAddUnit);
             pnlRentalUnit.Controls.Add(lblRentalUnit);
-            pnlRentalUnit.Location = new Point(260, 0);
+            pnlRentalUnit.Location = new Point(231, 0);
             pnlRentalUnit.Name = "pnlRentalUnit";
-            pnlRentalUnit.Size = new Size(1119, 732);
+            pnlRentalUnit.Size = new Size(1148, 732);
             pnlRentalUnit.TabIndex = 5;
             // 
             // pnlAvailability
@@ -677,23 +682,64 @@
             // 
             lblRentalUnit.AutoSize = true;
             lblRentalUnit.Font = new Font("Segoe UI", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblRentalUnit.ForeColor = Color.RoyalBlue;
+            lblRentalUnit.ForeColor = SystemColors.ActiveCaptionText;
             lblRentalUnit.Location = new Point(35, 44);
             lblRentalUnit.Name = "lblRentalUnit";
             lblRentalUnit.Size = new Size(199, 46);
             lblRentalUnit.TabIndex = 0;
             lblRentalUnit.Text = "Rental Unit";
             // 
+            // pnlUserLoginInfo
+            // 
+            pnlUserLoginInfo.Controls.Add(lblUserName);
+            pnlUserLoginInfo.Controls.Add(btnLogOut);
+            pnlUserLoginInfo.Controls.Add(lblRole);
+            pnlUserLoginInfo.Dock = DockStyle.Bottom;
+            pnlUserLoginInfo.Location = new Point(0, 580);
+            pnlUserLoginInfo.MaximumSize = new Size(0, 80);
+            pnlUserLoginInfo.Name = "pnlUserLoginInfo";
+            pnlUserLoginInfo.Size = new Size(220, 80);
+            pnlUserLoginInfo.TabIndex = 10;
+            // 
+            // lblRole
+            // 
+            lblRole.AutoSize = true;
+            lblRole.ForeColor = Color.AliceBlue;
+            lblRole.Location = new Point(22, 7);
+            lblRole.Name = "lblRole";
+            lblRole.Size = new Size(39, 20);
+            lblRole.TabIndex = 0;
+            lblRole.Text = "Role";
+            // 
+            // btnLogOut
+            // 
+            btnLogOut.Location = new Point(29, 44);
+            btnLogOut.Name = "btnLogOut";
+            btnLogOut.Size = new Size(94, 29);
+            btnLogOut.TabIndex = 1;
+            btnLogOut.Text = "Log out";
+            btnLogOut.UseVisualStyleBackColor = true;
+            // 
+            // lblUserName
+            // 
+            lblUserName.AutoSize = true;
+            lblUserName.ForeColor = SystemColors.ButtonFace;
+            lblUserName.Location = new Point(99, 8);
+            lblUserName.Name = "lblUserName";
+            lblUserName.Size = new Size(50, 20);
+            lblUserName.TabIndex = 2;
+            lblUserName.Text = "label1";
+            // 
             // Properties_Form
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1379, 732);
-            Controls.Add(pnlRentalUnit);
-            Controls.Add(pnlTenants);
+            ClientSize = new Size(1379, 660);
+            Controls.Add(pnlMainForm);
             Controls.Add(pnlDashBoard);
             Controls.Add(pnlContent);
-            Controls.Add(pnlMainForm);
+            Controls.Add(pnlTenants);
+            Controls.Add(pnlRentalUnit);
             Name = "Properties_Form";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Properties_Form";
@@ -720,6 +766,8 @@
             pnlOccupancy.PerformLayout();
             pnlTotalUnits.ResumeLayout(false);
             pnlTotalUnits.PerformLayout();
+            pnlUserLoginInfo.ResumeLayout(false);
+            pnlUserLoginInfo.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -728,7 +776,6 @@
         private Panel pnlMainForm;
         private Button btnDashboard;
         private Label lblLogo;
-        private Label lblLogoIcon;
         private Button btnMaintenance;
         private Button btnExpenses;
         private Button btnRentPayments;
@@ -784,5 +831,9 @@
         private Label lblAvailableNum;
         private Label lblOccupiedNum;
         private Label lblTotalUnitsNum;
+        private Panel pnlUserLoginInfo;
+        private Label lblRole;
+        private Label lblUserName;
+        private Button btnLogOut;
     }
 }

@@ -164,7 +164,7 @@
             // 
             // btnRegisterAccount
             // 
-            btnRegisterAccount.BackColor = Color.FromArgb(49, 87, 212);
+            btnRegisterAccount.BackColor = Color.Navy;
             btnRegisterAccount.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnRegisterAccount.ForeColor = SystemColors.ButtonFace;
             btnRegisterAccount.Location = new Point(258, 617);
@@ -251,7 +251,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.FromArgb(49, 87, 212);
+            BackColor = Color.Navy;
             ClientSize = new Size(1000, 711);
             Controls.Add(txtConfirmPassword);
             Controls.Add(txtPassword);

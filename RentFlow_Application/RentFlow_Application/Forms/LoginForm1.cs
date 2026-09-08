@@ -7,8 +7,8 @@ namespace RentFlow_Application.Forms
 {
     public partial class LoginForm : Form
     {
-        // Stores which role button was clicked (default = Landlord)
-        private string selectedRole = "Landlord";
+        // Stores which role button was clicked. No default: user must choose one.
+        private string selectedRole = null;
 
         public LoginForm()
         {
@@ -16,9 +16,42 @@ namespace RentFlow_Application.Forms
 
             //  Load users from the file when the form opens
             RegisterForm2.RegisteredUser = FileManager.LoadUsers();
+            // No default role selected; ensure UI reflects unselected state
+            ResetRoleButtonsVisuals();
 
-            // Set default placeholder text
-            txtUsername.PlaceholderText = "landlord@rentFlow.co.za";
+            // Generic placeholder text
+            txtUsername.PlaceholderText = "Enter your email";
+        }
+
+        // Reset all role buttons to unselected visual state
+        private void ResetRoleButtonsVisuals()
+        {
+            try
+            {
+                foreach (var btn in new[] { btnLandLord, btnTenant, btnAdmin })
+                {
+                    btn.FlatStyle = FlatStyle.Flat;
+                    btn.BackColor = Color.White;
+                    btn.ForeColor = Color.Black;
+                    btn.FlatAppearance.BorderSize = 0;
+                }
+            }
+            catch { }
+        }
+
+        // Mark role buttons with a red border to indicate the user must select one
+        private void ShowRoleSelectionError()
+        {
+            try
+            {
+                foreach (var btn in new[] { btnLandLord, btnTenant, btnAdmin })
+                {
+                    btn.FlatStyle = FlatStyle.Flat;
+                    btn.FlatAppearance.BorderSize = 2;
+                    btn.FlatAppearance.BorderColor = Color.Red;
+                }
+            }
+            catch { }
         }
 
         // ============================================================
@@ -29,15 +62,12 @@ namespace RentFlow_Application.Forms
         {
             selectedRole = "Landlord";
 
-            // Highlight Landlord button
+            // Visuals
+            ResetRoleButtonsVisuals();
             btnLandLord.BackColor = Color.Blue;
             btnLandLord.ForeColor = Color.White;
-
-            // Reset others
-            btnTenant.BackColor = Color.White;
-            btnTenant.ForeColor = Color.Black;
-            btnAdmin.BackColor = Color.White;
-            btnAdmin.ForeColor = Color.Black;
+            btnLandLord.FlatAppearance.BorderSize = 2;
+            btnLandLord.FlatAppearance.BorderColor = Color.Blue;
 
             // Update placeholder text
             txtUsername.PlaceholderText = "landlord@rentFlow.co.za";
@@ -47,15 +77,12 @@ namespace RentFlow_Application.Forms
         {
             selectedRole = "Tenant";
 
-            // Highlight Tenant button
+            // Visuals
+            ResetRoleButtonsVisuals();
             btnTenant.BackColor = Color.Blue;
             btnTenant.ForeColor = Color.White;
-
-            // Reset others
-            btnLandLord.BackColor = Color.White;
-            btnLandLord.ForeColor = Color.Black;
-            btnAdmin.BackColor = Color.White;
-            btnAdmin.ForeColor = Color.Black;
+            btnTenant.FlatAppearance.BorderSize = 2;
+            btnTenant.FlatAppearance.BorderColor = Color.Blue;
 
             // Update placeholder text
             txtUsername.PlaceholderText = "tenant@rentFlow.co.za";
@@ -65,15 +92,12 @@ namespace RentFlow_Application.Forms
         {
             selectedRole = "Admin";
 
-            // Highlight Admin button
+            // Visuals
+            ResetRoleButtonsVisuals();
             btnAdmin.BackColor = Color.Blue;
             btnAdmin.ForeColor = Color.White;
-
-            // Reset others
-            btnLandLord.BackColor = Color.White;
-            btnLandLord.ForeColor = Color.Black;
-            btnTenant.BackColor = Color.White;
-            btnTenant.ForeColor = Color.Black;
+            btnAdmin.FlatAppearance.BorderSize = 2;
+            btnAdmin.FlatAppearance.BorderColor = Color.Blue;
 
             // Update placeholder text
             txtUsername.PlaceholderText = "admin@rentFlow.co.za";
@@ -100,6 +124,8 @@ namespace RentFlow_Application.Forms
             // 3. VALIDATION: Check if a role was selected
             if (string.IsNullOrEmpty(selectedRole))
             {
+                // visually indicate required selection
+                ShowRoleSelectionError();
                 MessageBox.Show("Please select a role (LandLord, Tenant, or Admin).", "Validation Error",
                                 MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;

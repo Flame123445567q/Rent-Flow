@@ -189,7 +189,7 @@
             // 
             // btnSigningIn
             // 
-            btnSigningIn.BackColor = Color.FromArgb(0, 91, 219);
+            btnSigningIn.BackColor = Color.Navy;
             btnSigningIn.FlatAppearance.BorderSize = 0;
             btnSigningIn.FlatStyle = FlatStyle.Flat;
             btnSigningIn.ForeColor = Color.White;
@@ -458,7 +458,7 @@
             // 
             // panelRight
             // 
-            panelRight.BackColor = Color.FromArgb(49, 87, 212);
+            panelRight.BackColor = Color.Navy;
             panelRight.Controls.Add(lblTextManage);
             panelRight.Controls.Add(lblTextSmart);
             panelRight.Controls.Add(lblAnotherBuilding);
@@ -476,7 +476,7 @@
             lblTextManage.AutoSize = true;
             lblTextManage.BackColor = Color.Transparent;
             lblTextManage.ForeColor = Color.White;
-            lblTextManage.Location = new Point(102, 574);
+            lblTextManage.Location = new Point(248, 612);
             lblTextManage.Margin = new Padding(2, 0, 2, 0);
             lblTextManage.Name = "lblTextManage";
             lblTextManage.Size = new Size(294, 40);
@@ -489,7 +489,7 @@
             lblTextSmart.BackColor = Color.Transparent;
             lblTextSmart.Font = new Font("Segoe UI", 16F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblTextSmart.ForeColor = Color.White;
-            lblTextSmart.Location = new Point(150, 497);
+            lblTextSmart.Location = new Point(296, 535);
             lblTextSmart.Margin = new Padding(2, 0, 2, 0);
             lblTextSmart.Name = "lblTextSmart";
             lblTextSmart.Size = new Size(217, 74);
@@ -502,7 +502,7 @@
             lblAnotherBuilding.BackColor = Color.Transparent;
             lblAnotherBuilding.Font = new Font("Segoe UI", 100F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblAnotherBuilding.ForeColor = Color.White;
-            lblAnotherBuilding.Location = new Point(66, 56);
+            lblAnotherBuilding.Location = new Point(227, 86);
             lblAnotherBuilding.Margin = new Padding(2, 0, 2, 0);
             lblAnotherBuilding.Name = "lblAnotherBuilding";
             lblAnotherBuilding.Size = new Size(315, 221);
@@ -515,7 +515,7 @@
             lblBigBuilding.BackColor = Color.Transparent;
             lblBigBuilding.Font = new Font("Segoe UI", 100F);
             lblBigBuilding.ForeColor = Color.White;
-            lblBigBuilding.Location = new Point(-25, 254);
+            lblBigBuilding.Location = new Point(121, 292);
             lblBigBuilding.Margin = new Padding(2, 0, 2, 0);
             lblBigBuilding.Name = "lblBigBuilding";
             lblBigBuilding.Size = new Size(537, 221);

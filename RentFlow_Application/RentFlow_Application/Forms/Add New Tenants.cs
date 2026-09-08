@@ -5,12 +5,14 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using System.IO;
 
 namespace RentFlow_Application.Forms
 {
     public partial class Add_New_Tenants : Form
     {
         // Caller should set this before showing the form so saved tenant gets a unique ID
+        [Browsable(false)]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public int NextTenantID { get; set; } = 0;
 
@@ -41,15 +43,25 @@ namespace RentFlow_Application.Forms
             string idToken = (NextTenantID > 0) ? NextTenantID.ToString() : "0";
             string line = string.Join(' ', new string[] { idToken, first, last, phone, email, idnum, property, unit });
 
+            // save into application folder to avoid unexpected working-directory issues
+            string filePath = Path.Combine(Application.StartupPath ?? ".", "Tenants.txt");
             try
             {
-                File.AppendAllText("Tenants.txt", line + Environment.NewLine);
-                MessageBox.Show("Tenant saved to Tenants.txt.", "Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                File.AppendAllText(filePath, line + Environment.NewLine);
+                MessageBox.Show($"Tenant saved to {filePath}", "Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.DialogResult = DialogResult.OK;
                 this.Close();
             }
             catch (Exception ex)
             {
+                // try to log error to an application log and show friendly message
+                try
+                {
+                    string logPath = Path.Combine(Application.StartupPath ?? ".", "error.log");
+                    File.AppendAllText(logPath, DateTime.Now.ToString("s") + " - Failed to save tenant: " + ex + Environment.NewLine);
+                }
+                catch { }
+
                 MessageBox.Show($"Failed to save tenant: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }

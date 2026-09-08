@@ -120,6 +120,9 @@ namespace RentFlow_Application.Forms
 
         private void Properties_Form_Load(object sender, EventArgs e)
         {
+            // Ensure panels dock and only the dashboard shows initially
+            SetupContentPanels();
+
             UpdateGrid();
             UpdateStatistics();
             LoadProperties();
@@ -127,12 +130,53 @@ namespace RentFlow_Application.Forms
             LoadTenants();
             UpdateTenantsGrid();
 
+            // show dashboard by default
+            ShowPanel(pnlDashBoard);
 
+        }
+
+        // configure content panels so they fill the remaining area to the right of the left nav
+        private void SetupContentPanels()
+        {
+            try
+            {
+                // The left navigation (pnlMainForm) remains DockStyle.Left from designer
+                // Make the content panels fill the rest of the form and start hidden
+                foreach (var panel in new[] { pnlContent, pnlDashBoard, pnlTenants, pnlRentalUnit })
+                {
+                    if (panel != null)
+                    {
+                        panel.Dock = DockStyle.Fill;
+                        panel.Visible = false;
+                    }
+                }
+            }
+            catch { }
+        }
+
+        // Show only the specified panel and hide the others
+        private void ShowPanel(Panel toShow)
+        {
+            try
+            {
+                var panels = new[] { pnlContent, pnlDashBoard, pnlTenants, pnlRentalUnit };
+                foreach (var p in panels)
+                {
+                    if (p == null) continue;
+                    p.Visible = (p == toShow);
+                    if (p.Visible)
+                    {
+                        p.BringToFront();
+                    }
+                }
+            }
+            catch { }
         }
 
         private void btnAddTenants_Click(object sender, EventArgs e)
         {
             // show add-tenant dialog and reload tenants if saved
+            // Patch placeholder: no functional change
             Add_New_Tenants frm = new Add_New_Tenants();
             frm.NextTenantID = nextTenantID;
 
@@ -147,7 +191,7 @@ namespace RentFlow_Application.Forms
 
         private void LoadTenants()
         {
-            string filePath = "Tenants.txt";
+            string filePath = Path.Combine(Application.StartupPath ?? ".", "Tenants.txt");
 
             if (!File.Exists(filePath))
                 return;
@@ -233,22 +277,22 @@ namespace RentFlow_Application.Forms
                     property.SetStatus(data[5]);
 
                     properties.Add(property);
-                   
+
 
                     if (property.GetPropertyID() >= nextPropertyID)
                     {
                         nextPropertyID = property.GetPropertyID() + 1;
                     }
 
-                    
+
 
 
                 }
             }
-                 
+
         }
 
-       
+
 
         private void UpdateGrid()
         {
@@ -283,19 +327,17 @@ namespace RentFlow_Application.Forms
 
         private void btnProperties_Click(object sender, EventArgs e)
         {
-            // Ensure the content panel is visible and brought to front explicitly
-            pnlContent.Visible = true;
-            pnlContent.BringToFront();
+            ShowPanel(pnlContent);
         }
 
         private void btnTenants_Click(object sender, EventArgs e)
         {
-            pnlTenants.BringToFront();
+            ShowPanel(pnlTenants);
         }
 
         private void btnRentalUnits_Click(object sender, EventArgs e)
         {
-            pnlRentalUnit.BringToFront();
+            ShowPanel(pnlRentalUnit);
         }
 
         private void btnAddUnit_Click(object sender, EventArgs e)
@@ -311,18 +353,17 @@ namespace RentFlow_Application.Forms
 
         private void btnDashboard_Click(object sender, EventArgs e)
         {
-            // Show the dashboard panel
-            if (pnlDashBoard != null)
-            {
-                pnlDashBoard.BringToFront();
-            }
-            else
-            {
-                // Fallback to main content
-                pnlContent.BringToFront();
-            }
+            ShowPanel(pnlDashBoard ?? pnlContent);
         }
 
-      
+        private void lblLogoIcon_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pnlMainForm_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }
