@@ -10,10 +10,9 @@ using System.IO;
 namespace RentFlow_Application.Forms
 {
     public partial class AddRentalUnit : Form
+
     {
-
         public RentalUnits? NewUnit { get; private set; }
-
         public AddRentalUnit()
         {
             InitializeComponent();
@@ -21,42 +20,36 @@ namespace RentFlow_Application.Forms
 
         private void AddRentalUnit_Load(object sender, EventArgs e)
         {
-            cmbAvailability.SelectedIndex = 0;
-            cmbOccupancy.SelectedIndex = 0;
+            cmbAvailabilityStatus.SelectedIndex = 0;
+            cmbAvailabilityStatus.SelectedIndex = 0;
+
         }
 
-        private void btnSaveUnit_Click(object sender, EventArgs e)
+        private void btnSaveUnits_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txtUnitNumber.Text))
+            if (string.IsNullOrWhiteSpace(txtUnitNumber.Text))
+
             {
-                MessageBox.Show("Please enter the unit number");
+                MessageBox.Show("Please Enter a Unit Number.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+
+            }
+
+            if (!decimal.TryParse(txtMonthlyRent.Text, out decimal rentalAmount))
+            {
+                MessageBox.Show("Please enter the valid rental amount", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            if (!int.TryParse(txtPropertyID.Text, out int propertyID))
+            if (rentalAmount < 5000 && rentalAmount > 5000)
             {
-                MessageBox.Show("Please enter a valid property ID");
-                return;
-            }
-
-            if (!decimal.TryParse(txtRentalAmount.Text, out decimal rentalAmount))
-            {
-                MessageBox.Show("Please enter a valid rental amount");
-                return;
-            }
-
-            if (rentalAmount < 0)
-            {
-                MessageBox.Show("Please enter a valid amount. Rental amount cannot be a negative amount");
-                return;
+                MessageBox.Show("rental Anmonut must exacly 5000");
             }
 
             RentalUnits unit = new RentalUnits();
             unit.SetUnitNumber(txtUnitNumber.Text);
-            unit.SetPropertyID(propertyID);
             unit.SetRentalAmount(rentalAmount);
-            unit.SetAvailability(cmbAvailability.Text);
-            unit.SetOccupancy(cmbOccupancy.Text);
+            cmbAvailabilityStatus.Items.Add(unit);
 
             NewUnit = unit;
 
@@ -77,7 +70,7 @@ namespace RentFlow_Application.Forms
 
         }
 
-        private void btnClearUnit_Click(object sender, EventArgs e)
+        private void btnCancel_Click(object sender, EventArgs e)
         {
             DialogResult = DialogResult.Cancel;
             Close();
