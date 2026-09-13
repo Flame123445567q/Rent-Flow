@@ -2,6 +2,10 @@
 using System.Drawing;
 using System.Windows.Forms;
 using RentFlow_Application.Classes;
+using System.Collections.Generic;
+using RentFlow_Application;
+using System.IO;
+
 
 namespace RentFlow_Application.Forms
 {
@@ -9,6 +13,7 @@ namespace RentFlow_Application.Forms
     {
         // Stores which role button was clicked. No default: user must choose one.
         private string selectedRole = null;
+        List<User> RegisteredUser;
 
         public LoginForm()
         {
@@ -146,17 +151,69 @@ namespace RentFlow_Application.Forms
                                     MessageBoxButtons.OK,
                                     MessageBoxIcon.Information);
 
+                     
+                    string rememberPath = Path.Combine(Application.StartupPath, "remember.txt");
+
+                    if (chkRemberMe.Checked)
+                    {
+                        File.WriteAllLines(rememberPath, new string[] { txtUsername.Text.Trim(), txtPassword.Text.Trim() });
+                    }
+                    else
+                    {
+                        if (File.Exists(rememberPath))
+                        {
+                            File.Delete(rememberPath);
+                        }
+                    }
+
                     // Open the Main Form (Dashboard)
-                    Properties_Form mainForm = new Properties_Form();
-                    mainForm.Show();
-                    this.Hide();  // Hide the Login form
-                    return;
+                    DataStore.LoggedInEmail = user.Email;
+                    DataStore.LoggedInRole = selectedRole;
+                    DataStore.LoggedInName = user.FullName + " " + user.Surname;
+
+                    if (selectedRole == "Tenant")
+                    {
+                        TenantDashboardForm tenantForm = new TenantDashboardForm();
+                        tenantForm.Show();
+                        this.Hide();
+                        return;
+                    }
+                    else if (selectedRole == "Admin")
+                    {
+                        AdminDashboardForm adminForm = new AdminDashboardForm();
+                        adminForm.Show();
+                        this.Hide();
+                        return;
+                    }
+                    else
+                    {
+                        Properties_Form LandlordForm = new Properties_Form();
+                        LandlordForm.Show();
+                        this.Hide();
+                        return;
+                    }
+
                 }
             }
 
             // 5. If we get here, no user matched
             MessageBox.Show("Invalid email, password, or role. Please try again.", "Login Failed",
                             MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            string path = Path.Combine(Application.StartupPath, "remember.txt");
+
+            if (chkRemberMe.Checked)
+            {
+                File.WriteAllLines(path, new string[] { txtUsername.Text.Trim(), txtPassword.Text.Trim() });
+            }
+            else
+            {
+                if (File.Exists(path))
+                {
+                    File.Delete(path);
+                }
+            }
+          
         }
 
         // ============================================================
@@ -192,6 +249,30 @@ namespace RentFlow_Application.Forms
         {
             // This is just a placeholder. You can implement cookie-based
             // remember-me functionality later.
+        }
+
+        private void linkForgotPassword_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Forgot_Password forgotForm = new Forgot_Password();
+            forgotForm.ShowDialog();
+        }
+
+        private void LoginForm_Load(object sender, EventArgs e)
+        {
+            RegisteredUser = FileManager.LoadUsers();
+
+            string path = Path.Combine(Application.StartupPath, "remember.txt");
+            if (File.Exists(path))
+            {
+                string[] lines = File.ReadAllLines("remember.txt");
+
+                if (lines.Length >= 2)
+                {
+                    txtUsername.Text = lines[0];
+                    txtPassword.Text = lines[1];
+                    chkRemberMe.Checked = true;
+                }
+            }
         }
     }
 }
