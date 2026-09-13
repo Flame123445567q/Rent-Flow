@@ -31,6 +31,30 @@ namespace RentFlow_Application.Forms
                 MessageBox.Show("Please enter the tenant's first and last name.", "Validation", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
+            if (string.IsNullOrWhiteSpace(txtIDNumber.Text))
+            {
+                errorProvider1.SetError(txtIDNumber, "ID Number is required");
+                return;
+            }
+            else if (txtIDNumber.Text.Length != 13)
+            {
+                errorProvider1.SetError(txtIDNumber, "ID Number must be 13 Digits");
+                return;
+            }
+            else
+            {
+                foreach (char ID in txtIDNumber.Text)
+                {
+                    if (!char.IsDigit(ID))
+                    {
+                        errorProvider1.SetError(txtIDNumber, "ID Number must be Numbers");
+                        return;
+                        break;
+                    }
+                }
+            }
+
+
 
             string first = txtFirstName.Text.Trim().Replace(' ', '_');
             string last = txtLastName.Text.Trim().Replace(' ', '_');
@@ -65,6 +89,10 @@ namespace RentFlow_Application.Forms
                 MessageBox.Show($"Failed to save tenant: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        
+
+        private void btnSaveTenant_Click_1(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -10,16 +10,16 @@ namespace RentFlow_Application.Classes
     public class User
     {
         // Properties
-        public string Role { get; set; }
-        public string FullName { get; set; }
-        public string Surname { get; set; }
-        public string IDNumber { get; set; }
-        public string Email { get; set; }
-        public string PhoneNumber { get; set; }
-        public string Password { get; set; }
+        private string Role;
+        private string FullName;
+        private string Surname;
+        private string IDNumber;
+        private string Email;
+        private string PhoneNumber;
+        private string Password;
 
         // Parameterless constructor (required for object initializer)
-        public User() { }
+       
 
         // Full constructor (optional)
         public User(string role, string fullName, string surname, string idNumber,
@@ -32,6 +32,31 @@ namespace RentFlow_Application.Classes
             Email = email;
             PhoneNumber = phoneNumber;
             Password = password;
+        }
+        
+        public string GetRole()
+        {
+            return Role;
+        }
+        public string GetName()
+        {
+            return FullName;
+        }
+        public string GetSurname()
+        {
+            return Surname;
+        }
+        public string GetIDNumber()
+        {
+            return IDNumber;
+        }
+        public string GetEmail()
+        {
+            return Email;
+        }
+        public string GetPhoneNumber()
+        {
+            return PhoneNumber;
         }
     }
 }

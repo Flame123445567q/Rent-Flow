@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             lblRegisterNewTenant = new Label();
             lblFirstName = new Label();
             lblLastName = new Label();
@@ -45,6 +46,8 @@
             cmbAssignedUnit = new ComboBox();
             btnSaveTenant = new Button();
             btnCancel = new Button();
+            errorProvider1 = new ErrorProvider(components);
+            ((System.ComponentModel.ISupportInitialize)errorProvider1).BeginInit();
             SuspendLayout();
             // 
             // lblRegisterNewTenant
@@ -171,6 +174,7 @@
             // cmbAssignedUnit
             // 
             cmbAssignedUnit.FormattingEnabled = true;
+            cmbAssignedUnit.Items.AddRange(new object[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" });
             cmbAssignedUnit.Location = new Point(397, 383);
             cmbAssignedUnit.Name = "cmbAssignedUnit";
             cmbAssignedUnit.Size = new Size(264, 28);
@@ -188,6 +192,7 @@
             btnSaveTenant.TabIndex = 15;
             btnSaveTenant.Text = "Save Tenant";
             btnSaveTenant.UseVisualStyleBackColor = false;
+            btnSaveTenant.Click += btnSaveTenant_Click_1;
             // 
             // btnCancel
             // 
@@ -199,6 +204,10 @@
             btnCancel.TabIndex = 16;
             btnCancel.Text = "Cancel";
             btnCancel.UseVisualStyleBackColor = false;
+            // 
+            // errorProvider1
+            // 
+            errorProvider1.ContainerControl = this;
             // 
             // Add_New_Tenants
             // 
@@ -224,6 +233,7 @@
             Controls.Add(lblRegisterNewTenant);
             Name = "Add_New_Tenants";
             Text = "Add_New_Tenants";
+            ((System.ComponentModel.ISupportInitialize)errorProvider1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -247,5 +257,6 @@
         private ComboBox cmbAssignedUnit;
         private Button btnSaveTenant;
         private Button btnCancel;
+        private ErrorProvider errorProvider1;
     }
 }

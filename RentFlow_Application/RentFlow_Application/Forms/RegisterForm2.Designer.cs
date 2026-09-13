@@ -1,4 +1,4 @@
-﻿namespace RentFlow_Application
+﻿ namespace RentFlow_Application
 {
     partial class RegisterForm2
     {

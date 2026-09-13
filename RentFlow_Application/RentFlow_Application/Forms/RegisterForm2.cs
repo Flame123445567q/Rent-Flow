@@ -33,7 +33,7 @@ namespace RentFlow_Application
             string phoneNumber = txtPhoneNumber.Text.Trim();
             string password = txtPassword.Text;
             string confirmPassword = txtConfirmPassword.Text;
-
+            string role = cmbRoles.SelectedItem.ToString();
             bool isValid = true;
 
 
@@ -155,12 +155,14 @@ namespace RentFlow_Application
                 return;
             }
 
-
+            // STEP 2: Create the new user
+            User newUser = new User(role,fullName,surname,idNumber,email,phoneNumber,password);
+            
 
             // STEP 1: Check for duplicate email
             foreach (User existingUser in RegisteredUser)
             {
-                if (existingUser.Email.ToLower() == email.ToLower())
+                if (existingUser.GetEmail().ToLower() == email.ToLower())
                 {
                     MessageBox.Show("An account with this email already exists.", "Duplicate",
                                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -168,17 +170,7 @@ namespace RentFlow_Application
                 }
             }
 
-            // STEP 2: Create the new user
-            User newUser = new User
-            {
-                Role = cmbRoles.SelectedItem?.ToString() ?? "Landlord",
-                FullName = fullName ?? "Unknown",
-                Surname = surname ?? "Unknown",
-                IDNumber = idNumber ?? "0000000000000",
-                Email = email ?? "unknown@email.com",
-                PhoneNumber = phoneNumber ?? "0000000000",
-                Password = password ?? "default"
-            };
+           
 
             // STEP 3: Add to the list (with safety check!)
             if (RegisteredUser == null)
