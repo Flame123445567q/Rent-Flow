@@ -7,6 +7,7 @@ namespace RentFlow_Application.Forms
         public TenantDashboardForm()
         {
             InitializeComponent();
+            this.Load += TenantDashboardForm_Load;
         }
 
         private void btnLogout_Click(object sender, EventArgs e)
@@ -20,6 +21,20 @@ namespace RentFlow_Application.Forms
                 LoginForm login = new LoginForm();
                 login.Show();
             }
+        }
+
+        private void TenantDashboardForm_Load(object sender, EventArgs e)
+        {
+        //    try
+
+        //    {
+        //        if (lblUserName != null)
+        //        {
+        //            lblUserName.Text = $"{DataStore.LoggedInRole}: {DataStore.LoggedInName}";
+        //        }
+        //    }
+        //    catch { }
+        //}
         }
     }
 }

@@ -46,7 +46,7 @@ namespace RentFlow_Application.Forms
 
             foreach (User A_user in RegisteredUser)
             {
-                if (A_user.IDNumber == id && A_user.PhoneNumber == phone)
+                if (A_user.GetIDNumber() == id && A_user.GetPhoneNumber() == phone)
                 {
                     founderUser = A_user;
                     break;
@@ -64,7 +64,7 @@ namespace RentFlow_Application.Forms
             Random number = new Random();
             generatedOTP = number.Next(1000, 9999).ToString();
 
-            MessageBox.Show($"RentFlow OTP for {founderUser.FullName}\n Your OTP is: {generatedOTP}\n Sent to : {phone}", "OTP sent", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show($"RentFlow OTP for {founderUser.GetName()}\n Your OTP is: {generatedOTP}\n Sent to : {phone}", "OTP sent", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void btnReset_Click(object sender, EventArgs e)
@@ -87,7 +87,7 @@ namespace RentFlow_Application.Forms
                 return;
             }
 
-            founderUser.Password = txtNewPassword.Text.Trim();
+            founderUser.SetPassword(txtNewPassword.Text.Trim());
 
             FileManager.SaveUsers(RegisteredUser);
 

@@ -13,6 +13,7 @@ namespace RentFlow_Application.Forms
         public AdminDashboardForm()
         {
             InitializeComponent();
+            this.Load += AdminDashboardForm_Load;
         }
 
         private void pnlMain_Paint(object sender, PaintEventArgs e)
@@ -32,5 +33,10 @@ namespace RentFlow_Application.Forms
                 login.Show();
             }
         }
+        private void AdminDashboardForm_Load(object sender, EventArgs e)
+        {
+           
+        }
+        }
     }
-}
+

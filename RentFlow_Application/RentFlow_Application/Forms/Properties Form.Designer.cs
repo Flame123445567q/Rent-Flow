@@ -120,10 +120,9 @@
             pnlMainForm.Controls.Add(lblLogo);
             pnlMainForm.Dock = DockStyle.Left;
             pnlMainForm.Location = new Point(0, 0);
-            pnlMainForm.Margin = new Padding(4);
-            pnlMainForm.MaximumSize = new Size(300, 0);
+            pnlMainForm.MaximumSize = new Size(240, 0);
             pnlMainForm.Name = "pnlMainForm";
-            pnlMainForm.Size = new Size(275, 825);
+            pnlMainForm.Size = new Size(220, 694);
             pnlMainForm.TabIndex = 0;
             pnlMainForm.Paint += pnlMainForm_Paint;
             // 
@@ -133,32 +132,30 @@
             pnlUserLoginInfo.Controls.Add(btnLogOut);
             pnlUserLoginInfo.Controls.Add(lblRole);
             pnlUserLoginInfo.Dock = DockStyle.Bottom;
-            pnlUserLoginInfo.Location = new Point(0, 725);
-            pnlUserLoginInfo.Margin = new Padding(4);
-            pnlUserLoginInfo.MaximumSize = new Size(0, 100);
+            pnlUserLoginInfo.Location = new Point(0, 614);
+            pnlUserLoginInfo.MaximumSize = new Size(0, 80);
             pnlUserLoginInfo.Name = "pnlUserLoginInfo";
-            pnlUserLoginInfo.Size = new Size(275, 100);
+            pnlUserLoginInfo.Size = new Size(220, 80);
             pnlUserLoginInfo.TabIndex = 10;
             // 
             // lblUserName
             // 
             lblUserName.AutoSize = true;
             lblUserName.ForeColor = SystemColors.ButtonFace;
-            lblUserName.Location = new Point(124, 10);
-            lblUserName.Margin = new Padding(4, 0, 4, 0);
+            lblUserName.Location = new Point(99, 8);
             lblUserName.Name = "lblUserName";
-            lblUserName.Size = new Size(59, 25);
+            lblUserName.Size = new Size(50, 20);
             lblUserName.TabIndex = 2;
             lblUserName.Text = "label1";
+            lblUserName.Click += lblUserName_Click;
             // 
             // btnLogOut
             // 
             btnLogOut.BackColor = Color.Red;
             btnLogOut.ForeColor = Color.White;
-            btnLogOut.Location = new Point(36, 55);
-            btnLogOut.Margin = new Padding(4);
+            btnLogOut.Location = new Point(39, 39);
             btnLogOut.Name = "btnLogOut";
-            btnLogOut.Size = new Size(118, 36);
+            btnLogOut.Size = new Size(94, 29);
             btnLogOut.TabIndex = 1;
             btnLogOut.Text = "Log out";
             btnLogOut.UseVisualStyleBackColor = false;
@@ -168,10 +165,9 @@
             // 
             lblRole.AutoSize = true;
             lblRole.ForeColor = Color.AliceBlue;
-            lblRole.Location = new Point(28, 9);
-            lblRole.Margin = new Padding(4, 0, 4, 0);
+            lblRole.Location = new Point(22, 7);
             lblRole.Name = "lblRole";
-            lblRole.Size = new Size(46, 25);
+            lblRole.Size = new Size(39, 20);
             lblRole.TabIndex = 0;
             lblRole.Text = "Role";
             // 
@@ -179,10 +175,9 @@
             // 
             btnMaintenance.FlatStyle = FlatStyle.Flat;
             btnMaintenance.ForeColor = Color.White;
-            btnMaintenance.Location = new Point(12, 598);
-            btnMaintenance.Margin = new Padding(4);
+            btnMaintenance.Location = new Point(10, 478);
             btnMaintenance.Name = "btnMaintenance";
-            btnMaintenance.Size = new Size(262, 50);
+            btnMaintenance.Size = new Size(210, 40);
             btnMaintenance.TabIndex = 9;
             btnMaintenance.Text = "🔧 Maintenance";
             btnMaintenance.TextAlign = ContentAlignment.MiddleLeft;
@@ -192,10 +187,9 @@
             // 
             btnExpenses.FlatStyle = FlatStyle.Flat;
             btnExpenses.ForeColor = Color.White;
-            btnExpenses.Location = new Point(12, 530);
-            btnExpenses.Margin = new Padding(4);
+            btnExpenses.Location = new Point(10, 424);
             btnExpenses.Name = "btnExpenses";
-            btnExpenses.Size = new Size(262, 50);
+            btnExpenses.Size = new Size(210, 40);
             btnExpenses.TabIndex = 8;
             btnExpenses.Text = "📊 Expenses";
             btnExpenses.TextAlign = ContentAlignment.MiddleLeft;
@@ -205,10 +199,9 @@
             // 
             btnRentPayments.FlatStyle = FlatStyle.Flat;
             btnRentPayments.ForeColor = Color.White;
-            btnRentPayments.Location = new Point(12, 462);
-            btnRentPayments.Margin = new Padding(4);
+            btnRentPayments.Location = new Point(10, 370);
             btnRentPayments.Name = "btnRentPayments";
-            btnRentPayments.Size = new Size(262, 50);
+            btnRentPayments.Size = new Size(210, 40);
             btnRentPayments.TabIndex = 7;
             btnRentPayments.Text = "💰 Rent Payments";
             btnRentPayments.TextAlign = ContentAlignment.MiddleLeft;
@@ -218,10 +211,9 @@
             // 
             btnLeases.FlatStyle = FlatStyle.Flat;
             btnLeases.ForeColor = Color.White;
-            btnLeases.Location = new Point(12, 395);
-            btnLeases.Margin = new Padding(4);
+            btnLeases.Location = new Point(10, 316);
             btnLeases.Name = "btnLeases";
-            btnLeases.Size = new Size(262, 50);
+            btnLeases.Size = new Size(210, 40);
             btnLeases.TabIndex = 6;
             btnLeases.Text = "📄 Leases";
             btnLeases.TextAlign = ContentAlignment.MiddleLeft;
@@ -231,10 +223,9 @@
             // 
             btnTenants.FlatStyle = FlatStyle.Flat;
             btnTenants.ForeColor = Color.White;
-            btnTenants.Location = new Point(12, 328);
-            btnTenants.Margin = new Padding(4);
+            btnTenants.Location = new Point(10, 262);
             btnTenants.Name = "btnTenants";
-            btnTenants.Size = new Size(262, 50);
+            btnTenants.Size = new Size(210, 40);
             btnTenants.TabIndex = 5;
             btnTenants.Text = " \t👤 Tenants";
             btnTenants.TextAlign = ContentAlignment.MiddleLeft;
@@ -245,10 +236,9 @@
             // 
             btnRentalUnits.FlatStyle = FlatStyle.Flat;
             btnRentalUnits.ForeColor = Color.White;
-            btnRentalUnits.Location = new Point(12, 260);
-            btnRentalUnits.Margin = new Padding(4);
+            btnRentalUnits.Location = new Point(10, 208);
             btnRentalUnits.Name = "btnRentalUnits";
-            btnRentalUnits.Size = new Size(262, 50);
+            btnRentalUnits.Size = new Size(210, 40);
             btnRentalUnits.TabIndex = 4;
             btnRentalUnits.Text = "📋 Rental Units";
             btnRentalUnits.TextAlign = ContentAlignment.MiddleLeft;
@@ -260,10 +250,9 @@
             btnProperties.BackColor = Color.FromArgb(10, 22, 40);
             btnProperties.FlatStyle = FlatStyle.Flat;
             btnProperties.ForeColor = Color.White;
-            btnProperties.Location = new Point(12, 192);
-            btnProperties.Margin = new Padding(4);
+            btnProperties.Location = new Point(10, 154);
             btnProperties.Name = "btnProperties";
-            btnProperties.Size = new Size(262, 50);
+            btnProperties.Size = new Size(210, 40);
             btnProperties.TabIndex = 3;
             btnProperties.Text = "🏢 Properties";
             btnProperties.TextAlign = ContentAlignment.MiddleLeft;
@@ -274,10 +263,9 @@
             // 
             btnDashboard.FlatStyle = FlatStyle.Flat;
             btnDashboard.ForeColor = Color.White;
-            btnDashboard.Location = new Point(12, 125);
-            btnDashboard.Margin = new Padding(4);
+            btnDashboard.Location = new Point(10, 100);
             btnDashboard.Name = "btnDashboard";
-            btnDashboard.Size = new Size(262, 50);
+            btnDashboard.Size = new Size(210, 40);
             btnDashboard.TabIndex = 2;
             btnDashboard.Text = "🏠 Dashboard";
             btnDashboard.TextAlign = ContentAlignment.MiddleLeft;
@@ -289,10 +277,9 @@
             lblLogo.AutoSize = true;
             lblLogo.Font = new Font("Segoe UI Semibold", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblLogo.ForeColor = Color.White;
-            lblLogo.Location = new Point(28, 32);
-            lblLogo.Margin = new Padding(4, 0, 4, 0);
+            lblLogo.Location = new Point(22, 26);
             lblLogo.Name = "lblLogo";
-            lblLogo.Size = new Size(220, 48);
+            lblLogo.Size = new Size(187, 41);
             lblLogo.TabIndex = 1;
             lblLogo.Text = "🏨RentFlow";
             // 
@@ -306,10 +293,9 @@
             pnlContent.Controls.Add(lblPropertyCount);
             pnlContent.Controls.Add(lblProperties);
             pnlContent.Dock = DockStyle.Right;
-            pnlContent.Location = new Point(290, 0);
-            pnlContent.Margin = new Padding(4);
+            pnlContent.Location = new Point(231, 0);
             pnlContent.Name = "pnlContent";
-            pnlContent.Size = new Size(1434, 825);
+            pnlContent.Size = new Size(1148, 694);
             pnlContent.TabIndex = 1;
             pnlContent.Paint += pnlMain_Paint;
             // 
@@ -321,13 +307,12 @@
             dgvProperties.BackgroundColor = Color.White;
             dgvProperties.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvProperties.Columns.AddRange(new DataGridViewColumn[] { PropertyID, PropertyName, Address, TotalUnits, Occupied, Available, Status, Actions });
-            dgvProperties.Location = new Point(38, 388);
-            dgvProperties.Margin = new Padding(4);
+            dgvProperties.Location = new Point(30, 310);
             dgvProperties.MultiSelect = false;
             dgvProperties.Name = "dgvProperties";
             dgvProperties.ReadOnly = true;
             dgvProperties.RowHeadersWidth = 51;
-            dgvProperties.Size = new Size(1319, 512);
+            dgvProperties.Size = new Size(1055, 410);
             dgvProperties.TabIndex = 4;
             // 
             // PropertyID
@@ -394,20 +379,18 @@
             pnlSearch.Controls.Add(button1);
             pnlSearch.Controls.Add(cmbFilter);
             pnlSearch.Controls.Add(txtSearch);
-            pnlSearch.Location = new Point(38, 244);
-            pnlSearch.Margin = new Padding(4);
+            pnlSearch.Location = new Point(30, 195);
             pnlSearch.Name = "pnlSearch";
-            pnlSearch.Size = new Size(1318, 62);
+            pnlSearch.Size = new Size(1055, 50);
             pnlSearch.TabIndex = 3;
             // 
             // btnPrint
             // 
             btnPrint.FlatStyle = FlatStyle.System;
             btnPrint.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnPrint.Location = new Point(1192, 12);
-            btnPrint.Margin = new Padding(4);
+            btnPrint.Location = new Point(954, 10);
             btnPrint.Name = "btnPrint";
-            btnPrint.Size = new Size(118, 36);
+            btnPrint.Size = new Size(94, 29);
             btnPrint.TabIndex = 3;
             btnPrint.Text = "Print";
             btnPrint.UseVisualStyleBackColor = true;
@@ -416,10 +399,9 @@
             // 
             button1.FlatStyle = FlatStyle.System;
             button1.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button1.Location = new Point(1071, 14);
-            button1.Margin = new Padding(4);
+            button1.Location = new Point(857, 11);
             button1.Name = "button1";
-            button1.Size = new Size(118, 36);
+            button1.Size = new Size(94, 29);
             button1.TabIndex = 2;
             button1.Text = "Export";
             button1.UseVisualStyleBackColor = true;
@@ -428,20 +410,18 @@
             // 
             cmbFilter.FormattingEnabled = true;
             cmbFilter.Items.AddRange(new object[] { "All", "", "Active", "", "Inactive" });
-            cmbFilter.Location = new Point(470, 14);
-            cmbFilter.Margin = new Padding(4);
+            cmbFilter.Location = new Point(376, 11);
             cmbFilter.Name = "cmbFilter";
-            cmbFilter.Size = new Size(136, 33);
+            cmbFilter.Size = new Size(110, 28);
             cmbFilter.TabIndex = 1;
             cmbFilter.SelectedIndexChanged += cmbFilter_SelectedIndexChanged;
             // 
             // txtSearch
             // 
             txtSearch.ForeColor = Color.LightGray;
-            txtSearch.Location = new Point(29, 15);
-            txtSearch.Margin = new Padding(4);
+            txtSearch.Location = new Point(23, 12);
             txtSearch.Name = "txtSearch";
-            txtSearch.Size = new Size(418, 31);
+            txtSearch.Size = new Size(335, 27);
             txtSearch.TabIndex = 0;
             txtSearch.Text = "Search properties";
             txtSearch.TextChanged += txtSearch_TextChanged;
@@ -451,10 +431,9 @@
             btnAddProperty.BackColor = Color.DarkBlue;
             btnAddProperty.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnAddProperty.ForeColor = Color.White;
-            btnAddProperty.Location = new Point(1150, 150);
-            btnAddProperty.Margin = new Padding(4);
+            btnAddProperty.Location = new Point(920, 120);
             btnAddProperty.Name = "btnAddProperty";
-            btnAddProperty.Size = new Size(206, 56);
+            btnAddProperty.Size = new Size(165, 45);
             btnAddProperty.TabIndex = 2;
             btnAddProperty.Text = " +Add Property";
             btnAddProperty.UseVisualStyleBackColor = false;
@@ -465,10 +444,9 @@
             lblPropertyCount.AutoSize = true;
             lblPropertyCount.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblPropertyCount.ForeColor = Color.FromArgb(64, 64, 64);
-            lblPropertyCount.Location = new Point(22, 96);
-            lblPropertyCount.Margin = new Padding(4, 0, 4, 0);
+            lblPropertyCount.Location = new Point(18, 77);
             lblPropertyCount.Name = "lblPropertyCount";
-            lblPropertyCount.Size = new Size(232, 32);
+            lblPropertyCount.Size = new Size(194, 28);
             lblPropertyCount.TabIndex = 1;
             lblPropertyCount.Text = "4 Properties in total";
             // 
@@ -476,10 +454,9 @@
             // 
             lblProperties.AutoSize = true;
             lblProperties.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblProperties.Location = new Point(22, 45);
-            lblProperties.Margin = new Padding(4, 0, 4, 0);
+            lblProperties.Location = new Point(18, 36);
             lblProperties.Name = "lblProperties";
-            lblProperties.Size = new Size(193, 48);
+            lblProperties.Size = new Size(164, 41);
             lblProperties.TabIndex = 0;
             lblProperties.Text = "Properties";
             // 
@@ -488,20 +465,18 @@
             pnlDashBoard.BackColor = Color.WhiteSmoke;
             pnlDashBoard.BorderStyle = BorderStyle.Fixed3D;
             pnlDashBoard.Controls.Add(lblDashboardHeader);
-            pnlDashBoard.Location = new Point(282, 0);
-            pnlDashBoard.Margin = new Padding(4);
+            pnlDashBoard.Location = new Point(226, 0);
             pnlDashBoard.Name = "pnlDashBoard";
-            pnlDashBoard.Size = new Size(1440, 962);
+            pnlDashBoard.Size = new Size(1153, 770);
             pnlDashBoard.TabIndex = 2;
             // 
             // lblDashboardHeader
             // 
             lblDashboardHeader.AutoSize = true;
             lblDashboardHeader.Font = new Font("Segoe UI", 20F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblDashboardHeader.Location = new Point(44, 55);
-            lblDashboardHeader.Margin = new Padding(4, 0, 4, 0);
+            lblDashboardHeader.Location = new Point(35, 44);
             lblDashboardHeader.Name = "lblDashboardHeader";
-            lblDashboardHeader.Size = new Size(229, 54);
+            lblDashboardHeader.Size = new Size(193, 46);
             lblDashboardHeader.TabIndex = 0;
             lblDashboardHeader.Text = "Dashboard";
             // 
@@ -512,10 +487,9 @@
             pnlTenants.Controls.Add(pnlFilterBar);
             pnlTenants.Controls.Add(lblRegisteredTenants);
             pnlTenants.Controls.Add(lblTenants);
-            pnlTenants.Location = new Point(289, 0);
-            pnlTenants.Margin = new Padding(4);
+            pnlTenants.Location = new Point(231, 0);
             pnlTenants.Name = "pnlTenants";
-            pnlTenants.Size = new Size(1435, 915);
+            pnlTenants.Size = new Size(1148, 732);
             pnlTenants.TabIndex = 17;
             // 
             // btnAddTenants
@@ -523,10 +497,9 @@
             btnAddTenants.BackColor = Color.DarkBlue;
             btnAddTenants.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnAddTenants.ForeColor = Color.White;
-            btnAddTenants.Location = new Point(1105, 75);
-            btnAddTenants.Margin = new Padding(4);
+            btnAddTenants.Location = new Point(884, 60);
             btnAddTenants.Name = "btnAddTenants";
-            btnAddTenants.Size = new Size(221, 59);
+            btnAddTenants.Size = new Size(177, 47);
             btnAddTenants.TabIndex = 4;
             btnAddTenants.Text = "+Add Tenants";
             btnAddTenants.UseVisualStyleBackColor = false;
@@ -535,11 +508,10 @@
             // 
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Tenants, Contact, Properties, Unit, Lease_Status, Outstanding, Action });
-            dataGridView1.Location = new Point(44, 374);
-            dataGridView1.Margin = new Padding(4);
+            dataGridView1.Location = new Point(35, 299);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.Size = new Size(1160, 541);
+            dataGridView1.Size = new Size(928, 433);
             dataGridView1.TabIndex = 3;
             // 
             // Tenants
@@ -598,10 +570,9 @@
             pnlFilterBar.Controls.Add(cmbStatuses);
             pnlFilterBar.Controls.Add(cmbProperties);
             pnlFilterBar.Controls.Add(txtSearchTenants);
-            pnlFilterBar.Location = new Point(40, 196);
-            pnlFilterBar.Margin = new Padding(4);
+            pnlFilterBar.Location = new Point(32, 157);
             pnlFilterBar.Name = "pnlFilterBar";
-            pnlFilterBar.Size = new Size(1285, 79);
+            pnlFilterBar.Size = new Size(1029, 64);
             pnlFilterBar.TabIndex = 2;
             // 
             // cmbStatuses
@@ -609,48 +580,43 @@
             cmbStatuses.FlatStyle = FlatStyle.System;
             cmbStatuses.FormattingEnabled = true;
             cmbStatuses.Items.AddRange(new object[] { "All Statuses", "Active", "Expiring Soon" });
-            cmbStatuses.Location = new Point(831, 21);
-            cmbStatuses.Margin = new Padding(4);
+            cmbStatuses.Location = new Point(665, 17);
             cmbStatuses.Name = "cmbStatuses";
-            cmbStatuses.Size = new Size(188, 33);
+            cmbStatuses.Size = new Size(151, 28);
             cmbStatuses.TabIndex = 2;
             // 
             // cmbProperties
             // 
             cmbProperties.FlatStyle = FlatStyle.System;
             cmbProperties.FormattingEnabled = true;
-            cmbProperties.Location = new Point(599, 21);
-            cmbProperties.Margin = new Padding(4);
+            cmbProperties.Location = new Point(479, 17);
             cmbProperties.Name = "cmbProperties";
-            cmbProperties.Size = new Size(188, 33);
+            cmbProperties.Size = new Size(151, 28);
             cmbProperties.TabIndex = 1;
             // 
             // txtSearchTenants
             // 
-            txtSearchTenants.Location = new Point(42, 24);
-            txtSearchTenants.Margin = new Padding(4);
+            txtSearchTenants.Location = new Point(34, 19);
             txtSearchTenants.Name = "txtSearchTenants";
             txtSearchTenants.PlaceholderText = "Search Tenants...";
-            txtSearchTenants.Size = new Size(378, 31);
+            txtSearchTenants.Size = new Size(303, 27);
             txtSearchTenants.TabIndex = 0;
             // 
             // lblRegisteredTenants
             // 
             lblRegisteredTenants.AutoSize = true;
-            lblRegisteredTenants.Location = new Point(26, 80);
-            lblRegisteredTenants.Margin = new Padding(4, 0, 4, 0);
+            lblRegisteredTenants.Location = new Point(21, 64);
             lblRegisteredTenants.Name = "lblRegisteredTenants";
-            lblRegisteredTenants.Size = new Size(0, 25);
+            lblRegisteredTenants.Size = new Size(0, 20);
             lblRegisteredTenants.TabIndex = 1;
             // 
             // lblTenants
             // 
             lblTenants.AutoSize = true;
             lblTenants.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblTenants.Location = new Point(26, 25);
-            lblTenants.Margin = new Padding(4, 0, 4, 0);
+            lblTenants.Location = new Point(21, 20);
             lblTenants.Name = "lblTenants";
-            lblTenants.Size = new Size(150, 48);
+            lblTenants.Size = new Size(126, 41);
             lblTenants.TabIndex = 0;
             lblTenants.Text = "Tenants";
             // 
@@ -662,38 +628,34 @@
             pnlRentalUnit.Controls.Add(pnlTotalUnits);
             pnlRentalUnit.Controls.Add(btnAddUnit);
             pnlRentalUnit.Controls.Add(lblRentalUnit);
-            pnlRentalUnit.Location = new Point(289, 0);
-            pnlRentalUnit.Margin = new Padding(4);
+            pnlRentalUnit.Location = new Point(231, 0);
             pnlRentalUnit.Name = "pnlRentalUnit";
-            pnlRentalUnit.Size = new Size(1435, 915);
+            pnlRentalUnit.Size = new Size(1148, 732);
             pnlRentalUnit.TabIndex = 5;
             // 
             // pnlAvailability
             // 
             pnlAvailability.Controls.Add(lblAvailableNum);
             pnlAvailability.Controls.Add(lblAvailable);
-            pnlAvailability.Location = new Point(410, 140);
-            pnlAvailability.Margin = new Padding(4);
+            pnlAvailability.Location = new Point(328, 112);
             pnlAvailability.Name = "pnlAvailability";
-            pnlAvailability.Size = new Size(312, 156);
+            pnlAvailability.Size = new Size(250, 125);
             pnlAvailability.TabIndex = 3;
             // 
             // lblAvailableNum
             // 
             lblAvailableNum.AutoSize = true;
-            lblAvailableNum.Location = new Point(18, 59);
-            lblAvailableNum.Margin = new Padding(4, 0, 4, 0);
+            lblAvailableNum.Location = new Point(14, 47);
             lblAvailableNum.Name = "lblAvailableNum";
-            lblAvailableNum.Size = new Size(0, 25);
+            lblAvailableNum.Size = new Size(0, 20);
             lblAvailableNum.TabIndex = 2;
             // 
             // lblAvailable
             // 
             lblAvailable.AutoSize = true;
-            lblAvailable.Location = new Point(4, 12);
-            lblAvailable.Margin = new Padding(4, 0, 4, 0);
+            lblAvailable.Location = new Point(3, 10);
             lblAvailable.Name = "lblAvailable";
-            lblAvailable.Size = new Size(83, 25);
+            lblAvailable.Size = new Size(71, 20);
             lblAvailable.TabIndex = 0;
             lblAvailable.Text = "Available";
             // 
@@ -701,28 +663,25 @@
             // 
             pnlOccupancy.Controls.Add(lblOccupiedNum);
             pnlOccupancy.Controls.Add(lblOccupied);
-            pnlOccupancy.Location = new Point(772, 142);
-            pnlOccupancy.Margin = new Padding(4);
+            pnlOccupancy.Location = new Point(618, 114);
             pnlOccupancy.Name = "pnlOccupancy";
-            pnlOccupancy.Size = new Size(312, 156);
+            pnlOccupancy.Size = new Size(250, 125);
             pnlOccupancy.TabIndex = 3;
             // 
             // lblOccupiedNum
             // 
             lblOccupiedNum.AutoSize = true;
-            lblOccupiedNum.Location = new Point(31, 68);
-            lblOccupiedNum.Margin = new Padding(4, 0, 4, 0);
+            lblOccupiedNum.Location = new Point(25, 54);
             lblOccupiedNum.Name = "lblOccupiedNum";
-            lblOccupiedNum.Size = new Size(0, 25);
+            lblOccupiedNum.Size = new Size(0, 20);
             lblOccupiedNum.TabIndex = 3;
             // 
             // lblOccupied
             // 
             lblOccupied.AutoSize = true;
-            lblOccupied.Location = new Point(4, 10);
-            lblOccupied.Margin = new Padding(4, 0, 4, 0);
+            lblOccupied.Location = new Point(3, 8);
             lblOccupied.Name = "lblOccupied";
-            lblOccupied.Size = new Size(87, 25);
+            lblOccupied.Size = new Size(72, 20);
             lblOccupied.TabIndex = 1;
             lblOccupied.Text = "Occupied";
             // 
@@ -730,28 +689,25 @@
             // 
             pnlTotalUnits.Controls.Add(lblTotalUnitsNum);
             pnlTotalUnits.Controls.Add(lblTotalUnits);
-            pnlTotalUnits.Location = new Point(46, 140);
-            pnlTotalUnits.Margin = new Padding(4);
+            pnlTotalUnits.Location = new Point(37, 112);
             pnlTotalUnits.Name = "pnlTotalUnits";
-            pnlTotalUnits.Size = new Size(312, 156);
+            pnlTotalUnits.Size = new Size(250, 125);
             pnlTotalUnits.TabIndex = 2;
             // 
             // lblTotalUnitsNum
             // 
             lblTotalUnitsNum.AutoSize = true;
-            lblTotalUnitsNum.Location = new Point(36, 56);
-            lblTotalUnitsNum.Margin = new Padding(4, 0, 4, 0);
+            lblTotalUnitsNum.Location = new Point(29, 45);
             lblTotalUnitsNum.Name = "lblTotalUnitsNum";
-            lblTotalUnitsNum.Size = new Size(0, 25);
+            lblTotalUnitsNum.Size = new Size(0, 20);
             lblTotalUnitsNum.TabIndex = 1;
             // 
             // lblTotalUnits
             // 
             lblTotalUnits.AutoSize = true;
-            lblTotalUnits.Location = new Point(25, 12);
-            lblTotalUnits.Margin = new Padding(4, 0, 4, 0);
+            lblTotalUnits.Location = new Point(20, 10);
             lblTotalUnits.Name = "lblTotalUnits";
-            lblTotalUnits.Size = new Size(94, 25);
+            lblTotalUnits.Size = new Size(79, 20);
             lblTotalUnits.TabIndex = 0;
             lblTotalUnits.Text = "Total Units";
             // 
@@ -760,10 +716,9 @@
             btnAddUnit.BackColor = Color.RoyalBlue;
             btnAddUnit.FlatStyle = FlatStyle.Flat;
             btnAddUnit.ForeColor = Color.White;
-            btnAddUnit.Location = new Point(736, 51);
-            btnAddUnit.Margin = new Padding(4);
+            btnAddUnit.Location = new Point(589, 41);
             btnAddUnit.Name = "btnAddUnit";
-            btnAddUnit.Size = new Size(195, 60);
+            btnAddUnit.Size = new Size(156, 48);
             btnAddUnit.TabIndex = 1;
             btnAddUnit.Text = "+ Add Unit";
             btnAddUnit.UseVisualStyleBackColor = false;
@@ -773,24 +728,22 @@
             lblRentalUnit.AutoSize = true;
             lblRentalUnit.Font = new Font("Segoe UI", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblRentalUnit.ForeColor = SystemColors.ActiveCaptionText;
-            lblRentalUnit.Location = new Point(44, 55);
-            lblRentalUnit.Margin = new Padding(4, 0, 4, 0);
+            lblRentalUnit.Location = new Point(35, 44);
             lblRentalUnit.Name = "lblRentalUnit";
-            lblRentalUnit.Size = new Size(234, 54);
+            lblRentalUnit.Size = new Size(199, 46);
             lblRentalUnit.TabIndex = 0;
             lblRentalUnit.Text = "Rental Unit";
             // 
             // Properties_Form
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1724, 825);
+            ClientSize = new Size(1379, 694);
             Controls.Add(pnlMainForm);
-            Controls.Add(pnlDashBoard);
             Controls.Add(pnlContent);
             Controls.Add(pnlTenants);
             Controls.Add(pnlRentalUnit);
-            Margin = new Padding(4);
+            Controls.Add(pnlDashBoard);
             Name = "Properties_Form";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Properties_Form";

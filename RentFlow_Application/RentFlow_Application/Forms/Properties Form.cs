@@ -12,6 +12,7 @@ namespace RentFlow_Application.Forms
 {
     public partial class Properties_Form : Form
     {
+        
         private List<Property> properties = new List<Property>();
         private List<Tenant> tenants = new List<Tenant>();
         private int nextPropertyID = 1;
@@ -378,6 +379,11 @@ namespace RentFlow_Application.Forms
                 this.Close();
 
             }
+        }
+
+        private void lblUserName_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

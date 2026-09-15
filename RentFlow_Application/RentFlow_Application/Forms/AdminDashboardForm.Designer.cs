@@ -15,6 +15,7 @@
             pnlSidebar = new Panel();
             btnAdminDashboard = new Button();
             lblLogo = new Label();
+            //lblUserName = new Label();
             pnlMain = new Panel();
             pnlAuditLog = new Panel();
             lblAuditLogTitle = new Label();
@@ -79,6 +80,10 @@
             lblLogo.Size = new Size(116, 32);
             lblLogo.TabIndex = 1;
             lblLogo.Text = "Rentflow";
+            // 
+            // lblUserName
+            // 
+           
             // 
             // pnlMain
             // 

@@ -6,7 +6,7 @@ namespace RentFlow_Application.Classes
 {
     public class Tenant
     {
-        private string tenantID;
+        private int tenantID;
         private string firstName;
         private string lastName;
         private string phoneNumber;
@@ -16,7 +16,7 @@ namespace RentFlow_Application.Classes
         private string assignedUnit;
 
         
-        public void SetTenantID(string id) { tenantID = id; }
+        public void SetTenantID(int id) { tenantID = id; }
         public void SetFirstName(string v) { firstName = v; }
         public void SetLastName(string v) { lastName = v; }
         public void SetPhoneNumber(string v) { phoneNumber = v; }
@@ -25,7 +25,7 @@ namespace RentFlow_Application.Classes
         public void SetAssignedProperty(string v) { assignedProperty = v; }
         public void SetAssignedUnit(string v) { assignedUnit = v; }
 
-        public string GetTenantID() => tenantID;
+        public int GetTenantID() => tenantID;
         public string GetFirstName() => firstName;
         public string GetLastName() => lastName;
         public string GetPhoneNumber() => phoneNumber;

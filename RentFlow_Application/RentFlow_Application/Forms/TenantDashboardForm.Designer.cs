@@ -88,6 +88,8 @@
             lblLogo.TabIndex = 1;
             lblLogo.Text = "Rentflow";
             // 
+
+            // 
             // pnlMain
             // 
             pnlMain.BackColor = Color.FromArgb(249, 250, 251);
