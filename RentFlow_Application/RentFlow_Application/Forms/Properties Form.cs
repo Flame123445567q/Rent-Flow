@@ -12,7 +12,7 @@ namespace RentFlow_Application.Forms
 {
     public partial class Properties_Form : Form
     {
-        
+
         private List<Property> properties = new List<Property>();
         private List<Tenant> tenants = new List<Tenant>();
         private int nextPropertyID = 1;
@@ -143,7 +143,7 @@ namespace RentFlow_Application.Forms
             {
                 // The left navigation (pnlMainForm) remains DockStyle.Left from designer
                 // Make the content panels fill the rest of the form and start hidden
-                foreach (var panel in new[] { pnlContent, pnlDashBoard, pnlTenants, pnlRentalUnit })
+                foreach (var panel in new[] { pnlContent, pnlDashBoard, pnlTenants, pnlRentalUnit, pnlLeases, pnlRentPayments, pnlExpenses, pnlMaintenance })
                 {
                     if (panel != null)
                     {
@@ -160,7 +160,7 @@ namespace RentFlow_Application.Forms
         {
             try
             {
-                var panels = new[] { pnlContent, pnlDashBoard, pnlTenants, pnlRentalUnit };
+                var panels = new[] { pnlContent, pnlDashBoard, pnlTenants, pnlRentalUnit, pnlLeases, pnlRentPayments, pnlExpenses, pnlMaintenance };
                 foreach (var p in panels)
                 {
                     if (p == null) continue;
@@ -384,6 +384,31 @@ namespace RentFlow_Application.Forms
         private void lblUserName_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void pnlLeases_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void btnLeases_Click(object sender, EventArgs e)
+        {
+            ShowPanel(pnlLeases);
+        }
+
+        private void btnRentPayments_Click(object sender, EventArgs e)
+        {
+            ShowPanel(pnlRentPayments);
+        }
+
+        private void btnExpenses_Click(object sender, EventArgs e)
+        {
+            ShowPanel(pnlExpenses);
+        }
+
+        private void btnMaintenance_Click(object sender, EventArgs e)
+        {
+            ShowPanel(pnlMaintenance);
         }
     }
 }

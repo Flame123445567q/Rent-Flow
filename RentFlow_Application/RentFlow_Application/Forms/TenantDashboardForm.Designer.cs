@@ -76,6 +76,7 @@
             btnMyDashBoard.TabIndex = 0;
             btnMyDashBoard.Text = "My DashBoard";
             btnMyDashBoard.UseVisualStyleBackColor = false;
+            btnMyDashBoard.Click += btnMyDashBoard_Click;
             // 
             // lblLogo
             // 
@@ -146,6 +147,7 @@
             btnMaintenance.TabIndex = 2;
             btnMaintenance.Text = "Submit Maintenance Request";
             btnMaintenance.UseVisualStyleBackColor = false;
+            btnMaintenance.Click += btnMaintenance_Click;
             // 
             // pnlCard4
             // 

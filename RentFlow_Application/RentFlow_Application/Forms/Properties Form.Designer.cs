@@ -43,6 +43,14 @@
             btnDashboard = new Button();
             lblLogo = new Label();
             pnlContent = new Panel();
+            pnlSearch = new Panel();
+            btnPrint = new Button();
+            button1 = new Button();
+            cmbFilter = new ComboBox();
+            txtSearch = new TextBox();
+            btnAddProperty = new Button();
+            lblPropertyCount = new Label();
+            lblProperties = new Label();
             dgvProperties = new DataGridView();
             PropertyID = new DataGridViewTextBoxColumn();
             PropertyName = new DataGridViewTextBoxColumn();
@@ -52,16 +60,12 @@
             Available = new DataGridViewTextBoxColumn();
             Status = new DataGridViewTextBoxColumn();
             Actions = new DataGridViewTextBoxColumn();
-            pnlSearch = new Panel();
-            btnPrint = new Button();
-            button1 = new Button();
-            cmbFilter = new ComboBox();
-            txtSearch = new TextBox();
-            btnAddProperty = new Button();
-            lblPropertyCount = new Label();
-            lblProperties = new Label();
             pnlDashBoard = new Panel();
             lblDashboardHeader = new Label();
+            pnlLeases = new Panel();
+            lblLeasesTopic = new Label();
+            pnlRentPayments = new Panel();
+            lblRentTopic = new Label();
             pnlTenants = new Panel();
             btnAddTenants = new Button();
             dataGridView1 = new DataGridView();
@@ -72,12 +76,12 @@
             Lease_Status = new DataGridViewTextBoxColumn();
             Outstanding = new DataGridViewTextBoxColumn();
             Action = new DataGridViewTextBoxColumn();
+            lblRegisteredTenants = new Label();
+            lblTenants = new Label();
             pnlFilterBar = new Panel();
             cmbStatuses = new ComboBox();
             cmbProperties = new ComboBox();
             txtSearchTenants = new TextBox();
-            lblRegisteredTenants = new Label();
-            lblTenants = new Label();
             pnlRentalUnit = new Panel();
             pnlAvailability = new Panel();
             lblAvailableNum = new Label();
@@ -90,12 +94,18 @@
             lblTotalUnits = new Label();
             btnAddUnit = new Button();
             lblRentalUnit = new Label();
+            pnlExpenses = new Panel();
+            lblExpensesTopic = new Label();
+            pnlMaintenance = new Panel();
+            lblMaintenanceTopic = new Label();
             pnlMainForm.SuspendLayout();
             pnlUserLoginInfo.SuspendLayout();
             pnlContent.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dgvProperties).BeginInit();
             pnlSearch.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvProperties).BeginInit();
             pnlDashBoard.SuspendLayout();
+            pnlLeases.SuspendLayout();
+            pnlRentPayments.SuspendLayout();
             pnlTenants.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             pnlFilterBar.SuspendLayout();
@@ -103,6 +113,8 @@
             pnlAvailability.SuspendLayout();
             pnlOccupancy.SuspendLayout();
             pnlTotalUnits.SuspendLayout();
+            pnlExpenses.SuspendLayout();
+            pnlMaintenance.SuspendLayout();
             SuspendLayout();
             // 
             // pnlMainForm
@@ -182,6 +194,7 @@
             btnMaintenance.Text = "🔧 Maintenance";
             btnMaintenance.TextAlign = ContentAlignment.MiddleLeft;
             btnMaintenance.UseVisualStyleBackColor = true;
+            btnMaintenance.Click += btnMaintenance_Click;
             // 
             // btnExpenses
             // 
@@ -194,6 +207,7 @@
             btnExpenses.Text = "📊 Expenses";
             btnExpenses.TextAlign = ContentAlignment.MiddleLeft;
             btnExpenses.UseVisualStyleBackColor = true;
+            btnExpenses.Click += btnExpenses_Click;
             // 
             // btnRentPayments
             // 
@@ -206,6 +220,7 @@
             btnRentPayments.Text = "💰 Rent Payments";
             btnRentPayments.TextAlign = ContentAlignment.MiddleLeft;
             btnRentPayments.UseVisualStyleBackColor = true;
+            btnRentPayments.Click += btnRentPayments_Click;
             // 
             // btnLeases
             // 
@@ -218,6 +233,7 @@
             btnLeases.Text = "📄 Leases";
             btnLeases.TextAlign = ContentAlignment.MiddleLeft;
             btnLeases.UseVisualStyleBackColor = true;
+            btnLeases.Click += btnLeases_Click;
             // 
             // btnTenants
             // 
@@ -287,89 +303,17 @@
             // 
             pnlContent.BackColor = Color.White;
             pnlContent.BorderStyle = BorderStyle.Fixed3D;
-            pnlContent.Controls.Add(dgvProperties);
             pnlContent.Controls.Add(pnlSearch);
             pnlContent.Controls.Add(btnAddProperty);
             pnlContent.Controls.Add(lblPropertyCount);
             pnlContent.Controls.Add(lblProperties);
+            pnlContent.Controls.Add(dgvProperties);
             pnlContent.Dock = DockStyle.Right;
-            pnlContent.Location = new Point(231, 0);
+            pnlContent.Location = new Point(220, 0);
             pnlContent.Name = "pnlContent";
-            pnlContent.Size = new Size(1148, 694);
+            pnlContent.Size = new Size(1159, 694);
             pnlContent.TabIndex = 1;
             pnlContent.Paint += pnlMain_Paint;
-            // 
-            // dgvProperties
-            // 
-            dgvProperties.AllowUserToAddRows = false;
-            dgvProperties.AllowUserToDeleteRows = false;
-            dgvProperties.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dgvProperties.BackgroundColor = Color.White;
-            dgvProperties.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvProperties.Columns.AddRange(new DataGridViewColumn[] { PropertyID, PropertyName, Address, TotalUnits, Occupied, Available, Status, Actions });
-            dgvProperties.Location = new Point(30, 310);
-            dgvProperties.MultiSelect = false;
-            dgvProperties.Name = "dgvProperties";
-            dgvProperties.ReadOnly = true;
-            dgvProperties.RowHeadersWidth = 51;
-            dgvProperties.Size = new Size(1055, 410);
-            dgvProperties.TabIndex = 4;
-            // 
-            // PropertyID
-            // 
-            PropertyID.HeaderText = "PropertyID";
-            PropertyID.MinimumWidth = 6;
-            PropertyID.Name = "PropertyID";
-            PropertyID.ReadOnly = true;
-            // 
-            // PropertyName
-            // 
-            PropertyName.HeaderText = "PropertyName";
-            PropertyName.MinimumWidth = 6;
-            PropertyName.Name = "PropertyName";
-            PropertyName.ReadOnly = true;
-            // 
-            // Address
-            // 
-            Address.HeaderText = "Address";
-            Address.MinimumWidth = 6;
-            Address.Name = "Address";
-            Address.ReadOnly = true;
-            // 
-            // TotalUnits
-            // 
-            TotalUnits.HeaderText = "TotalUnits";
-            TotalUnits.MinimumWidth = 6;
-            TotalUnits.Name = "TotalUnits";
-            TotalUnits.ReadOnly = true;
-            // 
-            // Occupied
-            // 
-            Occupied.HeaderText = "Occupied";
-            Occupied.MinimumWidth = 6;
-            Occupied.Name = "Occupied";
-            Occupied.ReadOnly = true;
-            // 
-            // Available
-            // 
-            Available.HeaderText = "Available";
-            Available.MinimumWidth = 6;
-            Available.Name = "Available";
-            Available.ReadOnly = true;
-            // 
-            // Status
-            // 
-            Status.HeaderText = "Status";
-            Status.MinimumWidth = 6;
-            Status.Name = "Status";
-            Status.ReadOnly = true;
-            // 
-            // Actions
-            // 
-            Actions.HeaderText = "Actions";
-            Actions.MinimumWidth = 6;
-            Actions.Name = "Actions";
-            Actions.ReadOnly = true;
             // 
             // pnlSearch
             // 
@@ -460,6 +404,78 @@
             lblProperties.TabIndex = 0;
             lblProperties.Text = "Properties";
             // 
+            // dgvProperties
+            // 
+            dgvProperties.AllowUserToAddRows = false;
+            dgvProperties.AllowUserToDeleteRows = false;
+            dgvProperties.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvProperties.BackgroundColor = Color.White;
+            dgvProperties.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvProperties.Columns.AddRange(new DataGridViewColumn[] { PropertyID, PropertyName, Address, TotalUnits, Occupied, Available, Status, Actions });
+            dgvProperties.Location = new Point(30, 310);
+            dgvProperties.MultiSelect = false;
+            dgvProperties.Name = "dgvProperties";
+            dgvProperties.ReadOnly = true;
+            dgvProperties.RowHeadersWidth = 51;
+            dgvProperties.Size = new Size(1055, 410);
+            dgvProperties.TabIndex = 4;
+            // 
+            // PropertyID
+            // 
+            PropertyID.HeaderText = "PropertyID";
+            PropertyID.MinimumWidth = 6;
+            PropertyID.Name = "PropertyID";
+            PropertyID.ReadOnly = true;
+            // 
+            // PropertyName
+            // 
+            PropertyName.HeaderText = "PropertyName";
+            PropertyName.MinimumWidth = 6;
+            PropertyName.Name = "PropertyName";
+            PropertyName.ReadOnly = true;
+            // 
+            // Address
+            // 
+            Address.HeaderText = "Address";
+            Address.MinimumWidth = 6;
+            Address.Name = "Address";
+            Address.ReadOnly = true;
+            // 
+            // TotalUnits
+            // 
+            TotalUnits.HeaderText = "TotalUnits";
+            TotalUnits.MinimumWidth = 6;
+            TotalUnits.Name = "TotalUnits";
+            TotalUnits.ReadOnly = true;
+            // 
+            // Occupied
+            // 
+            Occupied.HeaderText = "Occupied";
+            Occupied.MinimumWidth = 6;
+            Occupied.Name = "Occupied";
+            Occupied.ReadOnly = true;
+            // 
+            // Available
+            // 
+            Available.HeaderText = "Available";
+            Available.MinimumWidth = 6;
+            Available.Name = "Available";
+            Available.ReadOnly = true;
+            // 
+            // Status
+            // 
+            Status.HeaderText = "Status";
+            Status.MinimumWidth = 6;
+            Status.Name = "Status";
+            Status.ReadOnly = true;
+            // 
+            // Actions
+            // 
+            Actions.HeaderText = "Actions";
+            Actions.MinimumWidth = 6;
+            Actions.Name = "Actions";
+            Actions.ReadOnly = true;
+            // 
             // pnlDashBoard
             // 
             pnlDashBoard.BackColor = Color.WhiteSmoke;
@@ -480,16 +496,53 @@
             lblDashboardHeader.TabIndex = 0;
             lblDashboardHeader.Text = "Dashboard";
             // 
+            // pnlLeases
+            // 
+            pnlLeases.Controls.Add(lblLeasesTopic);
+            pnlLeases.Location = new Point(220, 0);
+            pnlLeases.Name = "pnlLeases";
+            pnlLeases.Size = new Size(1159, 694);
+            pnlLeases.TabIndex = 1;
+            pnlLeases.Visible = false;
+            // 
+            // lblLeasesTopic
+            // 
+            lblLeasesTopic.AutoSize = true;
+            lblLeasesTopic.Font = new Font("Segoe UI", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblLeasesTopic.Location = new Point(30, 51);
+            lblLeasesTopic.Name = "lblLeasesTopic";
+            lblLeasesTopic.Size = new Size(121, 46);
+            lblLeasesTopic.TabIndex = 0;
+            lblLeasesTopic.Text = "Leases";
+            // 
+            // pnlRentPayments
+            // 
+            pnlRentPayments.Controls.Add(lblRentTopic);
+            pnlRentPayments.Location = new Point(220, 0);
+            pnlRentPayments.Name = "pnlRentPayments";
+            pnlRentPayments.Size = new Size(1159, 694);
+            pnlRentPayments.TabIndex = 1;
+            // 
+            // lblRentTopic
+            // 
+            lblRentTopic.AutoSize = true;
+            lblRentTopic.Font = new Font("Segoe UI", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblRentTopic.Location = new Point(21, 53);
+            lblRentTopic.Name = "lblRentTopic";
+            lblRentTopic.Size = new Size(256, 46);
+            lblRentTopic.TabIndex = 0;
+            lblRentTopic.Text = "Rent Payments";
+            // 
             // pnlTenants
             // 
             pnlTenants.Controls.Add(btnAddTenants);
             pnlTenants.Controls.Add(dataGridView1);
-            pnlTenants.Controls.Add(pnlFilterBar);
             pnlTenants.Controls.Add(lblRegisteredTenants);
             pnlTenants.Controls.Add(lblTenants);
-            pnlTenants.Location = new Point(231, 0);
+            pnlTenants.Controls.Add(pnlFilterBar);
+            pnlTenants.Location = new Point(220, 0);
             pnlTenants.Name = "pnlTenants";
-            pnlTenants.Size = new Size(1148, 732);
+            pnlTenants.Size = new Size(1159, 732);
             pnlTenants.TabIndex = 17;
             // 
             // btnAddTenants
@@ -563,6 +616,24 @@
             Action.Name = "Action";
             Action.Width = 125;
             // 
+            // lblRegisteredTenants
+            // 
+            lblRegisteredTenants.AutoSize = true;
+            lblRegisteredTenants.Location = new Point(21, 64);
+            lblRegisteredTenants.Name = "lblRegisteredTenants";
+            lblRegisteredTenants.Size = new Size(0, 20);
+            lblRegisteredTenants.TabIndex = 1;
+            // 
+            // lblTenants
+            // 
+            lblTenants.AutoSize = true;
+            lblTenants.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblTenants.Location = new Point(21, 20);
+            lblTenants.Name = "lblTenants";
+            lblTenants.Size = new Size(126, 41);
+            lblTenants.TabIndex = 0;
+            lblTenants.Text = "Tenants";
+            // 
             // pnlFilterBar
             // 
             pnlFilterBar.BackColor = Color.Gainsboro;
@@ -602,24 +673,6 @@
             txtSearchTenants.Size = new Size(303, 27);
             txtSearchTenants.TabIndex = 0;
             // 
-            // lblRegisteredTenants
-            // 
-            lblRegisteredTenants.AutoSize = true;
-            lblRegisteredTenants.Location = new Point(21, 64);
-            lblRegisteredTenants.Name = "lblRegisteredTenants";
-            lblRegisteredTenants.Size = new Size(0, 20);
-            lblRegisteredTenants.TabIndex = 1;
-            // 
-            // lblTenants
-            // 
-            lblTenants.AutoSize = true;
-            lblTenants.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblTenants.Location = new Point(21, 20);
-            lblTenants.Name = "lblTenants";
-            lblTenants.Size = new Size(126, 41);
-            lblTenants.TabIndex = 0;
-            lblTenants.Text = "Tenants";
-            // 
             // pnlRentalUnit
             // 
             pnlRentalUnit.BackColor = Color.FromArgb(245, 246, 250);
@@ -630,7 +683,7 @@
             pnlRentalUnit.Controls.Add(lblRentalUnit);
             pnlRentalUnit.Location = new Point(231, 0);
             pnlRentalUnit.Name = "pnlRentalUnit";
-            pnlRentalUnit.Size = new Size(1148, 732);
+            pnlRentalUnit.Size = new Size(1148, 694);
             pnlRentalUnit.TabIndex = 5;
             // 
             // pnlAvailability
@@ -734,16 +787,56 @@
             lblRentalUnit.TabIndex = 0;
             lblRentalUnit.Text = "Rental Unit";
             // 
+            // pnlExpenses
+            // 
+            pnlExpenses.Controls.Add(lblExpensesTopic);
+            pnlExpenses.Location = new Point(220, 0);
+            pnlExpenses.Name = "pnlExpenses";
+            pnlExpenses.Size = new Size(1159, 694);
+            pnlExpenses.TabIndex = 1;
+            // 
+            // lblExpensesTopic
+            // 
+            lblExpensesTopic.AutoSize = true;
+            lblExpensesTopic.Font = new Font("Segoe UI", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblExpensesTopic.Location = new Point(19, 53);
+            lblExpensesTopic.Name = "lblExpensesTopic";
+            lblExpensesTopic.Size = new Size(165, 46);
+            lblExpensesTopic.TabIndex = 0;
+            lblExpensesTopic.Text = "Expenses";
+            // 
+            // pnlMaintenance
+            // 
+            pnlMaintenance.Controls.Add(lblMaintenanceTopic);
+            pnlMaintenance.Location = new Point(220, 0);
+            pnlMaintenance.Name = "pnlMaintenance";
+            pnlMaintenance.Size = new Size(1159, 694);
+            pnlMaintenance.TabIndex = 1;
+            // 
+            // lblMaintenanceTopic
+            // 
+            lblMaintenanceTopic.AutoSize = true;
+            lblMaintenanceTopic.Font = new Font("Segoe UI", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblMaintenanceTopic.Location = new Point(27, 38);
+            lblMaintenanceTopic.Name = "lblMaintenanceTopic";
+            lblMaintenanceTopic.Size = new Size(227, 46);
+            lblMaintenanceTopic.TabIndex = 0;
+            lblMaintenanceTopic.Text = "Maintenance";
+            // 
             // Properties_Form
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1379, 694);
             Controls.Add(pnlMainForm);
+            Controls.Add(pnlDashBoard);
+            Controls.Add(pnlRentPayments);
+            Controls.Add(pnlExpenses);
+            Controls.Add(pnlMaintenance);
+            Controls.Add(pnlLeases);
             Controls.Add(pnlContent);
             Controls.Add(pnlTenants);
             Controls.Add(pnlRentalUnit);
-            Controls.Add(pnlDashBoard);
             Name = "Properties_Form";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Properties_Form";
@@ -754,11 +847,15 @@
             pnlUserLoginInfo.PerformLayout();
             pnlContent.ResumeLayout(false);
             pnlContent.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dgvProperties).EndInit();
             pnlSearch.ResumeLayout(false);
             pnlSearch.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvProperties).EndInit();
             pnlDashBoard.ResumeLayout(false);
             pnlDashBoard.PerformLayout();
+            pnlLeases.ResumeLayout(false);
+            pnlLeases.PerformLayout();
+            pnlRentPayments.ResumeLayout(false);
+            pnlRentPayments.PerformLayout();
             pnlTenants.ResumeLayout(false);
             pnlTenants.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
@@ -772,6 +869,10 @@
             pnlOccupancy.PerformLayout();
             pnlTotalUnits.ResumeLayout(false);
             pnlTotalUnits.PerformLayout();
+            pnlExpenses.ResumeLayout(false);
+            pnlExpenses.PerformLayout();
+            pnlMaintenance.ResumeLayout(false);
+            pnlMaintenance.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -839,5 +940,13 @@
         private Label lblRole;
         private Label lblUserName;
         private Button btnLogOut;
+        private Panel pnlLeases;
+        private Label lblLeasesTopic;
+        private Panel pnlRentPayments;
+        private Label lblRentTopic;
+        private Panel pnlExpenses;
+        private Label lblExpensesTopic;
+        private Panel pnlMaintenance;
+        private Label lblMaintenanceTopic;
     }
 }
