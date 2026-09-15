@@ -923,6 +923,7 @@
             // cmbAllStatus
             // 
             cmbAllStatus.FormattingEnabled = true;
+            cmbAllStatus.Items.AddRange(new object[] { "Active", "Expired", "Terminated" });
             cmbAllStatus.Location = new Point(388, 19);
             cmbAllStatus.Name = "cmbAllStatus";
             cmbAllStatus.Size = new Size(295, 23);
