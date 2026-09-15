@@ -98,6 +98,31 @@
             lblExpensesTopic = new Label();
             pnlMaintenance = new Panel();
             lblMaintenanceTopic = new Label();
+            pnlMaintenanceRecord = new Panel();
+            pnlInsuranceRecords = new Panel();
+            pnlSecurityRecords = new Panel();
+            pnlUtilitiesRecords = new Panel();
+            lblMaintenance = new Label();
+            lblMaintenanceNumber = new Label();
+            lblInsuranceNumber = new Label();
+            lblInsurance = new Label();
+            lblSecurity = new Label();
+            lblSecutityNumber = new Label();
+            lblUtilities = new Label();
+            lblUtilitiesNumber = new Label();
+            pnlSearchExpense = new Panel();
+            txtSearchAnExpense = new TextBox();
+            cmbAllCategories = new ComboBox();
+            cmbAllProperties = new ComboBox();
+            dgvExpensesRecords = new DataGridView();
+            ExpenseID = new DataGridViewTextBoxColumn();
+            Property = new DataGridViewTextBoxColumn();
+            Category = new DataGridViewTextBoxColumn();
+            Description = new DataGridViewTextBoxColumn();
+            Amount = new DataGridViewTextBoxColumn();
+            Date = new DataGridViewTextBoxColumn();
+            ExpensesAction = new DataGridViewTextBoxColumn();
+            btnAddExpense = new Button();
             pnlMainForm.SuspendLayout();
             pnlUserLoginInfo.SuspendLayout();
             pnlContent.SuspendLayout();
@@ -115,6 +140,12 @@
             pnlTotalUnits.SuspendLayout();
             pnlExpenses.SuspendLayout();
             pnlMaintenance.SuspendLayout();
+            pnlMaintenanceRecord.SuspendLayout();
+            pnlInsuranceRecords.SuspendLayout();
+            pnlSecurityRecords.SuspendLayout();
+            pnlUtilitiesRecords.SuspendLayout();
+            pnlSearchExpense.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvExpensesRecords).BeginInit();
             SuspendLayout();
             // 
             // pnlMainForm
@@ -789,6 +820,13 @@
             // 
             // pnlExpenses
             // 
+            pnlExpenses.Controls.Add(btnAddExpense);
+            pnlExpenses.Controls.Add(dgvExpensesRecords);
+            pnlExpenses.Controls.Add(pnlSearchExpense);
+            pnlExpenses.Controls.Add(pnlUtilitiesRecords);
+            pnlExpenses.Controls.Add(pnlSecurityRecords);
+            pnlExpenses.Controls.Add(pnlInsuranceRecords);
+            pnlExpenses.Controls.Add(pnlMaintenanceRecord);
             pnlExpenses.Controls.Add(lblExpensesTopic);
             pnlExpenses.Location = new Point(220, 0);
             pnlExpenses.Name = "pnlExpenses";
@@ -823,20 +861,226 @@
             lblMaintenanceTopic.TabIndex = 0;
             lblMaintenanceTopic.Text = "Maintenance";
             // 
+            // pnlMaintenanceRecord
+            // 
+            pnlMaintenanceRecord.Controls.Add(lblMaintenanceNumber);
+            pnlMaintenanceRecord.Controls.Add(lblMaintenance);
+            pnlMaintenanceRecord.Location = new Point(29, 127);
+            pnlMaintenanceRecord.Name = "pnlMaintenanceRecord";
+            pnlMaintenanceRecord.Size = new Size(250, 125);
+            pnlMaintenanceRecord.TabIndex = 1;
+            // 
+            // pnlInsuranceRecords
+            // 
+            pnlInsuranceRecords.Controls.Add(lblInsurance);
+            pnlInsuranceRecords.Controls.Add(lblInsuranceNumber);
+            pnlInsuranceRecords.Location = new Point(285, 127);
+            pnlInsuranceRecords.Name = "pnlInsuranceRecords";
+            pnlInsuranceRecords.Size = new Size(250, 125);
+            pnlInsuranceRecords.TabIndex = 2;
+            // 
+            // pnlSecurityRecords
+            // 
+            pnlSecurityRecords.Controls.Add(lblSecutityNumber);
+            pnlSecurityRecords.Controls.Add(lblSecurity);
+            pnlSecurityRecords.Location = new Point(541, 127);
+            pnlSecurityRecords.Name = "pnlSecurityRecords";
+            pnlSecurityRecords.Size = new Size(250, 125);
+            pnlSecurityRecords.TabIndex = 3;
+            // 
+            // pnlUtilitiesRecords
+            // 
+            pnlUtilitiesRecords.Controls.Add(lblUtilitiesNumber);
+            pnlUtilitiesRecords.Controls.Add(lblUtilities);
+            pnlUtilitiesRecords.Location = new Point(797, 127);
+            pnlUtilitiesRecords.Name = "pnlUtilitiesRecords";
+            pnlUtilitiesRecords.Size = new Size(225, 125);
+            pnlUtilitiesRecords.TabIndex = 3;
+            // 
+            // lblMaintenance
+            // 
+            lblMaintenance.AutoSize = true;
+            lblMaintenance.Location = new Point(21, 16);
+            lblMaintenance.Name = "lblMaintenance";
+            lblMaintenance.Size = new Size(94, 20);
+            lblMaintenance.TabIndex = 0;
+            lblMaintenance.Text = "Maintenance";
+            // 
+            // lblMaintenanceNumber
+            // 
+            lblMaintenanceNumber.AutoSize = true;
+            lblMaintenanceNumber.Location = new Point(100, 52);
+            lblMaintenanceNumber.Name = "lblMaintenanceNumber";
+            lblMaintenanceNumber.Size = new Size(0, 20);
+            lblMaintenanceNumber.TabIndex = 1;
+            // 
+            // lblInsuranceNumber
+            // 
+            lblInsuranceNumber.AutoSize = true;
+            lblInsuranceNumber.Location = new Point(100, 52);
+            lblInsuranceNumber.Name = "lblInsuranceNumber";
+            lblInsuranceNumber.Size = new Size(0, 20);
+            lblInsuranceNumber.TabIndex = 1;
+            // 
+            // lblInsurance
+            // 
+            lblInsurance.AutoSize = true;
+            lblInsurance.Location = new Point(19, 16);
+            lblInsurance.Name = "lblInsurance";
+            lblInsurance.Size = new Size(71, 20);
+            lblInsurance.TabIndex = 2;
+            lblInsurance.Text = "Insurance";
+            // 
+            // lblSecurity
+            // 
+            lblSecurity.AutoSize = true;
+            lblSecurity.Location = new Point(13, 8);
+            lblSecurity.Name = "lblSecurity";
+            lblSecurity.Size = new Size(61, 20);
+            lblSecurity.TabIndex = 3;
+            lblSecurity.Text = "Security";
+            // 
+            // lblSecutityNumber
+            // 
+            lblSecutityNumber.AutoSize = true;
+            lblSecutityNumber.Location = new Point(100, 52);
+            lblSecutityNumber.Name = "lblSecutityNumber";
+            lblSecutityNumber.Size = new Size(0, 20);
+            lblSecutityNumber.TabIndex = 4;
+            // 
+            // lblUtilities
+            // 
+            lblUtilities.AutoSize = true;
+            lblUtilities.Location = new Point(14, 8);
+            lblUtilities.Name = "lblUtilities";
+            lblUtilities.Size = new Size(59, 20);
+            lblUtilities.TabIndex = 5;
+            lblUtilities.Text = "Utilities";
+            // 
+            // lblUtilitiesNumber
+            // 
+            lblUtilitiesNumber.AutoSize = true;
+            lblUtilitiesNumber.Location = new Point(100, 52);
+            lblUtilitiesNumber.Name = "lblUtilitiesNumber";
+            lblUtilitiesNumber.Size = new Size(0, 20);
+            lblUtilitiesNumber.TabIndex = 6;
+            // 
+            // pnlSearchExpense
+            // 
+            pnlSearchExpense.Controls.Add(cmbAllProperties);
+            pnlSearchExpense.Controls.Add(cmbAllCategories);
+            pnlSearchExpense.Controls.Add(txtSearchAnExpense);
+            pnlSearchExpense.Location = new Point(31, 269);
+            pnlSearchExpense.Name = "pnlSearchExpense";
+            pnlSearchExpense.Size = new Size(991, 71);
+            pnlSearchExpense.TabIndex = 4;
+            // 
+            // txtSearchAnExpense
+            // 
+            txtSearchAnExpense.Location = new Point(32, 25);
+            txtSearchAnExpense.Name = "txtSearchAnExpense";
+            txtSearchAnExpense.Size = new Size(350, 27);
+            txtSearchAnExpense.TabIndex = 0;
+            // 
+            // cmbAllCategories
+            // 
+            cmbAllCategories.FormattingEnabled = true;
+            cmbAllCategories.Items.AddRange(new object[] { "Maintenance", "Insurance", "Security", "Utilities" });
+            cmbAllCategories.Location = new Point(447, 26);
+            cmbAllCategories.Name = "cmbAllCategories";
+            cmbAllCategories.Size = new Size(151, 28);
+            cmbAllCategories.TabIndex = 1;
+            // 
+            // cmbAllProperties
+            // 
+            cmbAllProperties.FormattingEnabled = true;
+            cmbAllProperties.Location = new Point(645, 25);
+            cmbAllProperties.Name = "cmbAllProperties";
+            cmbAllProperties.Size = new Size(151, 28);
+            cmbAllProperties.TabIndex = 2;
+            // 
+            // dgvExpensesRecords
+            // 
+            dgvExpensesRecords.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvExpensesRecords.Columns.AddRange(new DataGridViewColumn[] { ExpenseID, Property, Category, Description, Amount, Date, ExpensesAction });
+            dgvExpensesRecords.Location = new Point(27, 370);
+            dgvExpensesRecords.Name = "dgvExpensesRecords";
+            dgvExpensesRecords.RowHeadersWidth = 51;
+            dgvExpensesRecords.Size = new Size(995, 188);
+            dgvExpensesRecords.TabIndex = 5;
+            // 
+            // ExpenseID
+            // 
+            ExpenseID.HeaderText = "Expense ID";
+            ExpenseID.MinimumWidth = 6;
+            ExpenseID.Name = "ExpenseID";
+            ExpenseID.Width = 125;
+            // 
+            // Property
+            // 
+            Property.HeaderText = "Property";
+            Property.MinimumWidth = 6;
+            Property.Name = "Property";
+            Property.Width = 125;
+            // 
+            // Category
+            // 
+            Category.HeaderText = "Category";
+            Category.MinimumWidth = 6;
+            Category.Name = "Category";
+            Category.Width = 125;
+            // 
+            // Description
+            // 
+            Description.HeaderText = "Description";
+            Description.MinimumWidth = 6;
+            Description.Name = "Description";
+            Description.Width = 125;
+            // 
+            // Amount
+            // 
+            Amount.HeaderText = "Amount";
+            Amount.MinimumWidth = 6;
+            Amount.Name = "Amount";
+            Amount.Width = 125;
+            // 
+            // Date
+            // 
+            Date.HeaderText = "Date";
+            Date.MinimumWidth = 6;
+            Date.Name = "Date";
+            Date.Width = 125;
+            // 
+            // ExpensesAction
+            // 
+            ExpensesAction.HeaderText = "Expense Action";
+            ExpensesAction.MinimumWidth = 6;
+            ExpensesAction.Name = "ExpensesAction";
+            ExpensesAction.Width = 125;
+            // 
+            // btnAddExpense
+            // 
+            btnAddExpense.Location = new Point(860, 64);
+            btnAddExpense.Name = "btnAddExpense";
+            btnAddExpense.Size = new Size(130, 42);
+            btnAddExpense.TabIndex = 6;
+            btnAddExpense.Text = "+ Add Expense";
+            btnAddExpense.UseVisualStyleBackColor = true;
+            // 
             // Properties_Form
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1379, 694);
             Controls.Add(pnlMainForm);
-            Controls.Add(pnlDashBoard);
-            Controls.Add(pnlRentPayments);
             Controls.Add(pnlExpenses);
             Controls.Add(pnlMaintenance);
             Controls.Add(pnlLeases);
             Controls.Add(pnlContent);
             Controls.Add(pnlTenants);
             Controls.Add(pnlRentalUnit);
+            Controls.Add(pnlDashBoard);
+            Controls.Add(pnlRentPayments);
             Name = "Properties_Form";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Properties_Form";
@@ -873,6 +1117,17 @@
             pnlExpenses.PerformLayout();
             pnlMaintenance.ResumeLayout(false);
             pnlMaintenance.PerformLayout();
+            pnlMaintenanceRecord.ResumeLayout(false);
+            pnlMaintenanceRecord.PerformLayout();
+            pnlInsuranceRecords.ResumeLayout(false);
+            pnlInsuranceRecords.PerformLayout();
+            pnlSecurityRecords.ResumeLayout(false);
+            pnlSecurityRecords.PerformLayout();
+            pnlUtilitiesRecords.ResumeLayout(false);
+            pnlUtilitiesRecords.PerformLayout();
+            pnlSearchExpense.ResumeLayout(false);
+            pnlSearchExpense.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvExpensesRecords).EndInit();
             ResumeLayout(false);
         }
 
@@ -948,5 +1203,30 @@
         private Label lblExpensesTopic;
         private Panel pnlMaintenance;
         private Label lblMaintenanceTopic;
+        private Panel pnlUtilitiesRecords;
+        private Panel pnlSecurityRecords;
+        private Label lblUtilities;
+        private Label lblSecutityNumber;
+        private Label lblSecurity;
+        private Panel pnlInsuranceRecords;
+        private Label lblInsurance;
+        private Label lblInsuranceNumber;
+        private Panel pnlMaintenanceRecord;
+        private Label lblMaintenanceNumber;
+        private Label lblMaintenance;
+        private DataGridView dgvExpensesRecords;
+        private DataGridViewTextBoxColumn ExpenseID;
+        private DataGridViewTextBoxColumn Property;
+        private DataGridViewTextBoxColumn Category;
+        private DataGridViewTextBoxColumn Description;
+        private DataGridViewTextBoxColumn Amount;
+        private DataGridViewTextBoxColumn Date;
+        private DataGridViewTextBoxColumn ExpensesAction;
+        private Panel pnlSearchExpense;
+        private ComboBox cmbAllProperties;
+        private ComboBox cmbAllCategories;
+        private TextBox txtSearchAnExpense;
+        private Label lblUtilitiesNumber;
+        private Button btnAddExpense;
     }
 }
