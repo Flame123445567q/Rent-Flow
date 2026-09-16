@@ -410,5 +410,10 @@ namespace RentFlow_Application.Forms
         {
             ShowPanel(pnlMaintenance);
         }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

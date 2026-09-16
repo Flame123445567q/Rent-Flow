@@ -63,15 +63,32 @@
             pnlDashBoard = new Panel();
             lblDashboardHeader = new Label();
             pnlRentPayments = new Panel();
+            dataGridView2 = new DataGridView();
+            TENANT2 = new DataGridViewTextBoxColumn();
+            PROPERTY2 = new DataGridViewTextBoxColumn();
+            UNITS = new DataGridViewTextBoxColumn();
+            RENTDUE = new DataGridViewTextBoxColumn();
+            AMOUNTPAID = new DataGridViewTextBoxColumn();
+            OUTSTANDINGS = new DataGridViewTextBoxColumn();
+            PAYMENTDATE = new DataGridViewTextBoxColumn();
+            RECEIPTN0 = new DataGridViewTextBoxColumn();
+            STATUSES = new DataGridViewTextBoxColumn();
             panel5 = new Panel();
+            btnGenerateReceipts = new Button();
+            cbxStatus = new ComboBox();
+            textBox1 = new TextBox();
             btnRecordPayment = new Button();
             panel4 = new Panel();
+            lblExpectedRentDisplay = new Label();
             lblExpectedRent = new Label();
             panel2 = new Panel();
+            lblOutstandingRentDisplay = new Label();
             lblOutstandingRent = new Label();
             panel3 = new Panel();
+            lblLatePaymentDisplay = new Label();
             lblLatePayment = new Label();
             panel1 = new Panel();
+            lblCollectedRentDisplay = new Label();
             lblCollectedRent = new Label();
             lblRentTopic = new Label();
             pnlTenants = new Panel();
@@ -103,50 +120,7 @@
             btnAddUnit = new Button();
             lblRentalUnit = new Label();
             pnlExpenses = new Panel();
-            lblExpensesTopic = new Label();
-            pnlMaintenance = new Panel();
-            lblMaintenanceTopic = new Label();
-            lblLeasesTopic = new Label();
-            pnlActiveLeases = new Panel();
-            pnlExpiredLeases = new Panel();
-            pnlTerminatedLeases = new Panel();
-            pnlSearchLeases = new Panel();
-            txtSearchLeases = new TextBox();
-            cmbAllStatus = new ComboBox();
-            dgvLeases = new DataGridView();
-            LEASEACTIONS = new DataGridViewTextBoxColumn();
-            LEASESTATUS = new DataGridViewTextBoxColumn();
-            MONTHLYRENT = new DataGridViewTextBoxColumn();
-            ENDDATE = new DataGridViewTextBoxColumn();
-            STARTDATE = new DataGridViewTextBoxColumn();
-            NUNIT = new DataGridViewTextBoxColumn();
-            PROPERTY = new DataGridViewTextBoxColumn();
-            TENANT = new DataGridViewTextBoxColumn();
-            LEASEID = new DataGridViewTextBoxColumn();
-            btnCreateLease = new Button();
-            pnlLeases = new Panel();
-            lblActiveLeases = new Label();
-            lblActiveLeaseNum = new Label();
-            lblExpiredLeasesNum = new Label();
-            lblExpiredLeases = new Label();
-            lblTerminatedLeasesNum = new Label();
-            lblTerminatedLeases = new Label();
-            pnlMaintenanceRecord = new Panel();
-            pnlInsuranceRecords = new Panel();
-            pnlSecurityRecords = new Panel();
-            pnlUtilitiesRecords = new Panel();
-            lblMaintenance = new Label();
-            lblMaintenanceNumber = new Label();
-            lblInsuranceNumber = new Label();
-            lblInsurance = new Label();
-            lblSecurity = new Label();
-            lblSecutityNumber = new Label();
-            lblUtilities = new Label();
-            lblUtilitiesNumber = new Label();
-            pnlSearchExpense = new Panel();
-            txtSearchAnExpense = new TextBox();
-            cmbAllCategories = new ComboBox();
-            cmbAllProperties = new ComboBox();
+            btnAddExpense = new Button();
             dgvExpensesRecords = new DataGridView();
             ExpenseID = new DataGridViewTextBoxColumn();
             Property = new DataGridViewTextBoxColumn();
@@ -155,24 +129,75 @@
             Amount = new DataGridViewTextBoxColumn();
             Date = new DataGridViewTextBoxColumn();
             ExpensesAction = new DataGridViewTextBoxColumn();
-            btnAddExpense = new Button();
-            lblExpectedRentDisplay = new Label();
-            lblLatePaymentDisplay = new Label();
-            lblOutstandingRentDisplay = new Label();
-            lblCollectedRentDisplay = new Label();
-            textBox1 = new TextBox();
-            cbxStatus = new ComboBox();
-            btnGenerateReceipts = new Button();
-            dataGridView2 = new DataGridView();
-            TENANT2 = new DataGridViewTextBoxColumn();
-            PROPERTY2 = new DataGridViewTextBoxColumn();
-            UNITS = new DataGridViewTextBoxColumn();
-            RENTDUE = new DataGridViewTextBoxColumn();
-            AMOUNTPAID = new DataGridViewTextBoxColumn();
-            OUTSTANDINGS = new DataGridViewTextBoxColumn();
-            PAYMENTDATE = new DataGridViewTextBoxColumn();
-            RECEIPTN0 = new DataGridViewTextBoxColumn();
-            STATUSES = new DataGridViewTextBoxColumn();
+            pnlSearchExpense = new Panel();
+            cmbAllProperties = new ComboBox();
+            cmbAllCategories = new ComboBox();
+            txtSearchAnExpense = new TextBox();
+            pnlUtilitiesRecords = new Panel();
+            lblUtilitiesNumber = new Label();
+            lblUtilities = new Label();
+            pnlSecurityRecords = new Panel();
+            lblSecutityNumber = new Label();
+            lblSecurity = new Label();
+            pnlInsuranceRecords = new Panel();
+            lblInsurance = new Label();
+            lblInsuranceNumber = new Label();
+            pnlMaintenanceRecord = new Panel();
+            lblMaintenanceNumber = new Label();
+            lblMaintenance = new Label();
+            lblExpensesTopic = new Label();
+            pnlMaintenance = new Panel();
+            lblMaintenanceTopic = new Label();
+            lblLeasesTopic = new Label();
+            pnlActiveLeases = new Panel();
+            lblActiveLeaseNum = new Label();
+            lblActiveLeases = new Label();
+            pnlExpiredLeases = new Panel();
+            lblExpiredLeases = new Label();
+            lblExpiredLeasesNum = new Label();
+            pnlTerminatedLeases = new Panel();
+            lblTerminatedLeases = new Label();
+            lblTerminatedLeasesNum = new Label();
+            pnlSearchLeases = new Panel();
+            cmbAllStatus = new ComboBox();
+            txtSearchLeases = new TextBox();
+            dgvLeases = new DataGridView();
+            LEASEID = new DataGridViewTextBoxColumn();
+            TENANT = new DataGridViewTextBoxColumn();
+            NUNIT = new DataGridViewTextBoxColumn();
+            STARTDATE = new DataGridViewTextBoxColumn();
+            ENDDATE = new DataGridViewTextBoxColumn();
+            MONTHLYRENT = new DataGridViewTextBoxColumn();
+            LEASESTATUS = new DataGridViewTextBoxColumn();
+            LEASEACTIONS = new DataGridViewTextBoxColumn();
+            btnCreateLease = new Button();
+            pnlLeases = new Panel();
+            panel6 = new Panel();
+            panel7 = new Panel();
+            panel8 = new Panel();
+            pnlSearchBar = new Panel();
+            btnNewRequests = new Button();
+            lblTrackAndResolveMaintenanceRequests = new Label();
+            txtSearchBox = new TextBox();
+            btnAll = new Button();
+            btnOpenRequests = new Button();
+            btnPending = new Button();
+            btnResolved = new Button();
+            label2 = new Label();
+            lblOpenRequests = new Label();
+            label4 = new Label();
+            lblPending = new Label();
+            label6 = new Label();
+            lblResolved = new Label();
+            dgvMaintenanceRecords = new DataGridView();
+            REQID = new DataGridViewTextBoxColumn();
+            TENANTS2 = new DataGridViewTextBoxColumn();
+            PROPERTYORUNIT = new DataGridViewTextBoxColumn();
+            DESCRIPTIONS = new DataGridViewTextBoxColumn();
+            PRIORITY = new DataGridViewTextBoxColumn();
+            STATUS1 = new DataGridViewTextBoxColumn();
+            DATES = new DataGridViewTextBoxColumn();
+            ACTION1 = new DataGridViewTextBoxColumn();
             pnlMainForm.SuspendLayout();
             pnlUserLoginInfo.SuspendLayout();
             pnlContent.SuspendLayout();
@@ -180,6 +205,7 @@
             ((System.ComponentModel.ISupportInitialize)dgvProperties).BeginInit();
             pnlDashBoard.SuspendLayout();
             pnlRentPayments.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
             panel5.SuspendLayout();
             panel4.SuspendLayout();
             panel2.SuspendLayout();
@@ -193,6 +219,12 @@
             pnlOccupancy.SuspendLayout();
             pnlTotalUnits.SuspendLayout();
             pnlExpenses.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvExpensesRecords).BeginInit();
+            pnlSearchExpense.SuspendLayout();
+            pnlUtilitiesRecords.SuspendLayout();
+            pnlSecurityRecords.SuspendLayout();
+            pnlInsuranceRecords.SuspendLayout();
+            pnlMaintenanceRecord.SuspendLayout();
             pnlMaintenance.SuspendLayout();
             pnlActiveLeases.SuspendLayout();
             pnlExpiredLeases.SuspendLayout();
@@ -200,13 +232,11 @@
             pnlSearchLeases.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvLeases).BeginInit();
             pnlLeases.SuspendLayout();
-            pnlMaintenanceRecord.SuspendLayout();
-            pnlInsuranceRecords.SuspendLayout();
-            pnlSecurityRecords.SuspendLayout();
-            pnlUtilitiesRecords.SuspendLayout();
-            pnlSearchExpense.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dgvExpensesRecords).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
+            panel6.SuspendLayout();
+            panel7.SuspendLayout();
+            panel8.SuspendLayout();
+            pnlSearchBar.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvMaintenanceRecords).BeginInit();
             SuspendLayout();
             // 
             // pnlMainForm
@@ -224,10 +254,9 @@
             pnlMainForm.Controls.Add(lblLogo);
             pnlMainForm.Dock = DockStyle.Left;
             pnlMainForm.Location = new Point(0, 0);
-            pnlMainForm.Margin = new Padding(3, 2, 3, 2);
-            pnlMainForm.MaximumSize = new Size(210, 0);
+            pnlMainForm.MaximumSize = new Size(240, 0);
             pnlMainForm.Name = "pnlMainForm";
-            pnlMainForm.Size = new Size(192, 520);
+            pnlMainForm.Size = new Size(219, 693);
             pnlMainForm.TabIndex = 0;
             pnlMainForm.Paint += pnlMainForm_Paint;
             // 
@@ -237,20 +266,19 @@
             pnlUserLoginInfo.Controls.Add(btnLogOut);
             pnlUserLoginInfo.Controls.Add(lblRole);
             pnlUserLoginInfo.Dock = DockStyle.Bottom;
-            pnlUserLoginInfo.Location = new Point(0, 460);
-            pnlUserLoginInfo.Margin = new Padding(3, 2, 3, 2);
-            pnlUserLoginInfo.MaximumSize = new Size(0, 60);
+            pnlUserLoginInfo.Location = new Point(0, 613);
+            pnlUserLoginInfo.MaximumSize = new Size(0, 80);
             pnlUserLoginInfo.Name = "pnlUserLoginInfo";
-            pnlUserLoginInfo.Size = new Size(192, 60);
+            pnlUserLoginInfo.Size = new Size(219, 80);
             pnlUserLoginInfo.TabIndex = 10;
             // 
             // lblUserName
             // 
             lblUserName.AutoSize = true;
             lblUserName.ForeColor = SystemColors.ButtonFace;
-            lblUserName.Location = new Point(87, 6);
+            lblUserName.Location = new Point(99, 8);
             lblUserName.Name = "lblUserName";
-            lblUserName.Size = new Size(38, 15);
+            lblUserName.Size = new Size(50, 20);
             lblUserName.TabIndex = 2;
             lblUserName.Text = "label1";
             lblUserName.Click += lblUserName_Click;
@@ -259,10 +287,9 @@
             // 
             btnLogOut.BackColor = Color.Red;
             btnLogOut.ForeColor = Color.White;
-            btnLogOut.Location = new Point(34, 29);
-            btnLogOut.Margin = new Padding(3, 2, 3, 2);
+            btnLogOut.Location = new Point(39, 39);
             btnLogOut.Name = "btnLogOut";
-            btnLogOut.Size = new Size(82, 22);
+            btnLogOut.Size = new Size(94, 29);
             btnLogOut.TabIndex = 1;
             btnLogOut.Text = "Log out";
             btnLogOut.UseVisualStyleBackColor = false;
@@ -272,9 +299,9 @@
             // 
             lblRole.AutoSize = true;
             lblRole.ForeColor = Color.AliceBlue;
-            lblRole.Location = new Point(19, 5);
+            lblRole.Location = new Point(22, 7);
             lblRole.Name = "lblRole";
-            lblRole.Size = new Size(30, 15);
+            lblRole.Size = new Size(39, 20);
             lblRole.TabIndex = 0;
             lblRole.Text = "Role";
             // 
@@ -282,10 +309,9 @@
             // 
             btnMaintenance.FlatStyle = FlatStyle.Flat;
             btnMaintenance.ForeColor = Color.White;
-            btnMaintenance.Location = new Point(9, 358);
-            btnMaintenance.Margin = new Padding(3, 2, 3, 2);
+            btnMaintenance.Location = new Point(10, 477);
             btnMaintenance.Name = "btnMaintenance";
-            btnMaintenance.Size = new Size(184, 30);
+            btnMaintenance.Size = new Size(210, 40);
             btnMaintenance.TabIndex = 9;
             btnMaintenance.Text = "🔧 Maintenance";
             btnMaintenance.TextAlign = ContentAlignment.MiddleLeft;
@@ -296,10 +322,9 @@
             // 
             btnExpenses.FlatStyle = FlatStyle.Flat;
             btnExpenses.ForeColor = Color.White;
-            btnExpenses.Location = new Point(9, 318);
-            btnExpenses.Margin = new Padding(3, 2, 3, 2);
+            btnExpenses.Location = new Point(10, 424);
             btnExpenses.Name = "btnExpenses";
-            btnExpenses.Size = new Size(184, 30);
+            btnExpenses.Size = new Size(210, 40);
             btnExpenses.TabIndex = 8;
             btnExpenses.Text = "📊 Expenses";
             btnExpenses.TextAlign = ContentAlignment.MiddleLeft;
@@ -310,10 +335,9 @@
             // 
             btnRentPayments.FlatStyle = FlatStyle.Flat;
             btnRentPayments.ForeColor = Color.White;
-            btnRentPayments.Location = new Point(9, 278);
-            btnRentPayments.Margin = new Padding(3, 2, 3, 2);
+            btnRentPayments.Location = new Point(10, 371);
             btnRentPayments.Name = "btnRentPayments";
-            btnRentPayments.Size = new Size(184, 30);
+            btnRentPayments.Size = new Size(210, 40);
             btnRentPayments.TabIndex = 7;
             btnRentPayments.Text = "💰 Rent Payments";
             btnRentPayments.TextAlign = ContentAlignment.MiddleLeft;
@@ -324,10 +348,9 @@
             // 
             btnLeases.FlatStyle = FlatStyle.Flat;
             btnLeases.ForeColor = Color.White;
-            btnLeases.Location = new Point(9, 237);
-            btnLeases.Margin = new Padding(3, 2, 3, 2);
+            btnLeases.Location = new Point(10, 316);
             btnLeases.Name = "btnLeases";
-            btnLeases.Size = new Size(184, 30);
+            btnLeases.Size = new Size(210, 40);
             btnLeases.TabIndex = 6;
             btnLeases.Text = "📄 Leases";
             btnLeases.TextAlign = ContentAlignment.MiddleLeft;
@@ -338,10 +361,9 @@
             // 
             btnTenants.FlatStyle = FlatStyle.Flat;
             btnTenants.ForeColor = Color.White;
-            btnTenants.Location = new Point(9, 196);
-            btnTenants.Margin = new Padding(3, 2, 3, 2);
+            btnTenants.Location = new Point(10, 261);
             btnTenants.Name = "btnTenants";
-            btnTenants.Size = new Size(184, 30);
+            btnTenants.Size = new Size(210, 40);
             btnTenants.TabIndex = 5;
             btnTenants.Text = " \t👤 Tenants";
             btnTenants.TextAlign = ContentAlignment.MiddleLeft;
@@ -352,10 +374,9 @@
             // 
             btnRentalUnits.FlatStyle = FlatStyle.Flat;
             btnRentalUnits.ForeColor = Color.White;
-            btnRentalUnits.Location = new Point(9, 156);
-            btnRentalUnits.Margin = new Padding(3, 2, 3, 2);
+            btnRentalUnits.Location = new Point(10, 208);
             btnRentalUnits.Name = "btnRentalUnits";
-            btnRentalUnits.Size = new Size(184, 30);
+            btnRentalUnits.Size = new Size(210, 40);
             btnRentalUnits.TabIndex = 4;
             btnRentalUnits.Text = "📋 Rental Units";
             btnRentalUnits.TextAlign = ContentAlignment.MiddleLeft;
@@ -367,10 +388,9 @@
             btnProperties.BackColor = Color.FromArgb(10, 22, 40);
             btnProperties.FlatStyle = FlatStyle.Flat;
             btnProperties.ForeColor = Color.White;
-            btnProperties.Location = new Point(9, 116);
-            btnProperties.Margin = new Padding(3, 2, 3, 2);
+            btnProperties.Location = new Point(10, 155);
             btnProperties.Name = "btnProperties";
-            btnProperties.Size = new Size(184, 30);
+            btnProperties.Size = new Size(210, 40);
             btnProperties.TabIndex = 3;
             btnProperties.Text = "🏢 Properties";
             btnProperties.TextAlign = ContentAlignment.MiddleLeft;
@@ -381,10 +401,9 @@
             // 
             btnDashboard.FlatStyle = FlatStyle.Flat;
             btnDashboard.ForeColor = Color.White;
-            btnDashboard.Location = new Point(9, 75);
-            btnDashboard.Margin = new Padding(3, 2, 3, 2);
+            btnDashboard.Location = new Point(10, 100);
             btnDashboard.Name = "btnDashboard";
-            btnDashboard.Size = new Size(184, 30);
+            btnDashboard.Size = new Size(210, 40);
             btnDashboard.TabIndex = 2;
             btnDashboard.Text = "🏠 Dashboard";
             btnDashboard.TextAlign = ContentAlignment.MiddleLeft;
@@ -396,9 +415,9 @@
             lblLogo.AutoSize = true;
             lblLogo.Font = new Font("Segoe UI Semibold", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblLogo.ForeColor = Color.White;
-            lblLogo.Location = new Point(19, 20);
+            lblLogo.Location = new Point(22, 27);
             lblLogo.Name = "lblLogo";
-            lblLogo.Size = new Size(148, 32);
+            lblLogo.Size = new Size(187, 41);
             lblLogo.TabIndex = 1;
             lblLogo.Text = "🏨RentFlow";
             // 
@@ -412,10 +431,9 @@
             pnlContent.Controls.Add(lblProperties);
             pnlContent.Controls.Add(dgvProperties);
             pnlContent.Dock = DockStyle.Right;
-            pnlContent.Location = new Point(184, 0);
-            pnlContent.Margin = new Padding(3, 2, 3, 2);
+            pnlContent.Location = new Point(211, 0);
             pnlContent.Name = "pnlContent";
-            pnlContent.Size = new Size(1015, 520);
+            pnlContent.Size = new Size(1159, 693);
             pnlContent.TabIndex = 1;
             pnlContent.Paint += pnlMain_Paint;
             // 
@@ -427,20 +445,18 @@
             pnlSearch.Controls.Add(button1);
             pnlSearch.Controls.Add(cmbFilter);
             pnlSearch.Controls.Add(txtSearch);
-            pnlSearch.Location = new Point(26, 146);
-            pnlSearch.Margin = new Padding(3, 2, 3, 2);
+            pnlSearch.Location = new Point(30, 195);
             pnlSearch.Name = "pnlSearch";
-            pnlSearch.Size = new Size(924, 38);
+            pnlSearch.Size = new Size(1055, 49);
             pnlSearch.TabIndex = 3;
             // 
             // btnPrint
             // 
             btnPrint.FlatStyle = FlatStyle.System;
             btnPrint.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnPrint.Location = new Point(835, 8);
-            btnPrint.Margin = new Padding(3, 2, 3, 2);
+            btnPrint.Location = new Point(954, 11);
             btnPrint.Name = "btnPrint";
-            btnPrint.Size = new Size(82, 22);
+            btnPrint.Size = new Size(94, 29);
             btnPrint.TabIndex = 3;
             btnPrint.Text = "Print";
             btnPrint.UseVisualStyleBackColor = true;
@@ -449,10 +465,9 @@
             // 
             button1.FlatStyle = FlatStyle.System;
             button1.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button1.Location = new Point(750, 8);
-            button1.Margin = new Padding(3, 2, 3, 2);
+            button1.Location = new Point(857, 11);
             button1.Name = "button1";
-            button1.Size = new Size(82, 22);
+            button1.Size = new Size(94, 29);
             button1.TabIndex = 2;
             button1.Text = "Export";
             button1.UseVisualStyleBackColor = true;
@@ -461,20 +476,18 @@
             // 
             cmbFilter.FormattingEnabled = true;
             cmbFilter.Items.AddRange(new object[] { "All", "", "Active", "", "Inactive" });
-            cmbFilter.Location = new Point(329, 8);
-            cmbFilter.Margin = new Padding(3, 2, 3, 2);
+            cmbFilter.Location = new Point(376, 11);
             cmbFilter.Name = "cmbFilter";
-            cmbFilter.Size = new Size(97, 23);
+            cmbFilter.Size = new Size(110, 28);
             cmbFilter.TabIndex = 1;
             cmbFilter.SelectedIndexChanged += cmbFilter_SelectedIndexChanged;
             // 
             // txtSearch
             // 
             txtSearch.ForeColor = Color.LightGray;
-            txtSearch.Location = new Point(20, 9);
-            txtSearch.Margin = new Padding(3, 2, 3, 2);
+            txtSearch.Location = new Point(23, 12);
             txtSearch.Name = "txtSearch";
-            txtSearch.Size = new Size(294, 23);
+            txtSearch.Size = new Size(335, 27);
             txtSearch.TabIndex = 0;
             txtSearch.Text = "Search properties";
             txtSearch.TextChanged += txtSearch_TextChanged;
@@ -484,10 +497,9 @@
             btnAddProperty.BackColor = Color.DarkBlue;
             btnAddProperty.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnAddProperty.ForeColor = Color.White;
-            btnAddProperty.Location = new Point(805, 90);
-            btnAddProperty.Margin = new Padding(3, 2, 3, 2);
+            btnAddProperty.Location = new Point(920, 120);
             btnAddProperty.Name = "btnAddProperty";
-            btnAddProperty.Size = new Size(144, 34);
+            btnAddProperty.Size = new Size(165, 45);
             btnAddProperty.TabIndex = 2;
             btnAddProperty.Text = " +Add Property";
             btnAddProperty.UseVisualStyleBackColor = false;
@@ -498,9 +510,9 @@
             lblPropertyCount.AutoSize = true;
             lblPropertyCount.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblPropertyCount.ForeColor = Color.FromArgb(64, 64, 64);
-            lblPropertyCount.Location = new Point(16, 58);
+            lblPropertyCount.Location = new Point(18, 77);
             lblPropertyCount.Name = "lblPropertyCount";
-            lblPropertyCount.Size = new Size(154, 21);
+            lblPropertyCount.Size = new Size(194, 28);
             lblPropertyCount.TabIndex = 1;
             lblPropertyCount.Text = "4 Properties in total";
             // 
@@ -508,9 +520,9 @@
             // 
             lblProperties.AutoSize = true;
             lblProperties.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblProperties.Location = new Point(16, 27);
+            lblProperties.Location = new Point(18, 36);
             lblProperties.Name = "lblProperties";
-            lblProperties.Size = new Size(133, 32);
+            lblProperties.Size = new Size(164, 41);
             lblProperties.TabIndex = 0;
             lblProperties.Text = "Properties";
             // 
@@ -522,13 +534,12 @@
             dgvProperties.BackgroundColor = Color.White;
             dgvProperties.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvProperties.Columns.AddRange(new DataGridViewColumn[] { PropertyID, PropertyName, Address, TotalUnits, Occupied, Available, Status, Actions });
-            dgvProperties.Location = new Point(26, 232);
-            dgvProperties.Margin = new Padding(3, 2, 3, 2);
+            dgvProperties.Location = new Point(30, 309);
             dgvProperties.MultiSelect = false;
             dgvProperties.Name = "dgvProperties";
             dgvProperties.ReadOnly = true;
             dgvProperties.RowHeadersWidth = 51;
-            dgvProperties.Size = new Size(923, 308);
+            dgvProperties.Size = new Size(1055, 411);
             dgvProperties.TabIndex = 4;
             // 
             // PropertyID
@@ -592,41 +603,20 @@
             pnlDashBoard.BackColor = Color.WhiteSmoke;
             pnlDashBoard.BorderStyle = BorderStyle.Fixed3D;
             pnlDashBoard.Controls.Add(lblDashboardHeader);
-            pnlDashBoard.Location = new Point(198, 0);
-            pnlDashBoard.Margin = new Padding(3, 2, 3, 2);
+            pnlDashBoard.Location = new Point(226, 0);
             pnlDashBoard.Name = "pnlDashBoard";
-            pnlDashBoard.Size = new Size(1009, 578);
+            pnlDashBoard.Size = new Size(1153, 769);
             pnlDashBoard.TabIndex = 2;
             // 
             // lblDashboardHeader
             // 
             lblDashboardHeader.AutoSize = true;
             lblDashboardHeader.Font = new Font("Segoe UI", 20F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblDashboardHeader.Location = new Point(31, 33);
+            lblDashboardHeader.Location = new Point(35, 44);
             lblDashboardHeader.Name = "lblDashboardHeader";
-            lblDashboardHeader.Size = new Size(157, 37);
+            lblDashboardHeader.Size = new Size(193, 46);
             lblDashboardHeader.TabIndex = 0;
             lblDashboardHeader.Text = "Dashboard";
-            // 
-            // pnlLeases
-            // 
-            pnlLeases.Controls.Add(lblLeasesTopic);
-            pnlLeases.Location = new Point(192, 0);
-            pnlLeases.Margin = new Padding(3, 2, 3, 2);
-            pnlLeases.Name = "pnlLeases";
-            pnlLeases.Size = new Size(1014, 520);
-            pnlLeases.TabIndex = 1;
-            pnlLeases.Visible = false;
-            // 
-            // lblLeasesTopic
-            // 
-            lblLeasesTopic.AutoSize = true;
-            lblLeasesTopic.Font = new Font("Segoe UI", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblLeasesTopic.Location = new Point(26, 38);
-            lblLeasesTopic.Name = "lblLeasesTopic";
-            lblLeasesTopic.Size = new Size(100, 37);
-            lblLeasesTopic.TabIndex = 0;
-            lblLeasesTopic.Text = "Leases";
             // 
             // pnlRentPayments
             // 
@@ -638,27 +628,131 @@
             pnlRentPayments.Controls.Add(panel3);
             pnlRentPayments.Controls.Add(panel1);
             pnlRentPayments.Controls.Add(lblRentTopic);
-            pnlRentPayments.Location = new Point(192, 0);
-            pnlRentPayments.Margin = new Padding(3, 2, 3, 2);
+            pnlRentPayments.Location = new Point(219, 0);
             pnlRentPayments.Name = "pnlRentPayments";
-            pnlRentPayments.Size = new Size(1014, 520);
+            pnlRentPayments.Size = new Size(1159, 693);
             pnlRentPayments.TabIndex = 1;
+            // 
+            // dataGridView2
+            // 
+            dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView2.Columns.AddRange(new DataGridViewColumn[] { TENANT2, PROPERTY2, UNITS, RENTDUE, AMOUNTPAID, OUTSTANDINGS, PAYMENTDATE, RECEIPTN0, STATUSES });
+            dataGridView2.Location = new Point(11, 424);
+            dataGridView2.Margin = new Padding(3, 4, 3, 4);
+            dataGridView2.Name = "dataGridView2";
+            dataGridView2.RowHeadersWidth = 51;
+            dataGridView2.Size = new Size(1032, 200);
+            dataGridView2.TabIndex = 6;
+            // 
+            // TENANT2
+            // 
+            TENANT2.HeaderText = "TENANT";
+            TENANT2.MinimumWidth = 6;
+            TENANT2.Name = "TENANT2";
+            TENANT2.Width = 125;
+            // 
+            // PROPERTY2
+            // 
+            PROPERTY2.HeaderText = "PROPERTY";
+            PROPERTY2.MinimumWidth = 6;
+            PROPERTY2.Name = "PROPERTY2";
+            PROPERTY2.Width = 125;
+            // 
+            // UNITS
+            // 
+            UNITS.HeaderText = "UNIT";
+            UNITS.MinimumWidth = 6;
+            UNITS.Name = "UNITS";
+            UNITS.Width = 125;
+            // 
+            // RENTDUE
+            // 
+            RENTDUE.HeaderText = "RENT DUE";
+            RENTDUE.MinimumWidth = 6;
+            RENTDUE.Name = "RENTDUE";
+            RENTDUE.Width = 125;
+            // 
+            // AMOUNTPAID
+            // 
+            AMOUNTPAID.HeaderText = "AMOUNT PAID";
+            AMOUNTPAID.MinimumWidth = 6;
+            AMOUNTPAID.Name = "AMOUNTPAID";
+            AMOUNTPAID.Width = 125;
+            // 
+            // OUTSTANDINGS
+            // 
+            OUTSTANDINGS.HeaderText = "OUTSTANDING";
+            OUTSTANDINGS.MinimumWidth = 6;
+            OUTSTANDINGS.Name = "OUTSTANDINGS";
+            OUTSTANDINGS.Width = 125;
+            // 
+            // PAYMENTDATE
+            // 
+            PAYMENTDATE.HeaderText = "PAYMENT DUE";
+            PAYMENTDATE.MinimumWidth = 6;
+            PAYMENTDATE.Name = "PAYMENTDATE";
+            PAYMENTDATE.Width = 125;
+            // 
+            // RECEIPTN0
+            // 
+            RECEIPTN0.HeaderText = "RECEIPT N0";
+            RECEIPTN0.MinimumWidth = 6;
+            RECEIPTN0.Name = "RECEIPTN0";
+            RECEIPTN0.Width = 125;
+            // 
+            // STATUSES
+            // 
+            STATUSES.HeaderText = "STATUS";
+            STATUSES.MinimumWidth = 6;
+            STATUSES.Name = "STATUSES";
+            STATUSES.Width = 125;
             // 
             // panel5
             // 
             panel5.Controls.Add(btnGenerateReceipts);
             panel5.Controls.Add(cbxStatus);
             panel5.Controls.Add(textBox1);
-            panel5.Location = new Point(8, 207);
+            panel5.Location = new Point(9, 276);
+            panel5.Margin = new Padding(3, 4, 3, 4);
             panel5.Name = "panel5";
-            panel5.Size = new Size(987, 60);
+            panel5.Size = new Size(1128, 80);
             panel5.TabIndex = 5;
+            // 
+            // btnGenerateReceipts
+            // 
+            btnGenerateReceipts.BackColor = SystemColors.ActiveBorder;
+            btnGenerateReceipts.Location = new Point(495, 4);
+            btnGenerateReceipts.Margin = new Padding(3, 4, 3, 4);
+            btnGenerateReceipts.Name = "btnGenerateReceipts";
+            btnGenerateReceipts.Size = new Size(135, 72);
+            btnGenerateReceipts.TabIndex = 2;
+            btnGenerateReceipts.Text = "Generate Receipts";
+            btnGenerateReceipts.UseVisualStyleBackColor = false;
+            // 
+            // cbxStatus
+            // 
+            cbxStatus.FormattingEnabled = true;
+            cbxStatus.Items.AddRange(new object[] { "Paid", "Outstanding", "Late" });
+            cbxStatus.Location = new Point(322, 23);
+            cbxStatus.Margin = new Padding(3, 4, 3, 4);
+            cbxStatus.Name = "cbxStatus";
+            cbxStatus.Size = new Size(138, 28);
+            cbxStatus.TabIndex = 1;
+            // 
+            // textBox1
+            // 
+            textBox1.Location = new Point(5, 23);
+            textBox1.Margin = new Padding(3, 4, 3, 4);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(295, 27);
+            textBox1.TabIndex = 0;
             // 
             // btnRecordPayment
             // 
-            btnRecordPayment.Location = new Point(857, 28);
+            btnRecordPayment.Location = new Point(979, 37);
+            btnRecordPayment.Margin = new Padding(3, 4, 3, 4);
             btnRecordPayment.Name = "btnRecordPayment";
-            btnRecordPayment.Size = new Size(138, 30);
+            btnRecordPayment.Size = new Size(158, 40);
             btnRecordPayment.TabIndex = 4;
             btnRecordPayment.Text = "Record Payment";
             btnRecordPayment.UseVisualStyleBackColor = true;
@@ -667,18 +761,27 @@
             // 
             panel4.Controls.Add(lblExpectedRentDisplay);
             panel4.Controls.Add(lblExpectedRent);
-            panel4.Location = new Point(6, 81);
+            panel4.Location = new Point(7, 108);
+            panel4.Margin = new Padding(3, 4, 3, 4);
             panel4.Name = "panel4";
-            panel4.Size = new Size(200, 100);
+            panel4.Size = new Size(229, 133);
             panel4.TabIndex = 3;
+            // 
+            // lblExpectedRentDisplay
+            // 
+            lblExpectedRentDisplay.AutoSize = true;
+            lblExpectedRentDisplay.Location = new Point(11, 64);
+            lblExpectedRentDisplay.Name = "lblExpectedRentDisplay";
+            lblExpectedRentDisplay.Size = new Size(0, 20);
+            lblExpectedRentDisplay.TabIndex = 1;
             // 
             // lblExpectedRent
             // 
             lblExpectedRent.AutoSize = true;
             lblExpectedRent.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblExpectedRent.Location = new Point(6, 8);
+            lblExpectedRent.Location = new Point(7, 11);
             lblExpectedRent.Name = "lblExpectedRent";
-            lblExpectedRent.Size = new Size(139, 25);
+            lblExpectedRent.Size = new Size(176, 32);
             lblExpectedRent.TabIndex = 0;
             lblExpectedRent.Text = "Expected Rent";
             // 
@@ -686,18 +789,27 @@
             // 
             panel2.Controls.Add(lblOutstandingRentDisplay);
             panel2.Controls.Add(lblOutstandingRent);
-            panel2.Location = new Point(534, 81);
+            panel2.Location = new Point(610, 108);
+            panel2.Margin = new Padding(3, 4, 3, 4);
             panel2.Name = "panel2";
-            panel2.Size = new Size(200, 100);
+            panel2.Size = new Size(229, 133);
             panel2.TabIndex = 2;
+            // 
+            // lblOutstandingRentDisplay
+            // 
+            lblOutstandingRentDisplay.AutoSize = true;
+            lblOutstandingRentDisplay.Location = new Point(3, 64);
+            lblOutstandingRentDisplay.Name = "lblOutstandingRentDisplay";
+            lblOutstandingRentDisplay.Size = new Size(0, 20);
+            lblOutstandingRentDisplay.TabIndex = 3;
             // 
             // lblOutstandingRent
             // 
             lblOutstandingRent.AutoSize = true;
             lblOutstandingRent.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblOutstandingRent.Location = new Point(3, 8);
+            lblOutstandingRent.Location = new Point(3, 11);
             lblOutstandingRent.Name = "lblOutstandingRent";
-            lblOutstandingRent.Size = new Size(169, 25);
+            lblOutstandingRent.Size = new Size(215, 32);
             lblOutstandingRent.TabIndex = 2;
             lblOutstandingRent.Text = "Outstanding Rent";
             // 
@@ -705,18 +817,27 @@
             // 
             panel3.Controls.Add(lblLatePaymentDisplay);
             panel3.Controls.Add(lblLatePayment);
-            panel3.Location = new Point(795, 81);
+            panel3.Location = new Point(909, 108);
+            panel3.Margin = new Padding(3, 4, 3, 4);
             panel3.Name = "panel3";
-            panel3.Size = new Size(200, 100);
+            panel3.Size = new Size(229, 133);
             panel3.TabIndex = 2;
+            // 
+            // lblLatePaymentDisplay
+            // 
+            lblLatePaymentDisplay.AutoSize = true;
+            lblLatePaymentDisplay.Location = new Point(11, 64);
+            lblLatePaymentDisplay.Name = "lblLatePaymentDisplay";
+            lblLatePaymentDisplay.Size = new Size(0, 20);
+            lblLatePaymentDisplay.TabIndex = 2;
             // 
             // lblLatePayment
             // 
             lblLatePayment.AutoSize = true;
             lblLatePayment.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblLatePayment.Location = new Point(3, 8);
+            lblLatePayment.Location = new Point(3, 11);
             lblLatePayment.Name = "lblLatePayment";
-            lblLatePayment.Size = new Size(132, 25);
+            lblLatePayment.Size = new Size(167, 32);
             lblLatePayment.TabIndex = 1;
             lblLatePayment.Text = "Late Payment";
             // 
@@ -724,18 +845,27 @@
             // 
             panel1.Controls.Add(lblCollectedRentDisplay);
             panel1.Controls.Add(lblCollectedRent);
-            panel1.Location = new Point(267, 81);
+            panel1.Location = new Point(305, 108);
+            panel1.Margin = new Padding(3, 4, 3, 4);
             panel1.Name = "panel1";
-            panel1.Size = new Size(200, 100);
+            panel1.Size = new Size(229, 133);
             panel1.TabIndex = 1;
+            // 
+            // lblCollectedRentDisplay
+            // 
+            lblCollectedRentDisplay.AutoSize = true;
+            lblCollectedRentDisplay.Location = new Point(5, 64);
+            lblCollectedRentDisplay.Name = "lblCollectedRentDisplay";
+            lblCollectedRentDisplay.Size = new Size(0, 20);
+            lblCollectedRentDisplay.TabIndex = 4;
             // 
             // lblCollectedRent
             // 
             lblCollectedRent.AutoSize = true;
             lblCollectedRent.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblCollectedRent.Location = new Point(4, 8);
+            lblCollectedRent.Location = new Point(5, 11);
             lblCollectedRent.Name = "lblCollectedRent";
-            lblCollectedRent.Size = new Size(140, 25);
+            lblCollectedRent.Size = new Size(179, 32);
             lblCollectedRent.TabIndex = 3;
             lblCollectedRent.Text = "Collected Rent";
             // 
@@ -743,9 +873,9 @@
             // 
             lblRentTopic.AutoSize = true;
             lblRentTopic.Font = new Font("Segoe UI", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblRentTopic.Location = new Point(18, 40);
+            lblRentTopic.Location = new Point(21, 53);
             lblRentTopic.Name = "lblRentTopic";
-            lblRentTopic.Size = new Size(208, 37);
+            lblRentTopic.Size = new Size(256, 46);
             lblRentTopic.TabIndex = 0;
             lblRentTopic.Text = "Rent Payments";
             // 
@@ -756,10 +886,9 @@
             pnlTenants.Controls.Add(lblRegisteredTenants);
             pnlTenants.Controls.Add(lblTenants);
             pnlTenants.Controls.Add(pnlFilterBar);
-            pnlTenants.Location = new Point(192, 0);
-            pnlTenants.Margin = new Padding(3, 2, 3, 2);
+            pnlTenants.Location = new Point(219, 0);
             pnlTenants.Name = "pnlTenants";
-            pnlTenants.Size = new Size(1014, 549);
+            pnlTenants.Size = new Size(1159, 732);
             pnlTenants.TabIndex = 17;
             // 
             // btnAddTenants
@@ -767,10 +896,9 @@
             btnAddTenants.BackColor = Color.DarkBlue;
             btnAddTenants.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnAddTenants.ForeColor = Color.White;
-            btnAddTenants.Location = new Point(774, 45);
-            btnAddTenants.Margin = new Padding(3, 2, 3, 2);
+            btnAddTenants.Location = new Point(885, 60);
             btnAddTenants.Name = "btnAddTenants";
-            btnAddTenants.Size = new Size(155, 35);
+            btnAddTenants.Size = new Size(177, 47);
             btnAddTenants.TabIndex = 4;
             btnAddTenants.Text = "+Add Tenants";
             btnAddTenants.UseVisualStyleBackColor = false;
@@ -779,14 +907,10 @@
             // 
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Tenants, Contact, Properties, Unit, Lease_Status, Outstanding, Action });
-            dataGridView1.Location = new Point(508, 4);
-            dataGridView1.Margin = new Padding(3, 2, 3, 2);
-            dataGridView1.Location = new Point(31, 224);
-            dataGridView1.Margin = new Padding(3, 2, 3, 2);
+            dataGridView1.Location = new Point(35, 299);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.Size = new Size(335, 545);
-            dataGridView1.Size = new Size(812, 325);
+            dataGridView1.Size = new Size(928, 433);
             dataGridView1.TabIndex = 3;
             // 
             // Tenants
@@ -841,18 +965,18 @@
             // lblRegisteredTenants
             // 
             lblRegisteredTenants.AutoSize = true;
-            lblRegisteredTenants.Location = new Point(18, 48);
+            lblRegisteredTenants.Location = new Point(21, 64);
             lblRegisteredTenants.Name = "lblRegisteredTenants";
-            lblRegisteredTenants.Size = new Size(0, 15);
+            lblRegisteredTenants.Size = new Size(0, 20);
             lblRegisteredTenants.TabIndex = 1;
             // 
             // lblTenants
             // 
             lblTenants.AutoSize = true;
             lblTenants.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblTenants.Location = new Point(18, 15);
+            lblTenants.Location = new Point(21, 20);
             lblTenants.Name = "lblTenants";
-            lblTenants.Size = new Size(102, 32);
+            lblTenants.Size = new Size(126, 41);
             lblTenants.TabIndex = 0;
             lblTenants.Text = "Tenants";
             // 
@@ -863,10 +987,9 @@
             pnlFilterBar.Controls.Add(cmbStatuses);
             pnlFilterBar.Controls.Add(cmbProperties);
             pnlFilterBar.Controls.Add(txtSearchTenants);
-            pnlFilterBar.Location = new Point(28, 118);
-            pnlFilterBar.Margin = new Padding(3, 2, 3, 2);
+            pnlFilterBar.Location = new Point(32, 157);
             pnlFilterBar.Name = "pnlFilterBar";
-            pnlFilterBar.Size = new Size(901, 49);
+            pnlFilterBar.Size = new Size(1029, 64);
             pnlFilterBar.TabIndex = 2;
             // 
             // cmbStatuses
@@ -874,29 +997,26 @@
             cmbStatuses.FlatStyle = FlatStyle.System;
             cmbStatuses.FormattingEnabled = true;
             cmbStatuses.Items.AddRange(new object[] { "All Statuses", "Active", "Expiring Soon" });
-            cmbStatuses.Location = new Point(582, 13);
-            cmbStatuses.Margin = new Padding(3, 2, 3, 2);
+            cmbStatuses.Location = new Point(665, 17);
             cmbStatuses.Name = "cmbStatuses";
-            cmbStatuses.Size = new Size(133, 23);
+            cmbStatuses.Size = new Size(151, 28);
             cmbStatuses.TabIndex = 2;
             // 
             // cmbProperties
             // 
             cmbProperties.FlatStyle = FlatStyle.System;
             cmbProperties.FormattingEnabled = true;
-            cmbProperties.Location = new Point(419, 13);
-            cmbProperties.Margin = new Padding(3, 2, 3, 2);
+            cmbProperties.Location = new Point(479, 17);
             cmbProperties.Name = "cmbProperties";
-            cmbProperties.Size = new Size(133, 23);
+            cmbProperties.Size = new Size(151, 28);
             cmbProperties.TabIndex = 1;
             // 
             // txtSearchTenants
             // 
-            txtSearchTenants.Location = new Point(30, 14);
-            txtSearchTenants.Margin = new Padding(3, 2, 3, 2);
+            txtSearchTenants.Location = new Point(34, 19);
             txtSearchTenants.Name = "txtSearchTenants";
             txtSearchTenants.PlaceholderText = "Search Tenants...";
-            txtSearchTenants.Size = new Size(266, 23);
+            txtSearchTenants.Size = new Size(303, 27);
             txtSearchTenants.TabIndex = 0;
             // 
             // pnlRentalUnit
@@ -907,36 +1027,34 @@
             pnlRentalUnit.Controls.Add(pnlTotalUnits);
             pnlRentalUnit.Controls.Add(btnAddUnit);
             pnlRentalUnit.Controls.Add(lblRentalUnit);
-            pnlRentalUnit.Location = new Point(202, 0);
-            pnlRentalUnit.Margin = new Padding(3, 2, 3, 2);
+            pnlRentalUnit.Location = new Point(231, 0);
             pnlRentalUnit.Name = "pnlRentalUnit";
-            pnlRentalUnit.Size = new Size(1004, 520);
+            pnlRentalUnit.Size = new Size(1147, 693);
             pnlRentalUnit.TabIndex = 5;
             // 
             // pnlAvailability
             // 
             pnlAvailability.Controls.Add(lblAvailableNum);
             pnlAvailability.Controls.Add(lblAvailable);
-            pnlAvailability.Location = new Point(287, 84);
-            pnlAvailability.Margin = new Padding(3, 2, 3, 2);
+            pnlAvailability.Location = new Point(328, 112);
             pnlAvailability.Name = "pnlAvailability";
-            pnlAvailability.Size = new Size(219, 94);
+            pnlAvailability.Size = new Size(250, 125);
             pnlAvailability.TabIndex = 3;
             // 
             // lblAvailableNum
             // 
             lblAvailableNum.AutoSize = true;
-            lblAvailableNum.Location = new Point(12, 35);
+            lblAvailableNum.Location = new Point(14, 47);
             lblAvailableNum.Name = "lblAvailableNum";
-            lblAvailableNum.Size = new Size(0, 15);
+            lblAvailableNum.Size = new Size(0, 20);
             lblAvailableNum.TabIndex = 2;
             // 
             // lblAvailable
             // 
             lblAvailable.AutoSize = true;
-            lblAvailable.Location = new Point(3, 8);
+            lblAvailable.Location = new Point(3, 11);
             lblAvailable.Name = "lblAvailable";
-            lblAvailable.Size = new Size(55, 15);
+            lblAvailable.Size = new Size(71, 20);
             lblAvailable.TabIndex = 0;
             lblAvailable.Text = "Available";
             // 
@@ -944,26 +1062,25 @@
             // 
             pnlOccupancy.Controls.Add(lblOccupiedNum);
             pnlOccupancy.Controls.Add(lblOccupied);
-            pnlOccupancy.Location = new Point(541, 86);
-            pnlOccupancy.Margin = new Padding(3, 2, 3, 2);
+            pnlOccupancy.Location = new Point(618, 115);
             pnlOccupancy.Name = "pnlOccupancy";
-            pnlOccupancy.Size = new Size(219, 94);
+            pnlOccupancy.Size = new Size(250, 125);
             pnlOccupancy.TabIndex = 3;
             // 
             // lblOccupiedNum
             // 
             lblOccupiedNum.AutoSize = true;
-            lblOccupiedNum.Location = new Point(22, 40);
+            lblOccupiedNum.Location = new Point(25, 53);
             lblOccupiedNum.Name = "lblOccupiedNum";
-            lblOccupiedNum.Size = new Size(0, 15);
+            lblOccupiedNum.Size = new Size(0, 20);
             lblOccupiedNum.TabIndex = 3;
             // 
             // lblOccupied
             // 
             lblOccupied.AutoSize = true;
-            lblOccupied.Location = new Point(3, 6);
+            lblOccupied.Location = new Point(3, 8);
             lblOccupied.Name = "lblOccupied";
-            lblOccupied.Size = new Size(58, 15);
+            lblOccupied.Size = new Size(72, 20);
             lblOccupied.TabIndex = 1;
             lblOccupied.Text = "Occupied";
             // 
@@ -971,27 +1088,25 @@
             // 
             pnlTotalUnits.Controls.Add(lblTotalUnitsNum);
             pnlTotalUnits.Controls.Add(lblTotalUnits);
-            pnlTotalUnits.Location = new Point(32, 84);
-            pnlTotalUnits.Margin = new Padding(3, 2, 3, 2);
+            pnlTotalUnits.Location = new Point(37, 112);
             pnlTotalUnits.Name = "pnlTotalUnits";
-            pnlTotalUnits.Size = new Size(219, 94);
+            pnlTotalUnits.Size = new Size(250, 125);
             pnlTotalUnits.TabIndex = 2;
             // 
             // lblTotalUnitsNum
             // 
             lblTotalUnitsNum.AutoSize = true;
-            lblTotalUnitsNum.Location = new Point(25, 34);
+            lblTotalUnitsNum.Location = new Point(29, 45);
             lblTotalUnitsNum.Name = "lblTotalUnitsNum";
-            lblTotalUnitsNum.Size = new Size(0, 15);
+            lblTotalUnitsNum.Size = new Size(0, 20);
             lblTotalUnitsNum.TabIndex = 1;
             // 
             // lblTotalUnits
             // 
             lblTotalUnits.AutoSize = true;
-            lblTotalUnits.Location = new Point(18, 8);
+            lblTotalUnits.Location = new Point(21, 11);
             lblTotalUnits.Name = "lblTotalUnits";
-            lblTotalUnits.Size = new Size(62, 15);
-            lblTotalUnits.Size = new Size(63, 15);
+            lblTotalUnits.Size = new Size(79, 20);
             lblTotalUnits.TabIndex = 0;
             lblTotalUnits.Text = "Total Units";
             // 
@@ -1000,10 +1115,9 @@
             btnAddUnit.BackColor = Color.RoyalBlue;
             btnAddUnit.FlatStyle = FlatStyle.Flat;
             btnAddUnit.ForeColor = Color.White;
-            btnAddUnit.Location = new Point(515, 31);
-            btnAddUnit.Margin = new Padding(3, 2, 3, 2);
+            btnAddUnit.Location = new Point(589, 41);
             btnAddUnit.Name = "btnAddUnit";
-            btnAddUnit.Size = new Size(136, 36);
+            btnAddUnit.Size = new Size(155, 48);
             btnAddUnit.TabIndex = 1;
             btnAddUnit.Text = "+ Add Unit";
             btnAddUnit.UseVisualStyleBackColor = false;
@@ -1013,9 +1127,9 @@
             lblRentalUnit.AutoSize = true;
             lblRentalUnit.Font = new Font("Segoe UI", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblRentalUnit.ForeColor = SystemColors.ActiveCaptionText;
-            lblRentalUnit.Location = new Point(31, 33);
+            lblRentalUnit.Location = new Point(35, 44);
             lblRentalUnit.Name = "lblRentalUnit";
-            lblRentalUnit.Size = new Size(161, 37);
+            lblRentalUnit.Size = new Size(199, 46);
             lblRentalUnit.TabIndex = 0;
             lblRentalUnit.Text = "Rental Unit";
             // 
@@ -1029,379 +1143,30 @@
             pnlExpenses.Controls.Add(pnlInsuranceRecords);
             pnlExpenses.Controls.Add(pnlMaintenanceRecord);
             pnlExpenses.Controls.Add(lblExpensesTopic);
-            pnlExpenses.Location = new Point(192, 0);
-            pnlExpenses.Margin = new Padding(3, 2, 3, 2);
+            pnlExpenses.Location = new Point(219, 0);
             pnlExpenses.Name = "pnlExpenses";
-            pnlExpenses.Size = new Size(1014, 520);
+            pnlExpenses.Size = new Size(1159, 693);
             pnlExpenses.TabIndex = 1;
             // 
-            // lblExpensesTopic
-            // 
-            lblExpensesTopic.AutoSize = true;
-            lblExpensesTopic.Font = new Font("Segoe UI", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblExpensesTopic.Location = new Point(17, 40);
-            lblExpensesTopic.Name = "lblExpensesTopic";
-            lblExpensesTopic.Size = new Size(133, 37);
-            lblExpensesTopic.TabIndex = 0;
-            lblExpensesTopic.Text = "Expenses";
-            // 
-            // pnlMaintenance
-            // 
-            pnlMaintenance.Controls.Add(lblMaintenanceTopic);
-            pnlMaintenance.Location = new Point(192, 0);
-            pnlMaintenance.Margin = new Padding(3, 2, 3, 2);
-            pnlMaintenance.Name = "pnlMaintenance";
-            pnlMaintenance.Size = new Size(1014, 520);
-            pnlMaintenance.TabIndex = 1;
-            // 
-            // lblMaintenanceTopic
-            // 
-            lblMaintenanceTopic.AutoSize = true;
-            lblMaintenanceTopic.Font = new Font("Segoe UI", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblMaintenanceTopic.Location = new Point(24, 28);
-            lblMaintenanceTopic.Name = "lblMaintenanceTopic";
-            lblMaintenanceTopic.Size = new Size(183, 37);
-            lblMaintenanceTopic.TabIndex = 0;
-            lblMaintenanceTopic.Text = "Maintenance";
-            // 
-            // lblLeasesTopic
-            // 
-            lblLeasesTopic.AutoSize = true;
-            lblLeasesTopic.Font = new Font("Segoe UI", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblLeasesTopic.Location = new Point(26, 38);
-            lblLeasesTopic.Name = "lblLeasesTopic";
-            lblLeasesTopic.Size = new Size(100, 37);
-            lblLeasesTopic.TabIndex = 0;
-            lblLeasesTopic.Text = "Leases";
-            // 
-            // pnlActiveLeases
-            // 
-            pnlActiveLeases.Controls.Add(lblActiveLeaseNum);
-            pnlActiveLeases.Controls.Add(lblActiveLeases);
-            pnlActiveLeases.Location = new Point(21, 110);
-            pnlActiveLeases.Name = "pnlActiveLeases";
-            pnlActiveLeases.Size = new Size(181, 64);
-            pnlActiveLeases.TabIndex = 1;
-            // 
-            // pnlExpiredLeases
-            // 
-            pnlExpiredLeases.Controls.Add(lblExpiredLeases);
-            pnlExpiredLeases.Controls.Add(lblExpiredLeasesNum);
-            pnlExpiredLeases.Location = new Point(208, 109);
-            pnlExpiredLeases.Name = "pnlExpiredLeases";
-            pnlExpiredLeases.Size = new Size(180, 65);
-            pnlExpiredLeases.TabIndex = 2;
-            // 
-            // pnlTerminatedLeases
-            // 
-            pnlTerminatedLeases.Controls.Add(lblTerminatedLeases);
-            pnlTerminatedLeases.Controls.Add(lblTerminatedLeasesNum);
-            pnlTerminatedLeases.Location = new Point(393, 110);
-            pnlTerminatedLeases.Name = "pnlTerminatedLeases";
-            pnlTerminatedLeases.Size = new Size(180, 65);
-            pnlTerminatedLeases.TabIndex = 3;
-            // 
-            // pnlSearchLeases
-            // 
-            pnlSearchLeases.Controls.Add(cmbAllStatus);
-            pnlSearchLeases.Controls.Add(txtSearchLeases);
-            pnlSearchLeases.Location = new Point(20, 187);
-            pnlSearchLeases.Name = "pnlSearchLeases";
-            pnlSearchLeases.Size = new Size(943, 58);
-            pnlSearchLeases.TabIndex = 4;
-            // 
-            // txtSearchLeases
-            // 
-            txtSearchLeases.Location = new Point(19, 16);
-            txtSearchLeases.Name = "txtSearchLeases";
-            txtSearchLeases.Size = new Size(349, 23);
-            txtSearchLeases.TabIndex = 0;
-            // 
-            // cmbAllStatus
-            // 
-            cmbAllStatus.FormattingEnabled = true;
-            cmbAllStatus.Items.AddRange(new object[] { "Active", "Expired", "Terminated" });
-            cmbAllStatus.Location = new Point(388, 19);
-            cmbAllStatus.Name = "cmbAllStatus";
-            cmbAllStatus.Size = new Size(295, 23);
-            cmbAllStatus.TabIndex = 1;
-            // 
-            // dgvLeases
-            // 
-            dgvLeases.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvLeases.Columns.AddRange(new DataGridViewColumn[] { LEASEID, TENANT, PROPERTY, NUNIT, STARTDATE, ENDDATE, MONTHLYRENT, LEASESTATUS, LEASEACTIONS });
-            dgvLeases.Location = new Point(19, 249);
-            dgvLeases.Name = "dgvLeases";
-            dgvLeases.Size = new Size(944, 268);
-            dgvLeases.TabIndex = 5;
-            // 
-            // LEASEACTIONS
-            // 
-            LEASEACTIONS.HeaderText = "LEASE ACTIONS";
-            LEASEACTIONS.Name = "LEASEACTIONS";
-            // 
-            // LEASESTATUS
-            // 
-            LEASESTATUS.HeaderText = "LEASE STATUS";
-            LEASESTATUS.Name = "LEASESTATUS";
-            // 
-            // MONTHLYRENT
-            // 
-            MONTHLYRENT.HeaderText = "MONTHLY RENT";
-            MONTHLYRENT.Name = "MONTHLYRENT";
-            // 
-            // ENDDATE
-            // 
-            ENDDATE.HeaderText = "END DATE";
-            ENDDATE.Name = "ENDDATE";
-            // 
-            // STARTDATE
-            // 
-            STARTDATE.HeaderText = "START DATE";
-            STARTDATE.Name = "STARTDATE";
-            // 
-            // NUNIT
-            // 
-            NUNIT.HeaderText = "Unit";
-            NUNIT.Name = "NUNIT";
-            // 
-            // PROPERTY
-            // 
-            PROPERTY.HeaderText = "PROPERTY";
-            PROPERTY.Name = "PROPERTY";
-            // 
-            // TENANT
-            // 
-            TENANT.HeaderText = "TENANT";
-            TENANT.Name = "TENANT";
-            // 
-            // LEASEID
-            // 
-            LEASEID.HeaderText = "LEASE ID";
-            LEASEID.Name = "LEASEID";
-            // 
-            // btnCreateLease
-            // 
-            btnCreateLease.Location = new Point(849, 39);
-            btnCreateLease.Name = "btnCreateLease";
-            btnCreateLease.Size = new Size(114, 33);
-            btnCreateLease.TabIndex = 6;
-            btnCreateLease.Text = "+ Create Lease";
-            btnCreateLease.UseVisualStyleBackColor = true;
-            // 
-            // pnlLeases
-            // 
-            pnlLeases.Controls.Add(btnCreateLease);
-            pnlLeases.Controls.Add(dgvLeases);
-            pnlLeases.Controls.Add(pnlSearchLeases);
-            pnlLeases.Controls.Add(pnlTerminatedLeases);
-            pnlLeases.Controls.Add(pnlExpiredLeases);
-            pnlLeases.Controls.Add(pnlActiveLeases);
-            pnlLeases.Controls.Add(lblLeasesTopic);
-            pnlLeases.Location = new Point(192, 0);
-            pnlLeases.Margin = new Padding(3, 2, 3, 2);
-            pnlLeases.Name = "pnlLeases";
-            pnlLeases.Size = new Size(1014, 520);
-            pnlLeases.TabIndex = 1;
-            pnlLeases.Visible = false;
-            // 
-            // lblActiveLeases
-            // 
-            lblActiveLeases.AutoSize = true;
-            lblActiveLeases.Location = new Point(80, 25);
-            lblActiveLeases.Name = "lblActiveLeases";
-            lblActiveLeases.Size = new Size(77, 15);
-            lblActiveLeases.TabIndex = 0;
-            lblActiveLeases.Text = "Active Leases";
-            // 
-            // lblActiveLeaseNum
-            // 
-            lblActiveLeaseNum.AutoSize = true;
-            lblActiveLeaseNum.Location = new Point(18, 24);
-            lblActiveLeaseNum.Name = "lblActiveLeaseNum";
-            lblActiveLeaseNum.Size = new Size(0, 15);
-            lblActiveLeaseNum.TabIndex = 1;
-            // 
-            // lblExpiredLeasesNum
-            // 
-            lblExpiredLeasesNum.AutoSize = true;
-            lblExpiredLeasesNum.Location = new Point(12, 25);
-            lblExpiredLeasesNum.Name = "lblExpiredLeasesNum";
-            lblExpiredLeasesNum.Size = new Size(0, 15);
-            lblExpiredLeasesNum.TabIndex = 0;
-            // 
-            // lblExpiredLeases
-            // 
-            lblExpiredLeases.AutoSize = true;
-            lblExpiredLeases.Location = new Point(87, 25);
-            lblExpiredLeases.Name = "lblExpiredLeases";
-            lblExpiredLeases.Size = new Size(83, 15);
-            lblExpiredLeases.TabIndex = 1;
-            lblExpiredLeases.Text = "Expired Leases";
-            // 
-            // lblTerminatedLeasesNum
-            // 
-            lblTerminatedLeasesNum.AutoSize = true;
-            lblTerminatedLeasesNum.Location = new Point(17, 23);
-            lblTerminatedLeasesNum.Name = "lblTerminatedLeasesNum";
-            lblTerminatedLeasesNum.Size = new Size(0, 15);
-            lblTerminatedLeasesNum.TabIndex = 0;
-            // 
-            // lblTerminatedLeases
-            // 
-            lblTerminatedLeases.AutoSize = true;
-            lblTerminatedLeases.Location = new Point(71, 27);
-            lblTerminatedLeases.Name = "lblTerminatedLeases";
-            lblTerminatedLeases.Size = new Size(103, 15);
-            lblTerminatedLeases.TabIndex = 1;
-            lblTerminatedLeases.Text = "Terminated Leases";
-            // 
-            // pnlMaintenanceRecord
-            // 
-            pnlMaintenanceRecord.Controls.Add(lblMaintenanceNumber);
-            pnlMaintenanceRecord.Controls.Add(lblMaintenance);
-            pnlMaintenanceRecord.Location = new Point(29, 127);
-            pnlMaintenanceRecord.Name = "pnlMaintenanceRecord";
-            pnlMaintenanceRecord.Size = new Size(250, 125);
-            pnlMaintenanceRecord.TabIndex = 1;
-            // 
-            // pnlInsuranceRecords
-            // 
-            pnlInsuranceRecords.Controls.Add(lblInsurance);
-            pnlInsuranceRecords.Controls.Add(lblInsuranceNumber);
-            pnlInsuranceRecords.Location = new Point(285, 127);
-            pnlInsuranceRecords.Name = "pnlInsuranceRecords";
-            pnlInsuranceRecords.Size = new Size(250, 125);
-            pnlInsuranceRecords.TabIndex = 2;
-            // 
-            // pnlSecurityRecords
-            // 
-            pnlSecurityRecords.Controls.Add(lblSecutityNumber);
-            pnlSecurityRecords.Controls.Add(lblSecurity);
-            pnlSecurityRecords.Location = new Point(541, 127);
-            pnlSecurityRecords.Name = "pnlSecurityRecords";
-            pnlSecurityRecords.Size = new Size(250, 125);
-            pnlSecurityRecords.TabIndex = 3;
-            // 
-            // pnlUtilitiesRecords
-            // 
-            pnlUtilitiesRecords.Controls.Add(lblUtilitiesNumber);
-            pnlUtilitiesRecords.Controls.Add(lblUtilities);
-            pnlUtilitiesRecords.Location = new Point(797, 127);
-            pnlUtilitiesRecords.Name = "pnlUtilitiesRecords";
-            pnlUtilitiesRecords.Size = new Size(225, 125);
-            pnlUtilitiesRecords.TabIndex = 3;
-            // 
-            // lblMaintenance
-            // 
-            lblMaintenance.AutoSize = true;
-            lblMaintenance.Location = new Point(21, 16);
-            lblMaintenance.Name = "lblMaintenance";
-            lblMaintenance.Size = new Size(94, 20);
-            lblMaintenance.TabIndex = 0;
-            lblMaintenance.Text = "Maintenance";
-            // 
-            // lblMaintenanceNumber
-            // 
-            lblMaintenanceNumber.AutoSize = true;
-            lblMaintenanceNumber.Location = new Point(100, 52);
-            lblMaintenanceNumber.Name = "lblMaintenanceNumber";
-            lblMaintenanceNumber.Size = new Size(0, 20);
-            lblMaintenanceNumber.TabIndex = 1;
-            // 
-            // lblInsuranceNumber
-            // 
-            lblInsuranceNumber.AutoSize = true;
-            lblInsuranceNumber.Location = new Point(100, 52);
-            lblInsuranceNumber.Name = "lblInsuranceNumber";
-            lblInsuranceNumber.Size = new Size(0, 20);
-            lblInsuranceNumber.TabIndex = 1;
-            // 
-            // lblInsurance
-            // 
-            lblInsurance.AutoSize = true;
-            lblInsurance.Location = new Point(19, 16);
-            lblInsurance.Name = "lblInsurance";
-            lblInsurance.Size = new Size(71, 20);
-            lblInsurance.TabIndex = 2;
-            lblInsurance.Text = "Insurance";
-            // 
-            // lblSecurity
-            // 
-            lblSecurity.AutoSize = true;
-            lblSecurity.Location = new Point(13, 8);
-            lblSecurity.Name = "lblSecurity";
-            lblSecurity.Size = new Size(61, 20);
-            lblSecurity.TabIndex = 3;
-            lblSecurity.Text = "Security";
-            // 
-            // lblSecutityNumber
-            // 
-            lblSecutityNumber.AutoSize = true;
-            lblSecutityNumber.Location = new Point(100, 52);
-            lblSecutityNumber.Name = "lblSecutityNumber";
-            lblSecutityNumber.Size = new Size(0, 20);
-            lblSecutityNumber.TabIndex = 4;
-            // 
-            // lblUtilities
-            // 
-            lblUtilities.AutoSize = true;
-            lblUtilities.Location = new Point(14, 8);
-            lblUtilities.Name = "lblUtilities";
-            lblUtilities.Size = new Size(59, 20);
-            lblUtilities.TabIndex = 5;
-            lblUtilities.Text = "Utilities";
-            // 
-            // lblUtilitiesNumber
-            // 
-            lblUtilitiesNumber.AutoSize = true;
-            lblUtilitiesNumber.Location = new Point(100, 52);
-            lblUtilitiesNumber.Name = "lblUtilitiesNumber";
-            lblUtilitiesNumber.Size = new Size(0, 20);
-            lblUtilitiesNumber.TabIndex = 6;
-            // 
-            // pnlSearchExpense
-            // 
-            pnlSearchExpense.Controls.Add(cmbAllProperties);
-            pnlSearchExpense.Controls.Add(cmbAllCategories);
-            pnlSearchExpense.Controls.Add(txtSearchAnExpense);
-            pnlSearchExpense.Location = new Point(31, 269);
-            pnlSearchExpense.Name = "pnlSearchExpense";
-            pnlSearchExpense.Size = new Size(991, 71);
-            pnlSearchExpense.TabIndex = 4;
-            // 
-            // txtSearchAnExpense
-            // 
-            txtSearchAnExpense.Location = new Point(32, 25);
-            txtSearchAnExpense.Name = "txtSearchAnExpense";
-            txtSearchAnExpense.Size = new Size(350, 27);
-            txtSearchAnExpense.TabIndex = 0;
-            // 
-            // cmbAllCategories
-            // 
-            cmbAllCategories.FormattingEnabled = true;
-            cmbAllCategories.Items.AddRange(new object[] { "Maintenance", "Insurance", "Security", "Utilities" });
-            cmbAllCategories.Location = new Point(447, 26);
-            cmbAllCategories.Name = "cmbAllCategories";
-            cmbAllCategories.Size = new Size(151, 28);
-            cmbAllCategories.TabIndex = 1;
-            // 
-            // cmbAllProperties
-            // 
-            cmbAllProperties.FormattingEnabled = true;
-            cmbAllProperties.Location = new Point(645, 25);
-            cmbAllProperties.Name = "cmbAllProperties";
-            cmbAllProperties.Size = new Size(151, 28);
-            cmbAllProperties.TabIndex = 2;
+            // btnAddExpense
+            // 
+            btnAddExpense.Location = new Point(983, 85);
+            btnAddExpense.Margin = new Padding(3, 4, 3, 4);
+            btnAddExpense.Name = "btnAddExpense";
+            btnAddExpense.Size = new Size(149, 56);
+            btnAddExpense.TabIndex = 6;
+            btnAddExpense.Text = "+ Add Expense";
+            btnAddExpense.UseVisualStyleBackColor = true;
             // 
             // dgvExpensesRecords
             // 
             dgvExpensesRecords.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvExpensesRecords.Columns.AddRange(new DataGridViewColumn[] { ExpenseID, Property, Category, Description, Amount, Date, ExpensesAction });
-            dgvExpensesRecords.Location = new Point(27, 370);
+            dgvExpensesRecords.Location = new Point(31, 493);
+            dgvExpensesRecords.Margin = new Padding(3, 4, 3, 4);
             dgvExpensesRecords.Name = "dgvExpensesRecords";
             dgvExpensesRecords.RowHeadersWidth = 51;
-            dgvExpensesRecords.Size = new Size(995, 188);
+            dgvExpensesRecords.Size = new Size(1137, 251);
             dgvExpensesRecords.TabIndex = 5;
             // 
             // ExpenseID
@@ -1453,145 +1218,647 @@
             ExpensesAction.Name = "ExpensesAction";
             ExpensesAction.Width = 125;
             // 
-            // btnAddExpense
+            // pnlSearchExpense
             // 
-            btnAddExpense.Location = new Point(860, 64);
-            btnAddExpense.Name = "btnAddExpense";
-            btnAddExpense.Size = new Size(130, 42);
-            btnAddExpense.TabIndex = 6;
-            btnAddExpense.Text = "+ Add Expense";
-            btnAddExpense.UseVisualStyleBackColor = true;
+            pnlSearchExpense.Controls.Add(cmbAllProperties);
+            pnlSearchExpense.Controls.Add(cmbAllCategories);
+            pnlSearchExpense.Controls.Add(txtSearchAnExpense);
+            pnlSearchExpense.Location = new Point(35, 359);
+            pnlSearchExpense.Margin = new Padding(3, 4, 3, 4);
+            pnlSearchExpense.Name = "pnlSearchExpense";
+            pnlSearchExpense.Size = new Size(1133, 95);
+            pnlSearchExpense.TabIndex = 4;
             // 
-            // lblExpectedRentDisplay
+            // cmbAllProperties
             // 
-            lblExpectedRentDisplay.AutoSize = true;
-            lblExpectedRentDisplay.Location = new Point(10, 48);
-            lblExpectedRentDisplay.Name = "lblExpectedRentDisplay";
-            lblExpectedRentDisplay.Size = new Size(0, 15);
-            lblExpectedRentDisplay.TabIndex = 1;
+            cmbAllProperties.FormattingEnabled = true;
+            cmbAllProperties.Location = new Point(737, 33);
+            cmbAllProperties.Margin = new Padding(3, 4, 3, 4);
+            cmbAllProperties.Name = "cmbAllProperties";
+            cmbAllProperties.Size = new Size(172, 28);
+            cmbAllProperties.TabIndex = 2;
             // 
-            // lblLatePaymentDisplay
+            // cmbAllCategories
             // 
-            lblLatePaymentDisplay.AutoSize = true;
-            lblLatePaymentDisplay.Location = new Point(10, 48);
-            lblLatePaymentDisplay.Name = "lblLatePaymentDisplay";
-            lblLatePaymentDisplay.Size = new Size(0, 15);
-            lblLatePaymentDisplay.TabIndex = 2;
+            cmbAllCategories.FormattingEnabled = true;
+            cmbAllCategories.Items.AddRange(new object[] { "Maintenance", "Insurance", "Security", "Utilities" });
+            cmbAllCategories.Location = new Point(511, 35);
+            cmbAllCategories.Margin = new Padding(3, 4, 3, 4);
+            cmbAllCategories.Name = "cmbAllCategories";
+            cmbAllCategories.Size = new Size(172, 28);
+            cmbAllCategories.TabIndex = 1;
             // 
-            // lblOutstandingRentDisplay
+            // txtSearchAnExpense
             // 
-            lblOutstandingRentDisplay.AutoSize = true;
-            lblOutstandingRentDisplay.Location = new Point(3, 48);
-            lblOutstandingRentDisplay.Name = "lblOutstandingRentDisplay";
-            lblOutstandingRentDisplay.Size = new Size(0, 15);
-            lblOutstandingRentDisplay.TabIndex = 3;
+            txtSearchAnExpense.Location = new Point(37, 33);
+            txtSearchAnExpense.Margin = new Padding(3, 4, 3, 4);
+            txtSearchAnExpense.Name = "txtSearchAnExpense";
+            txtSearchAnExpense.Size = new Size(399, 27);
+            txtSearchAnExpense.TabIndex = 0;
             // 
-            // lblCollectedRentDisplay
+            // pnlUtilitiesRecords
             // 
-            lblCollectedRentDisplay.AutoSize = true;
-            lblCollectedRentDisplay.Location = new Point(4, 48);
-            lblCollectedRentDisplay.Name = "lblCollectedRentDisplay";
-            lblCollectedRentDisplay.Size = new Size(0, 15);
-            lblCollectedRentDisplay.TabIndex = 4;
+            pnlUtilitiesRecords.Controls.Add(lblUtilitiesNumber);
+            pnlUtilitiesRecords.Controls.Add(lblUtilities);
+            pnlUtilitiesRecords.Location = new Point(911, 169);
+            pnlUtilitiesRecords.Margin = new Padding(3, 4, 3, 4);
+            pnlUtilitiesRecords.Name = "pnlUtilitiesRecords";
+            pnlUtilitiesRecords.Size = new Size(257, 167);
+            pnlUtilitiesRecords.TabIndex = 3;
             // 
-            // textBox1
+            // lblUtilitiesNumber
             // 
-            textBox1.Location = new Point(4, 17);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(259, 23);
-            textBox1.TabIndex = 0;
+            lblUtilitiesNumber.AutoSize = true;
+            lblUtilitiesNumber.Location = new Point(114, 69);
+            lblUtilitiesNumber.Name = "lblUtilitiesNumber";
+            lblUtilitiesNumber.Size = new Size(0, 20);
+            lblUtilitiesNumber.TabIndex = 6;
             // 
-            // cbxStatus
+            // lblUtilities
             // 
-            cbxStatus.FormattingEnabled = true;
-            cbxStatus.Items.AddRange(new object[] { "Paid", "Outstanding", "Late" });
-            cbxStatus.Location = new Point(282, 17);
-            cbxStatus.Name = "cbxStatus";
-            cbxStatus.Size = new Size(121, 23);
-            cbxStatus.TabIndex = 1;
+            lblUtilities.AutoSize = true;
+            lblUtilities.Location = new Point(16, 11);
+            lblUtilities.Name = "lblUtilities";
+            lblUtilities.Size = new Size(59, 20);
+            lblUtilities.TabIndex = 5;
+            lblUtilities.Text = "Utilities";
             // 
-            // btnGenerateReceipts
+            // pnlSecurityRecords
             // 
-            btnGenerateReceipts.BackColor = SystemColors.ActiveBorder;
-            btnGenerateReceipts.Location = new Point(433, 3);
-            btnGenerateReceipts.Name = "btnGenerateReceipts";
-            btnGenerateReceipts.Size = new Size(118, 54);
-            btnGenerateReceipts.TabIndex = 2;
-            btnGenerateReceipts.Text = "Generate Receipts";
-            btnGenerateReceipts.UseVisualStyleBackColor = false;
+            pnlSecurityRecords.Controls.Add(lblSecutityNumber);
+            pnlSecurityRecords.Controls.Add(lblSecurity);
+            pnlSecurityRecords.Location = new Point(618, 169);
+            pnlSecurityRecords.Margin = new Padding(3, 4, 3, 4);
+            pnlSecurityRecords.Name = "pnlSecurityRecords";
+            pnlSecurityRecords.Size = new Size(286, 167);
+            pnlSecurityRecords.TabIndex = 3;
             // 
-            // dataGridView2
+            // lblSecutityNumber
             // 
-            dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView2.Columns.AddRange(new DataGridViewColumn[] { TENANT2, PROPERTY2, UNITS, RENTDUE, AMOUNTPAID, OUTSTANDINGS, PAYMENTDATE, RECEIPTN0, STATUSES });
-            dataGridView2.Location = new Point(10, 318);
-            dataGridView2.Name = "dataGridView2";
-            dataGridView2.Size = new Size(903, 150);
-            dataGridView2.TabIndex = 6;
+            lblSecutityNumber.AutoSize = true;
+            lblSecutityNumber.Location = new Point(114, 69);
+            lblSecutityNumber.Name = "lblSecutityNumber";
+            lblSecutityNumber.Size = new Size(0, 20);
+            lblSecutityNumber.TabIndex = 4;
             // 
-            // TENANT2
+            // lblSecurity
             // 
-            TENANT2.HeaderText = "TENANT";
-            TENANT2.Name = "TENANT";
+            lblSecurity.AutoSize = true;
+            lblSecurity.Location = new Point(15, 11);
+            lblSecurity.Name = "lblSecurity";
+            lblSecurity.Size = new Size(61, 20);
+            lblSecurity.TabIndex = 3;
+            lblSecurity.Text = "Security";
             // 
-            // PROPERTY2
+            // pnlInsuranceRecords
             // 
-            PROPERTY2.HeaderText = "PROPERTY";
-            PROPERTY2.Name = "PROPERTY";
+            pnlInsuranceRecords.Controls.Add(lblInsurance);
+            pnlInsuranceRecords.Controls.Add(lblInsuranceNumber);
+            pnlInsuranceRecords.Location = new Point(326, 169);
+            pnlInsuranceRecords.Margin = new Padding(3, 4, 3, 4);
+            pnlInsuranceRecords.Name = "pnlInsuranceRecords";
+            pnlInsuranceRecords.Size = new Size(286, 167);
+            pnlInsuranceRecords.TabIndex = 2;
             // 
-            // UNITS
+            // lblInsurance
             // 
-            UNITS.HeaderText = "UNIT";
-            UNITS.Name = "UNITS";
+            lblInsurance.AutoSize = true;
+            lblInsurance.Location = new Point(22, 21);
+            lblInsurance.Name = "lblInsurance";
+            lblInsurance.Size = new Size(71, 20);
+            lblInsurance.TabIndex = 2;
+            lblInsurance.Text = "Insurance";
             // 
-            // RENTDUE
+            // lblInsuranceNumber
             // 
-            RENTDUE.HeaderText = "RENT DUE";
-            RENTDUE.Name = "RENTDUE";
+            lblInsuranceNumber.AutoSize = true;
+            lblInsuranceNumber.Location = new Point(114, 69);
+            lblInsuranceNumber.Name = "lblInsuranceNumber";
+            lblInsuranceNumber.Size = new Size(0, 20);
+            lblInsuranceNumber.TabIndex = 1;
             // 
-            // AMOUNTPAID
+            // pnlMaintenanceRecord
             // 
-            AMOUNTPAID.HeaderText = "AMOUNT PAID";
-            AMOUNTPAID.Name = "AMOUNTPAID";
+            pnlMaintenanceRecord.Controls.Add(lblMaintenanceNumber);
+            pnlMaintenanceRecord.Controls.Add(lblMaintenance);
+            pnlMaintenanceRecord.Location = new Point(33, 169);
+            pnlMaintenanceRecord.Margin = new Padding(3, 4, 3, 4);
+            pnlMaintenanceRecord.Name = "pnlMaintenanceRecord";
+            pnlMaintenanceRecord.Size = new Size(286, 167);
+            pnlMaintenanceRecord.TabIndex = 1;
             // 
-            // OUTSTANDINGS
+            // lblMaintenanceNumber
             // 
-            OUTSTANDINGS.HeaderText = "OUTSTANDING";
-            OUTSTANDINGS.Name = "OUTSTANDINGS";
+            lblMaintenanceNumber.AutoSize = true;
+            lblMaintenanceNumber.Location = new Point(114, 69);
+            lblMaintenanceNumber.Name = "lblMaintenanceNumber";
+            lblMaintenanceNumber.Size = new Size(0, 20);
+            lblMaintenanceNumber.TabIndex = 1;
             // 
-            // PAYMENTDATE
+            // lblMaintenance
             // 
-            PAYMENTDATE.HeaderText = "PAYMENT DUE";
-            PAYMENTDATE.Name = "PAYMENTDATE";
+            lblMaintenance.AutoSize = true;
+            lblMaintenance.Location = new Point(24, 21);
+            lblMaintenance.Name = "lblMaintenance";
+            lblMaintenance.Size = new Size(94, 20);
+            lblMaintenance.TabIndex = 0;
+            lblMaintenance.Text = "Maintenance";
             // 
-            // RECEIPTN0
+            // lblExpensesTopic
             // 
-            RECEIPTN0.HeaderText = "RECEIPT N0";
-            RECEIPTN0.Name = "RECEIPTN0";
+            lblExpensesTopic.AutoSize = true;
+            lblExpensesTopic.Font = new Font("Segoe UI", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblExpensesTopic.Location = new Point(19, 53);
+            lblExpensesTopic.Name = "lblExpensesTopic";
+            lblExpensesTopic.Size = new Size(165, 46);
+            lblExpensesTopic.TabIndex = 0;
+            lblExpensesTopic.Text = "Expenses";
             // 
-            // STATUSES
+            // pnlMaintenance
             // 
-            STATUSES.HeaderText = "STATUS";
-            STATUSES.Name = "STATUSES";
+            pnlMaintenance.Controls.Add(dgvMaintenanceRecords);
+            pnlMaintenance.Controls.Add(lblTrackAndResolveMaintenanceRequests);
+            pnlMaintenance.Controls.Add(btnNewRequests);
+            pnlMaintenance.Controls.Add(pnlSearchBar);
+            pnlMaintenance.Controls.Add(panel8);
+            pnlMaintenance.Controls.Add(panel7);
+            pnlMaintenance.Controls.Add(panel6);
+            pnlMaintenance.Controls.Add(lblMaintenanceTopic);
+            pnlMaintenance.Location = new Point(219, 0);
+            pnlMaintenance.Name = "pnlMaintenance";
+            pnlMaintenance.Size = new Size(1159, 693);
+            pnlMaintenance.TabIndex = 1;
+            // 
+            // lblMaintenanceTopic
+            // 
+            lblMaintenanceTopic.AutoSize = true;
+            lblMaintenanceTopic.Font = new Font("Segoe UI", 24F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblMaintenanceTopic.Location = new Point(27, 37);
+            lblMaintenanceTopic.Name = "lblMaintenanceTopic";
+            lblMaintenanceTopic.Size = new Size(267, 54);
+            lblMaintenanceTopic.TabIndex = 0;
+            lblMaintenanceTopic.Text = "Maintenance";
+            // 
+            // lblLeasesTopic
+            // 
+            lblLeasesTopic.AutoSize = true;
+            lblLeasesTopic.Font = new Font("Segoe UI", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblLeasesTopic.Location = new Point(30, 51);
+            lblLeasesTopic.Name = "lblLeasesTopic";
+            lblLeasesTopic.Size = new Size(121, 46);
+            lblLeasesTopic.TabIndex = 0;
+            lblLeasesTopic.Text = "Leases";
+            // 
+            // pnlActiveLeases
+            // 
+            pnlActiveLeases.Controls.Add(lblActiveLeaseNum);
+            pnlActiveLeases.Controls.Add(lblActiveLeases);
+            pnlActiveLeases.Location = new Point(24, 147);
+            pnlActiveLeases.Margin = new Padding(3, 4, 3, 4);
+            pnlActiveLeases.Name = "pnlActiveLeases";
+            pnlActiveLeases.Size = new Size(207, 85);
+            pnlActiveLeases.TabIndex = 1;
+            // 
+            // lblActiveLeaseNum
+            // 
+            lblActiveLeaseNum.AutoSize = true;
+            lblActiveLeaseNum.Location = new Point(21, 32);
+            lblActiveLeaseNum.Name = "lblActiveLeaseNum";
+            lblActiveLeaseNum.Size = new Size(0, 20);
+            lblActiveLeaseNum.TabIndex = 1;
+            // 
+            // lblActiveLeases
+            // 
+            lblActiveLeases.AutoSize = true;
+            lblActiveLeases.Location = new Point(91, 33);
+            lblActiveLeases.Name = "lblActiveLeases";
+            lblActiveLeases.Size = new Size(97, 20);
+            lblActiveLeases.TabIndex = 0;
+            lblActiveLeases.Text = "Active Leases";
+            // 
+            // pnlExpiredLeases
+            // 
+            pnlExpiredLeases.Controls.Add(lblExpiredLeases);
+            pnlExpiredLeases.Controls.Add(lblExpiredLeasesNum);
+            pnlExpiredLeases.Location = new Point(238, 145);
+            pnlExpiredLeases.Margin = new Padding(3, 4, 3, 4);
+            pnlExpiredLeases.Name = "pnlExpiredLeases";
+            pnlExpiredLeases.Size = new Size(206, 87);
+            pnlExpiredLeases.TabIndex = 2;
+            // 
+            // lblExpiredLeases
+            // 
+            lblExpiredLeases.AutoSize = true;
+            lblExpiredLeases.Location = new Point(99, 33);
+            lblExpiredLeases.Name = "lblExpiredLeases";
+            lblExpiredLeases.Size = new Size(106, 20);
+            lblExpiredLeases.TabIndex = 1;
+            lblExpiredLeases.Text = "Expired Leases";
+            // 
+            // lblExpiredLeasesNum
+            // 
+            lblExpiredLeasesNum.AutoSize = true;
+            lblExpiredLeasesNum.Location = new Point(14, 33);
+            lblExpiredLeasesNum.Name = "lblExpiredLeasesNum";
+            lblExpiredLeasesNum.Size = new Size(0, 20);
+            lblExpiredLeasesNum.TabIndex = 0;
+            // 
+            // pnlTerminatedLeases
+            // 
+            pnlTerminatedLeases.Controls.Add(lblTerminatedLeases);
+            pnlTerminatedLeases.Controls.Add(lblTerminatedLeasesNum);
+            pnlTerminatedLeases.Location = new Point(449, 147);
+            pnlTerminatedLeases.Margin = new Padding(3, 4, 3, 4);
+            pnlTerminatedLeases.Name = "pnlTerminatedLeases";
+            pnlTerminatedLeases.Size = new Size(206, 87);
+            pnlTerminatedLeases.TabIndex = 3;
+            // 
+            // lblTerminatedLeases
+            // 
+            lblTerminatedLeases.AutoSize = true;
+            lblTerminatedLeases.Location = new Point(81, 36);
+            lblTerminatedLeases.Name = "lblTerminatedLeases";
+            lblTerminatedLeases.Size = new Size(131, 20);
+            lblTerminatedLeases.TabIndex = 1;
+            lblTerminatedLeases.Text = "Terminated Leases";
+            // 
+            // lblTerminatedLeasesNum
+            // 
+            lblTerminatedLeasesNum.AutoSize = true;
+            lblTerminatedLeasesNum.Location = new Point(19, 31);
+            lblTerminatedLeasesNum.Name = "lblTerminatedLeasesNum";
+            lblTerminatedLeasesNum.Size = new Size(0, 20);
+            lblTerminatedLeasesNum.TabIndex = 0;
+            // 
+            // pnlSearchLeases
+            // 
+            pnlSearchLeases.Controls.Add(cmbAllStatus);
+            pnlSearchLeases.Controls.Add(txtSearchLeases);
+            pnlSearchLeases.Location = new Point(23, 249);
+            pnlSearchLeases.Margin = new Padding(3, 4, 3, 4);
+            pnlSearchLeases.Name = "pnlSearchLeases";
+            pnlSearchLeases.Size = new Size(1078, 77);
+            pnlSearchLeases.TabIndex = 4;
+            // 
+            // cmbAllStatus
+            // 
+            cmbAllStatus.FormattingEnabled = true;
+            cmbAllStatus.Items.AddRange(new object[] { "Active", "Expired", "Terminated" });
+            cmbAllStatus.Location = new Point(443, 25);
+            cmbAllStatus.Margin = new Padding(3, 4, 3, 4);
+            cmbAllStatus.Name = "cmbAllStatus";
+            cmbAllStatus.Size = new Size(337, 28);
+            cmbAllStatus.TabIndex = 1;
+            // 
+            // txtSearchLeases
+            // 
+            txtSearchLeases.Location = new Point(22, 21);
+            txtSearchLeases.Margin = new Padding(3, 4, 3, 4);
+            txtSearchLeases.Name = "txtSearchLeases";
+            txtSearchLeases.Size = new Size(398, 27);
+            txtSearchLeases.TabIndex = 0;
+            // 
+            // dgvLeases
+            // 
+            dgvLeases.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvLeases.Location = new Point(22, 332);
+            dgvLeases.Margin = new Padding(3, 4, 3, 4);
+            dgvLeases.Name = "dgvLeases";
+            dgvLeases.RowHeadersWidth = 51;
+            dgvLeases.Size = new Size(1079, 357);
+            dgvLeases.TabIndex = 5;
+            // 
+            // LEASEID
+            // 
+            LEASEID.HeaderText = "LEASE ID";
+            LEASEID.MinimumWidth = 6;
+            LEASEID.Name = "LEASEID";
+            LEASEID.Width = 125;
+            // 
+            // TENANT
+            // 
+            TENANT.HeaderText = "TENANT";
+            TENANT.MinimumWidth = 6;
+            TENANT.Name = "TENANT";
+            TENANT.Width = 125;
+            // 
+            // NUNIT
+            // 
+            NUNIT.HeaderText = "Unit";
+            NUNIT.MinimumWidth = 6;
+            NUNIT.Name = "NUNIT";
+            NUNIT.Width = 125;
+            // 
+            // STARTDATE
+            // 
+            STARTDATE.HeaderText = "START DATE";
+            STARTDATE.MinimumWidth = 6;
+            STARTDATE.Name = "STARTDATE";
+            STARTDATE.Width = 125;
+            // 
+            // ENDDATE
+            // 
+            ENDDATE.HeaderText = "END DATE";
+            ENDDATE.MinimumWidth = 6;
+            ENDDATE.Name = "ENDDATE";
+            ENDDATE.Width = 125;
+            // 
+            // MONTHLYRENT
+            // 
+            MONTHLYRENT.HeaderText = "MONTHLY RENT";
+            MONTHLYRENT.MinimumWidth = 6;
+            MONTHLYRENT.Name = "MONTHLYRENT";
+            MONTHLYRENT.Width = 125;
+            // 
+            // LEASESTATUS
+            // 
+            LEASESTATUS.HeaderText = "LEASE STATUS";
+            LEASESTATUS.MinimumWidth = 6;
+            LEASESTATUS.Name = "LEASESTATUS";
+            LEASESTATUS.Width = 125;
+            // 
+            // LEASEACTIONS
+            // 
+            LEASEACTIONS.HeaderText = "LEASE ACTIONS";
+            LEASEACTIONS.MinimumWidth = 6;
+            LEASEACTIONS.Name = "LEASEACTIONS";
+            LEASEACTIONS.Width = 125;
+            // 
+            // btnCreateLease
+            // 
+            btnCreateLease.Location = new Point(970, 52);
+            btnCreateLease.Margin = new Padding(3, 4, 3, 4);
+            btnCreateLease.Name = "btnCreateLease";
+            btnCreateLease.Size = new Size(130, 44);
+            btnCreateLease.TabIndex = 6;
+            btnCreateLease.Text = "+ Create Lease";
+            btnCreateLease.UseVisualStyleBackColor = true;
+            // 
+            // pnlLeases
+            // 
+            pnlLeases.Controls.Add(btnCreateLease);
+            pnlLeases.Controls.Add(dgvLeases);
+            pnlLeases.Controls.Add(pnlSearchLeases);
+            pnlLeases.Controls.Add(pnlTerminatedLeases);
+            pnlLeases.Controls.Add(pnlExpiredLeases);
+            pnlLeases.Controls.Add(pnlActiveLeases);
+            pnlLeases.Controls.Add(lblLeasesTopic);
+            pnlLeases.Location = new Point(219, 0);
+            pnlLeases.Name = "pnlLeases";
+            pnlLeases.Size = new Size(1159, 693);
+            pnlLeases.TabIndex = 1;
+            pnlLeases.Visible = false;
+            // 
+            // panel6
+            // 
+            panel6.BorderStyle = BorderStyle.Fixed3D;
+            panel6.Controls.Add(lblOpenRequests);
+            panel6.Controls.Add(label2);
+            panel6.Location = new Point(35, 136);
+            panel6.Name = "panel6";
+            panel6.Size = new Size(261, 125);
+            panel6.TabIndex = 1;
+            // 
+            // panel7
+            // 
+            panel7.BorderStyle = BorderStyle.Fixed3D;
+            panel7.Controls.Add(lblPending);
+            panel7.Controls.Add(label4);
+            panel7.Location = new Point(316, 138);
+            panel7.Name = "panel7";
+            panel7.Size = new Size(261, 125);
+            panel7.TabIndex = 2;
+            // 
+            // panel8
+            // 
+            panel8.BorderStyle = BorderStyle.Fixed3D;
+            panel8.Controls.Add(lblResolved);
+            panel8.Controls.Add(label6);
+            panel8.Location = new Point(589, 138);
+            panel8.Name = "panel8";
+            panel8.Size = new Size(261, 125);
+            panel8.TabIndex = 3;
+            // 
+            // pnlSearchBar
+            // 
+            pnlSearchBar.BackColor = SystemColors.ControlDark;
+            pnlSearchBar.BorderStyle = BorderStyle.Fixed3D;
+            pnlSearchBar.Controls.Add(btnResolved);
+            pnlSearchBar.Controls.Add(btnPending);
+            pnlSearchBar.Controls.Add(btnOpenRequests);
+            pnlSearchBar.Controls.Add(btnAll);
+            pnlSearchBar.Controls.Add(txtSearchBox);
+            pnlSearchBar.Location = new Point(30, 284);
+            pnlSearchBar.Name = "pnlSearchBar";
+            pnlSearchBar.Size = new Size(1049, 52);
+            pnlSearchBar.TabIndex = 4;
+            // 
+            // btnNewRequests
+            // 
+            btnNewRequests.BackColor = Color.Blue;
+            btnNewRequests.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnNewRequests.ForeColor = SystemColors.ButtonHighlight;
+            btnNewRequests.Location = new Point(896, 58);
+            btnNewRequests.Name = "btnNewRequests";
+            btnNewRequests.Size = new Size(178, 43);
+            btnNewRequests.TabIndex = 5;
+            btnNewRequests.Text = "+ New Request";
+            btnNewRequests.UseVisualStyleBackColor = false;
+            // 
+            // lblTrackAndResolveMaintenanceRequests
+            // 
+            lblTrackAndResolveMaintenanceRequests.AutoSize = true;
+            lblTrackAndResolveMaintenanceRequests.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblTrackAndResolveMaintenanceRequests.ForeColor = Color.DimGray;
+            lblTrackAndResolveMaintenanceRequests.Location = new Point(37, 86);
+            lblTrackAndResolveMaintenanceRequests.Name = "lblTrackAndResolveMaintenanceRequests";
+            lblTrackAndResolveMaintenanceRequests.Size = new Size(356, 25);
+            lblTrackAndResolveMaintenanceRequests.TabIndex = 6;
+            lblTrackAndResolveMaintenanceRequests.Text = "Track And Resolve Maintenance Requests";
+            // 
+            // txtSearchBox
+            // 
+            txtSearchBox.Location = new Point(15, 13);
+            txtSearchBox.Name = "txtSearchBox";
+            txtSearchBox.PlaceholderText = "Search Requests...";
+            txtSearchBox.Size = new Size(530, 27);
+            txtSearchBox.TabIndex = 0;
+            // 
+            // btnAll
+            // 
+            btnAll.BackColor = Color.Blue;
+            btnAll.ForeColor = SystemColors.ButtonHighlight;
+            btnAll.Location = new Point(581, 14);
+            btnAll.Name = "btnAll";
+            btnAll.Size = new Size(94, 29);
+            btnAll.TabIndex = 1;
+            btnAll.Text = "All";
+            btnAll.UseVisualStyleBackColor = false;
+            // 
+            // btnOpenRequests
+            // 
+            btnOpenRequests.Location = new Point(690, 13);
+            btnOpenRequests.Name = "btnOpenRequests";
+            btnOpenRequests.Size = new Size(94, 29);
+            btnOpenRequests.TabIndex = 2;
+            btnOpenRequests.Text = "Open";
+            btnOpenRequests.UseVisualStyleBackColor = true;
+            // 
+            // btnPending
+            // 
+            btnPending.Location = new Point(796, 13);
+            btnPending.Name = "btnPending";
+            btnPending.Size = new Size(94, 29);
+            btnPending.TabIndex = 3;
+            btnPending.Text = "Pending";
+            btnPending.UseVisualStyleBackColor = true;
+            // 
+            // btnResolved
+            // 
+            btnResolved.Location = new Point(901, 12);
+            btnResolved.Name = "btnResolved";
+            btnResolved.Size = new Size(94, 29);
+            btnResolved.TabIndex = 4;
+            btnResolved.Text = "Resolved";
+            btnResolved.UseVisualStyleBackColor = true;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(32, 50);
+            label2.Name = "label2";
+            label2.Size = new Size(0, 20);
+            label2.TabIndex = 0;
+            // 
+            // lblOpenRequests
+            // 
+            lblOpenRequests.AutoSize = true;
+            lblOpenRequests.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblOpenRequests.Location = new Point(105, 95);
+            lblOpenRequests.Name = "lblOpenRequests";
+            lblOpenRequests.Size = new Size(153, 28);
+            lblOpenRequests.TabIndex = 1;
+            lblOpenRequests.Text = "Open Requests";
+            lblOpenRequests.Click += label3_Click;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new Point(27, 52);
+            label4.Name = "label4";
+            label4.Size = new Size(0, 20);
+            label4.TabIndex = 1;
+            // 
+            // lblPending
+            // 
+            lblPending.AutoSize = true;
+            lblPending.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblPending.Location = new Point(152, 93);
+            lblPending.Name = "lblPending";
+            lblPending.Size = new Size(88, 28);
+            lblPending.TabIndex = 2;
+            lblPending.Text = "Pending";
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Location = new Point(16, 50);
+            label6.Name = "label6";
+            label6.Size = new Size(0, 20);
+            label6.TabIndex = 1;
+            // 
+            // lblResolved
+            // 
+            lblResolved.AutoSize = true;
+            lblResolved.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblResolved.Location = new Point(133, 91);
+            lblResolved.Name = "lblResolved";
+            lblResolved.Size = new Size(97, 28);
+            lblResolved.TabIndex = 2;
+            lblResolved.Text = "Resolved";
+            // 
+            // dgvMaintenanceRecords
+            // 
+            dgvMaintenanceRecords.BackgroundColor = Color.WhiteSmoke;
+            dgvMaintenanceRecords.BorderStyle = BorderStyle.Fixed3D;
+            dgvMaintenanceRecords.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvMaintenanceRecords.Columns.AddRange(new DataGridViewColumn[] { REQID, TENANTS2, PROPERTYORUNIT, DESCRIPTIONS, PRIORITY, STATUS1, DATES, ACTION1 });
+            dgvMaintenanceRecords.Location = new Point(40, 365);
+            dgvMaintenanceRecords.Name = "dgvMaintenanceRecords";
+            dgvMaintenanceRecords.RowHeadersWidth = 51;
+            dgvMaintenanceRecords.Size = new Size(1047, 316);
+            dgvMaintenanceRecords.TabIndex = 7;
+            // 
+            // REQID
+            // 
+            REQID.HeaderText = "REQ.ID";
+            REQID.MinimumWidth = 6;
+            REQID.Name = "REQID";
+            REQID.Width = 125;
+            // 
+            // TENANTS2
+            // 
+            TENANTS2.HeaderText = "TENANT";
+            TENANTS2.MinimumWidth = 6;
+            TENANTS2.Name = "TENANTS2";
+            TENANTS2.Width = 125;
+            // 
+            // PROPERTYORUNIT
+            // 
+            PROPERTYORUNIT.HeaderText = "PROPERTY/UNIT";
+            PROPERTYORUNIT.MinimumWidth = 6;
+            PROPERTYORUNIT.Name = "PROPERTYORUNIT";
+            PROPERTYORUNIT.Width = 125;
+            // 
+            // DESCRIPTIONS
+            // 
+            DESCRIPTIONS.HeaderText = "DESCRIPTION";
+            DESCRIPTIONS.MinimumWidth = 6;
+            DESCRIPTIONS.Name = "DESCRIPTIONS";
+            DESCRIPTIONS.Width = 125;
+            // 
+            // PRIORITY
+            // 
+            PRIORITY.HeaderText = "PRIORITY";
+            PRIORITY.MinimumWidth = 6;
+            PRIORITY.Name = "PRIORITY";
+            PRIORITY.Width = 125;
+            // 
+            // STATUS1
+            // 
+            STATUS1.HeaderText = "STATUS";
+            STATUS1.MinimumWidth = 6;
+            STATUS1.Name = "STATUS1";
+            STATUS1.Width = 125;
+            // 
+            // DATES
+            // 
+            DATES.HeaderText = "DATE";
+            DATES.MinimumWidth = 6;
+            DATES.Name = "DATES";
+            DATES.Width = 125;
+            // 
+            // ACTION1
+            // 
+            ACTION1.HeaderText = "ACTION";
+            ACTION1.MinimumWidth = 6;
+            ACTION1.Name = "ACTION1";
+            ACTION1.Width = 125;
             // 
             // Properties_Form
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1199, 520);
+            ClientSize = new Size(1370, 693);
             Controls.Add(pnlMainForm);
-            Controls.Add(pnlRentPayments);
-            Controls.Add(pnlExpenses);
             Controls.Add(pnlMaintenance);
-            Margin = new Padding(3, 2, 3, 2);
             Controls.Add(pnlLeases);
             Controls.Add(pnlContent);
             Controls.Add(pnlTenants);
             Controls.Add(pnlRentalUnit);
-            Controls.Add(pnlDashBoard);
             Controls.Add(pnlRentPayments);
             Controls.Add(pnlDashBoard);
-            Margin = new Padding(3, 2, 3, 2);
+            Controls.Add(pnlExpenses);
             Name = "Properties_Form";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Properties_Form";
@@ -1609,6 +1876,7 @@
             pnlDashBoard.PerformLayout();
             pnlRentPayments.ResumeLayout(false);
             pnlRentPayments.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView2).EndInit();
             panel5.ResumeLayout(false);
             panel5.PerformLayout();
             panel4.ResumeLayout(false);
@@ -1634,6 +1902,17 @@
             pnlTotalUnits.PerformLayout();
             pnlExpenses.ResumeLayout(false);
             pnlExpenses.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvExpensesRecords).EndInit();
+            pnlSearchExpense.ResumeLayout(false);
+            pnlSearchExpense.PerformLayout();
+            pnlUtilitiesRecords.ResumeLayout(false);
+            pnlUtilitiesRecords.PerformLayout();
+            pnlSecurityRecords.ResumeLayout(false);
+            pnlSecurityRecords.PerformLayout();
+            pnlInsuranceRecords.ResumeLayout(false);
+            pnlInsuranceRecords.PerformLayout();
+            pnlMaintenanceRecord.ResumeLayout(false);
+            pnlMaintenanceRecord.PerformLayout();
             pnlMaintenance.ResumeLayout(false);
             pnlMaintenance.PerformLayout();
             pnlActiveLeases.ResumeLayout(false);
@@ -1647,18 +1926,15 @@
             ((System.ComponentModel.ISupportInitialize)dgvLeases).EndInit();
             pnlLeases.ResumeLayout(false);
             pnlLeases.PerformLayout();
-            pnlMaintenanceRecord.ResumeLayout(false);
-            pnlMaintenanceRecord.PerformLayout();
-            pnlInsuranceRecords.ResumeLayout(false);
-            pnlInsuranceRecords.PerformLayout();
-            pnlSecurityRecords.ResumeLayout(false);
-            pnlSecurityRecords.PerformLayout();
-            pnlUtilitiesRecords.ResumeLayout(false);
-            pnlUtilitiesRecords.PerformLayout();
-            pnlSearchExpense.ResumeLayout(false);
-            pnlSearchExpense.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dgvExpensesRecords).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridView2).EndInit();
+            panel6.ResumeLayout(false);
+            panel6.PerformLayout();
+            panel7.ResumeLayout(false);
+            panel7.PerformLayout();
+            panel8.ResumeLayout(false);
+            panel8.PerformLayout();
+            pnlSearchBar.ResumeLayout(false);
+            pnlSearchBar.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvMaintenanceRecords).EndInit();
             ResumeLayout(false);
         }
 
@@ -1809,5 +2085,31 @@
         private DataGridViewTextBoxColumn PAYMENTDATE;
         private DataGridViewTextBoxColumn RECEIPTN0;
         private DataGridViewTextBoxColumn STATUSES;
+        private Panel panel6;
+        private Label lblTrackAndResolveMaintenanceRequests;
+        private Button btnNewRequests;
+        private Panel pnlSearchBar;
+        private Button btnResolved;
+        private Button btnPending;
+        private Button btnOpenRequests;
+        private Button btnAll;
+        private TextBox txtSearchBox;
+        private Panel panel8;
+        private Panel panel7;
+        private DataGridView dgvMaintenanceRecords;
+        private DataGridViewTextBoxColumn REQID;
+        private DataGridViewTextBoxColumn TENANTS2;
+        private DataGridViewTextBoxColumn PROPERTYORUNIT;
+        private DataGridViewTextBoxColumn DESCRIPTIONS;
+        private DataGridViewTextBoxColumn PRIORITY;
+        private DataGridViewTextBoxColumn STATUS1;
+        private DataGridViewTextBoxColumn DATES;
+        private DataGridViewTextBoxColumn ACTION1;
+        private Label lblResolved;
+        private Label label6;
+        private Label lblPending;
+        private Label label4;
+        private Label lblOpenRequests;
+        private Label label2;
     }
 }
