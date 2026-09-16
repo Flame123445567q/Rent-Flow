@@ -139,8 +139,8 @@
             cbxStatus = new ComboBox();
             btnGenerateReceipts = new Button();
             dataGridView2 = new DataGridView();
-            TENANT = new DataGridViewTextBoxColumn();
-            PROPERTY = new DataGridViewTextBoxColumn();
+            TENANT2 = new DataGridViewTextBoxColumn();
+            PROPERTY2 = new DataGridViewTextBoxColumn();
             UNITS = new DataGridViewTextBoxColumn();
             RENTDUE = new DataGridViewTextBoxColumn();
             AMOUNTPAID = new DataGridViewTextBoxColumn();
@@ -1279,21 +1279,21 @@
             // dataGridView2
             // 
             dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView2.Columns.AddRange(new DataGridViewColumn[] { TENANT, PROPERTY, UNITS, RENTDUE, AMOUNTPAID, OUTSTANDINGS, PAYMENTDATE, RECEIPTN0, STATUSES });
+            dataGridView2.Columns.AddRange(new DataGridViewColumn[] { TENANT2, PROPERTY2, UNITS, RENTDUE, AMOUNTPAID, OUTSTANDINGS, PAYMENTDATE, RECEIPTN0, STATUSES });
             dataGridView2.Location = new Point(10, 318);
             dataGridView2.Name = "dataGridView2";
             dataGridView2.Size = new Size(903, 150);
             dataGridView2.TabIndex = 6;
             // 
-            // TENANT
+            // TENANT2
             // 
-            TENANT.HeaderText = "TENANT";
-            TENANT.Name = "TENANT";
+            TENANT2.HeaderText = "TENANT";
+            TENANT2.Name = "TENANT";
             // 
-            // PROPERTY
+            // PROPERTY2
             // 
-            PROPERTY.HeaderText = "PROPERTY";
-            PROPERTY.Name = "PROPERTY";
+            PROPERTY2.HeaderText = "PROPERTY";
+            PROPERTY2.Name = "PROPERTY";
             // 
             // UNITS
             // 
@@ -1518,8 +1518,8 @@
         private ComboBox cbxStatus;
         private TextBox textBox1;
         private DataGridView dataGridView2;
-        private DataGridViewTextBoxColumn TENANT;
-        private DataGridViewTextBoxColumn PROPERTY;
+        private DataGridViewTextBoxColumn TENANT2;
+        private DataGridViewTextBoxColumn PROPERTY2;
         private DataGridViewTextBoxColumn UNITS;
         private DataGridViewTextBoxColumn RENTDUE;
         private DataGridViewTextBoxColumn AMOUNTPAID;
