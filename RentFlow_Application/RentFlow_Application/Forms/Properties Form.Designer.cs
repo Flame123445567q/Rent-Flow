@@ -63,6 +63,16 @@
             pnlDashBoard = new Panel();
             lblDashboardHeader = new Label();
             pnlRentPayments = new Panel();
+            panel5 = new Panel();
+            btnRecordPayment = new Button();
+            panel4 = new Panel();
+            lblExpectedRent = new Label();
+            panel2 = new Panel();
+            lblOutstandingRent = new Label();
+            panel3 = new Panel();
+            lblLatePayment = new Label();
+            panel1 = new Panel();
+            lblCollectedRent = new Label();
             lblRentTopic = new Label();
             pnlTenants = new Panel();
             btnAddTenants = new Button();
@@ -121,6 +131,23 @@
             lblExpiredLeases = new Label();
             lblTerminatedLeasesNum = new Label();
             lblTerminatedLeases = new Label();
+            lblExpectedRentDisplay = new Label();
+            lblLatePaymentDisplay = new Label();
+            lblOutstandingRentDisplay = new Label();
+            lblCollectedRentDisplay = new Label();
+            textBox1 = new TextBox();
+            cbxStatus = new ComboBox();
+            btnGenerateReceipts = new Button();
+            dataGridView2 = new DataGridView();
+            TENANT = new DataGridViewTextBoxColumn();
+            PROPERTY = new DataGridViewTextBoxColumn();
+            UNITS = new DataGridViewTextBoxColumn();
+            RENTDUE = new DataGridViewTextBoxColumn();
+            AMOUNTPAID = new DataGridViewTextBoxColumn();
+            OUTSTANDINGS = new DataGridViewTextBoxColumn();
+            PAYMENTDATE = new DataGridViewTextBoxColumn();
+            RECEIPTN0 = new DataGridViewTextBoxColumn();
+            STATUSES = new DataGridViewTextBoxColumn();
             pnlMainForm.SuspendLayout();
             pnlUserLoginInfo.SuspendLayout();
             pnlContent.SuspendLayout();
@@ -128,6 +155,11 @@
             ((System.ComponentModel.ISupportInitialize)dgvProperties).BeginInit();
             pnlDashBoard.SuspendLayout();
             pnlRentPayments.SuspendLayout();
+            panel5.SuspendLayout();
+            panel4.SuspendLayout();
+            panel2.SuspendLayout();
+            panel3.SuspendLayout();
+            panel1.SuspendLayout();
             pnlTenants.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             pnlFilterBar.SuspendLayout();
@@ -143,6 +175,7 @@
             pnlSearchLeases.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvLeases).BeginInit();
             pnlLeases.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
             SuspendLayout();
             // 
             // pnlMainForm
@@ -544,14 +577,136 @@
             lblDashboardHeader.TabIndex = 0;
             lblDashboardHeader.Text = "Dashboard";
             // 
+            // pnlLeases
+            // 
+            pnlLeases.Controls.Add(lblLeasesTopic);
+            pnlLeases.Location = new Point(192, 0);
+            pnlLeases.Margin = new Padding(3, 2, 3, 2);
+            pnlLeases.Name = "pnlLeases";
+            pnlLeases.Size = new Size(1014, 520);
+            pnlLeases.TabIndex = 1;
+            pnlLeases.Visible = false;
+            // 
+            // lblLeasesTopic
+            // 
+            lblLeasesTopic.AutoSize = true;
+            lblLeasesTopic.Font = new Font("Segoe UI", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblLeasesTopic.Location = new Point(26, 38);
+            lblLeasesTopic.Name = "lblLeasesTopic";
+            lblLeasesTopic.Size = new Size(100, 37);
+            lblLeasesTopic.TabIndex = 0;
+            lblLeasesTopic.Text = "Leases";
+            // 
             // pnlRentPayments
             // 
+            pnlRentPayments.Controls.Add(dataGridView2);
+            pnlRentPayments.Controls.Add(panel5);
+            pnlRentPayments.Controls.Add(btnRecordPayment);
+            pnlRentPayments.Controls.Add(panel4);
+            pnlRentPayments.Controls.Add(panel2);
+            pnlRentPayments.Controls.Add(panel3);
+            pnlRentPayments.Controls.Add(panel1);
             pnlRentPayments.Controls.Add(lblRentTopic);
             pnlRentPayments.Location = new Point(192, 0);
             pnlRentPayments.Margin = new Padding(3, 2, 3, 2);
             pnlRentPayments.Name = "pnlRentPayments";
             pnlRentPayments.Size = new Size(1014, 520);
             pnlRentPayments.TabIndex = 1;
+            // 
+            // panel5
+            // 
+            panel5.Controls.Add(btnGenerateReceipts);
+            panel5.Controls.Add(cbxStatus);
+            panel5.Controls.Add(textBox1);
+            panel5.Location = new Point(8, 207);
+            panel5.Name = "panel5";
+            panel5.Size = new Size(987, 60);
+            panel5.TabIndex = 5;
+            // 
+            // btnRecordPayment
+            // 
+            btnRecordPayment.Location = new Point(857, 28);
+            btnRecordPayment.Name = "btnRecordPayment";
+            btnRecordPayment.Size = new Size(138, 30);
+            btnRecordPayment.TabIndex = 4;
+            btnRecordPayment.Text = "Record Payment";
+            btnRecordPayment.UseVisualStyleBackColor = true;
+            // 
+            // panel4
+            // 
+            panel4.Controls.Add(lblExpectedRentDisplay);
+            panel4.Controls.Add(lblExpectedRent);
+            panel4.Location = new Point(6, 81);
+            panel4.Name = "panel4";
+            panel4.Size = new Size(200, 100);
+            panel4.TabIndex = 3;
+            // 
+            // lblExpectedRent
+            // 
+            lblExpectedRent.AutoSize = true;
+            lblExpectedRent.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblExpectedRent.Location = new Point(6, 8);
+            lblExpectedRent.Name = "lblExpectedRent";
+            lblExpectedRent.Size = new Size(139, 25);
+            lblExpectedRent.TabIndex = 0;
+            lblExpectedRent.Text = "Expected Rent";
+            // 
+            // panel2
+            // 
+            panel2.Controls.Add(lblOutstandingRentDisplay);
+            panel2.Controls.Add(lblOutstandingRent);
+            panel2.Location = new Point(534, 81);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(200, 100);
+            panel2.TabIndex = 2;
+            // 
+            // lblOutstandingRent
+            // 
+            lblOutstandingRent.AutoSize = true;
+            lblOutstandingRent.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblOutstandingRent.Location = new Point(3, 8);
+            lblOutstandingRent.Name = "lblOutstandingRent";
+            lblOutstandingRent.Size = new Size(169, 25);
+            lblOutstandingRent.TabIndex = 2;
+            lblOutstandingRent.Text = "Outstanding Rent";
+            // 
+            // panel3
+            // 
+            panel3.Controls.Add(lblLatePaymentDisplay);
+            panel3.Controls.Add(lblLatePayment);
+            panel3.Location = new Point(795, 81);
+            panel3.Name = "panel3";
+            panel3.Size = new Size(200, 100);
+            panel3.TabIndex = 2;
+            // 
+            // lblLatePayment
+            // 
+            lblLatePayment.AutoSize = true;
+            lblLatePayment.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblLatePayment.Location = new Point(3, 8);
+            lblLatePayment.Name = "lblLatePayment";
+            lblLatePayment.Size = new Size(132, 25);
+            lblLatePayment.TabIndex = 1;
+            lblLatePayment.Text = "Late Payment";
+            // 
+            // panel1
+            // 
+            panel1.Controls.Add(lblCollectedRentDisplay);
+            panel1.Controls.Add(lblCollectedRent);
+            panel1.Location = new Point(267, 81);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(200, 100);
+            panel1.TabIndex = 1;
+            // 
+            // lblCollectedRent
+            // 
+            lblCollectedRent.AutoSize = true;
+            lblCollectedRent.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblCollectedRent.Location = new Point(4, 8);
+            lblCollectedRent.Name = "lblCollectedRent";
+            lblCollectedRent.Size = new Size(140, 25);
+            lblCollectedRent.TabIndex = 3;
+            lblCollectedRent.Text = "Collected Rent";
             // 
             // lblRentTopic
             // 
@@ -595,9 +750,12 @@
             dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Tenants, Contact, Properties, Unit, Lease_Status, Outstanding, Action });
             dataGridView1.Location = new Point(508, 4);
             dataGridView1.Margin = new Padding(3, 2, 3, 2);
+            dataGridView1.Location = new Point(31, 224);
+            dataGridView1.Margin = new Padding(3, 2, 3, 2);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 51;
             dataGridView1.Size = new Size(335, 545);
+            dataGridView1.Size = new Size(812, 325);
             dataGridView1.TabIndex = 3;
             // 
             // Tenants
@@ -802,6 +960,7 @@
             lblTotalUnits.Location = new Point(18, 8);
             lblTotalUnits.Name = "lblTotalUnits";
             lblTotalUnits.Size = new Size(62, 15);
+            lblTotalUnits.Size = new Size(63, 15);
             lblTotalUnits.TabIndex = 0;
             lblTotalUnits.Text = "Total Units";
             // 
@@ -1059,20 +1218,133 @@
             lblTerminatedLeases.TabIndex = 1;
             lblTerminatedLeases.Text = "Terminated Leases";
             // 
+            // lblExpectedRentDisplay
+            // 
+            lblExpectedRentDisplay.AutoSize = true;
+            lblExpectedRentDisplay.Location = new Point(10, 48);
+            lblExpectedRentDisplay.Name = "lblExpectedRentDisplay";
+            lblExpectedRentDisplay.Size = new Size(0, 15);
+            lblExpectedRentDisplay.TabIndex = 1;
+            // 
+            // lblLatePaymentDisplay
+            // 
+            lblLatePaymentDisplay.AutoSize = true;
+            lblLatePaymentDisplay.Location = new Point(10, 48);
+            lblLatePaymentDisplay.Name = "lblLatePaymentDisplay";
+            lblLatePaymentDisplay.Size = new Size(0, 15);
+            lblLatePaymentDisplay.TabIndex = 2;
+            // 
+            // lblOutstandingRentDisplay
+            // 
+            lblOutstandingRentDisplay.AutoSize = true;
+            lblOutstandingRentDisplay.Location = new Point(3, 48);
+            lblOutstandingRentDisplay.Name = "lblOutstandingRentDisplay";
+            lblOutstandingRentDisplay.Size = new Size(0, 15);
+            lblOutstandingRentDisplay.TabIndex = 3;
+            // 
+            // lblCollectedRentDisplay
+            // 
+            lblCollectedRentDisplay.AutoSize = true;
+            lblCollectedRentDisplay.Location = new Point(4, 48);
+            lblCollectedRentDisplay.Name = "lblCollectedRentDisplay";
+            lblCollectedRentDisplay.Size = new Size(0, 15);
+            lblCollectedRentDisplay.TabIndex = 4;
+            // 
+            // textBox1
+            // 
+            textBox1.Location = new Point(4, 17);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(259, 23);
+            textBox1.TabIndex = 0;
+            // 
+            // cbxStatus
+            // 
+            cbxStatus.FormattingEnabled = true;
+            cbxStatus.Items.AddRange(new object[] { "Paid", "Outstanding", "Late" });
+            cbxStatus.Location = new Point(282, 17);
+            cbxStatus.Name = "cbxStatus";
+            cbxStatus.Size = new Size(121, 23);
+            cbxStatus.TabIndex = 1;
+            // 
+            // btnGenerateReceipts
+            // 
+            btnGenerateReceipts.BackColor = SystemColors.ActiveBorder;
+            btnGenerateReceipts.Location = new Point(433, 3);
+            btnGenerateReceipts.Name = "btnGenerateReceipts";
+            btnGenerateReceipts.Size = new Size(118, 54);
+            btnGenerateReceipts.TabIndex = 2;
+            btnGenerateReceipts.Text = "Generate Receipts";
+            btnGenerateReceipts.UseVisualStyleBackColor = false;
+            // 
+            // dataGridView2
+            // 
+            dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView2.Columns.AddRange(new DataGridViewColumn[] { TENANT, PROPERTY, UNITS, RENTDUE, AMOUNTPAID, OUTSTANDINGS, PAYMENTDATE, RECEIPTN0, STATUSES });
+            dataGridView2.Location = new Point(10, 318);
+            dataGridView2.Name = "dataGridView2";
+            dataGridView2.Size = new Size(903, 150);
+            dataGridView2.TabIndex = 6;
+            // 
+            // TENANT
+            // 
+            TENANT.HeaderText = "TENANT";
+            TENANT.Name = "TENANT";
+            // 
+            // PROPERTY
+            // 
+            PROPERTY.HeaderText = "PROPERTY";
+            PROPERTY.Name = "PROPERTY";
+            // 
+            // UNITS
+            // 
+            UNITS.HeaderText = "UNIT";
+            UNITS.Name = "UNITS";
+            // 
+            // RENTDUE
+            // 
+            RENTDUE.HeaderText = "RENT DUE";
+            RENTDUE.Name = "RENTDUE";
+            // 
+            // AMOUNTPAID
+            // 
+            AMOUNTPAID.HeaderText = "AMOUNT PAID";
+            AMOUNTPAID.Name = "AMOUNTPAID";
+            // 
+            // OUTSTANDINGS
+            // 
+            OUTSTANDINGS.HeaderText = "OUTSTANDING";
+            OUTSTANDINGS.Name = "OUTSTANDINGS";
+            // 
+            // PAYMENTDATE
+            // 
+            PAYMENTDATE.HeaderText = "PAYMENT DUE";
+            PAYMENTDATE.Name = "PAYMENTDATE";
+            // 
+            // RECEIPTN0
+            // 
+            RECEIPTN0.HeaderText = "RECEIPT N0";
+            RECEIPTN0.Name = "RECEIPTN0";
+            // 
+            // STATUSES
+            // 
+            STATUSES.HeaderText = "STATUS";
+            STATUSES.Name = "STATUSES";
+            // 
             // Properties_Form
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1199, 520);
             Controls.Add(pnlMainForm);
+            Controls.Add(pnlRentPayments);
+            Controls.Add(pnlExpenses);
+            Controls.Add(pnlMaintenance);
+            Margin = new Padding(3, 2, 3, 2);
             Controls.Add(pnlLeases);
             Controls.Add(pnlContent);
             Controls.Add(pnlTenants);
             Controls.Add(pnlRentalUnit);
             Controls.Add(pnlDashBoard);
-            Controls.Add(pnlRentPayments);
-            Controls.Add(pnlExpenses);
-            Controls.Add(pnlMaintenance);
             Margin = new Padding(3, 2, 3, 2);
             Name = "Properties_Form";
             StartPosition = FormStartPosition.CenterScreen;
@@ -1091,6 +1363,16 @@
             pnlDashBoard.PerformLayout();
             pnlRentPayments.ResumeLayout(false);
             pnlRentPayments.PerformLayout();
+            panel5.ResumeLayout(false);
+            panel5.PerformLayout();
+            panel4.ResumeLayout(false);
+            panel4.PerformLayout();
+            panel2.ResumeLayout(false);
+            panel2.PerformLayout();
+            panel3.ResumeLayout(false);
+            panel3.PerformLayout();
+            panel1.ResumeLayout(false);
+            panel1.PerformLayout();
             pnlTenants.ResumeLayout(false);
             pnlTenants.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
@@ -1119,6 +1401,7 @@
             ((System.ComponentModel.ISupportInitialize)dgvLeases).EndInit();
             pnlLeases.ResumeLayout(false);
             pnlLeases.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView2).EndInit();
             ResumeLayout(false);
         }
 
@@ -1217,5 +1500,32 @@
         private Label lblExpiredLeasesNum;
         private Label lblTerminatedLeases;
         private Label lblTerminatedLeasesNum;
+        private Button btnRecordPayment;
+        private Panel panel4;
+        private Panel panel2;
+        private Panel panel3;
+        private Panel panel1;
+        private Panel panel5;
+        private Label lblExpectedRent;
+        private Label lblOutstandingRent;
+        private Label lblLatePayment;
+        private Label lblCollectedRent;
+        private Label lblExpectedRentDisplay;
+        private Label lblOutstandingRentDisplay;
+        private Label lblLatePaymentDisplay;
+        private Label lblCollectedRentDisplay;
+        private Button btnGenerateReceipts;
+        private ComboBox cbxStatus;
+        private TextBox textBox1;
+        private DataGridView dataGridView2;
+        private DataGridViewTextBoxColumn TENANT;
+        private DataGridViewTextBoxColumn PROPERTY;
+        private DataGridViewTextBoxColumn UNITS;
+        private DataGridViewTextBoxColumn RENTDUE;
+        private DataGridViewTextBoxColumn AMOUNTPAID;
+        private DataGridViewTextBoxColumn OUTSTANDINGS;
+        private DataGridViewTextBoxColumn PAYMENTDATE;
+        private DataGridViewTextBoxColumn RECEIPTN0;
+        private DataGridViewTextBoxColumn STATUSES;
     }
 }
