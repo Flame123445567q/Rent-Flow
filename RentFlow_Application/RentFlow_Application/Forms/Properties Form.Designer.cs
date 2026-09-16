@@ -62,8 +62,6 @@
             Actions = new DataGridViewTextBoxColumn();
             pnlDashBoard = new Panel();
             lblDashboardHeader = new Label();
-            pnlLeases = new Panel();
-            lblLeasesTopic = new Label();
             pnlRentPayments = new Panel();
             panel5 = new Panel();
             btnRecordPayment = new Button();
@@ -108,6 +106,31 @@
             lblExpensesTopic = new Label();
             pnlMaintenance = new Panel();
             lblMaintenanceTopic = new Label();
+            lblLeasesTopic = new Label();
+            pnlActiveLeases = new Panel();
+            pnlExpiredLeases = new Panel();
+            pnlTerminatedLeases = new Panel();
+            pnlSearchLeases = new Panel();
+            txtSearchLeases = new TextBox();
+            cmbAllStatus = new ComboBox();
+            dgvLeases = new DataGridView();
+            LEASEACTIONS = new DataGridViewTextBoxColumn();
+            LEASESTATUS = new DataGridViewTextBoxColumn();
+            MONTHLYRENT = new DataGridViewTextBoxColumn();
+            ENDDATE = new DataGridViewTextBoxColumn();
+            STARTDATE = new DataGridViewTextBoxColumn();
+            NUNIT = new DataGridViewTextBoxColumn();
+            PROPERTY = new DataGridViewTextBoxColumn();
+            TENANT = new DataGridViewTextBoxColumn();
+            LEASEID = new DataGridViewTextBoxColumn();
+            btnCreateLease = new Button();
+            pnlLeases = new Panel();
+            lblActiveLeases = new Label();
+            lblActiveLeaseNum = new Label();
+            lblExpiredLeasesNum = new Label();
+            lblExpiredLeases = new Label();
+            lblTerminatedLeasesNum = new Label();
+            lblTerminatedLeases = new Label();
             pnlMaintenanceRecord = new Panel();
             pnlInsuranceRecords = new Panel();
             pnlSecurityRecords = new Panel();
@@ -141,8 +164,8 @@
             cbxStatus = new ComboBox();
             btnGenerateReceipts = new Button();
             dataGridView2 = new DataGridView();
-            TENANT = new DataGridViewTextBoxColumn();
-            PROPERTY = new DataGridViewTextBoxColumn();
+            TENANT2 = new DataGridViewTextBoxColumn();
+            PROPERTY2 = new DataGridViewTextBoxColumn();
             UNITS = new DataGridViewTextBoxColumn();
             RENTDUE = new DataGridViewTextBoxColumn();
             AMOUNTPAID = new DataGridViewTextBoxColumn();
@@ -156,7 +179,6 @@
             pnlSearch.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvProperties).BeginInit();
             pnlDashBoard.SuspendLayout();
-            pnlLeases.SuspendLayout();
             pnlRentPayments.SuspendLayout();
             panel5.SuspendLayout();
             panel4.SuspendLayout();
@@ -172,6 +194,12 @@
             pnlTotalUnits.SuspendLayout();
             pnlExpenses.SuspendLayout();
             pnlMaintenance.SuspendLayout();
+            pnlActiveLeases.SuspendLayout();
+            pnlExpiredLeases.SuspendLayout();
+            pnlTerminatedLeases.SuspendLayout();
+            pnlSearchLeases.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvLeases).BeginInit();
+            pnlLeases.SuspendLayout();
             pnlMaintenanceRecord.SuspendLayout();
             pnlInsuranceRecords.SuspendLayout();
             pnlSecurityRecords.SuspendLayout();
@@ -751,10 +779,13 @@
             // 
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Tenants, Contact, Properties, Unit, Lease_Status, Outstanding, Action });
+            dataGridView1.Location = new Point(508, 4);
+            dataGridView1.Margin = new Padding(3, 2, 3, 2);
             dataGridView1.Location = new Point(31, 224);
             dataGridView1.Margin = new Padding(3, 2, 3, 2);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 51;
+            dataGridView1.Size = new Size(335, 545);
             dataGridView1.Size = new Size(812, 325);
             dataGridView1.TabIndex = 3;
             // 
@@ -959,6 +990,7 @@
             lblTotalUnits.AutoSize = true;
             lblTotalUnits.Location = new Point(18, 8);
             lblTotalUnits.Name = "lblTotalUnits";
+            lblTotalUnits.Size = new Size(62, 15);
             lblTotalUnits.Size = new Size(63, 15);
             lblTotalUnits.TabIndex = 0;
             lblTotalUnits.Text = "Total Units";
@@ -1031,6 +1063,198 @@
             lblMaintenanceTopic.Size = new Size(183, 37);
             lblMaintenanceTopic.TabIndex = 0;
             lblMaintenanceTopic.Text = "Maintenance";
+            // 
+            // lblLeasesTopic
+            // 
+            lblLeasesTopic.AutoSize = true;
+            lblLeasesTopic.Font = new Font("Segoe UI", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblLeasesTopic.Location = new Point(26, 38);
+            lblLeasesTopic.Name = "lblLeasesTopic";
+            lblLeasesTopic.Size = new Size(100, 37);
+            lblLeasesTopic.TabIndex = 0;
+            lblLeasesTopic.Text = "Leases";
+            // 
+            // pnlActiveLeases
+            // 
+            pnlActiveLeases.Controls.Add(lblActiveLeaseNum);
+            pnlActiveLeases.Controls.Add(lblActiveLeases);
+            pnlActiveLeases.Location = new Point(21, 110);
+            pnlActiveLeases.Name = "pnlActiveLeases";
+            pnlActiveLeases.Size = new Size(181, 64);
+            pnlActiveLeases.TabIndex = 1;
+            // 
+            // pnlExpiredLeases
+            // 
+            pnlExpiredLeases.Controls.Add(lblExpiredLeases);
+            pnlExpiredLeases.Controls.Add(lblExpiredLeasesNum);
+            pnlExpiredLeases.Location = new Point(208, 109);
+            pnlExpiredLeases.Name = "pnlExpiredLeases";
+            pnlExpiredLeases.Size = new Size(180, 65);
+            pnlExpiredLeases.TabIndex = 2;
+            // 
+            // pnlTerminatedLeases
+            // 
+            pnlTerminatedLeases.Controls.Add(lblTerminatedLeases);
+            pnlTerminatedLeases.Controls.Add(lblTerminatedLeasesNum);
+            pnlTerminatedLeases.Location = new Point(393, 110);
+            pnlTerminatedLeases.Name = "pnlTerminatedLeases";
+            pnlTerminatedLeases.Size = new Size(180, 65);
+            pnlTerminatedLeases.TabIndex = 3;
+            // 
+            // pnlSearchLeases
+            // 
+            pnlSearchLeases.Controls.Add(cmbAllStatus);
+            pnlSearchLeases.Controls.Add(txtSearchLeases);
+            pnlSearchLeases.Location = new Point(20, 187);
+            pnlSearchLeases.Name = "pnlSearchLeases";
+            pnlSearchLeases.Size = new Size(943, 58);
+            pnlSearchLeases.TabIndex = 4;
+            // 
+            // txtSearchLeases
+            // 
+            txtSearchLeases.Location = new Point(19, 16);
+            txtSearchLeases.Name = "txtSearchLeases";
+            txtSearchLeases.Size = new Size(349, 23);
+            txtSearchLeases.TabIndex = 0;
+            // 
+            // cmbAllStatus
+            // 
+            cmbAllStatus.FormattingEnabled = true;
+            cmbAllStatus.Items.AddRange(new object[] { "Active", "Expired", "Terminated" });
+            cmbAllStatus.Location = new Point(388, 19);
+            cmbAllStatus.Name = "cmbAllStatus";
+            cmbAllStatus.Size = new Size(295, 23);
+            cmbAllStatus.TabIndex = 1;
+            // 
+            // dgvLeases
+            // 
+            dgvLeases.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvLeases.Columns.AddRange(new DataGridViewColumn[] { LEASEID, TENANT, PROPERTY, NUNIT, STARTDATE, ENDDATE, MONTHLYRENT, LEASESTATUS, LEASEACTIONS });
+            dgvLeases.Location = new Point(19, 249);
+            dgvLeases.Name = "dgvLeases";
+            dgvLeases.Size = new Size(944, 268);
+            dgvLeases.TabIndex = 5;
+            // 
+            // LEASEACTIONS
+            // 
+            LEASEACTIONS.HeaderText = "LEASE ACTIONS";
+            LEASEACTIONS.Name = "LEASEACTIONS";
+            // 
+            // LEASESTATUS
+            // 
+            LEASESTATUS.HeaderText = "LEASE STATUS";
+            LEASESTATUS.Name = "LEASESTATUS";
+            // 
+            // MONTHLYRENT
+            // 
+            MONTHLYRENT.HeaderText = "MONTHLY RENT";
+            MONTHLYRENT.Name = "MONTHLYRENT";
+            // 
+            // ENDDATE
+            // 
+            ENDDATE.HeaderText = "END DATE";
+            ENDDATE.Name = "ENDDATE";
+            // 
+            // STARTDATE
+            // 
+            STARTDATE.HeaderText = "START DATE";
+            STARTDATE.Name = "STARTDATE";
+            // 
+            // NUNIT
+            // 
+            NUNIT.HeaderText = "Unit";
+            NUNIT.Name = "NUNIT";
+            // 
+            // PROPERTY
+            // 
+            PROPERTY.HeaderText = "PROPERTY";
+            PROPERTY.Name = "PROPERTY";
+            // 
+            // TENANT
+            // 
+            TENANT.HeaderText = "TENANT";
+            TENANT.Name = "TENANT";
+            // 
+            // LEASEID
+            // 
+            LEASEID.HeaderText = "LEASE ID";
+            LEASEID.Name = "LEASEID";
+            // 
+            // btnCreateLease
+            // 
+            btnCreateLease.Location = new Point(849, 39);
+            btnCreateLease.Name = "btnCreateLease";
+            btnCreateLease.Size = new Size(114, 33);
+            btnCreateLease.TabIndex = 6;
+            btnCreateLease.Text = "+ Create Lease";
+            btnCreateLease.UseVisualStyleBackColor = true;
+            // 
+            // pnlLeases
+            // 
+            pnlLeases.Controls.Add(btnCreateLease);
+            pnlLeases.Controls.Add(dgvLeases);
+            pnlLeases.Controls.Add(pnlSearchLeases);
+            pnlLeases.Controls.Add(pnlTerminatedLeases);
+            pnlLeases.Controls.Add(pnlExpiredLeases);
+            pnlLeases.Controls.Add(pnlActiveLeases);
+            pnlLeases.Controls.Add(lblLeasesTopic);
+            pnlLeases.Location = new Point(192, 0);
+            pnlLeases.Margin = new Padding(3, 2, 3, 2);
+            pnlLeases.Name = "pnlLeases";
+            pnlLeases.Size = new Size(1014, 520);
+            pnlLeases.TabIndex = 1;
+            pnlLeases.Visible = false;
+            // 
+            // lblActiveLeases
+            // 
+            lblActiveLeases.AutoSize = true;
+            lblActiveLeases.Location = new Point(80, 25);
+            lblActiveLeases.Name = "lblActiveLeases";
+            lblActiveLeases.Size = new Size(77, 15);
+            lblActiveLeases.TabIndex = 0;
+            lblActiveLeases.Text = "Active Leases";
+            // 
+            // lblActiveLeaseNum
+            // 
+            lblActiveLeaseNum.AutoSize = true;
+            lblActiveLeaseNum.Location = new Point(18, 24);
+            lblActiveLeaseNum.Name = "lblActiveLeaseNum";
+            lblActiveLeaseNum.Size = new Size(0, 15);
+            lblActiveLeaseNum.TabIndex = 1;
+            // 
+            // lblExpiredLeasesNum
+            // 
+            lblExpiredLeasesNum.AutoSize = true;
+            lblExpiredLeasesNum.Location = new Point(12, 25);
+            lblExpiredLeasesNum.Name = "lblExpiredLeasesNum";
+            lblExpiredLeasesNum.Size = new Size(0, 15);
+            lblExpiredLeasesNum.TabIndex = 0;
+            // 
+            // lblExpiredLeases
+            // 
+            lblExpiredLeases.AutoSize = true;
+            lblExpiredLeases.Location = new Point(87, 25);
+            lblExpiredLeases.Name = "lblExpiredLeases";
+            lblExpiredLeases.Size = new Size(83, 15);
+            lblExpiredLeases.TabIndex = 1;
+            lblExpiredLeases.Text = "Expired Leases";
+            // 
+            // lblTerminatedLeasesNum
+            // 
+            lblTerminatedLeasesNum.AutoSize = true;
+            lblTerminatedLeasesNum.Location = new Point(17, 23);
+            lblTerminatedLeasesNum.Name = "lblTerminatedLeasesNum";
+            lblTerminatedLeasesNum.Size = new Size(0, 15);
+            lblTerminatedLeasesNum.TabIndex = 0;
+            // 
+            // lblTerminatedLeases
+            // 
+            lblTerminatedLeases.AutoSize = true;
+            lblTerminatedLeases.Location = new Point(71, 27);
+            lblTerminatedLeases.Name = "lblTerminatedLeases";
+            lblTerminatedLeases.Size = new Size(103, 15);
+            lblTerminatedLeases.TabIndex = 1;
+            lblTerminatedLeases.Text = "Terminated Leases";
             // 
             // pnlMaintenanceRecord
             // 
@@ -1299,21 +1523,21 @@
             // dataGridView2
             // 
             dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView2.Columns.AddRange(new DataGridViewColumn[] { TENANT, PROPERTY, UNITS, RENTDUE, AMOUNTPAID, OUTSTANDINGS, PAYMENTDATE, RECEIPTN0, STATUSES });
+            dataGridView2.Columns.AddRange(new DataGridViewColumn[] { TENANT2, PROPERTY2, UNITS, RENTDUE, AMOUNTPAID, OUTSTANDINGS, PAYMENTDATE, RECEIPTN0, STATUSES });
             dataGridView2.Location = new Point(10, 318);
             dataGridView2.Name = "dataGridView2";
             dataGridView2.Size = new Size(903, 150);
             dataGridView2.TabIndex = 6;
             // 
-            // TENANT
+            // TENANT2
             // 
-            TENANT.HeaderText = "TENANT";
-            TENANT.Name = "TENANT";
+            TENANT2.HeaderText = "TENANT";
+            TENANT2.Name = "TENANT";
             // 
-            // PROPERTY
+            // PROPERTY2
             // 
-            PROPERTY.HeaderText = "PROPERTY";
-            PROPERTY.Name = "PROPERTY";
+            PROPERTY2.HeaderText = "PROPERTY";
+            PROPERTY2.Name = "PROPERTY";
             // 
             // UNITS
             // 
@@ -1359,6 +1583,7 @@
             Controls.Add(pnlRentPayments);
             Controls.Add(pnlExpenses);
             Controls.Add(pnlMaintenance);
+            Margin = new Padding(3, 2, 3, 2);
             Controls.Add(pnlLeases);
             Controls.Add(pnlContent);
             Controls.Add(pnlTenants);
@@ -1382,8 +1607,6 @@
             ((System.ComponentModel.ISupportInitialize)dgvProperties).EndInit();
             pnlDashBoard.ResumeLayout(false);
             pnlDashBoard.PerformLayout();
-            pnlLeases.ResumeLayout(false);
-            pnlLeases.PerformLayout();
             pnlRentPayments.ResumeLayout(false);
             pnlRentPayments.PerformLayout();
             panel5.ResumeLayout(false);
@@ -1413,6 +1636,17 @@
             pnlExpenses.PerformLayout();
             pnlMaintenance.ResumeLayout(false);
             pnlMaintenance.PerformLayout();
+            pnlActiveLeases.ResumeLayout(false);
+            pnlActiveLeases.PerformLayout();
+            pnlExpiredLeases.ResumeLayout(false);
+            pnlExpiredLeases.PerformLayout();
+            pnlTerminatedLeases.ResumeLayout(false);
+            pnlTerminatedLeases.PerformLayout();
+            pnlSearchLeases.ResumeLayout(false);
+            pnlSearchLeases.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvLeases).EndInit();
+            pnlLeases.ResumeLayout(false);
+            pnlLeases.PerformLayout();
             pnlMaintenanceRecord.ResumeLayout(false);
             pnlMaintenanceRecord.PerformLayout();
             pnlInsuranceRecords.ResumeLayout(false);
@@ -1492,14 +1726,37 @@
         private Label lblRole;
         private Label lblUserName;
         private Button btnLogOut;
-        private Panel pnlLeases;
-        private Label lblLeasesTopic;
         private Panel pnlRentPayments;
         private Label lblRentTopic;
         private Panel pnlExpenses;
         private Label lblExpensesTopic;
         private Panel pnlMaintenance;
         private Label lblMaintenanceTopic;
+        private Label lblLeasesTopic;
+        private Panel pnlActiveLeases;
+        private Panel pnlExpiredLeases;
+        private Panel pnlTerminatedLeases;
+        private Panel pnlSearchLeases;
+        private ComboBox cmbAllStatus;
+        private TextBox txtSearchLeases;
+        private DataGridView dgvLeases;
+        private DataGridViewTextBoxColumn LEASEID;
+        private DataGridViewTextBoxColumn TENANT;
+        private DataGridViewTextBoxColumn PROPERTY;
+        private DataGridViewTextBoxColumn NUNIT;
+        private DataGridViewTextBoxColumn STARTDATE;
+        private DataGridViewTextBoxColumn ENDDATE;
+        private DataGridViewTextBoxColumn MONTHLYRENT;
+        private DataGridViewTextBoxColumn LEASESTATUS;
+        private DataGridViewTextBoxColumn LEASEACTIONS;
+        private Button btnCreateLease;
+        private Panel pnlLeases;
+        private Label lblActiveLeaseNum;
+        private Label lblActiveLeases;
+        private Label lblExpiredLeases;
+        private Label lblExpiredLeasesNum;
+        private Label lblTerminatedLeases;
+        private Label lblTerminatedLeasesNum;
         private Panel pnlUtilitiesRecords;
         private Panel pnlSecurityRecords;
         private Label lblUtilities;
@@ -1543,8 +1800,8 @@
         private ComboBox cbxStatus;
         private TextBox textBox1;
         private DataGridView dataGridView2;
-        private DataGridViewTextBoxColumn TENANT;
-        private DataGridViewTextBoxColumn PROPERTY;
+        private DataGridViewTextBoxColumn TENANT2;
+        private DataGridViewTextBoxColumn PROPERTY2;
         private DataGridViewTextBoxColumn UNITS;
         private DataGridViewTextBoxColumn RENTDUE;
         private DataGridViewTextBoxColumn AMOUNTPAID;
