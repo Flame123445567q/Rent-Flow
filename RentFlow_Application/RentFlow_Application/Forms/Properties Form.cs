@@ -410,15 +410,5 @@ namespace RentFlow_Application.Forms
         {
             ShowPanel(pnlMaintenance);
         }
-
-        private void lblRentalUnit_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dvgRentalUnit_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
     }
 }
