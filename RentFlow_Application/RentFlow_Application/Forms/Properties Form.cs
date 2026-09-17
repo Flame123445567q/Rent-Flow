@@ -410,5 +410,12 @@ namespace RentFlow_Application.Forms
         {
             ShowPanel(pnlMaintenance);
         }
+
+        // Designer references this click handler; ensure it exists to avoid CS0103
+        private void lblRentalUnit_Click(object sender, EventArgs e)
+        {
+            // Optional: show rental unit panel when header clicked
+            try { ShowPanel(pnlRentalUnit); } catch { }
+        }
     }
 }
