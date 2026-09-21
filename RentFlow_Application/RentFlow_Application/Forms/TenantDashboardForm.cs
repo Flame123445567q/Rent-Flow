@@ -36,7 +36,7 @@ namespace RentFlow_Application.Forms
         private void ShowOnly(params Panel[] panelsToShow)
         {
             // list of main panels to manage
-            Panel[] all = new Panel[] { panel1, pnlLeaseDetails, pnlPaymentHistory, pnlCard1, pnlCard2, pnlCard3, pnlCard4 };
+            Panel[] all = new Panel[] { panel1};
             foreach (var p in all)
             {
                 if (p != null) p.Visible = false;
@@ -50,13 +50,24 @@ namespace RentFlow_Application.Forms
         private void btnMyDashBoard_Click(object sender, EventArgs e)
         {
             // show lease details, payment history and summary cards
-            ShowOnly(pnlLeaseDetails, pnlPaymentHistory, pnlCard1, pnlCard2, pnlCard3, pnlCard4);
+            ShowOnly();
         }
 
         private void btnMaintenance_Click(object sender, EventArgs e)
         {
             // show the maintenance panel area (panel1)
             ShowOnly(panel1);
+
+            Submit_Maintenancefrm form = new Submit_Maintenancefrm();
+            
+            form.ShowDialog();
+
+
+        }
+
+        private void label9_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

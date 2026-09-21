@@ -54,7 +54,7 @@ namespace RentFlow_Application.Forms
             try
             {
                 File.AppendAllText("Properties.txt", line + Environment.NewLine);
-                MessageBox.Show("Property saved to Properties.txt.", "Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Property saved Successfully", "Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.DialogResult = DialogResult.OK;
                 this.Close();
             }

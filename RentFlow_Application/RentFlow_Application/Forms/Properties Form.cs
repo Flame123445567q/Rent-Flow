@@ -7,12 +7,10 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using System.IO;
-
 namespace RentFlow_Application.Forms
 {
     public partial class Properties_Form : Form
     {
-
         private List<Property> properties = new List<Property>();
         private List<Tenant> tenants = new List<Tenant>();
         private int nextPropertyID = 1;
@@ -20,38 +18,11 @@ namespace RentFlow_Application.Forms
         public Properties_Form()
         {
             InitializeComponent();
-            //Property property1 = new Property();
-            //property1.SetAddress("Durban");
-            //property1.SetPropertyType("Apartment");
-            //property1.SetRentalAmount(8500);
-            //property1.SetStatus("Active");
-
-            //Property property2 = new Property();
-            //property2.SetPropertyID(2);
-            //property2.SetPropertyName("Green Valley");
-            //property2.SetAddress("Johannesburg");
-            //property2.SetPropertyType("House");
-            //property2.SetRentalAmount(12000);
-            //property2.SetStatus("Active");
-
-            //Property property3 = new Property();
-            //property3.SetPropertyID(3);
-            //property3.SetPropertyName("Ocean View");
-            //property3.SetAddress("Cape Town");
-            //property3.SetPropertyType("Apartment");
-            //property3.SetRentalAmount(9500);
-            //property3.SetStatus("Inactive");
-
-            //properties.Add(property1);
-            //properties.Add(property2);
-            //properties.Add(property3);
         }
-
         private void pnlMain_Paint(object sender, PaintEventArgs e)
         {
 
         }
-
         private void btnAddProperty_Click(object sender, EventArgs e)
         {
 
@@ -68,10 +39,7 @@ namespace RentFlow_Application.Forms
                 UpdateStatistics();
                 return;
             }
-
-
         }
-
         private void txtSearch_TextChanged(object sender, EventArgs e)
         {
 
@@ -90,7 +58,7 @@ namespace RentFlow_Application.Forms
                         property.GetPropertyName(),
                         property.GetAddress(),
                         property.GetPropertyType(),
-                        property.GetRentalAmount().ToString("C"),
+                        property.GetRentalAmount().ToString(),
                         property.GetStatus());
                 }
             }
@@ -118,7 +86,6 @@ namespace RentFlow_Application.Forms
                 }
             }
         }
-
         private void Properties_Form_Load(object sender, EventArgs e)
         {
             // Ensure panels dock and only the dashboard shows initially
@@ -130,10 +97,8 @@ namespace RentFlow_Application.Forms
             // load tenants into tenant grid
             LoadTenants();
             UpdateTenantsGrid();
-
             // show dashboard by default
             ShowPanel(pnlDashBoard);
-
         }
 
         // configure content panels so they fill the remaining area to the right of the left nav
@@ -154,7 +119,6 @@ namespace RentFlow_Application.Forms
             }
             catch { }
         }
-
         // Show only the specified panel and hide the others
         private void ShowPanel(Panel toShow)
         {
@@ -177,7 +141,7 @@ namespace RentFlow_Application.Forms
         private void btnAddTenants_Click(object sender, EventArgs e)
         {
             // show add-tenant dialog and reload tenants if saved
-            // Patch placeholder: no functional change
+            
             Add_New_Tenants frm = new Add_New_Tenants();
             frm.NextTenantID = nextTenantID;
 
@@ -195,7 +159,10 @@ namespace RentFlow_Application.Forms
             string filePath = Path.Combine(Application.StartupPath ?? ".", "Tenants.txt");
 
             if (!File.Exists(filePath))
+            {
                 return;
+            }
+               
 
             string[] lines = File.ReadAllLines(filePath);
 
@@ -217,8 +184,26 @@ namespace RentFlow_Application.Forms
                     t.SetIDNumber(data[5]);
                     t.SetAssignedProperty(data[6]);
                     t.SetAssignedUnit(data[7]);
+                    // optional fields: lease status and outstanding
+                    if (data.Length >= 10)
+                    {
+                        t.SetLeaseStatus(data[8]);
+                        t.SetOutstanding(data[9]);
+                    }
+                    else
+                    {
+                        t.SetLeaseStatus("Active");
+                        t.SetOutstanding("R5000");
+                    }
 
                     tenants.Add(t);
+
+                    int totalTenants = tenants.Count;
+                    
+                   
+                        lblTenatsCount.Text = $"{totalTenants} Registered Tenants";
+                        //totalTenants++;
+                    
 
                     if (t.GetTenantID() >= nextTenantID)
                         nextTenantID = t.GetTenantID() + 1;
@@ -240,8 +225,8 @@ namespace RentFlow_Application.Forms
                     t.GetPhoneNumber(),
                     t.GetAssignedProperty(),
                     t.GetAssignedUnit(),
-                    "", // Lease status placeholder
-                    ""  // Outstanding placeholder
+                    t.GetLeaseStatus(), // Lease status
+                    t.GetOutstanding()  // Outstanding
                 );
             }
         }
@@ -284,17 +269,10 @@ namespace RentFlow_Application.Forms
                     {
                         nextPropertyID = property.GetPropertyID() + 1;
                     }
-
-
-
-
                 }
             }
 
         }
-
-
-
         private void UpdateGrid()
         {
             dgvProperties.Rows.Clear();
@@ -306,7 +284,7 @@ namespace RentFlow_Application.Forms
                     property.GetPropertyName(),
                     property.GetAddress(),
                     property.GetPropertyType(),
-                    property.GetRentalAmount().ToString("C"),
+                    property.GetRentalAmount().ToString(),
                     property.GetStatus()
                 );
             }
@@ -414,6 +392,56 @@ namespace RentFlow_Application.Forms
         private void label3_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnEditRequest_Click(object sender, EventArgs e)
+        {
+            if (dgvMaintenanceRecords.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Select a Request to Edit", "Invalid", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            EditMaintenanceRequest form = new EditMaintenanceRequest();
+            form.ShowDialog();
+        }
+
+        private void dgvMaintenanceRecords_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void pnlMaintenance_Paint(object sender, PaintEventArgs e)
+        {
+            dgvMaintenanceRecords.Rows.Clear();
+
+            if (!File.Exists("maintenance.txt"))
+            {
+                return;
+            }
+
+            foreach (string line in File.ReadAllLines("maintenance.txt"))
+            {
+                if (string.IsNullOrWhiteSpace(line)) continue;
+
+                string[] index = line.Split('|');
+                if (index.Length < 8) continue;
+
+                dgvMaintenanceRecords.Rows.Add(
+                    index[0],              // RequestId
+                    index[1],              // TenantName
+                    index[2],              // PropertyUnit
+                    index[3],              // category for now
+                    index[5],              // Priority
+                    index[6],              // Status
+                    index[7]               // Date 
+                );
+            }
+        }
+
+        private void btnAddTenants_Click_1(object sender, EventArgs e)
+        {
+            Add_New_Tenants form = new Add_New_Tenants();
+            form.ShowDialog();
         }
     }
 }

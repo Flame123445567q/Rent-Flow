@@ -6,29 +6,50 @@ using System.Collections.Generic;
 using RentFlow_Application;
 using System.IO;
 
-
 namespace RentFlow_Application.Forms
 {
     public partial class LoginForm : Form
     {
-        // Stores which role button was clicked. No default: user must choose one.
+        // Which role the user selected (Landlord, Tenant, Admin)
         private string selectedRole = null;
-        List<User> RegisteredUser;
+        // Local cached list of registered users (kept for compatibility with designer and other code)
+        private List<User> RegisteredUser;
 
         public LoginForm()
         {
             InitializeComponent();
 
-            //  Load users from the file when the form opens
+            // Populate the shared RegisteredUser list using helper
             RegisterForm2.RegisteredUser = FileManager.LoadUsers();
-            // No default role selected; ensure UI reflects unselected state
+            RegisteredUser = RegisterForm2.RegisteredUser;
+
+            // Ensure UI starts with clean role visuals
             ResetRoleButtonsVisuals();
 
-            // Generic placeholder text
-            txtUsername.PlaceholderText = "Enter your email";
+            txtUsername.PlaceholderText = "Enter your email address";
         }
 
-        // Reset all role buttons to unselected visual state
+        private void LoginForm_Load(object sender, EventArgs e)
+        {
+            // Attempt to prefill remembered credentials if remember.txt exists
+            try
+            {
+                string rememberPath = Path.Combine(Application.StartupPath ?? ".", "remember.txt");
+                if (File.Exists(rememberPath))
+                {
+                    string[] lines = File.ReadAllLines(rememberPath);
+                    if (lines.Length >= 2)
+                    {
+                        txtUsername.Text = lines[0];
+                        txtPassword.Text = lines[1];
+                        chkRemberMe.Checked = true;
+                    }
+                }
+            }
+            catch { }
+        }
+
+        // Visual helpers
         private void ResetRoleButtonsVisuals()
         {
             try
@@ -44,7 +65,6 @@ namespace RentFlow_Application.Forms
             catch { }
         }
 
-        // Mark role buttons with a red border to indicate the user must select one
         private void ShowRoleSelectionError()
         {
             try
@@ -59,220 +79,192 @@ namespace RentFlow_Application.Forms
             catch { }
         }
 
-        // ============================================================
-        // ROLE BUTTON CLICKS
-        // ============================================================
-
+        // Role clicks -- set role and update visuals + placeholder
         private void btnLandlord_Click(object sender, EventArgs e)
         {
             selectedRole = "Landlord";
-
-            // Visuals
             ResetRoleButtonsVisuals();
+
             btnLandLord.BackColor = Color.Blue;
             btnLandLord.ForeColor = Color.White;
             btnLandLord.FlatAppearance.BorderSize = 2;
             btnLandLord.FlatAppearance.BorderColor = Color.Blue;
 
-            // Update placeholder text
             txtUsername.PlaceholderText = "landlord@rentFlow.co.za";
         }
 
         private void btnTenant_Click(object sender, EventArgs e)
         {
             selectedRole = "Tenant";
-
-            // Visuals
             ResetRoleButtonsVisuals();
+
             btnTenant.BackColor = Color.Blue;
             btnTenant.ForeColor = Color.White;
             btnTenant.FlatAppearance.BorderSize = 2;
             btnTenant.FlatAppearance.BorderColor = Color.Blue;
 
-            // Update placeholder text
             txtUsername.PlaceholderText = "tenant@rentFlow.co.za";
         }
 
         private void btnAdmin_Click(object sender, EventArgs e)
         {
             selectedRole = "Admin";
-
-            // Visuals
             ResetRoleButtonsVisuals();
+
             btnAdmin.BackColor = Color.Blue;
             btnAdmin.ForeColor = Color.White;
             btnAdmin.FlatAppearance.BorderSize = 2;
             btnAdmin.FlatAppearance.BorderColor = Color.Blue;
 
-            // Update placeholder text
             txtUsername.PlaceholderText = "admin@rentFlow.co.za";
         }
 
-        // ============================================================
-        // SIGN-IN BUTTON (Full functionality!)
-        // ============================================================
-
+        // Sign in button handler - validates and then dispatches by role
         private void btnSigningIn_Click(object sender, EventArgs e)
         {
-            // 1. Get the values from the form
-            string email = txtUsername.Text.Trim();
-            string password = txtPassword.Text;
+            string email = txtUsername.Text.Trim() ?? string.Empty;
+            string password = txtPassword.Text ?? string.Empty;
 
-            // 2. VALIDATION: Check if fields are empty
             if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password))
             {
-                MessageBox.Show("Please enter your email and password.", "Validation Error",
-                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Please enter your email and password.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            // 3. VALIDATION: Check if a role was selected
             if (string.IsNullOrEmpty(selectedRole))
             {
-                // visually indicate required selection
                 ShowRoleSelectionError();
-                MessageBox.Show("Please select a role (LandLord, Tenant, or Admin).", "Validation Error",
-                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Please select a role (LandLord, Tenant, or Admin).", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            // 4. SEARCH FOR THE USER IN THE LIST
-            foreach (User user in RegisterForm2.RegisteredUser)
+            if (selectedRole == "Tenant")
             {
-                // Check if email, password, AND role match
-                if (user.Email.ToLower() == email.ToLower() &&
-                    user.Password == password &&
-                    user.Role == selectedRole)
+                AuthenticateTenant(email, password);
+                return;
+            }
+
+            AuthenticateAdminOrLandlord(email, password, selectedRole);
+        }
+
+        // Tenant authentication: email must match a registered tenant and password == ID number
+        private void AuthenticateTenant(string email, string password)
+        {
+            string tenantsPath = Path.Combine(Application.StartupPath ?? ".", "Tenants.txt");
+
+            if (!File.Exists(tenantsPath))
+            {
+                MessageBox.Show("You are not a registered Tenant.", "Login Failed", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            string[] lines = File.ReadAllLines(tenantsPath);
+            foreach (var raw in lines)
+            {
+                if (string.IsNullOrWhiteSpace(raw)) continue;
+                string[] parts = raw.Split();
+                if (parts.Length < 6) continue; // malformed line
+
+                string tenantEmail = parts[4];
+                string tenantIdNumber = parts[5];
+
+                if (string.Equals(tenantEmail, email, StringComparison.OrdinalIgnoreCase) && tenantIdNumber == password)
                 {
-                    // ✅ LOGIN SUCCESSFUL!
-                    MessageBox.Show($"Welcome {user.FullName} {user.Surname}!\n" +
-                                    $"Role: {user.Role}",
-                                    "Login Successful",
-                                    MessageBoxButtons.OK,
-                                    MessageBoxIcon.Information);
+                    string first = parts.Length > 1 ? parts[1].Replace('_', ' ') : string.Empty;
+                    string last = parts.Length > 2 ? parts[2].Replace('_', ' ') : string.Empty;
 
-                     
-                    string rememberPath = Path.Combine(Application.StartupPath, "remember.txt");
+                    MessageBox.Show($"Welcome {first} {last}!\nRole: Tenant", "Login Successful", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                    if (chkRemberMe.Checked)
-                    {
-                        File.WriteAllLines(rememberPath, new string[] { txtUsername.Text.Trim(), txtPassword.Text.Trim() });
-                    }
-                    else
-                    {
-                        if (File.Exists(rememberPath))
-                        {
-                            File.Delete(rememberPath);
-                        }
-                    }
+                    HandleRememberMe(email, password);
 
-                    // Open the Main Form (Dashboard)
+                    DataStore.LoggedInEmail = tenantEmail;
+                    DataStore.LoggedInRole = "Tenant";
+                    DataStore.LoggedInName = (first + " " + last).Trim();
+
+                    var tenantForm = new TenantDashboardForm();
+                    tenantForm.Show();
+                    this.Hide();
+                    return;
+                }
+                MessageBox.Show("Invalid tenant credentials. Ensure you are a registered tenant and your password is your ID number.", "Login Failed", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+
+            
+        }
+
+        // Admin / Landlord authentication against the RegisteredUser list
+        private void AuthenticateAdminOrLandlord(string email, string password, string role)
+        {
+            var users = RegisterForm2.RegisteredUser ?? new List<User>();
+
+            foreach (var user in users)
+            {
+                if (string.Equals(user.Email, email, StringComparison.OrdinalIgnoreCase)
+                    && user.Password == password
+                    && user.Role == role)
+                {
+                    MessageBox.Show($"Welcome {user.FullName} {user.Surname}!\nRole: {user.Role}", "Login Successful", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    HandleRememberMe(email, password);
+
                     DataStore.LoggedInEmail = user.Email;
-                    DataStore.LoggedInRole = selectedRole;
+                    DataStore.LoggedInRole = user.Role;
                     DataStore.LoggedInName = user.FullName + " " + user.Surname;
 
-                    if (selectedRole == "Tenant")
+                    if (role == "Admin")
                     {
-                        TenantDashboardForm tenantForm = new TenantDashboardForm();
-                        tenantForm.Show();
-                        this.Hide();
-                        return;
-                    }
-                    else if (selectedRole == "Admin")
-                    {
-                        AdminDashboardForm adminForm = new AdminDashboardForm();
+                        var adminForm = new AdminDashboardForm();
                         adminForm.Show();
                         this.Hide();
                         return;
                     }
-                    else
+
+                    if (role == "Landlord")
                     {
-                        Properties_Form LandlordForm = new Properties_Form();
-                        LandlordForm.Show();
+                        var propForm = new Properties_Form();
+                        propForm.Show();
                         this.Hide();
+                        lblUsername.Text = $"{user.FullName} {user.Surname}\nRole:{user.Role}";
                         return;
                     }
-
                 }
             }
 
-            // 5. If we get here, no user matched
-            MessageBox.Show("Invalid email, password, or role. Please try again.", "Login Failed",
-                            MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-            string path = Path.Combine(Application.StartupPath, "remember.txt");
-
-            if (chkRemberMe.Checked)
-            {
-                File.WriteAllLines(path, new string[] { txtUsername.Text.Trim(), txtPassword.Text.Trim() });
-            }
-            else
-            {
-                if (File.Exists(path))
-                {
-                    File.Delete(path);
-                }
-            }
-          
+            MessageBox.Show("Invalid credentials.", "Login Failed", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
 
-        // ============================================================
-        // CREATE ACCOUNT BUTTON
-        // ============================================================
+        // Remember-me helper
+        private void HandleRememberMe(string email, string password)
+        {
+            try
+            {
+                string rememberPath = Path.Combine(Application.StartupPath ?? ".", "remember.txt");
+                if (chkRemberMe.Checked)
+                {
+                    File.WriteAllLines(rememberPath, new string[] { email, password });
+                }
+                else
+                {
+                    if (File.Exists(rememberPath)) File.Delete(rememberPath);
+                }
+            }
+            catch { }
+        }
 
+        // Designer-wired handlers (simple defaults so designer references compile)
         private void btnCreateAnAccount_Click(object sender, EventArgs e)
         {
-            // Create a new instance of the Registration form
-            RegisterForm2 registerForm = new RegisterForm2();
-
-            // Show the Registration form (Login stays open in the background)
-            registerForm.Show();
-        }
-
-        // ============================================================
-        // FORGOT PASSWORD (Optional - just shows a message)
-        // ============================================================
-
-        private void lnkForgotPassword_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            MessageBox.Show("Please contact your system administrator to reset your password.",
-                            "Forgot Password",
-                            MessageBoxButtons.OK,
-                            MessageBoxIcon.Information);
-        }
-
-        // ============================================================
-        // REMEMBER ME (Optional - just shows a message for now)
-        // ============================================================
-
-        private void chkRememberMe_CheckedChanged(object sender, EventArgs e)
-        {
-            // This is just a placeholder. You can implement cookie-based
-            // remember-me functionality later.
+            try
+            {
+                var reg = new RegisterForm2();
+                reg.ShowDialog();
+            }
+            catch { }
         }
 
         private void linkForgotPassword_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            Forgot_Password forgotForm = new Forgot_Password();
-            forgotForm.ShowDialog();
-        }
-
-        private void LoginForm_Load(object sender, EventArgs e)
-        {
-            RegisteredUser = FileManager.LoadUsers();
-
-            string path = Path.Combine(Application.StartupPath, "remember.txt");
-            if (File.Exists(path))
-            {
-                string[] lines = File.ReadAllLines("remember.txt");
-
-                if (lines.Length >= 2)
-                {
-                    txtUsername.Text = lines[0];
-                    txtPassword.Text = lines[1];
-                    chkRemberMe.Checked = true;
-                }
-            }
+            MessageBox.Show("Please contact support to reset your password.", "Forgot Password", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }

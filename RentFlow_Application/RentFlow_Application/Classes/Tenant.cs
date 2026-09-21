@@ -14,6 +14,8 @@ namespace RentFlow_Application.Classes
         private string idNumber;
         private string assignedProperty;
         private string assignedUnit;
+        private string leaseStatus;
+        private string outstanding;
 
         
         public void SetTenantID(int id) { tenantID = id; }
@@ -24,6 +26,8 @@ namespace RentFlow_Application.Classes
         public void SetIDNumber(string v) { idNumber = v; }
         public void SetAssignedProperty(string v) { assignedProperty = v; }
         public void SetAssignedUnit(string v) { assignedUnit = v; }
+        public void SetLeaseStatus(string v) { leaseStatus = v; }
+        public void SetOutstanding(string v) { outstanding = v; }
 
         public int GetTenantID() => tenantID;
         public string GetFirstName() => firstName;
@@ -33,6 +37,8 @@ namespace RentFlow_Application.Classes
         public string GetIDNumber() => idNumber;
         public string GetAssignedProperty() => assignedProperty;
         public string GetAssignedUnit() => assignedUnit;
+        public string GetLeaseStatus() => leaseStatus;
+        public string GetOutstanding() => outstanding;
 
     }
 }
