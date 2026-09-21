@@ -13,6 +13,8 @@ namespace RentFlow_Application.Forms
     public partial class Properties_Form : Form
     {
 
+
+
         private List<Property> properties = new List<Property>();
         private List<Tenant> tenants = new List<Tenant>();
         private int nextPropertyID = 1;
@@ -121,6 +123,7 @@ namespace RentFlow_Application.Forms
 
         private void Properties_Form_Load(object sender, EventArgs e)
         {
+            this.WindowState = FormWindowState.Maximized;
             // Ensure panels dock and only the dashboard shows initially
             SetupContentPanels();
 
@@ -128,11 +131,17 @@ namespace RentFlow_Application.Forms
             UpdateStatistics();
             LoadProperties();
             // load tenants into tenant grid
+
             LoadTenants();
             UpdateTenantsGrid();
 
             // show dashboard by default
             ShowPanel(pnlDashBoard);
+
+            DataStore.LoadLeases();
+            RefreshLeaseGrid();
+
+            _lastCount = DataStore.theMaintenance.Count;
 
         }
 
@@ -228,14 +237,14 @@ namespace RentFlow_Application.Forms
 
         private void UpdateTenantsGrid()
         {
-            if (dataGridView1 == null)
+            if (dgvAddTenants == null)
                 return;
 
-            dataGridView1.Rows.Clear();
+            dgvAddTenants.Rows.Clear();
 
             foreach (Tenant t in tenants)
             {
-                dataGridView1.Rows.Add(
+                dgvAddTenants.Rows.Add(
                     t.GetFirstName() + " " + t.GetLastName(),
                     t.GetPhoneNumber(),
                     t.GetAssignedProperty(),
@@ -394,6 +403,7 @@ namespace RentFlow_Application.Forms
         private void btnLeases_Click(object sender, EventArgs e)
         {
             ShowPanel(pnlLeases);
+            RefreshLeaseGrid();
         }
 
         private void btnRentPayments_Click(object sender, EventArgs e)
@@ -404,6 +414,8 @@ namespace RentFlow_Application.Forms
         private void btnExpenses_Click(object sender, EventArgs e)
         {
             ShowPanel(pnlExpenses);
+
+            dgvExpensesRecords.AutoGenerateColumns = false;
         }
 
         private void btnMaintenance_Click(object sender, EventArgs e)
@@ -413,6 +425,84 @@ namespace RentFlow_Application.Forms
 
         private void label3_Click(object sender, EventArgs e)
         {
+
+        }
+
+        private void btnCreateLease_Click(object sender, EventArgs e)
+        {
+            CreateLeaseForm form = new CreateLeaseForm();
+            form.ShowDialog();
+            RefreshLeaseGrid();
+
+
+
+
+
+        }
+
+        private void btnAddTenants_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void RefreshLeaseGrid()
+        {
+            dgvLeases.AutoGenerateColumns = true;
+
+
+
+            dgvLeases.Columns[0].DataPropertyName = "Tenant";
+            dgvLeases.Columns[1].DataPropertyName = "Property";
+            dgvLeases.Columns[2].DataPropertyName = "RentalUnit";
+            dgvLeases.Columns[3].DataPropertyName = "StartDate";
+            dgvLeases.Columns[4].DataPropertyName = "EndDate";
+            dgvLeases.Columns[5].DataPropertyName = "MonthlyRent";
+            dgvLeases.Columns[6].DataPropertyName = "Status";
+
+            dgvLeases.DataSource = null;
+
+
+            dgvLeases.DataSource = DataStore.theLeases;
+
+
+            lblTotalLeases.Text = DataStore.theLeases.Count.ToString();
+            lblTotalActiveLeases.Text = DataStore.theLeases.Count(l => l.Status == "Active").ToString();
+            lblTotalExpiredLeases.Text = DataStore.theLeases.Count(l => l.Status == "Expired").ToString();
+            lblTotalTeminatedLeases.Text = DataStore.theLeases.Count(l => l.Status == "Terminated").ToString();
+
+        }
+
+        private void btnAddExpense_Click(object sender, EventArgs e)
+        {
+            AddExpense expense = new AddExpense();
+
+            expense.ShowDialog();
+
+
+        }
+        private void LoadMaintenanceRequests()
+        {
+            dgvExpensesRecords.DataSource = null;
+            dgvExpensesRecords.DataSource = DataStore.theMaintenance.ToList();
+        }
+        private int _lastCount = 0;
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            //DataStore.theMaintenance.Add(new MaintenanceRequest { Issue = "Leaking tap", Status = "Pending", TenantName = "Test", DateReported = DateTime.Now });
+            //LoadMaintenanceRequests();
+
+            int currentCount = DataStore.theMaintenance.Count;
+
+            if (currentCount > _lastCount)
+            {
+                // Only show when NEW request arrives
+                var newest = DataStore.theMaintenance[currentCount - 1];
+                MessageBox.Show($"New maintenance request!\nProperty: {newest.Property}\nIssue: {newest.Issue}",
+                                "Tenant Request");
+
+                _lastCount = currentCount;
+            }
+
 
         }
     }

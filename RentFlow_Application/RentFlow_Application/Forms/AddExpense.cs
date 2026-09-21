@@ -14,5 +14,16 @@ namespace RentFlow_Application.Forms
         {
             InitializeComponent();
         }
+
+        private void AddExpense_Load(object sender, EventArgs e)
+        {
+            var categories = new List<string> { "All Categories", "Maintenance", "Insurance", "Security", "Utilities" };
+            cmbExpenseCategory.DataSource = categories;
+
+
+            var propNames = DataStore.Properties.Select(p => p.GetPropertyName()).ToList();
+            propNames.Insert(0, "All Properties");
+            cmbProperty.DataSource = propNames;
+        }
     }
 }
