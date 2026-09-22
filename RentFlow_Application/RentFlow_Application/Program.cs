@@ -15,7 +15,7 @@ namespace RentFlow_Application
             ApplicationConfiguration.Initialize();
             //Application.Run(new LoginForm ());
             DataStore.LoadAll();
-            Application.Run(new Properties_Form());
+            Application.Run(new LoginForm());
 
            
         }

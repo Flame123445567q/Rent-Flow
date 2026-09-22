@@ -44,8 +44,8 @@ namespace RentFlow_Application
         private static void LoadUsers()
         {
             Users.Clear();
-            if (!File.Exists("Tenants.txt")) return;
-            foreach (var line in File.ReadAllLines("Tenants.txt"))
+            if (!File.Exists("users.txt")) return;
+            foreach (var line in File.ReadAllLines("users.txt"))
             {
                 var p = line.Split('|'); // adjust if your split is different
                 if (p.Length >= 7)

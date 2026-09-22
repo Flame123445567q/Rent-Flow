@@ -259,6 +259,7 @@ namespace RentFlow_Application.Forms
 
         private void LoginForm_Load(object sender, EventArgs e)
         {
+            this.WindowState = FormWindowState.Maximized;
             RegisteredUser = FileManager.LoadUsers();
 
             string path = Path.Combine(Application.StartupPath, "remember.txt");

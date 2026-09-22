@@ -152,7 +152,7 @@ namespace RentFlow_Application.Forms
                 .Select(p => p.GetPropertyName())
                 .ToList();
 
-            
+
 
 
             _lastCount = DataStore.theMaintenance.Count;
@@ -451,7 +451,7 @@ namespace RentFlow_Application.Forms
             ShowPanel(pnlMaintenance);
             LoadMaintenanceRequests();
             _lastCount = DataStore.theMaintenance.Count;
-            
+
         }
 
         private void label3_Click(object sender, EventArgs e)
@@ -514,7 +514,7 @@ namespace RentFlow_Application.Forms
             expense.ShowDialog();
             RefreshExpensesGrid();
 
-            
+
         }
 
         private void LoadMaintenanceRequests()
@@ -527,7 +527,7 @@ namespace RentFlow_Application.Forms
         {
             //DataStore.theMaintenance.Add(new MaintenanceRequest { Issue = "Leaking tap", Status = "Pending", TenantName = "Test", DateReported = DateTime.Now });
             //LoadMaintenanceRequests();
-           
+
             DataStore.LoadAll();
 
             int currentCount = DataStore.theMaintenance.Count;
@@ -547,7 +547,7 @@ namespace RentFlow_Application.Forms
                 LoadMaintenanceRequests();
             }
 
-          
+
 
         }
 
@@ -589,6 +589,27 @@ namespace RentFlow_Application.Forms
                     "R0",                                       // Outstanding column
                     "Edit | Delete"                             // Action column
                 );
-       }    }
+            }
+        }
+
+        private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void label3_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel9_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }
