@@ -125,7 +125,6 @@
             btnAddExpense = new Button();
             dgvExpensesRecords = new DataGridView();
             Category = new DataGridViewTextBoxColumn();
-            Property = new DataGridViewTextBoxColumn();
             Description = new DataGridViewTextBoxColumn();
             Amount = new DataGridViewTextBoxColumn();
             Date = new DataGridViewTextBoxColumn();
@@ -1241,7 +1240,7 @@
             dgvExpensesRecords.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvExpensesRecords.BackgroundColor = Color.White;
             dgvExpensesRecords.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvExpensesRecords.Columns.AddRange(new DataGridViewColumn[] { Category, Property, Description, Amount, Date });
+            dgvExpensesRecords.Columns.AddRange(new DataGridViewColumn[] { Category, Description, Amount, Date });
             dgvExpensesRecords.Location = new Point(30, 495);
             dgvExpensesRecords.Margin = new Padding(4, 5, 4, 5);
             dgvExpensesRecords.Name = "dgvExpensesRecords";
@@ -1254,12 +1253,6 @@
             Category.HeaderText = "Category";
             Category.MinimumWidth = 6;
             Category.Name = "Category";
-            // 
-            // Property
-            // 
-            Property.HeaderText = "Property";
-            Property.MinimumWidth = 8;
-            Property.Name = "Property";
             // 
             // Description
             // 
@@ -2096,14 +2089,14 @@
             AutoScroll = true;
             ClientSize = new Size(1712, 866);
             Controls.Add(pnlMainForm);
+            Controls.Add(pnlContent);
+            Controls.Add(pnlExpenses);
             Controls.Add(pnlMaintenance);
             Controls.Add(pnlLeases);
-            Controls.Add(pnlContent);
             Controls.Add(pnlTenants);
             Controls.Add(pnlRentalUnit);
             Controls.Add(pnlRentPayments);
             Controls.Add(pnlDashBoard);
-            Controls.Add(pnlExpenses);
             Margin = new Padding(4);
             Name = "Properties_Form";
             StartPosition = FormStartPosition.CenterScreen;
@@ -2356,11 +2349,6 @@
         private Label lblTotalSecurity;
         private Label lblTotalInsurance;
         private Label lblTotalMaintenance;
-        private DataGridViewTextBoxColumn Category;
-        private DataGridViewTextBoxColumn Property;
-        private DataGridViewTextBoxColumn Description;
-        private DataGridViewTextBoxColumn Amount;
-        private DataGridViewTextBoxColumn Date;
         private System.Windows.Forms.Timer timer1;
         private DataGridViewTextBoxColumn TENANTS2;
         private DataGridViewTextBoxColumn PROPERTYORUNIT;
@@ -2368,5 +2356,9 @@
         private DataGridViewTextBoxColumn PRIORITY;
         private DataGridViewTextBoxColumn STATUS1;
         private DataGridViewTextBoxColumn DATES;
+        private DataGridViewTextBoxColumn Category;
+        private DataGridViewTextBoxColumn Description;
+        private DataGridViewTextBoxColumn Amount;
+        private DataGridViewTextBoxColumn Date;
     }
 }

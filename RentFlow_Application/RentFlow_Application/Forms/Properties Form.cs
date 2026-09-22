@@ -141,6 +141,12 @@ namespace RentFlow_Application.Forms
             DataStore.LoadLeases();
             RefreshLeaseGrid();
 
+            DataStore.LoadExpenses();
+            RefreshExpensesGrid();
+
+
+
+
             _lastCount = DataStore.theMaintenance.Count;
 
         }
@@ -416,11 +422,28 @@ namespace RentFlow_Application.Forms
             ShowPanel(pnlExpenses);
 
             dgvExpensesRecords.AutoGenerateColumns = false;
+
+            DataStore.LoadAll(); // reloads maintenance.txt
+
+            // Show the SAME maintenance requests in expenses grid
+            dgvExpensesRecords.DataSource = null;
+            dgvExpensesRecords.DataSource = DataStore.theMaintenance;
+
+            _lastCount = DataStore.theMaintenance.Count; // stop popup repeating
+
+            LoadExpensesGrid();
+
+
+
         }
 
         private void btnMaintenance_Click(object sender, EventArgs e)
         {
+            DataStore.LoadAll();
             ShowPanel(pnlMaintenance);
+            LoadMaintenanceRequests();
+            _lastCount = DataStore.theMaintenance.Count;
+            
         }
 
         private void label3_Click(object sender, EventArgs e)
@@ -475,11 +498,12 @@ namespace RentFlow_Application.Forms
         private void btnAddExpense_Click(object sender, EventArgs e)
         {
             AddExpense expense = new AddExpense();
-
             expense.ShowDialog();
+            RefreshExpensesGrid();
 
-
+            
         }
+
         private void LoadMaintenanceRequests()
         {
             dgvExpensesRecords.DataSource = null;
@@ -490,20 +514,51 @@ namespace RentFlow_Application.Forms
         {
             //DataStore.theMaintenance.Add(new MaintenanceRequest { Issue = "Leaking tap", Status = "Pending", TenantName = "Test", DateReported = DateTime.Now });
             //LoadMaintenanceRequests();
+           
+            DataStore.LoadAll();
 
             int currentCount = DataStore.theMaintenance.Count;
 
             if (currentCount > _lastCount)
             {
                 // Only show when NEW request arrives
-                var newest = DataStore.theMaintenance[currentCount - 1];
-                MessageBox.Show($"New maintenance request!\nProperty: {newest.Property}\nIssue: {newest.Issue}",
-                                "Tenant Request");
-
                 _lastCount = currentCount;
+                var latest = DataStore.theMaintenance.Last();
+
+                MessageBox.Show(
+                    $"New maintenance request!\n\nNow you can add expense.\n\nTenant: {latest.TenantName}\nIssue: {latest.Issue}",
+                    "Maintenance Request",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+
+                LoadMaintenanceRequests();
             }
 
+          
 
+        }
+
+        private void LoadExpensesGrid()
+        {
+            dgvExpensesRecords.Columns.Clear();
+            dgvExpensesRecords.AutoGenerateColumns = true;
+            dgvExpensesRecords.DataSource = null;
+            dgvExpensesRecords.DataSource = DataStore.theExpenses.ToList();
+
+            UpdateExpenseCounts();
+        }
+
+        private void RefreshExpensesGrid()
+        {
+            LoadExpensesGrid();
+        }
+
+        private void UpdateExpenseCounts()
+        {
+            lblTotalMaintenance.Text = DataStore.theExpenses.Count(e => e.Category == "Maintenance").ToString();
+            lblTotalInsurance.Text = DataStore.theExpenses.Count(e => e.Category == "Insurance").ToString();
+            lblTotalSecurity.Text = DataStore.theExpenses.Count(e => e.Category == "Security").ToString();
+            lblTotalUtilities.Text = DataStore.theExpenses.Count(e => e.Category == "Utilities").ToString();
         }
     }
 }

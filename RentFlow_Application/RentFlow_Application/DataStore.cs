@@ -19,12 +19,15 @@ namespace RentFlow_Application
         public static List<RentalUnits> RentalUnitslist = new List<RentalUnits>();
         public static List<Lease> theLeases = new List<Lease>();
         public static List<MaintenanceRequest> theMaintenance = new List<MaintenanceRequest>();
+        public static List<Expense> theExpenses = new List<Expense>();
 
         public static void LoadAll()
         {
             LoadUsers();
             LoadProperties();
             LoadLeases();
+            LoadMaintenance();
+            LoadExpenses();
 
             // We will add LoadProperties(), LoadUnits(), LoadLeases() same way
 
@@ -38,8 +41,8 @@ namespace RentFlow_Application
         private static void LoadUsers()
         {
             Users.Clear();
-            if (!File.Exists("Users.txt")) return;
-            foreach (var line in File.ReadAllLines("Users.txt"))
+            if (!File.Exists("Tenants.txt")) return;
+            foreach (var line in File.ReadAllLines("Tenants.txt"))
             {
                 var p = line.Split('|'); // adjust if your split is different
                 if (p.Length >= 7)
@@ -116,10 +119,46 @@ namespace RentFlow_Application
             File.WriteAllLines("Properties.txt", lines);
         }
 
+        public static void LoadMaintenance()
+        {
+            theMaintenance.Clear();
+            if (!File.Exists("maintenance.txt")) return;
+            foreach (var line in File.ReadAllLines("maintenance.txt"))
+            {
+                var parts = line.Split('|');
+                theMaintenance.Add(new MaintenanceRequest
+                {
+                    Property = parts[0],
+                    // etc.
+                });
+                // split by '|' like your other loads
+            }
 
+        }
 
+        private static string expenseFile = "expenses.txt";
 
+        public static void LoadExpenses()
+        {
+            theExpenses.Clear();
+            if (!File.Exists(expenseFile)) return;
+            foreach (var line in File.ReadAllLines(expenseFile))
+            {
+                var p = line.Split('|');
+                if (p.Length == 5)
+                {
+                    decimal amt = 0; decimal.TryParse(p[3], out amt);
+                    theExpenses.Add(new Expense { Category = p[0], Property = p[1], Description = p[2], Amount = amt, Date = p[4] });
+                }
+            }
+        }
+
+        public static void SaveExpenses()
+        {
+            File.WriteAllLines(expenseFile, theExpenses.Select(x => $"{x.Category}|{x.Property}|{x.Description}|{x.Amount}|{x.Date}"));
+        }
 
 
     }
+        
 }

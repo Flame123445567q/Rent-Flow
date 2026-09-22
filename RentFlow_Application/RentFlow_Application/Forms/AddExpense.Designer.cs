@@ -157,6 +157,7 @@
             btnSaveExpense.TabIndex = 11;
             btnSaveExpense.Text = "Save Expense";
             btnSaveExpense.UseVisualStyleBackColor = true;
+            btnSaveExpense.Click += btnSaveExpense_Click;
             // 
             // btnCancel
             // 
