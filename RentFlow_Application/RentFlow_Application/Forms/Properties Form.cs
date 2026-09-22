@@ -4,17 +4,14 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Text;
 using System.Windows.Forms;
-using System.IO;
-
+using static System.Windows.Forms.LinkLabel;
 namespace RentFlow_Application.Forms
 {
     public partial class Properties_Form : Form
     {
-
-
-
         private List<Property> properties = new List<Property>();
         private List<Tenant> tenants = new List<Tenant>();
         private int nextPropertyID = 1;
@@ -22,38 +19,15 @@ namespace RentFlow_Application.Forms
         public Properties_Form()
         {
             InitializeComponent();
-            //Property property1 = new Property();
-            //property1.SetAddress("Durban");
-            //property1.SetPropertyType("Apartment");
-            //property1.SetRentalAmount(8500);
-            //property1.SetStatus("Active");
+            LoadMaintenanceGrid();
+            LoadProperties();
+            LoadTenants();
 
-            //Property property2 = new Property();
-            //property2.SetPropertyID(2);
-            //property2.SetPropertyName("Green Valley");
-            //property2.SetAddress("Johannesburg");
-            //property2.SetPropertyType("House");
-            //property2.SetRentalAmount(12000);
-            //property2.SetStatus("Active");
-
-            //Property property3 = new Property();
-            //property3.SetPropertyID(3);
-            //property3.SetPropertyName("Ocean View");
-            //property3.SetAddress("Cape Town");
-            //property3.SetPropertyType("Apartment");
-            //property3.SetRentalAmount(9500);
-            //property3.SetStatus("Inactive");
-
-            //properties.Add(property1);
-            //properties.Add(property2);
-            //properties.Add(property3);
         }
-
         private void pnlMain_Paint(object sender, PaintEventArgs e)
         {
 
         }
-
         private void btnAddProperty_Click(object sender, EventArgs e)
         {
 
@@ -70,10 +44,7 @@ namespace RentFlow_Application.Forms
                 UpdateStatistics();
                 return;
             }
-
-
         }
-
         private void txtSearch_TextChanged(object sender, EventArgs e)
         {
 
@@ -92,7 +63,7 @@ namespace RentFlow_Application.Forms
                         property.GetPropertyName(),
                         property.GetAddress(),
                         property.GetPropertyType(),
-                        property.GetRentalAmount().ToString("C"),
+                        property.GetRentalAmount().ToString(),
                         property.GetStatus());
                 }
             }
@@ -120,43 +91,20 @@ namespace RentFlow_Application.Forms
                 }
             }
         }
-
         private void Properties_Form_Load(object sender, EventArgs e)
         {
-            this.WindowState = FormWindowState.Maximized;
             // Ensure panels dock and only the dashboard shows initially
             SetupContentPanels();
 
             UpdateGrid();
             UpdateStatistics();
             LoadProperties();
+            LoadMaintenanceGrid();
             // load tenants into tenant grid
-
-            DataStore.LoadTenants();
-            UpdateTenantsGrid();
-
+            LoadTenants();
+            //UpdateTenantsGrid();
             // show dashboard by default
             ShowPanel(pnlDashBoard);
-
-            DataStore.LoadLeases();
-            RefreshLeaseGrid();
-
-            DataStore.LoadExpenses();
-            RefreshExpensesGrid();
-
-            dgvAddTenants.AutoGenerateColumns = false;
-            RefreshTenantsGrid();
-
-            cmbProperties.DataSource = null;
-            cmbProperties.DataSource = DataStore.Properties
-                .Select(p => p.GetPropertyName())
-                .ToList();
-
-
-
-
-            _lastCount = DataStore.theMaintenance.Count;
-
         }
 
         // configure content panels so they fill the remaining area to the right of the left nav
@@ -177,7 +125,6 @@ namespace RentFlow_Application.Forms
             }
             catch { }
         }
-
         // Show only the specified panel and hide the others
         private void ShowPanel(Panel toShow)
         {
@@ -197,76 +144,75 @@ namespace RentFlow_Application.Forms
             catch { }
         }
 
-        private void btnAddTenants_Click(object sender, EventArgs e)
-        {
-            // show add-tenant dialog and reload tenants if saved
-            // Patch placeholder: no functional change
-            Add_New_Tenants frm = new Add_New_Tenants();
-            frm.NextTenantID = nextTenantID;
-
-            if (frm.ShowDialog() == DialogResult.OK)
-            {
-                tenants.Clear();
-                LoadTenants();
-                UpdateTenantsGrid();
-                return;
-            }
-        }
+       
 
         private void LoadTenants()
         {
-            string filePath = Path.Combine(Application.StartupPath ?? ".", "Tenants.txt");
+            dgvTenants.Rows.Clear();
+            tenants.Clear();
+
+            string filePath = "Tenants.txt";
 
             if (!File.Exists(filePath))
+            {
                 return;
+            }
 
             string[] lines = File.ReadAllLines(filePath);
 
             foreach (string line in lines)
             {
                 if (string.IsNullOrWhiteSpace(line))
-                    continue;
-
-                string[] data = line.Split();
-                // expected: id first last phone email idnumber property unit
-                if (data.Length >= 8)
                 {
-                    Tenant t = new Tenant();
-                    t.SetTenantID(Convert.ToInt32(data[0]));
-                    t.SetFirstName(data[1]);
-                    t.SetLastName(data[2]);
-                    t.SetPhoneNumber(data[3]);
-                    t.SetEmailAddress(data[4]);
-                    t.SetIDNumber(data[5]);
-                    t.SetAssignedProperty(data[6]);
-                    t.SetAssignedUnit(data[7]);
-
-                    tenants.Add(t);
-
-                    if (t.GetTenantID() >= nextTenantID)
-                        nextTenantID = t.GetTenantID() + 1;
+                    continue;
                 }
-            }
-        }
 
-        private void UpdateTenantsGrid()
-        {
-            if (dgvAddTenants == null)
-                return;
+                string[] parts = line.Split('|');
 
-            dgvAddTenants.Rows.Clear();
+                if (parts.Length < 8)
+                {
+                    continue;
+                }
 
-            foreach (Tenant t in tenants)
-            {
-                dgvAddTenants.Rows.Add(
-                    t.GetFirstName() + " " + t.GetLastName(),
-                    t.GetPhoneNumber(),
-                    t.GetAssignedProperty(),
-                    t.GetAssignedUnit(),
-                    "", // Lease status placeholder
-                    ""  // Outstanding placeholder
+                string fullName = parts[0];   // "Kea Maya"
+                string phone = parts[1];
+                string email = parts[2];
+                string idnum = parts[3];
+                string property = parts[4];
+                string unit = parts[5];
+                string status = parts[6];
+                string outstanding = parts[7];
+
+                // split the full name into first + last (for the Tenant class)
+                string[] nameParts = fullName.Split(' ');
+                string first = nameParts[0];
+                string last = nameParts.Length > 1 ? nameParts[1] : "";
+
+                Tenant t = new Tenant();
+                t.SetFirstName(first);
+                t.SetLastName(last);
+                t.SetPhoneNumber(phone);
+                t.SetEmailAddress(email);
+                t.SetIDNumber(idnum);
+                t.SetAssignedProperty(property);
+                t.SetAssignedUnit(unit);
+                t.SetLeaseStatus(status);
+                t.SetOutstanding(outstanding);
+
+                tenants.Add(t);
+
+                // ADD THE ROW TO THE GRID
+                dgvTenants.Rows.Add(
+                    fullName,
+                    phone,
+                    property,
+                    unit,
+                    status,
+                    outstanding
                 );
             }
+
+            lblTenatsCount.Text = tenants.Count + " Registered Tenants";
         }
 
         private void LoadProperties()
@@ -307,17 +253,10 @@ namespace RentFlow_Application.Forms
                     {
                         nextPropertyID = property.GetPropertyID() + 1;
                     }
-
-
-
-
                 }
             }
 
         }
-
-
-
         private void UpdateGrid()
         {
             dgvProperties.Rows.Clear();
@@ -329,7 +268,7 @@ namespace RentFlow_Application.Forms
                     property.GetPropertyName(),
                     property.GetAddress(),
                     property.GetPropertyType(),
-                    property.GetRentalAmount().ToString("C"),
+                    property.GetRentalAmount().ToString(),
                     property.GetStatus()
                 );
             }
@@ -362,12 +301,6 @@ namespace RentFlow_Application.Forms
         private void btnRentalUnits_Click(object sender, EventArgs e)
         {
             ShowPanel(pnlRentalUnit);
-        }
-
-        private void btnAddUnit_Click(object sender, EventArgs e)
-        {
-            AddRentalUnit frm = new AddRentalUnit();
-            frm.Show();
         }
 
         private void panel3_Paint(object sender, PaintEventArgs e)
@@ -417,7 +350,6 @@ namespace RentFlow_Application.Forms
         private void btnLeases_Click(object sender, EventArgs e)
         {
             ShowPanel(pnlLeases);
-            RefreshLeaseGrid();
         }
 
         private void btnRentPayments_Click(object sender, EventArgs e)
@@ -428,30 +360,11 @@ namespace RentFlow_Application.Forms
         private void btnExpenses_Click(object sender, EventArgs e)
         {
             ShowPanel(pnlExpenses);
-
-            dgvExpensesRecords.AutoGenerateColumns = false;
-
-            DataStore.LoadAll(); // reloads maintenance.txt
-
-            // Show the SAME maintenance requests in expenses grid
-            dgvExpensesRecords.DataSource = null;
-            dgvExpensesRecords.DataSource = DataStore.theMaintenance;
-
-            _lastCount = DataStore.theMaintenance.Count; // stop popup repeating
-
-            LoadExpensesGrid();
-
-
-
         }
 
         private void btnMaintenance_Click(object sender, EventArgs e)
         {
-            DataStore.LoadAll();
             ShowPanel(pnlMaintenance);
-            LoadMaintenanceRequests();
-            _lastCount = DataStore.theMaintenance.Count;
-
         }
 
         private void label3_Click(object sender, EventArgs e)
@@ -459,155 +372,80 @@ namespace RentFlow_Application.Forms
 
         }
 
-        private void btnCreateLease_Click(object sender, EventArgs e)
+        private void btnEditRequest_Click(object sender, EventArgs e)
         {
-            CreateLeaseForm form = new CreateLeaseForm();
-            form.ShowDialog();
-            RefreshLeaseGrid();
-
-
-
-
-
-        }
-
-        private void btnAddTenants_Click_1(object sender, EventArgs e)
-        {
-            Add_New_Tenants tenant = new Add_New_Tenants();
-
-            tenant.ShowDialog();
-
-
-            RefreshTenantsGrid();
-        }
-
-        private void RefreshLeaseGrid()
-        {
-            dgvLeases.AutoGenerateColumns = true;
-
-
-
-            dgvLeases.Columns[0].DataPropertyName = "Tenant";
-            dgvLeases.Columns[1].DataPropertyName = "Property";
-            dgvLeases.Columns[2].DataPropertyName = "RentalUnit";
-            dgvLeases.Columns[3].DataPropertyName = "StartDate";
-            dgvLeases.Columns[4].DataPropertyName = "EndDate";
-            dgvLeases.Columns[5].DataPropertyName = "MonthlyRent";
-            dgvLeases.Columns[6].DataPropertyName = "Status";
-
-            dgvLeases.DataSource = null;
-
-
-            dgvLeases.DataSource = DataStore.theLeases;
-
-
-            lblTotalLeases.Text = DataStore.theLeases.Count.ToString();
-            lblTotalActiveLeases.Text = DataStore.theLeases.Count(l => l.Status == "Active").ToString();
-            lblTotalExpiredLeases.Text = DataStore.theLeases.Count(l => l.Status == "Expired").ToString();
-            lblTotalTeminatedLeases.Text = DataStore.theLeases.Count(l => l.Status == "Terminated").ToString();
-
-        }
-
-        private void btnAddExpense_Click(object sender, EventArgs e)
-        {
-            AddExpense expense = new AddExpense();
-            expense.ShowDialog();
-            RefreshExpensesGrid();
-
-
-        }
-
-        private void LoadMaintenanceRequests()
-        {
-            dgvExpensesRecords.DataSource = null;
-            dgvExpensesRecords.DataSource = DataStore.theMaintenance.ToList();
-        }
-        private int _lastCount = 0;
-        private void timer1_Tick(object sender, EventArgs e)
-        {
-            //DataStore.theMaintenance.Add(new MaintenanceRequest { Issue = "Leaking tap", Status = "Pending", TenantName = "Test", DateReported = DateTime.Now });
-            //LoadMaintenanceRequests();
-
-            DataStore.LoadAll();
-
-            int currentCount = DataStore.theMaintenance.Count;
-
-            if (currentCount > _lastCount)
+            if (dgvMaintenanceRecords.SelectedRows.Count == 0)
             {
-                // Only show when NEW request arrives
-                _lastCount = currentCount;
-                var latest = DataStore.theMaintenance.Last();
-
-                MessageBox.Show(
-                    $"New maintenance request!\n\nNow you can add expense.\n\nTenant: {latest.TenantName}\nIssue: {latest.Issue}",
-                    "Maintenance Request",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Information);
-
-                LoadMaintenanceRequests();
+                MessageBox.Show("Select a Request to Edit", "Invalid", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
             }
-
-
-
+            EditMaintenanceRequest form = new EditMaintenanceRequest();
+            form.ShowDialog();
+            LoadMaintenanceGrid();
         }
 
-        private void LoadExpensesGrid()
+        private void dgvMaintenanceRecords_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            dgvExpensesRecords.Columns.Clear();
-            dgvExpensesRecords.AutoGenerateColumns = true;
-            dgvExpensesRecords.DataSource = null;
-            dgvExpensesRecords.DataSource = DataStore.theExpenses.ToList();
 
-            UpdateExpenseCounts();
         }
-
-        private void RefreshExpensesGrid()
+        private void LoadMaintenanceGrid()
         {
-            LoadExpensesGrid();
-        }
+            dgvMaintenanceRecords.Rows.Clear();
 
-        private void UpdateExpenseCounts()
-        {
-            lblTotalMaintenance.Text = DataStore.theExpenses.Count(e => e.Category == "Maintenance").ToString();
-            lblTotalInsurance.Text = DataStore.theExpenses.Count(e => e.Category == "Insurance").ToString();
-            lblTotalSecurity.Text = DataStore.theExpenses.Count(e => e.Category == "Security").ToString();
-            lblTotalUtilities.Text = DataStore.theExpenses.Count(e => e.Category == "Utilities").ToString();
-        }
+            if (!File.Exists("maintenance.txt")) return;
 
-        public void RefreshTenantsGrid()
-        {
-            dgvAddTenants.Rows.Clear();
+            int open = 0, pending = 0, resolved = 0;
 
-            foreach (var t in DataStore.TenantsList)
+            foreach (string line in File.ReadAllLines("maintenance.txt"))
             {
-                dgvAddTenants.Rows.Add(
-                    t.GetFirstName() + " " + t.GetLastName(), // Tenants column
-                    t.GetPhoneNumber(),                         // Contact column
-                    t.GetAssignedProperty(),                    // Properties column
-                    t.GetAssignedUnit(),                        // Unit column
-                    "Active",                                   // Lease_Status column
-                    "R0",                                       // Outstanding column
-                    "Edit | Delete"                             // Action column
+                if (string.IsNullOrWhiteSpace(line))
+                {
+                    continue;
+                }
+
+                string[] parts = line.Split('|');
+                if (parts.Length < 8)
+                {
+                    continue;
+                }
+
+                if (parts[6] == "Open")
+                {
+                    open++;
+                }
+
+                else if (parts[6] == "Pending") 
+                {
+                    pending++;
+                } 
+                else if (parts[6] == "Resolved")
+                {
+                    resolved++;
+                }
+                dgvMaintenanceRecords.Rows.Add(
+                    parts[0],   // RequestId
+                    parts[1],   // TenantName
+                    parts[2],   // PropertyUnit
+                    parts[3],   // Category
+                    parts[5],   // Priority
+                    parts[6],   // Status
+                    parts[7]    // Date
                 );
             }
-        }
 
-        private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
+            lblOpen.Text = open.ToString();
+            lblPending.Text = pending.ToString();
+            lblResolved.Text = resolved.ToString();
+        }
+        private void btnAddTenants_Click_1(object sender, EventArgs e)
         {
-
+            Add_New_Tenants form = new Add_New_Tenants();
+            form.ShowDialog();
+            tenants.Clear();
+            LoadTenants();
         }
 
-        private void label3_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void panel9_Paint(object sender, PaintEventArgs e)
+        private void pnlMaintenance_Paint(object sender, PaintEventArgs e)
         {
 
         }

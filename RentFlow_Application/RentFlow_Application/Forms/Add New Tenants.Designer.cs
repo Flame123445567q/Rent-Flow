@@ -137,7 +137,6 @@
             txtIDNumber.PlaceholderText = "13-digit SA ID Number";
             txtIDNumber.Size = new Size(629, 27);
             txtIDNumber.TabIndex = 9;
-            txtIDNumber.TextChanged += txtIDNumber_TextChanged;
             // 
             // txtEmailAddress
             // 
@@ -183,13 +182,13 @@
             // 
             // btnSaveTenant
             // 
-            btnSaveTenant.BackColor = Color.Navy;
+            btnSaveTenant.BackColor = Color.FromArgb(37, 99, 235);
             btnSaveTenant.FlatStyle = FlatStyle.Popup;
             btnSaveTenant.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnSaveTenant.ForeColor = Color.White;
             btnSaveTenant.Location = new Point(34, 458);
             btnSaveTenant.Name = "btnSaveTenant";
-            btnSaveTenant.Size = new Size(391, 31);
+            btnSaveTenant.Size = new Size(391, 46);
             btnSaveTenant.TabIndex = 15;
             btnSaveTenant.Text = "Save Tenant";
             btnSaveTenant.UseVisualStyleBackColor = false;
@@ -199,9 +198,9 @@
             // 
             btnCancel.BackColor = Color.LightGray;
             btnCancel.FlatStyle = FlatStyle.Popup;
-            btnCancel.Location = new Point(486, 458);
+            btnCancel.Location = new Point(520, 458);
             btnCancel.Name = "btnCancel";
-            btnCancel.Size = new Size(175, 29);
+            btnCancel.Size = new Size(141, 46);
             btnCancel.TabIndex = 16;
             btnCancel.Text = "Cancel";
             btnCancel.UseVisualStyleBackColor = false;
@@ -214,7 +213,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 501);
+            ClientSize = new Size(800, 551);
             Controls.Add(btnCancel);
             Controls.Add(btnSaveTenant);
             Controls.Add(cmbAssignedUnit);
@@ -235,7 +234,7 @@
             Name = "Add_New_Tenants";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Add_New_Tenants";
-            Load += Add_New_Tenants_Load;
+            Click += btnSaveTenant_Click_1;
             ((System.ComponentModel.ISupportInitialize)errorProvider1).EndInit();
             ResumeLayout(false);
             PerformLayout();

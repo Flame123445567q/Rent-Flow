@@ -157,13 +157,13 @@
             // 
             // btnSaveProperty
             // 
-            btnSaveProperty.BackColor = Color.DarkBlue;
+            btnSaveProperty.BackColor = Color.FromArgb(37, 99, 235);
             btnSaveProperty.FlatStyle = FlatStyle.Flat;
             btnSaveProperty.Font = new Font("Calibri", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnSaveProperty.ForeColor = Color.White;
             btnSaveProperty.Location = new Point(22, 594);
             btnSaveProperty.Name = "btnSaveProperty";
-            btnSaveProperty.Size = new Size(535, 48);
+            btnSaveProperty.Size = new Size(559, 48);
             btnSaveProperty.TabIndex = 34;
             btnSaveProperty.Text = "Save Property";
             btnSaveProperty.UseVisualStyleBackColor = false;
