@@ -32,17 +32,17 @@
             lblTenant = new Label();
             cmbTenant = new ComboBox();
             lblProperty = new Label();
-            comboBox1 = new ComboBox();
+            cmbProperty = new ComboBox();
             lblRentalUnit = new Label();
             cmbRentalUnit = new ComboBox();
-            dateTimePicker1 = new DateTimePicker();
+            dtpStart = new DateTimePicker();
             lblStartDate = new Label();
             lblEndDate = new Label();
-            dateTimePicker2 = new DateTimePicker();
+            dtpEnd = new DateTimePicker();
             lblMonthlyRental = new Label();
-            txtMonthlyRental = new TextBox();
+            txtMonthlyRent = new TextBox();
             lblLeaseStatus = new Label();
-            cmbLeaseStatus = new ComboBox();
+            cmbStatus = new ComboBox();
             btnCreateLease = new Button();
             btnCancel = new Button();
             SuspendLayout();
@@ -52,9 +52,10 @@
             lblCreateNewLease.AutoSize = true;
             lblCreateNewLease.Font = new Font("Segoe UI", 16F, FontStyle.Bold);
             lblCreateNewLease.ForeColor = SystemColors.MenuHighlight;
-            lblCreateNewLease.Location = new Point(33, 27);
+            lblCreateNewLease.Location = new Point(41, 34);
+            lblCreateNewLease.Margin = new Padding(4, 0, 4, 0);
             lblCreateNewLease.Name = "lblCreateNewLease";
-            lblCreateNewLease.Size = new Size(244, 37);
+            lblCreateNewLease.Size = new Size(283, 45);
             lblCreateNewLease.TabIndex = 0;
             lblCreateNewLease.Text = "Create New Lease";
             // 
@@ -62,72 +63,80 @@
             // 
             lblTenant.AutoSize = true;
             lblTenant.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblTenant.Location = new Point(15, 77);
+            lblTenant.Location = new Point(19, 96);
+            lblTenant.Margin = new Padding(4, 0, 4, 0);
             lblTenant.Name = "lblTenant";
-            lblTenant.Size = new Size(55, 20);
+            lblTenant.Size = new Size(68, 25);
             lblTenant.TabIndex = 1;
             lblTenant.Text = "Tenant";
             // 
             // cmbTenant
             // 
             cmbTenant.FormattingEnabled = true;
-            cmbTenant.Location = new Point(209, 69);
+            cmbTenant.Location = new Point(261, 86);
+            cmbTenant.Margin = new Padding(4);
             cmbTenant.Name = "cmbTenant";
-            cmbTenant.Size = new Size(234, 28);
+            cmbTenant.Size = new Size(292, 33);
             cmbTenant.TabIndex = 2;
             // 
             // lblProperty
             // 
             lblProperty.AutoSize = true;
             lblProperty.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblProperty.Location = new Point(15, 112);
+            lblProperty.Location = new Point(19, 140);
+            lblProperty.Margin = new Padding(4, 0, 4, 0);
             lblProperty.Name = "lblProperty";
-            lblProperty.Size = new Size(69, 20);
+            lblProperty.Size = new Size(86, 25);
             lblProperty.TabIndex = 3;
             lblProperty.Text = "Property";
             // 
-            // comboBox1
+            // cmbProperty
             // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(209, 104);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(234, 28);
-            comboBox1.TabIndex = 4;
+            cmbProperty.FormattingEnabled = true;
+            cmbProperty.Location = new Point(261, 130);
+            cmbProperty.Margin = new Padding(4);
+            cmbProperty.Name = "cmbProperty";
+            cmbProperty.Size = new Size(292, 33);
+            cmbProperty.TabIndex = 4;
             // 
             // lblRentalUnit
             // 
             lblRentalUnit.AutoSize = true;
             lblRentalUnit.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblRentalUnit.Location = new Point(15, 148);
+            lblRentalUnit.Location = new Point(19, 185);
+            lblRentalUnit.Margin = new Padding(4, 0, 4, 0);
             lblRentalUnit.Name = "lblRentalUnit";
-            lblRentalUnit.Size = new Size(83, 20);
+            lblRentalUnit.Size = new Size(104, 25);
             lblRentalUnit.TabIndex = 5;
             lblRentalUnit.Text = "Rental unit";
             // 
             // cmbRentalUnit
             // 
             cmbRentalUnit.FormattingEnabled = true;
-            cmbRentalUnit.Location = new Point(209, 140);
+            cmbRentalUnit.Location = new Point(261, 175);
+            cmbRentalUnit.Margin = new Padding(4);
             cmbRentalUnit.Name = "cmbRentalUnit";
-            cmbRentalUnit.Size = new Size(234, 28);
+            cmbRentalUnit.Size = new Size(292, 33);
             cmbRentalUnit.TabIndex = 6;
             cmbRentalUnit.SelectedIndexChanged += comboBox2_SelectedIndexChanged;
             // 
-            // dateTimePicker1
+            // dtpStart
             // 
-            dateTimePicker1.Location = new Point(209, 179);
-            dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(240, 27);
-            dateTimePicker1.TabIndex = 7;
-            dateTimePicker1.ValueChanged += dateTimePicker1_ValueChanged;
+            dtpStart.Location = new Point(261, 224);
+            dtpStart.Margin = new Padding(4);
+            dtpStart.Name = "dtpStart";
+            dtpStart.Size = new Size(299, 31);
+            dtpStart.TabIndex = 7;
+            dtpStart.ValueChanged += dateTimePicker1_ValueChanged;
             // 
             // lblStartDate
             // 
             lblStartDate.AutoSize = true;
             lblStartDate.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblStartDate.Location = new Point(12, 184);
+            lblStartDate.Location = new Point(15, 230);
+            lblStartDate.Margin = new Padding(4, 0, 4, 0);
             lblStartDate.Name = "lblStartDate";
-            lblStartDate.Size = new Size(118, 20);
+            lblStartDate.Size = new Size(147, 25);
             lblStartDate.TabIndex = 8;
             lblStartDate.Text = "Lease Start Date";
             lblStartDate.Click += label1_Click;
@@ -136,62 +145,70 @@
             // 
             lblEndDate.AutoSize = true;
             lblEndDate.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblEndDate.Location = new Point(12, 222);
+            lblEndDate.Location = new Point(15, 278);
+            lblEndDate.Margin = new Padding(4, 0, 4, 0);
             lblEndDate.Name = "lblEndDate";
-            lblEndDate.Size = new Size(112, 20);
+            lblEndDate.Size = new Size(138, 25);
             lblEndDate.TabIndex = 9;
             lblEndDate.Text = "Lease End Date";
             // 
-            // dateTimePicker2
+            // dtpEnd
             // 
-            dateTimePicker2.Location = new Point(209, 217);
-            dateTimePicker2.Name = "dateTimePicker2";
-            dateTimePicker2.Size = new Size(240, 27);
-            dateTimePicker2.TabIndex = 10;
+            dtpEnd.Location = new Point(261, 271);
+            dtpEnd.Margin = new Padding(4);
+            dtpEnd.Name = "dtpEnd";
+            dtpEnd.Size = new Size(299, 31);
+            dtpEnd.TabIndex = 10;
             // 
             // lblMonthlyRental
             // 
             lblMonthlyRental.AutoSize = true;
             lblMonthlyRental.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblMonthlyRental.Location = new Point(12, 266);
+            lblMonthlyRental.Location = new Point(15, 332);
+            lblMonthlyRental.Margin = new Padding(4, 0, 4, 0);
             lblMonthlyRental.Name = "lblMonthlyRental";
-            lblMonthlyRental.Size = new Size(156, 20);
+            lblMonthlyRental.Size = new Size(191, 25);
             lblMonthlyRental.TabIndex = 11;
             lblMonthlyRental.Text = "Monthly Rental (ZAR)";
             // 
-            // txtMonthlyRental
+            // txtMonthlyRent
             // 
-            txtMonthlyRental.Location = new Point(209, 259);
-            txtMonthlyRental.Name = "txtMonthlyRental";
-            txtMonthlyRental.Size = new Size(234, 27);
-            txtMonthlyRental.TabIndex = 12;
+            txtMonthlyRent.Location = new Point(261, 324);
+            txtMonthlyRent.Margin = new Padding(4);
+            txtMonthlyRent.Name = "txtMonthlyRent";
+            txtMonthlyRent.Size = new Size(292, 31);
+            txtMonthlyRent.TabIndex = 12;
             // 
             // lblLeaseStatus
             // 
             lblLeaseStatus.AutoSize = true;
             lblLeaseStatus.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblLeaseStatus.Location = new Point(12, 310);
+            lblLeaseStatus.Location = new Point(15, 388);
+            lblLeaseStatus.Margin = new Padding(4, 0, 4, 0);
             lblLeaseStatus.Name = "lblLeaseStatus";
-            lblLeaseStatus.Size = new Size(91, 20);
+            lblLeaseStatus.Size = new Size(114, 25);
             lblLeaseStatus.TabIndex = 13;
             lblLeaseStatus.Text = "Lease Status";
             // 
-            // cmbLeaseStatus
+            // cmbStatus
             // 
-            cmbLeaseStatus.FormattingEnabled = true;
-            cmbLeaseStatus.Location = new Point(209, 302);
-            cmbLeaseStatus.Name = "cmbLeaseStatus";
-            cmbLeaseStatus.Size = new Size(234, 28);
-            cmbLeaseStatus.TabIndex = 14;
+            cmbStatus.FormattingEnabled = true;
+            cmbStatus.Items.AddRange(new object[] { "Active", "Expired", "Terminated" });
+            cmbStatus.Location = new Point(261, 378);
+            cmbStatus.Margin = new Padding(4);
+            cmbStatus.Name = "cmbStatus";
+            cmbStatus.Size = new Size(292, 33);
+            cmbStatus.TabIndex = 14;
             // 
             // btnCreateLease
             // 
             btnCreateLease.BackColor = SystemColors.MenuHighlight;
             btnCreateLease.Font = new Font("Segoe UI", 9F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
             btnCreateLease.ForeColor = Color.Transparent;
-            btnCreateLease.Location = new Point(12, 382);
+            btnCreateLease.Location = new Point(15, 478);
+            btnCreateLease.Margin = new Padding(4);
             btnCreateLease.Name = "btnCreateLease";
-            btnCreateLease.Size = new Size(191, 29);
+            btnCreateLease.Size = new Size(239, 36);
             btnCreateLease.TabIndex = 15;
             btnCreateLease.Text = "Create Lease";
             btnCreateLease.UseVisualStyleBackColor = false;
@@ -202,37 +219,40 @@
             btnCancel.BackColor = SystemColors.ActiveCaptionText;
             btnCancel.Font = new Font("Segoe UI", 9F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
             btnCancel.ForeColor = SystemColors.ButtonHighlight;
-            btnCancel.Location = new Point(337, 382);
+            btnCancel.Location = new Point(421, 478);
+            btnCancel.Margin = new Padding(4);
             btnCancel.Name = "btnCancel";
-            btnCancel.Size = new Size(94, 29);
+            btnCancel.Size = new Size(118, 36);
             btnCancel.TabIndex = 16;
             btnCancel.Text = "Cancel";
             btnCancel.UseVisualStyleBackColor = false;
             // 
             // CreateLeaseForm
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ControlLightLight;
-            ClientSize = new Size(482, 453);
+            ClientSize = new Size(602, 566);
             Controls.Add(btnCancel);
             Controls.Add(btnCreateLease);
-            Controls.Add(cmbLeaseStatus);
+            Controls.Add(cmbStatus);
             Controls.Add(lblLeaseStatus);
-            Controls.Add(txtMonthlyRental);
+            Controls.Add(txtMonthlyRent);
             Controls.Add(lblMonthlyRental);
-            Controls.Add(dateTimePicker2);
+            Controls.Add(dtpEnd);
             Controls.Add(lblEndDate);
             Controls.Add(lblStartDate);
-            Controls.Add(dateTimePicker1);
+            Controls.Add(dtpStart);
             Controls.Add(cmbRentalUnit);
             Controls.Add(lblRentalUnit);
-            Controls.Add(comboBox1);
+            Controls.Add(cmbProperty);
             Controls.Add(lblProperty);
             Controls.Add(cmbTenant);
             Controls.Add(lblTenant);
             Controls.Add(lblCreateNewLease);
+            Margin = new Padding(4);
             Name = "CreateLeaseForm";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Create New Lease";
             Load += CreateLeaseForm_Load;
             ResumeLayout(false);
@@ -245,17 +265,17 @@
         private Label lblTenant;
         private ComboBox cmbTenant;
         private Label lblProperty;
-        private ComboBox comboBox1;
+        private ComboBox cmbProperty;
         private Label lblRentalUnit;
         private ComboBox cmbRentalUnit;
-        private DateTimePicker dateTimePicker1;
+        private DateTimePicker dtpStart;
         private Label lblStartDate;
         private Label lblEndDate;
-        private DateTimePicker dateTimePicker2;
+        private DateTimePicker dtpEnd;
         private Label lblMonthlyRental;
-        private TextBox txtMonthlyRental;
+        private TextBox txtMonthlyRent;
         private Label lblLeaseStatus;
-        private ComboBox cmbLeaseStatus;
+        private ComboBox cmbStatus;
         private Button btnCreateLease;
         private Button btnCancel;
     }
