@@ -132,7 +132,7 @@ namespace RentFlow_Application.Forms
             LoadProperties();
             // load tenants into tenant grid
 
-            LoadTenants();
+            DataStore.LoadTenants();
             UpdateTenantsGrid();
 
             // show dashboard by default
@@ -144,7 +144,15 @@ namespace RentFlow_Application.Forms
             DataStore.LoadExpenses();
             RefreshExpensesGrid();
 
+            dgvAddTenants.AutoGenerateColumns = false;
+            RefreshTenantsGrid();
 
+            cmbProperties.DataSource = null;
+            cmbProperties.DataSource = DataStore.Properties
+                .Select(p => p.GetPropertyName())
+                .ToList();
+
+            
 
 
             _lastCount = DataStore.theMaintenance.Count;
@@ -465,7 +473,12 @@ namespace RentFlow_Application.Forms
 
         private void btnAddTenants_Click_1(object sender, EventArgs e)
         {
+            Add_New_Tenants tenant = new Add_New_Tenants();
 
+            tenant.ShowDialog();
+
+
+            RefreshTenantsGrid();
         }
 
         private void RefreshLeaseGrid()
@@ -560,5 +573,22 @@ namespace RentFlow_Application.Forms
             lblTotalSecurity.Text = DataStore.theExpenses.Count(e => e.Category == "Security").ToString();
             lblTotalUtilities.Text = DataStore.theExpenses.Count(e => e.Category == "Utilities").ToString();
         }
+
+        public void RefreshTenantsGrid()
+        {
+            dgvAddTenants.Rows.Clear();
+
+            foreach (var t in DataStore.TenantsList)
+            {
+                dgvAddTenants.Rows.Add(
+                    t.GetFirstName() + " " + t.GetLastName(), // Tenants column
+                    t.GetPhoneNumber(),                         // Contact column
+                    t.GetAssignedProperty(),                    // Properties column
+                    t.GetAssignedUnit(),                        // Unit column
+                    "Active",                                   // Lease_Status column
+                    "R0",                                       // Outstanding column
+                    "Edit | Delete"                             // Action column
+                );
+       }    }
     }
 }

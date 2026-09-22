@@ -137,6 +137,7 @@
             txtIDNumber.PlaceholderText = "13-digit SA ID Number";
             txtIDNumber.Size = new Size(629, 27);
             txtIDNumber.TabIndex = 9;
+            txtIDNumber.TextChanged += txtIDNumber_TextChanged;
             // 
             // txtEmailAddress
             // 
@@ -232,7 +233,9 @@
             Controls.Add(lblFirstName);
             Controls.Add(lblRegisterNewTenant);
             Name = "Add_New_Tenants";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Add_New_Tenants";
+            Load += Add_New_Tenants_Load;
             ((System.ComponentModel.ISupportInitialize)errorProvider1).EndInit();
             ResumeLayout(false);
             PerformLayout();

@@ -1,11 +1,13 @@
-﻿using System;
+﻿using RentFlow_Application.Classes;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
+using System.Security.Cryptography;
 using System.Text;
 using System.Windows.Forms;
-using System.IO;
 
 namespace RentFlow_Application.Forms
 {
@@ -91,6 +93,33 @@ namespace RentFlow_Application.Forms
         }
 
         private void btnSaveTenant_Click_1(object sender, EventArgs e)
+        {
+            Tenant newTenant = new Tenant();
+            newTenant.SetTenantID(DataStore.TenantsList.Count + 1);
+            newTenant.SetFirstName(txtFirstName.Text.Trim());
+            newTenant.SetLastName(txtLastName.Text.Trim());
+            newTenant.SetPhoneNumber(txtPhoneNumber.Text.Trim());
+            newTenant.SetEmailAddress(txtEmailAddress.Text.Trim());
+            newTenant.SetIDNumber(txtIDNumber.Text.Trim());
+            newTenant.SetAssignedProperty(cmbAssignedProperty.Text);
+            newTenant.SetAssignedUnit(cmbAssignedUnit.Text);
+
+            DataStore.TenantsList.Add(newTenant);
+            DataStore.SaveTenants();
+
+            this.Close(); // close popup, MainFo
+
+        }
+
+        private void Add_New_Tenants_Load(object sender, EventArgs e)
+        {
+            cmbAssignedProperty.DataSource = null;
+            cmbAssignedProperty.DataSource = DataStore.Properties
+                .Select(p => p.GetPropertyName())
+                .ToList();
+        }
+
+        private void txtIDNumber_TextChanged(object sender, EventArgs e)
         {
 
         }

@@ -20,6 +20,8 @@ namespace RentFlow_Application
         public static List<Lease> theLeases = new List<Lease>();
         public static List<MaintenanceRequest> theMaintenance = new List<MaintenanceRequest>();
         public static List<Expense> theExpenses = new List<Expense>();
+        public static List<Tenant> TenantsList = new List<Tenant>();
+
 
         public static void LoadAll()
         {
@@ -28,6 +30,7 @@ namespace RentFlow_Application
             LoadLeases();
             LoadMaintenance();
             LoadExpenses();
+            LoadTenants();
 
             // We will add LoadProperties(), LoadUnits(), LoadLeases() same way
 
@@ -156,6 +159,43 @@ namespace RentFlow_Application
         public static void SaveExpenses()
         {
             File.WriteAllLines(expenseFile, theExpenses.Select(x => $"{x.Category}|{x.Property}|{x.Description}|{x.Amount}|{x.Date}"));
+        }
+
+        public static void LoadTenants()
+        {
+            if (!File.Exists("Tenants.txt")) return;
+            TenantsList.Clear();
+            foreach (string line in File.ReadAllLines("Tenants.txt"))
+            {
+                if (string.IsNullOrWhiteSpace(line)) continue;
+                string[] parts = line.Split('|');
+                if (parts.Length < 8) continue;
+                Tenant t = new Tenant();
+                t.SetTenantID(int.Parse(parts[0]));
+                t.SetFirstName(parts[1]);
+                t.SetLastName(parts[2]);
+                t.SetPhoneNumber(parts[3]);
+                t.SetEmailAddress(parts[4]);
+                t.SetIDNumber(parts[5]);
+                t.SetAssignedProperty(parts[6]);
+                t.SetAssignedUnit(parts[7]);
+                TenantsList.Add(t);
+            }
+        }
+
+
+
+
+
+        public static void SaveTenants()
+        {
+            List<string> lines = new List<string>();
+            foreach (var t in TenantsList)
+            {
+                string line = t.GetTenantID() + "|" + t.GetFirstName() + "|" + t.GetLastName() + "|" + t.GetPhoneNumber() + "|" + t.GetEmailAddress() + "|" + t.GetIDNumber() + "|" + t.GetAssignedProperty() + "|" + t.GetAssignedUnit();
+                lines.Add(line);
+            }
+            File.WriteAllLines("Tenants.txt", lines);
         }
 
 
