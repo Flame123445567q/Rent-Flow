@@ -254,17 +254,17 @@ namespace RentFlow_Application.Forms
         // Designer-wired handlers (simple defaults so designer references compile)
         private void btnCreateAnAccount_Click(object sender, EventArgs e)
         {
-            try
-            {
-                var reg = new RegisterForm2();
-                reg.ShowDialog();
-            }
-            catch { }
+
+            RegisterForm2 reg = new RegisterForm2();
+            reg.ShowDialog();
+
         }
 
         private void linkForgotPassword_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            MessageBox.Show("Please contact support to reset your password.", "Forgot Password", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            Forgot_Password form = new Forgot_Password();
+            form.ShowDialog();
+            //MessageBox.Show("Please contact support to reset your password.", "Forgot Password", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }

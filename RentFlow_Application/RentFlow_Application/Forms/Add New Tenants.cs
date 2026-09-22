@@ -87,25 +87,22 @@ namespace RentFlow_Application.Forms
             // Prepare tenant record and persist
             try
             {
-                string filePath = Path.Combine(Application.StartupPath ?? ".", "Tenants.txt");
+                string filePath = "Tenants.txt";
                 // ensure unique id provided by caller
-                int id = NextTenantID;
+
                 string first = txtFirstName.Text.Trim();
                 string last = txtLastName.Text.Trim();
                 string phone = txtPhoneNumber.Text.Trim();
                 string email = txtEmailAddress.Text.Trim();
                 string idnum = txtIDNumber.Text.Trim();
-                string property = cmbAssignedProperty.Text.Trim();
-                string unit = cmbAssignedUnit.Text.Trim();
-
+                string property = cmbAssignedProperty.Text;
+                string unit = cmbAssignedUnit.Text;
+                string fullName = first + " " + last;
                 // write as space-separated values (no spaces inside values)
-                string safeFirst = first.Replace(' ', '_');
-                string safeLast = last.Replace(' ', '_');
-                string safeProperty = property.Replace(' ', '_');
-                string safeUnit = unit.Replace(' ', '_');
+                
 
-                string line = $"{id} {safeFirst} {safeLast} {phone} {email} {idnum} {safeProperty} {safeUnit} {leaseStatus} {outstanding}";
-                File.AppendAllText(filePath, line + Environment.NewLine);
+                string line = fullName + "|" + phone + "|" + email + "|" + idnum + "|" + property + "|" + unit + "|" + leaseStatus + "|" + outstanding;
+                File.AppendAllText(filePath,line + Environment.NewLine);
 
                 MessageBox.Show("Tenant saved.", "Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
 

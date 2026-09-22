@@ -1,4 +1,5 @@
 ﻿using System.Windows.Forms;
+using System.IO;
 
 namespace RentFlow_Application.Forms
 {
@@ -57,12 +58,27 @@ namespace RentFlow_Application.Forms
         {
             // show the maintenance panel area (panel1)
             ShowOnly(panel1);
+            // Read tenant name + property/unit from tenants.txt
+            string tenantName = "";
+            string propertyUnit = "";
 
-            Submit_Maintenancefrm form = new Submit_Maintenancefrm();
-            
+            if (File.Exists("tenants.txt"))
+            {
+                string[] lines = File.ReadAllLines("tenants.txt");
+                if (lines.Length > 0)
+                {
+                    string lastLine = lines[lines.Length - 1];
+                    string[] parts = lastLine.Split('|');
+
+                    // Adjust indexes if needed — based on your file format:
+                    // 0=Id  1=FullName  2=Phone  3=Email  4=ID  5=PropertyUnit  ...
+                    tenantName = parts[0];
+                    propertyUnit = parts[4];
+                }
+            }
+
+            Submit_Maintenancefrm form = new Submit_Maintenancefrm(tenantName, propertyUnit);
             form.ShowDialog();
-
-
         }
 
         private void label9_Click(object sender, EventArgs e)

@@ -94,7 +94,7 @@
             pnlTenants = new Panel();
             lblTenatsCount = new Label();
             btnAddTenants = new Button();
-            dataGridView1 = new DataGridView();
+            dgvTenants = new DataGridView();
             Tenants = new DataGridViewTextBoxColumn();
             Contact = new DataGridViewTextBoxColumn();
             Properties = new DataGridViewTextBoxColumn();
@@ -148,17 +148,17 @@
             lblExpensesTopic = new Label();
             pnlMaintenance = new Panel();
             roundedPanel3 = new RoundedPanel();
-            label1 = new Label();
+            lblPending = new Label();
             label2 = new Label();
             panel6 = new Panel();
             label3 = new Label();
             roundedPanel4 = new RoundedPanel();
-            label5 = new Label();
+            lblResolved = new Label();
             label7 = new Label();
             panel9 = new Panel();
             label8 = new Label();
             roundedPanel2 = new RoundedPanel();
-            lblValue1 = new Label();
+            lblOpen = new Label();
             lblOpenRequest = new Label();
             pnlIcon1 = new Panel();
             lblIcon = new Label();
@@ -218,7 +218,7 @@
             panel3.SuspendLayout();
             panel1.SuspendLayout();
             pnlTenants.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvTenants).BeginInit();
             pnlFilterBar.SuspendLayout();
             pnlRentalUnit.SuspendLayout();
             pnlAvailability.SuspendLayout();
@@ -913,7 +913,7 @@
             // 
             pnlTenants.Controls.Add(lblTenatsCount);
             pnlTenants.Controls.Add(btnAddTenants);
-            pnlTenants.Controls.Add(dataGridView1);
+            pnlTenants.Controls.Add(dgvTenants);
             pnlTenants.Controls.Add(lblRegisteredTenants);
             pnlTenants.Controls.Add(lblTenants);
             pnlTenants.Controls.Add(pnlFilterBar);
@@ -946,16 +946,16 @@
             btnAddTenants.UseVisualStyleBackColor = false;
             btnAddTenants.Click += btnAddTenants_Click_1;
             // 
-            // dataGridView1
+            // dgvTenants
             // 
-            dataGridView1.AllowUserToAddRows = false;
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Tenants, Contact, Properties, Unit, Lease_Status, Outstanding });
-            dataGridView1.Location = new Point(35, 299);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.Size = new Size(928, 433);
-            dataGridView1.TabIndex = 3;
+            dgvTenants.AllowUserToAddRows = false;
+            dgvTenants.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvTenants.Columns.AddRange(new DataGridViewColumn[] { Tenants, Contact, Properties, Unit, Lease_Status, Outstanding });
+            dgvTenants.Location = new Point(35, 299);
+            dgvTenants.Name = "dgvTenants";
+            dgvTenants.RowHeadersWidth = 51;
+            dgvTenants.Size = new Size(928, 433);
+            dgvTenants.TabIndex = 3;
             // 
             // Tenants
             // 
@@ -1430,7 +1430,7 @@
             // roundedPanel3
             // 
             roundedPanel3.BackColor = Color.White;
-            roundedPanel3.Controls.Add(label1);
+            roundedPanel3.Controls.Add(lblPending);
             roundedPanel3.Controls.Add(label2);
             roundedPanel3.Controls.Add(panel6);
             roundedPanel3.Location = new Point(276, 155);
@@ -1438,16 +1438,16 @@
             roundedPanel3.Size = new Size(213, 112);
             roundedPanel3.TabIndex = 12;
             // 
-            // label1
+            // lblPending
             // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.ForeColor = Color.Black;
-            label1.Location = new Point(89, 24);
-            label1.Name = "label1";
-            label1.Size = new Size(40, 46);
-            label1.TabIndex = 2;
-            label1.Text = "0";
+            lblPending.AutoSize = true;
+            lblPending.Font = new Font("Segoe UI", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblPending.ForeColor = Color.Black;
+            lblPending.Location = new Point(89, 24);
+            lblPending.Name = "lblPending";
+            lblPending.Size = new Size(40, 46);
+            lblPending.TabIndex = 2;
+            lblPending.Text = "0";
             // 
             // label2
             // 
@@ -1486,7 +1486,7 @@
             // roundedPanel4
             // 
             roundedPanel4.BackColor = Color.White;
-            roundedPanel4.Controls.Add(label5);
+            roundedPanel4.Controls.Add(lblResolved);
             roundedPanel4.Controls.Add(label7);
             roundedPanel4.Controls.Add(panel9);
             roundedPanel4.Location = new Point(530, 155);
@@ -1494,16 +1494,16 @@
             roundedPanel4.Size = new Size(213, 112);
             roundedPanel4.TabIndex = 13;
             // 
-            // label5
+            // lblResolved
             // 
-            label5.AutoSize = true;
-            label5.Font = new Font("Segoe UI", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label5.ForeColor = Color.Black;
-            label5.Location = new Point(89, 24);
-            label5.Name = "label5";
-            label5.Size = new Size(40, 46);
-            label5.TabIndex = 2;
-            label5.Text = "0";
+            lblResolved.AutoSize = true;
+            lblResolved.Font = new Font("Segoe UI", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblResolved.ForeColor = Color.Black;
+            lblResolved.Location = new Point(89, 24);
+            lblResolved.Name = "lblResolved";
+            lblResolved.Size = new Size(40, 46);
+            lblResolved.TabIndex = 2;
+            lblResolved.Text = "0";
             // 
             // label7
             // 
@@ -1543,7 +1543,7 @@
             // roundedPanel2
             // 
             roundedPanel2.BackColor = Color.White;
-            roundedPanel2.Controls.Add(lblValue1);
+            roundedPanel2.Controls.Add(lblOpen);
             roundedPanel2.Controls.Add(lblOpenRequest);
             roundedPanel2.Controls.Add(pnlIcon1);
             roundedPanel2.Location = new Point(15, 155);
@@ -1551,16 +1551,16 @@
             roundedPanel2.Size = new Size(213, 112);
             roundedPanel2.TabIndex = 11;
             // 
-            // lblValue1
+            // lblOpen
             // 
-            lblValue1.AutoSize = true;
-            lblValue1.Font = new Font("Segoe UI", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblValue1.ForeColor = Color.Black;
-            lblValue1.Location = new Point(89, 24);
-            lblValue1.Name = "lblValue1";
-            lblValue1.Size = new Size(40, 46);
-            lblValue1.TabIndex = 2;
-            lblValue1.Text = "0";
+            lblOpen.AutoSize = true;
+            lblOpen.Font = new Font("Segoe UI", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblOpen.ForeColor = Color.Black;
+            lblOpen.Location = new Point(89, 24);
+            lblOpen.Name = "lblOpen";
+            lblOpen.Size = new Size(40, 46);
+            lblOpen.TabIndex = 2;
+            lblOpen.Text = "0";
             // 
             // lblOpenRequest
             // 
@@ -1613,8 +1613,10 @@
             dgvMaintenanceRecords.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvMaintenanceRecords.Columns.AddRange(new DataGridViewColumn[] { REQID, TENANTS2, PROPERTYORUNIT, cc, PRIORITY, STATUS1, DATES });
             dgvMaintenanceRecords.Location = new Point(0, 30);
+            dgvMaintenanceRecords.MultiSelect = false;
             dgvMaintenanceRecords.Name = "dgvMaintenanceRecords";
             dgvMaintenanceRecords.RowHeadersWidth = 51;
+            dgvMaintenanceRecords.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvMaintenanceRecords.Size = new Size(1124, 265);
             dgvMaintenanceRecords.TabIndex = 8;
             dgvMaintenanceRecords.CellContentClick += dgvMaintenanceRecords_CellContentClick;
@@ -1985,14 +1987,14 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1370, 693);
             Controls.Add(pnlMainForm);
+            Controls.Add(pnlMaintenance);
+            Controls.Add(pnlLeases);
+            Controls.Add(pnlContent);
             Controls.Add(pnlTenants);
             Controls.Add(pnlRentalUnit);
             Controls.Add(pnlRentPayments);
             Controls.Add(pnlDashBoard);
             Controls.Add(pnlExpenses);
-            Controls.Add(pnlMaintenance);
-            Controls.Add(pnlLeases);
-            Controls.Add(pnlContent);
             Name = "Properties_Form";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Properties_Form";
@@ -2022,7 +2024,7 @@
             panel1.PerformLayout();
             pnlTenants.ResumeLayout(false);
             pnlTenants.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvTenants).EndInit();
             pnlFilterBar.ResumeLayout(false);
             pnlFilterBar.PerformLayout();
             pnlRentalUnit.ResumeLayout(false);
@@ -2117,7 +2119,7 @@
         private ComboBox cmbProperties;
         private TextBox txtSearchTenants;
         private ComboBox cmbStatuses;
-        private DataGridView dataGridView1;
+        private DataGridView dgvTenants;
         private Button btnAddTenants;
         private Panel pnlRentalUnit;
         private Label lblRentalUnit;
@@ -2229,17 +2231,17 @@
         private RoundedPanel roundedPanel1;
         private DataGridView dgvMaintenanceRecords;
         private RoundedPanel roundedPanel2;
-        private Label lblValue1;
+        private Label lblOpen;
         private Label lblOpenRequest;
         private Panel pnlIcon1;
         private Label lblIcon;
         private RoundedPanel roundedPanel3;
-        private Label label1;
+        private Label lblPending;
         private Label label2;
         private Panel panel6;
         private Label label3;
         private RoundedPanel roundedPanel4;
-        private Label label5;
+        private Label lblResolved;
         private Label label7;
         private Panel panel9;
         private Label label8;

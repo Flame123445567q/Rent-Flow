@@ -234,6 +234,7 @@
             Name = "Add_New_Tenants";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Add_New_Tenants";
+            Click += btnSaveTenant_Click_1;
             ((System.ComponentModel.ISupportInitialize)errorProvider1).EndInit();
             ResumeLayout(false);
             PerformLayout();

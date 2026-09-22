@@ -29,97 +29,29 @@
         private void InitializeComponent()
         {
             roundedPanel1 = new RoundedPanel();
-            lblEditingRequest = new Label();
-            chkbxPending = new CheckBox();
-            chckbxResolved = new CheckBox();
-            checkBox3 = new CheckBox();
-            btnSaveChanges = new Button();
             btnCancelEdit = new Button();
+            btnSaveChanges = new Button();
+            lblEditingRequest = new Label();
+            rdoPending = new RadioButton();
+            rdoResolved = new RadioButton();
+            rdoRemove = new RadioButton();
             roundedPanel1.SuspendLayout();
             SuspendLayout();
             // 
             // roundedPanel1
             // 
             roundedPanel1.BackColor = Color.White;
+            roundedPanel1.Controls.Add(rdoRemove);
+            roundedPanel1.Controls.Add(rdoResolved);
+            roundedPanel1.Controls.Add(rdoPending);
             roundedPanel1.Controls.Add(btnCancelEdit);
             roundedPanel1.Controls.Add(btnSaveChanges);
-            roundedPanel1.Controls.Add(checkBox3);
-            roundedPanel1.Controls.Add(chckbxResolved);
-            roundedPanel1.Controls.Add(chkbxPending);
             roundedPanel1.Controls.Add(lblEditingRequest);
             roundedPanel1.Location = new Point(44, 46);
             roundedPanel1.Name = "roundedPanel1";
             roundedPanel1.Size = new Size(568, 374);
             roundedPanel1.TabIndex = 0;
-            roundedPanel1.Paint += this.roundedPanel1_Paint;
-            // 
-            // lblEditingRequest
-            // 
-            lblEditingRequest.AutoSize = true;
-            lblEditingRequest.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblEditingRequest.Location = new Point(13, 11);
-            lblEditingRequest.Name = "lblEditingRequest";
-            lblEditingRequest.Size = new Size(161, 28);
-            lblEditingRequest.TabIndex = 1;
-            lblEditingRequest.Text = "Editing Request";
-            // 
-            // chkbxPending
-            // 
-            chkbxPending.AutoSize = true;
-            chkbxPending.FlatAppearance.BorderSize = 0;
-            chkbxPending.FlatStyle = FlatStyle.Flat;
-            chkbxPending.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold);
-            chkbxPending.ForeColor = Color.Black;
-            chkbxPending.Location = new Point(13, 90);
-            chkbxPending.Name = "chkbxPending";
-            chkbxPending.Size = new Size(374, 27);
-            chkbxPending.TabIndex = 2;
-            chkbxPending.Text = "Maintanance Request is Pending(To be fixed)";
-            chkbxPending.UseVisualStyleBackColor = true;
-            chkbxPending.CheckedChanged += checkBox1_CheckedChanged;
-            // 
-            // chckbxResolved
-            // 
-            chckbxResolved.AutoSize = true;
-            chckbxResolved.FlatAppearance.BorderSize = 0;
-            chckbxResolved.FlatStyle = FlatStyle.Flat;
-            chckbxResolved.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold);
-            chckbxResolved.ForeColor = Color.Black;
-            chckbxResolved.Location = new Point(13, 165);
-            chckbxResolved.Name = "chckbxResolved";
-            chckbxResolved.Size = new Size(285, 27);
-            chckbxResolved.TabIndex = 3;
-            chckbxResolved.Text = "Maintanance Request is Resolved";
-            chckbxResolved.UseVisualStyleBackColor = true;
-            chckbxResolved.CheckedChanged += this.checkBox2_CheckedChanged;
-            // 
-            // checkBox3
-            // 
-            checkBox3.AutoSize = true;
-            checkBox3.FlatAppearance.BorderSize = 0;
-            checkBox3.FlatStyle = FlatStyle.Flat;
-            checkBox3.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold);
-            checkBox3.ForeColor = Color.Black;
-            checkBox3.Location = new Point(13, 240);
-            checkBox3.Name = "checkBox3";
-            checkBox3.Size = new Size(263, 27);
-            checkBox3.TabIndex = 4;
-            checkBox3.Text = "Remove Maintanance Request";
-            checkBox3.UseVisualStyleBackColor = true;
-            // 
-            // btnSaveChanges
-            // 
-            btnSaveChanges.BackColor = Color.FromArgb(37, 99, 235);
-            btnSaveChanges.FlatAppearance.BorderSize = 0;
-            btnSaveChanges.FlatStyle = FlatStyle.Flat;
-            btnSaveChanges.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnSaveChanges.ForeColor = SystemColors.ButtonHighlight;
-            btnSaveChanges.Location = new Point(13, 303);
-            btnSaveChanges.Name = "btnSaveChanges";
-            btnSaveChanges.Size = new Size(263, 40);
-            btnSaveChanges.TabIndex = 6;
-            btnSaveChanges.Text = "Save Changes";
-            btnSaveChanges.UseVisualStyleBackColor = false;
+            roundedPanel1.Paint += roundedPanel1_Paint;
             // 
             // btnCancelEdit
             // 
@@ -137,6 +69,73 @@
             btnCancelEdit.Text = "Cancel";
             btnCancelEdit.UseVisualStyleBackColor = false;
             btnCancelEdit.Click += btnCancelEdit_Click;
+            // 
+            // btnSaveChanges
+            // 
+            btnSaveChanges.BackColor = Color.FromArgb(37, 99, 235);
+            btnSaveChanges.FlatAppearance.BorderSize = 0;
+            btnSaveChanges.FlatStyle = FlatStyle.Flat;
+            btnSaveChanges.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnSaveChanges.ForeColor = SystemColors.ButtonHighlight;
+            btnSaveChanges.Location = new Point(13, 303);
+            btnSaveChanges.Name = "btnSaveChanges";
+            btnSaveChanges.Size = new Size(263, 40);
+            btnSaveChanges.TabIndex = 6;
+            btnSaveChanges.Text = "Save Changes";
+            btnSaveChanges.UseVisualStyleBackColor = false;
+            btnSaveChanges.Click += btnSaveChanges_Click;
+            // 
+            // lblEditingRequest
+            // 
+            lblEditingRequest.AutoSize = true;
+            lblEditingRequest.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblEditingRequest.Location = new Point(13, 11);
+            lblEditingRequest.Name = "lblEditingRequest";
+            lblEditingRequest.Size = new Size(161, 28);
+            lblEditingRequest.TabIndex = 1;
+            lblEditingRequest.Text = "Editing Request";
+            // 
+            // rdoPending
+            // 
+            rdoPending.AutoSize = true;
+            rdoPending.FlatAppearance.BorderSize = 0;
+            rdoPending.FlatStyle = FlatStyle.Flat;
+            rdoPending.Font = new Font("Segoe UI", 10.2F);
+            rdoPending.Location = new Point(13, 76);
+            rdoPending.Name = "rdoPending";
+            rdoPending.Size = new Size(370, 27);
+            rdoPending.TabIndex = 20;
+            rdoPending.TabStop = true;
+            rdoPending.Text = "Maintanance Request is Pending(To be fixed)";
+            rdoPending.UseVisualStyleBackColor = true;
+            // 
+            // rdoResolved
+            // 
+            rdoResolved.AutoSize = true;
+            rdoResolved.FlatAppearance.BorderSize = 0;
+            rdoResolved.FlatStyle = FlatStyle.Flat;
+            rdoResolved.Font = new Font("Segoe UI", 10.2F);
+            rdoResolved.Location = new Point(13, 154);
+            rdoResolved.Name = "rdoResolved";
+            rdoResolved.Size = new Size(283, 27);
+            rdoResolved.TabIndex = 21;
+            rdoResolved.TabStop = true;
+            rdoResolved.Text = "Maintanance Request is Resolved";
+            rdoResolved.UseVisualStyleBackColor = true;
+            // 
+            // rdoRemove
+            // 
+            rdoRemove.AutoSize = true;
+            rdoRemove.FlatAppearance.BorderSize = 0;
+            rdoRemove.FlatStyle = FlatStyle.Flat;
+            rdoRemove.Font = new Font("Segoe UI", 10.2F);
+            rdoRemove.Location = new Point(13, 232);
+            rdoRemove.Name = "rdoRemove";
+            rdoRemove.Size = new Size(261, 27);
+            rdoRemove.TabIndex = 22;
+            rdoRemove.TabStop = true;
+            rdoRemove.Text = "Remove Maintanance Request";
+            rdoRemove.UseVisualStyleBackColor = true;
             // 
             // EditMaintenanceRequest
             // 
@@ -159,17 +158,17 @@
 
         private void roundedPanel1_Paint(object sender, PaintEventArgs e)
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
 
         #endregion
 
         private RoundedPanel roundedPanel1;
-        private CheckBox chkbxPending;
         private Label lblEditingRequest;
-        private CheckBox checkBox3;
-        private CheckBox chckbxResolved;
         private Button btnSaveChanges;
         private Button btnCancelEdit;
+        private RadioButton rdoRemove;
+        private RadioButton rdoResolved;
+        private RadioButton rdoPending;
     }
 }

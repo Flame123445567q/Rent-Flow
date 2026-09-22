@@ -56,10 +56,9 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(461, 64);
-            label1.Margin = new Padding(4, 0, 4, 0);
+            label1.Location = new Point(369, 51);
             label1.Name = "label1";
-            label1.Size = new Size(0, 25);
+            label1.Size = new Size(0, 20);
             label1.TabIndex = 0;
             // 
             // lblTitle
@@ -67,10 +66,9 @@
             lblTitle.AutoSize = true;
             lblTitle.Font = new Font("Segoe UI", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblTitle.ForeColor = SystemColors.ButtonFace;
-            lblTitle.Location = new Point(362, 64);
-            lblTitle.Margin = new Padding(4, 0, 4, 0);
+            lblTitle.Location = new Point(290, 51);
             lblTitle.Name = "lblTitle";
-            lblTitle.Size = new Size(648, 54);
+            lblTitle.Size = new Size(552, 46);
             lblTitle.TabIndex = 1;
             lblTitle.Text = "Create Your RentFlow🏢 Account";
             // 
@@ -79,10 +77,9 @@
             lblSlogan.AutoSize = true;
             lblSlogan.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblSlogan.ForeColor = SystemColors.ButtonFace;
-            lblSlogan.Location = new Point(461, 135);
-            lblSlogan.Margin = new Padding(4, 0, 4, 0);
+            lblSlogan.Location = new Point(369, 108);
             lblSlogan.Name = "lblSlogan";
-            lblSlogan.Size = new Size(432, 32);
+            lblSlogan.Size = new Size(359, 28);
             lblSlogan.TabIndex = 2;
             lblSlogan.Text = "Start managing your properties today.";
             // 
@@ -90,31 +87,28 @@
             // 
             lblRoles.AutoSize = true;
             lblRoles.Font = new Font("Segoe UI", 10.8F, FontStyle.Italic, GraphicsUnit.Point, 0);
-            lblRoles.Location = new Point(388, 202);
-            lblRoles.Margin = new Padding(4, 0, 4, 0);
+            lblRoles.Location = new Point(310, 162);
             lblRoles.Name = "lblRoles";
-            lblRoles.Size = new Size(123, 30);
+            lblRoles.Size = new Size(101, 25);
             lblRoles.TabIndex = 3;
             lblRoles.Text = "Register as ";
             // 
             // cmbRoles
             // 
             cmbRoles.FormattingEnabled = true;
-            cmbRoles.Items.AddRange(new object[] { "Landlord", "Tenant", "Admin" });
-            cmbRoles.Location = new Point(585, 220);
-            cmbRoles.Margin = new Padding(4, 4, 4, 4);
+            cmbRoles.Items.AddRange(new object[] { "Landlord", "Admin" });
+            cmbRoles.Location = new Point(468, 176);
             cmbRoles.Name = "cmbRoles";
-            cmbRoles.Size = new Size(406, 33);
+            cmbRoles.Size = new Size(326, 28);
             cmbRoles.TabIndex = 4;
             // 
             // lblFull_Name
             // 
             lblFull_Name.AutoSize = true;
             lblFull_Name.Font = new Font("Segoe UI", 10.8F, FontStyle.Italic);
-            lblFull_Name.Location = new Point(396, 271);
-            lblFull_Name.Margin = new Padding(4, 0, 4, 0);
+            lblFull_Name.Location = new Point(317, 217);
             lblFull_Name.Name = "lblFull_Name";
-            lblFull_Name.Size = new Size(113, 30);
+            lblFull_Name.Size = new Size(94, 25);
             lblFull_Name.TabIndex = 5;
             lblFull_Name.Text = "Full Name";
             // 
@@ -122,10 +116,9 @@
             // 
             lblSurname.AutoSize = true;
             lblSurname.Font = new Font("Segoe UI", 10.8F, FontStyle.Italic);
-            lblSurname.Location = new Point(406, 340);
-            lblSurname.Margin = new Padding(4, 0, 4, 0);
+            lblSurname.Location = new Point(325, 272);
             lblSurname.Name = "lblSurname";
-            lblSurname.Size = new Size(104, 30);
+            lblSurname.Size = new Size(86, 25);
             lblSurname.TabIndex = 7;
             lblSurname.Text = "Surname ";
             // 
@@ -133,10 +126,9 @@
             // 
             lblEmail.AutoSize = true;
             lblEmail.Font = new Font("Segoe UI", 10.8F, FontStyle.Italic);
-            lblEmail.Location = new Point(362, 478);
-            lblEmail.Margin = new Padding(4, 0, 4, 0);
+            lblEmail.Location = new Point(290, 382);
             lblEmail.Name = "lblEmail";
-            lblEmail.Size = new Size(148, 30);
+            lblEmail.Size = new Size(121, 25);
             lblEmail.TabIndex = 8;
             lblEmail.Text = "Email Address";
             // 
@@ -144,10 +136,9 @@
             // 
             lblPhoneNumber.AutoSize = true;
             lblPhoneNumber.Font = new Font("Segoe UI", 10.8F, FontStyle.Italic);
-            lblPhoneNumber.Location = new Point(351, 546);
-            lblPhoneNumber.Margin = new Padding(4, 0, 4, 0);
+            lblPhoneNumber.Location = new Point(281, 437);
             lblPhoneNumber.Name = "lblPhoneNumber";
-            lblPhoneNumber.Size = new Size(158, 30);
+            lblPhoneNumber.Size = new Size(130, 25);
             lblPhoneNumber.TabIndex = 9;
             lblPhoneNumber.Text = "Phone Number";
             // 
@@ -155,10 +146,9 @@
             // 
             lblPassword.AutoSize = true;
             lblPassword.Font = new Font("Segoe UI", 10.8F, FontStyle.Italic);
-            lblPassword.Location = new Point(408, 615);
-            lblPassword.Margin = new Padding(4, 0, 4, 0);
+            lblPassword.Location = new Point(326, 492);
             lblPassword.Name = "lblPassword";
-            lblPassword.Size = new Size(104, 30);
+            lblPassword.Size = new Size(85, 25);
             lblPassword.TabIndex = 10;
             lblPassword.Text = "Password";
             // 
@@ -166,22 +156,21 @@
             // 
             lblConfirmPassword.AutoSize = true;
             lblConfirmPassword.Font = new Font("Segoe UI", 10.8F, FontStyle.Italic);
-            lblConfirmPassword.Location = new Point(322, 684);
-            lblConfirmPassword.Margin = new Padding(4, 0, 4, 0);
+            lblConfirmPassword.Location = new Point(258, 547);
             lblConfirmPassword.Name = "lblConfirmPassword";
-            lblConfirmPassword.Size = new Size(187, 30);
+            lblConfirmPassword.Size = new Size(153, 25);
             lblConfirmPassword.TabIndex = 11;
             lblConfirmPassword.Text = "Confirm Password";
             // 
             // btnRegisterAccount
             // 
-            btnRegisterAccount.BackColor = Color.Navy;
+            btnRegisterAccount.BackColor = Color.FromArgb(37, 99, 235);
+            btnRegisterAccount.FlatStyle = FlatStyle.Flat;
             btnRegisterAccount.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnRegisterAccount.ForeColor = SystemColors.ButtonFace;
-            btnRegisterAccount.Location = new Point(322, 772);
-            btnRegisterAccount.Margin = new Padding(4, 4, 4, 4);
+            btnRegisterAccount.Location = new Point(258, 618);
             btnRegisterAccount.Name = "btnRegisterAccount";
-            btnRegisterAccount.Size = new Size(670, 75);
+            btnRegisterAccount.Size = new Size(536, 60);
             btnRegisterAccount.TabIndex = 12;
             btnRegisterAccount.Text = "Register Account";
             btnRegisterAccount.UseVisualStyleBackColor = false;
@@ -191,76 +180,68 @@
             // 
             lblIDNumber.AutoSize = true;
             lblIDNumber.Font = new Font("Segoe UI", 10.8F, FontStyle.Italic, GraphicsUnit.Point, 0);
-            lblIDNumber.Location = new Point(384, 409);
-            lblIDNumber.Margin = new Padding(4, 0, 4, 0);
+            lblIDNumber.Location = new Point(307, 327);
             lblIDNumber.Name = "lblIDNumber";
-            lblIDNumber.Size = new Size(126, 30);
+            lblIDNumber.Size = new Size(104, 25);
             lblIDNumber.TabIndex = 13;
             lblIDNumber.Text = "ID Number ";
             // 
             // txtFull_Name
             // 
-            txtFull_Name.Location = new Point(585, 294);
-            txtFull_Name.Margin = new Padding(4, 4, 4, 4);
+            txtFull_Name.Location = new Point(468, 235);
             txtFull_Name.Name = "txtFull_Name";
             txtFull_Name.PlaceholderText = "First Name";
-            txtFull_Name.Size = new Size(406, 31);
+            txtFull_Name.Size = new Size(326, 27);
             txtFull_Name.TabIndex = 14;
             // 
             // txtSurname
             // 
-            txtSurname.Location = new Point(585, 359);
-            txtSurname.Margin = new Padding(4, 4, 4, 4);
+            txtSurname.Location = new Point(468, 287);
             txtSurname.Name = "txtSurname";
             txtSurname.PlaceholderText = "Last Name";
-            txtSurname.Size = new Size(406, 31);
+            txtSurname.Size = new Size(326, 27);
             txtSurname.TabIndex = 15;
             // 
             // txtIDNumber
             // 
-            txtIDNumber.Location = new Point(585, 425);
-            txtIDNumber.Margin = new Padding(4, 4, 4, 4);
+            txtIDNumber.Location = new Point(468, 340);
             txtIDNumber.Name = "txtIDNumber";
             txtIDNumber.PlaceholderText = "South African ID";
-            txtIDNumber.Size = new Size(406, 31);
+            txtIDNumber.Size = new Size(326, 27);
             txtIDNumber.TabIndex = 16;
             // 
             // txtEmail
             // 
-            txtEmail.Location = new Point(585, 490);
-            txtEmail.Margin = new Padding(4, 4, 4, 4);
+            txtEmail.Location = new Point(468, 392);
             txtEmail.Name = "txtEmail";
             txtEmail.PlaceholderText = "you@example.com";
-            txtEmail.Size = new Size(406, 31);
+            txtEmail.Size = new Size(326, 27);
             txtEmail.TabIndex = 17;
             // 
             // txtPhoneNumber
             // 
-            txtPhoneNumber.Location = new Point(585, 560);
-            txtPhoneNumber.Margin = new Padding(4, 4, 4, 4);
+            txtPhoneNumber.Location = new Point(468, 448);
             txtPhoneNumber.Name = "txtPhoneNumber";
             txtPhoneNumber.PlaceholderText = "eg.+27 82 123 4567";
-            txtPhoneNumber.Size = new Size(406, 31);
+            txtPhoneNumber.Size = new Size(326, 27);
             txtPhoneNumber.TabIndex = 18;
             // 
             // txtPassword
             // 
-            txtPassword.Location = new Point(585, 629);
-            txtPassword.Margin = new Padding(4, 4, 4, 4);
+            txtPassword.Location = new Point(468, 503);
             txtPassword.Name = "txtPassword";
             txtPassword.PasswordChar = '*';
             txtPassword.PlaceholderText = "Password(6 or more characters)";
-            txtPassword.Size = new Size(406, 31);
+            txtPassword.Size = new Size(326, 27);
             txtPassword.TabIndex = 19;
             // 
             // txtConfirmPassword
             // 
-            txtConfirmPassword.Location = new Point(585, 698);
-            txtConfirmPassword.Margin = new Padding(4, 4, 4, 4);
+            txtConfirmPassword.Location = new Point(468, 558);
             txtConfirmPassword.Name = "txtConfirmPassword";
             txtConfirmPassword.PasswordChar = '*';
             txtConfirmPassword.PlaceholderText = "Confirm Password";
-            txtConfirmPassword.Size = new Size(406, 31);
+            txtConfirmPassword.Size = new Size(326, 27);
             txtConfirmPassword.TabIndex = 20;
             // 
             // errorProvider1
@@ -269,10 +250,10 @@
             // 
             // RegisterForm2
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.Navy;
-            ClientSize = new Size(1250, 889);
+            BackColor = Color.FromArgb(37, 99, 235);
+            ClientSize = new Size(1000, 711);
             Controls.Add(txtConfirmPassword);
             Controls.Add(txtPassword);
             Controls.Add(txtPhoneNumber);
@@ -294,7 +275,6 @@
             Controls.Add(lblTitle);
             Controls.Add(label1);
             ForeColor = SystemColors.ButtonHighlight;
-            Margin = new Padding(4, 4, 4, 4);
             Name = "RegisterForm2";
             StartPosition = FormStartPosition.CenterScreen;
             Text = " ";

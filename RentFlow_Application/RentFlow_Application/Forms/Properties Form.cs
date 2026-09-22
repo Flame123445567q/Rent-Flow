@@ -4,9 +4,10 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Text;
 using System.Windows.Forms;
-using System.IO;
+using static System.Windows.Forms.LinkLabel;
 namespace RentFlow_Application.Forms
 {
     public partial class Properties_Form : Form
@@ -18,6 +19,10 @@ namespace RentFlow_Application.Forms
         public Properties_Form()
         {
             InitializeComponent();
+            LoadMaintenanceGrid();
+            LoadProperties();
+            LoadTenants();
+
         }
         private void pnlMain_Paint(object sender, PaintEventArgs e)
         {
@@ -94,9 +99,10 @@ namespace RentFlow_Application.Forms
             UpdateGrid();
             UpdateStatistics();
             LoadProperties();
+            LoadMaintenanceGrid();
             // load tenants into tenant grid
             LoadTenants();
-            UpdateTenantsGrid();
+            //UpdateTenantsGrid();
             // show dashboard by default
             ShowPanel(pnlDashBoard);
         }
@@ -138,97 +144,75 @@ namespace RentFlow_Application.Forms
             catch { }
         }
 
-        private void btnAddTenants_Click(object sender, EventArgs e)
-        {
-            // show add-tenant dialog and reload tenants if saved
-            
-            Add_New_Tenants frm = new Add_New_Tenants();
-            frm.NextTenantID = nextTenantID;
-
-            if (frm.ShowDialog() == DialogResult.OK)
-            {
-                tenants.Clear();
-                LoadTenants();
-                UpdateTenantsGrid();
-                return;
-            }
-        }
+       
 
         private void LoadTenants()
         {
-            string filePath = Path.Combine(Application.StartupPath ?? ".", "Tenants.txt");
+            dgvTenants.Rows.Clear();
+            tenants.Clear();
+
+            string filePath = "Tenants.txt";
 
             if (!File.Exists(filePath))
             {
                 return;
             }
-               
 
             string[] lines = File.ReadAllLines(filePath);
 
             foreach (string line in lines)
             {
                 if (string.IsNullOrWhiteSpace(line))
-                    continue;
-
-                string[] data = line.Split();
-                // expected: id first last phone email idnumber property unit
-                if (data.Length >= 8)
                 {
-                    Tenant t = new Tenant();
-                    t.SetTenantID(Convert.ToInt32(data[0]));
-                    t.SetFirstName(data[1]);
-                    t.SetLastName(data[2]);
-                    t.SetPhoneNumber(data[3]);
-                    t.SetEmailAddress(data[4]);
-                    t.SetIDNumber(data[5]);
-                    t.SetAssignedProperty(data[6]);
-                    t.SetAssignedUnit(data[7]);
-                    // optional fields: lease status and outstanding
-                    if (data.Length >= 10)
-                    {
-                        t.SetLeaseStatus(data[8]);
-                        t.SetOutstanding(data[9]);
-                    }
-                    else
-                    {
-                        t.SetLeaseStatus("Active");
-                        t.SetOutstanding("R5000");
-                    }
-
-                    tenants.Add(t);
-
-                    int totalTenants = tenants.Count;
-                    
-                   
-                        lblTenatsCount.Text = $"{totalTenants} Registered Tenants";
-                        //totalTenants++;
-                    
-
-                    if (t.GetTenantID() >= nextTenantID)
-                        nextTenantID = t.GetTenantID() + 1;
+                    continue;
                 }
-            }
-        }
 
-        private void UpdateTenantsGrid()
-        {
-            if (dataGridView1 == null)
-                return;
+                string[] parts = line.Split('|');
 
-            dataGridView1.Rows.Clear();
+                if (parts.Length < 8)
+                {
+                    continue;
+                }
 
-            foreach (Tenant t in tenants)
-            {
-                dataGridView1.Rows.Add(
-                    t.GetFirstName() + " " + t.GetLastName(),
-                    t.GetPhoneNumber(),
-                    t.GetAssignedProperty(),
-                    t.GetAssignedUnit(),
-                    t.GetLeaseStatus(), // Lease status
-                    t.GetOutstanding()  // Outstanding
+                string fullName = parts[0];   // "Kea Maya"
+                string phone = parts[1];
+                string email = parts[2];
+                string idnum = parts[3];
+                string property = parts[4];
+                string unit = parts[5];
+                string status = parts[6];
+                string outstanding = parts[7];
+
+                // split the full name into first + last (for the Tenant class)
+                string[] nameParts = fullName.Split(' ');
+                string first = nameParts[0];
+                string last = nameParts.Length > 1 ? nameParts[1] : "";
+
+                Tenant t = new Tenant();
+                t.SetFirstName(first);
+                t.SetLastName(last);
+                t.SetPhoneNumber(phone);
+                t.SetEmailAddress(email);
+                t.SetIDNumber(idnum);
+                t.SetAssignedProperty(property);
+                t.SetAssignedUnit(unit);
+                t.SetLeaseStatus(status);
+                t.SetOutstanding(outstanding);
+
+                tenants.Add(t);
+
+                // ADD THE ROW TO THE GRID
+                dgvTenants.Rows.Add(
+                    fullName,
+                    phone,
+                    property,
+                    unit,
+                    status,
+                    outstanding
                 );
             }
+
+            lblTenatsCount.Text = tenants.Count + " Registered Tenants";
         }
 
         private void LoadProperties()
@@ -319,12 +303,6 @@ namespace RentFlow_Application.Forms
             ShowPanel(pnlRentalUnit);
         }
 
-        private void btnAddUnit_Click(object sender, EventArgs e)
-        {
-            AddRentalUnit frm = new AddRentalUnit();
-            frm.Show();
-        }
-
         private void panel3_Paint(object sender, PaintEventArgs e)
         {
 
@@ -403,45 +381,73 @@ namespace RentFlow_Application.Forms
             }
             EditMaintenanceRequest form = new EditMaintenanceRequest();
             form.ShowDialog();
+            LoadMaintenanceGrid();
         }
 
         private void dgvMaintenanceRecords_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }
-
-        private void pnlMaintenance_Paint(object sender, PaintEventArgs e)
+        private void LoadMaintenanceGrid()
         {
             dgvMaintenanceRecords.Rows.Clear();
 
-            if (!File.Exists("maintenance.txt"))
-            {
-                return;
-            }
+            if (!File.Exists("maintenance.txt")) return;
+
+            int open = 0, pending = 0, resolved = 0;
 
             foreach (string line in File.ReadAllLines("maintenance.txt"))
             {
-                if (string.IsNullOrWhiteSpace(line)) continue;
+                if (string.IsNullOrWhiteSpace(line))
+                {
+                    continue;
+                }
 
-                string[] index = line.Split('|');
-                if (index.Length < 8) continue;
+                string[] parts = line.Split('|');
+                if (parts.Length < 8)
+                {
+                    continue;
+                }
 
+                if (parts[6] == "Open")
+                {
+                    open++;
+                }
+
+                else if (parts[6] == "Pending") 
+                {
+                    pending++;
+                } 
+                else if (parts[6] == "Resolved")
+                {
+                    resolved++;
+                }
                 dgvMaintenanceRecords.Rows.Add(
-                    index[0],              // RequestId
-                    index[1],              // TenantName
-                    index[2],              // PropertyUnit
-                    index[3],              // category for now
-                    index[5],              // Priority
-                    index[6],              // Status
-                    index[7]               // Date 
+                    parts[0],   // RequestId
+                    parts[1],   // TenantName
+                    parts[2],   // PropertyUnit
+                    parts[3],   // Category
+                    parts[5],   // Priority
+                    parts[6],   // Status
+                    parts[7]    // Date
                 );
             }
-        }
 
+            lblOpen.Text = open.ToString();
+            lblPending.Text = pending.ToString();
+            lblResolved.Text = resolved.ToString();
+        }
         private void btnAddTenants_Click_1(object sender, EventArgs e)
         {
             Add_New_Tenants form = new Add_New_Tenants();
             form.ShowDialog();
+            tenants.Clear();
+            LoadTenants();
+        }
+
+        private void pnlMaintenance_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

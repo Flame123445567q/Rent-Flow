@@ -6,6 +6,7 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using System.IO;
 
 namespace RentFlow_Application.Forms
 {
@@ -41,9 +42,6 @@ namespace RentFlow_Application.Forms
         }
         private void btnSubmitRequest_Click(object sender, EventArgs e)
         {
-
-            
-           
             string issueCategory = cmbIssueCatagory.Text;
             string description = txtDescribtion.Text;
             string priority = cmbPritority.Text;
@@ -79,8 +77,8 @@ namespace RentFlow_Application.Forms
 
             // Save to file
             string line = $"{newRequest.RequestId}|{newRequest.TenantName}|{newRequest.PropertyUnit}|" +
-                          $"{newRequest.IssueDescription}|{newRequest.IssuePriority}|{newRequest.Status}|{newRequest.Date}";
-
+              $"{newRequest.IssueCategory}|{newRequest.IssueDescription}|" +
+              $"{newRequest.IssuePriority}|{newRequest.Status}|{newRequest.Date}";
             File.AppendAllText("maintenance.txt", line + Environment.NewLine);
 
             MessageBox.Show($"Request submitted!\nReference: {requestId}",
